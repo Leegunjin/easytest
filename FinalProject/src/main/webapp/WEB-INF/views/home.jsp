@@ -3,13 +3,19 @@
 <html>
 <head>
 	<title>Home</title>
+	
+	<style type="text/css">
+	.p{
+	color: orange;}
+	
+	</style>
 </head>
 <body>
 <h1>
 	Hello world!  
 </h1>
 
-<P>  The time on the server is ${serverTime}. </P>
+<P class="p">  The time on the server is ${serverTime}. </P>
 
 by hansol
 by gunjin
