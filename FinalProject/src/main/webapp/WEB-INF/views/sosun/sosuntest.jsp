@@ -7,6 +7,11 @@
 <title>Insert title here</title>
 </head>
 <body>
+<<<<<<< HEAD
 	sosun test!!!
+=======
+
+gunjin
+>>>>>>> branch 'master' of https://github.com/Leegunjin/easytest.git
 </body>
 </html>
