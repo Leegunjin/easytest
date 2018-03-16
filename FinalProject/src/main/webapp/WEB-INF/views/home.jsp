@@ -11,11 +11,11 @@
 	</style>
 </head>
 <body>
-<h1>
-	Hello world!  
+<h1 class="p">
+	<marquee>Welcome to JongHo world!</marquee>  
 </h1>
 
-<P class="p">  The time on the server is ${serverTime}. </P>
+<P>  The time on the server is ${serverTime}. </P>
 
 by hansol
 by gunjin
