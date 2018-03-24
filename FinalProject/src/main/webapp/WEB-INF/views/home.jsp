@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page session="false" %>
 <html>
@@ -31,6 +33,11 @@ by hansol33
 heejin11
 
 briliant jongho
+
+<form action="test" method="post">
+	<input type="text" name="name">
+	<input type="submit" value="테스트">
+</form>
 
 </body>
 </html>
