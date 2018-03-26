@@ -18,12 +18,12 @@ public class PersonController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(PersonController.class);
 	
-	@RequestMapping(value="test",method=RequestMethod.POST)
-	public String test(Person person){
-		logger.info("테스트 시작");
-		System.out.println(person);
-		dao.insertPerson(person);
-		logger.info("테스트 종료");
-		return "/";
+	
+	@RequestMapping(value="loginForm",method=RequestMethod.GET)
+	public String login(){
+		logger.info("로그인 페이지 이동시작");
+		logger.info("로그인 페이지 이동시작");
+		return "loginForm";
 	}
+	
 }
