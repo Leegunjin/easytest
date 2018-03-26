@@ -5,9 +5,6 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <style type="text/css">
-/* ------------------------------------ Click on login and Sign Up to  changue and view the effect
----------------------------------------
-*/
 * {
 	margin: 0px auto;
 	padding: 0px;
@@ -205,10 +202,7 @@
 	margin-top: 15px;
 	color: #fff;
 }
-/* ----------------------------------
-background text    
-------------------------------------
- */
+
 .cont_ba_opcitiy {
 	position: relative;
 	background-color: rgba(120, 144, 156, 0.55);
@@ -376,9 +370,7 @@ to {
 }
 </style>
 <script type="text/javascript">
-	/* ------------------------------------ Click on login and Sign Up to  changue and view the effect
-	 ---------------------------------------
-	 */
+
 
 	function cambiar_login() {
 		document.querySelector('.cont_forms').className = "cont_forms cont_forms_active_login";
@@ -435,19 +427,18 @@ to {
 						<div class="cont_ba_opcitiy">
 
 							<h2>LOGIN</h2>
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+							<p>가입하신 ID와 비밀번호를 입력 해 주세요</p>
 							<button class="btn_login" onclick="cambiar_login()">LOGIN</button>
 						</div>
 					</div>
 					<div class="col_md_sign_up">
 						<div class="cont_ba_opcitiy">
-							<h2>SIGN UP</h2>
+							<h2>로그인</h2>
 
 
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+							<p>사용 하실 ID와 비밀번호를 입력하시고 가입 절차를 진행해 주세요</p>
 
-							<button class="btn_sign_up" onclick="cambiar_sign_up()">SIGN
-								UP</button>
+							<button class="btn_sign_up" onclick="cambiar_sign_up()">회원가입</button>
 						</div>
 					</div>
 				</div>
@@ -473,7 +464,7 @@ to {
 						<h2>LOGIN</h2>
 						<input type="text" placeholder="Email" /> <input type="password"
 							placeholder="Password" />
-						<button class="btn_login" onclick="cambiar_login()">LOGIN</button>
+						<button class="btn_login" onclick="cambiar_login()">로그인</button>
 					</div>
 
 					<div class="cont_form_sign_up">
@@ -484,8 +475,7 @@ to {
 							placeholder="User" /> <input type="password"
 							placeholder="Password" /> <input type="password"
 							placeholder="Confirm Password" />
-						<button class="btn_sign_up" onclick="cambiar_sign_up()">SIGN
-							UP</button>
+						<button class="btn_sign_up" onclick="cambiar_sign_up()">회원가입</button>
 
 					</div>
 

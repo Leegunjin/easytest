@@ -20,7 +20,7 @@ public class PersonController {
 	
 	
 	@RequestMapping(value="loginForm",method=RequestMethod.GET)
-	public String login(){
+	public String loginForm(){
 		logger.info("로그인 페이지 이동시작");
 		logger.info("로그인 페이지 이동시작");
 		return "loginForm";
