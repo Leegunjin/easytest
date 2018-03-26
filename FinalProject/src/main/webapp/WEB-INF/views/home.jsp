@@ -12,7 +12,7 @@
     <meta name="author" content="">
     
 
-    <title>Java Lingo</title>
+    <title> Java Lingo </title>
 
     <!-- Bootstrap core CSS -->
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/resources/vendor/bootstrap/css/bootstrap.min.css">
@@ -28,7 +28,7 @@
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
       <div class="container">
-        <a class="navbar-brand" href="#">Java Lingo</a>
+        <a class="navbar-brand" href="#"> Java Lingo </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -40,13 +40,13 @@
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">About</a>
+              <a class="nav-link" href="#">Login</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Services</a>
+              <a class="nav-link" href="#">My Page</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Contact</a>
+              <a class="nav-link" href="#">Board</a>
             </li>
           </ul>
         </div>
@@ -97,8 +97,8 @@
     <!-- Page Content -->
     <section class="py-5">
       <div class="container">
-        <h1>자바링고 - 자바를 쉽게 배우세요</h1>
-        <p>이제 자바를 직관적으로 배울 수 있습니다</p>
+        <h1> 무료로 JAVA를 배울 수 있습니다. 지금 시작하세요.  </h1>
+        <p> 이해가 어려운 초보자를 위해 시각화한 교육 프로그램 입니다.</p>
       </div>
       <form action="test" method="post">
 		  <input type="text" name="name">
