@@ -4,7 +4,7 @@
   "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
 	<typeAliases>
-		<typeAlias type="com.scitmaster.easycodingu.vo.Person" alias="person" />
+		<typeAlias type="com.scitmaster.easycodingu.person.vo.Person" alias="person" />
 	</typeAliases>
 	<mappers>
 		<mapper resource="mapper/personMapper.xml" />

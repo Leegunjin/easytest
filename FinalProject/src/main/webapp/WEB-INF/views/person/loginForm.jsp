@@ -385,7 +385,20 @@ to {
 				function() {
 					document.querySelector('.cont_form_sign_up').style.display = "none";
 				}, 200);
+		
+	
 	}
+	
+	
+	$('.btn_login').on('click' , function() {
+		
+		$('#loginFormView').html();	
+		
+						
+	});
+	
+	
+	
 
 	function cambiar_sign_up(at) {
 		document.querySelector('.cont_forms').className = "cont_forms cont_forms_active_sign_up";

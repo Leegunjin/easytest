@@ -30,7 +30,7 @@
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="<c:url value="loginForm"></c:url>">Login</a>
+              <a class="nav-link" href="<c:url value="person/loginForm"></c:url>">Login</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#">My Page</a>

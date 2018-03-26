@@ -1,10 +1,10 @@
-package com.scitmaster.easycodingu.dao;
+package com.scitmaster.easycodingu.person.dao;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.scitmaster.easycodingu.vo.Person;
+import com.scitmaster.easycodingu.person.vo.Person;
 
 @Repository
 public class PersonDAO {
