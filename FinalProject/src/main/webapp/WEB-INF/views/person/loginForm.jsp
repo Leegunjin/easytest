@@ -95,21 +95,21 @@
                 <div class="logo ">
                     <img src="http://placehold.it/90x38/fff/6E329D&text=LOGO" alt=""/>
                 </div>
-                <form class="form-signin" action="#">
-                <div class="form-group">
-                    <input type="text" class="form-control" placeholder="Email" required autofocus />
-                </div>
-                <div class="form-group">
-                    <input type="password" class="form-control" placeholder="Password" required />
-                </div>
-                <label class="checkbox">
-                    <input type="checkbox" value="remember-me" />
-                    Keep me signed in
-                </label>
-                <button class="btn btn-lg btn-block purple-bg" type="submit">
-                    Sign in</button>
+                <form action="login" id="login" method="post" class="form-signin">
+	                <div class="form-group">
+	                    <input type="text" class="form-control" id="id" name="id" placeholder="Id or Email" required autofocus />
+	                </div>
+	                <div class="form-group">
+	                    <input type="password" class="form-control" id="password" name="password" placeholder="Password" required />
+	                </div>
+	                <label class="checkbox">
+	                    <input type="checkbox" value="remember-me" />
+	                    Keep me signed in
+	                </label>
+	                <button class="btn btn-lg btn-block purple-bg" type="submit">
+	                    Sign in</button>
                 </form>
-                <a class="forgotLnk" href="http://www.jquery2dotnet.com">I can't access my account</a>
+                <a class="forgotLnk" href="forgot">ID, Password 찾기</a>
                 <div class="or-box">
                     <span class="or">OR</span>
                     <div class="row">

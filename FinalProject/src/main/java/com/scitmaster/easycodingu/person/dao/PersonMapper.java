@@ -5,4 +5,6 @@ import com.scitmaster.easycodingu.person.vo.Person;
 public interface PersonMapper {
 
 	public void insertPerson(Person person);
+	
+	public Person selectPerson(String id);
 }

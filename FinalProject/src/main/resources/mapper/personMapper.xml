@@ -29,6 +29,11 @@
 				,#{name}
 			)
 	</insert> -->
+	
+	<select id="selectPerson" parameterType="String" resultType="person">
+		SELECT * FROM person 
+		WHERE id = #{id}
+	</select>
  
 	
 

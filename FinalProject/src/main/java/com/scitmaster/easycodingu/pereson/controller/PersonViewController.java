@@ -1,5 +1,7 @@
 package com.scitmaster.easycodingu.pereson.controller;
 
+import javax.servlet.http.HttpSession;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,4 +29,23 @@ public class PersonViewController {
 		return "person/loginForm";
 	}
 	
+	@RequestMapping(value="login", method=RequestMethod.POST)
+	public String login(String id, String password, HttpSession session){
+		logger.info("login START");
+		Person person = dao.selectPerson(id);
+		System.out.println(person);
+		if (person != null && person.getPassword().equals(password)) {
+			session.setAttribute("loginId", person.getId());
+			session.setAttribute("loginName", person.getName());
+		}		
+		logger.info("login END");
+		return "redirect:../";
+	}
+	
+	@RequestMapping(value="forgot", method=RequestMethod.GET)
+	public String forgot(){
+		logger.info("forgot START");
+		logger.info("forgot END");
+		return "forgotForm";
+	}
 }
