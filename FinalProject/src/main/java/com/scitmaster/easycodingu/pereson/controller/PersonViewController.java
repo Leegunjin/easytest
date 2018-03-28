@@ -21,7 +21,10 @@ public class PersonViewController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(PersonViewController.class);
 	
-	
+	/**
+	 * loginForm
+	 * 로그인 폼으로 이동
+	 * */
 	@RequestMapping(value="loginForm",method=RequestMethod.GET)
 	public String loginForm(){
 		logger.info("로그인 페이지 이동시작");
@@ -29,6 +32,13 @@ public class PersonViewController {
 		return "person/loginForm";
 	}
 	
+	/**
+	 * login
+	 * @param id 사용자가 입력한 ID
+	 * @param password 사용자가 입력한 Passwrod
+	 * @param session 세션에 ID를 setAttribute하기 위한 HttpSession
+	 * @return redirect:../ home.jsp로 돌아간다
+	 * */
 	@RequestMapping(value="login", method=RequestMethod.POST)
 	public String login(String id, String password, HttpSession session){
 		logger.info("login START");
@@ -42,10 +52,15 @@ public class PersonViewController {
 		return "redirect:../";
 	}
 	
+	/**
+	 * forgot
+	 * 로그인 페이지에서 ID, PW 찾기 링크를 클릭시 forgotForm으로 이동*/
 	@RequestMapping(value="forgot", method=RequestMethod.GET)
 	public String forgot(){
 		logger.info("forgot START");
 		logger.info("forgot END");
-		return "forgotForm";
+		return "person/forgotForm";
 	}
+	
+	
 }

@@ -44,15 +44,36 @@ public class PersonDAO {
 	}*/
 	
 	
-	//login
-	
+	/**
+	 * Login
+	 * @param id 사용자가 입력한 ID
+	 * @return Person ID로 SELECT 해 온 Person 한 명의 모든 정보
+	 * */
 	public Person selectPerson(String id){
 		logger.info("selectPerson START");
-		System.out.println(id);
+		System.out.println("ID : "+id);
 		PersonMapper mapper = sqlSession.getMapper(PersonMapper.class);
-		Person p = mapper.selectPerson(id);
-		System.out.println(p);
+		Person person = mapper.selectPerson(id);
+		System.out.println("Person : " + person);
 		logger.info("selectPerson END");
-		return p;
+		return person;
 	}
+	
+	/**
+	 * ID 찾기
+	 * @param Email 사용자가 ID를 찾기 위해 입력한 email
+	 * @return Person Email로 SELECT 해 온 Person 한 명의 모든 정보
+	 * */
+	public Person selectId(String email){
+		logger.info("selectId START");
+		System.out.println("email : " + email);
+		
+		PersonMapper mapper = sqlSession.getMapper(PersonMapper.class);
+		Person person = mapper.selectId(email);
+		
+		System.out.println("Person : " + person);
+		logger.info("selectId END");
+		return person;
+	}
+	
 }

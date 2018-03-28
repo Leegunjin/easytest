@@ -33,5 +33,21 @@ public class PersonRestController {
 		return "loginForm";
 	}*/
 	
+	/**
+	 * findId
+	 * @param email ID를 찾기위해 사용자가 입력한 email
+	 * @return foundId Email로 SELECT해 온 Person의 ID 
+	 * */
+	@RequestMapping(value="findId", method=RequestMethod.POST)
+	public Person findId(String email){
+		logger.info("findId START");
+		
+		System.out.println("Email : " + email);
+		Person person = dao.selectId(email);
+		System.out.println("Person : " + person);
+		
+		logger.info("findId END");
+		return person;
+	}
 	
 }
