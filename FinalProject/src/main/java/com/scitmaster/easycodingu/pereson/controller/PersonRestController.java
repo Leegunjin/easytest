@@ -48,6 +48,6 @@ public class PersonRestController {
 		
 		logger.info("findId END");
 		return person;
-	}
+	} 
 	
 }

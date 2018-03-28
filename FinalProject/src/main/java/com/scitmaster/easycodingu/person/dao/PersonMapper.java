@@ -7,7 +7,7 @@ public interface PersonMapper {
 	/**
 	 * insertPerson
 	 * 회원가입
-	 * @param person
+	 * @param person 
 	 * */
 	public void insertPerson(Person person);
 	

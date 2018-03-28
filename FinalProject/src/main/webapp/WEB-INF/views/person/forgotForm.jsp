@@ -7,7 +7,7 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<script type="text/javascript" src="<c:url value="/resources/js/jquery-3.2.1.js"></c:url>"></script>
 	<script type="text/javascript">
-		$(function() {
+		$(function() { 
 			$("#findIdBtn").on("click", function() {
 				alert("test!!!");
 				var email = $('#email').val();
@@ -32,7 +32,7 @@
 			});
 		});	
 	</script>
-	<title>ID, PW 찾기 페이지</title>
+	<title>ID, PW 찾기 페이지</title> 
 </head>
 <body>
 	<input type="text" id="email" name="email" placeholder="Email">

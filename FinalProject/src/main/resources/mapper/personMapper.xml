@@ -30,7 +30,7 @@
 				,#{password}
 				,#{name}
 			)
-	</insert> -->
+	</insert> --> 
 	
 	<!-- 로그인 -->
 	<select id="selectPerson" parameterType="String" resultType="person">
