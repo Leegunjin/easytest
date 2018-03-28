@@ -51,6 +51,11 @@ public class PersonViewController {
 		logger.info("login END");
 		return "redirect:../";
 	}
+	@RequestMapping(value="logout",method=RequestMethod.GET)
+	public String logout(HttpSession session){
+		session.invalidate();
+		return "redirect:../";
+	}
 	
 	/**
 	 * forgot
