@@ -89,7 +89,6 @@ ul li a {
 		</div>
 	</nav>-->
 
-	<div style="width: auto; height: 30px; background-color: aqua;">
 		<ul>
 			<li><a href="#" class="home">Home</a></li>
 
@@ -98,7 +97,7 @@ ul li a {
 				</c:if></li>
 
 			<li><c:if test="${loginId != null}">
-					<a class="logout" href="<c:url value="logout"></c:url>">Logout</a>
+					<a class="logout" href="<c:url value="person/logout"></c:url>">Logout</a>
 				</c:if></li>
 
 
