@@ -1,5 +1,6 @@
 package com.scitmaster.easycodingu.pereson.controller;
 
+import javax.servlet.ServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
@@ -138,5 +139,24 @@ public class PersonViewController {
 	      }
 	   }
 	
+	   
+		/**
+		 * googleUser
+		 * @param request 사용자의 구글 계정으로부터 가져온 이름과 Email정보 
+		 * @param session 로그인한 사용자 정보를 session에 저장
+		 * */
+		@RequestMapping(value="/googleUser", method = RequestMethod.GET)
+		public String successGoogleLogin(ServletRequest request, HttpSession session) {
+			
+			String name=(String)request.getParameter("name");
+			String email=(String)request.getParameter("email");
+			
+			logger.info(name);
+			logger.info(email);
+			
+			return "redirect:../";
+		}
+
+
 	  
 }

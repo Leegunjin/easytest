@@ -10,6 +10,10 @@
 <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 
+<!-- for Google Login -->
+<script src="https://apis.google.com/js/platform.js" async defer></script>
+<meta name="google-signin-client_id" content="433159939394-gr0e19pif57u5474g78obq8lseijnfc7.apps.googleusercontent.com">
+
 <style type="text/css">
 .account-box
 {
@@ -68,23 +72,20 @@
 {
     color: #fff;
 }
-.btn-facebook
-{
-    background-color: #3F639E;
-    color: #fff;
-    font-weight:bold;
-}
-.btn-google
-{
-    background-color: #454545;
-    color: #fff;
-    font-weight:bold;
-}
-
-
 
 </style>
 
+<!-- for Google Login -->
+<script type="text/javascript">
+
+function onSignIn(googleUser) {
+	var profile = googleUser.getBasicProfile();
+	var name=profile.getName();
+	var email=profile.getEmail();
+	location.href = 'googleUser?email=' + email + '&name=' + name;
+  }
+
+</script>
 
 <!------ Include the above in your HEAD tag ---------->
 
@@ -112,14 +113,8 @@
                 <a class="forgotLnk" href="forgot">ID, Password 찾기</a>
                 <div class="or-box">
                     <span class="or">OR</span>
-                    <div class="row">
-                        <div class="col-md-6 row-block">
-                            <a href="http://www.jquery2dotnet.com" class="btn btn-facebook btn-block">Facebook</a>
-                        </div>
-                        <div class="col-md-6 row-block">
-                            <a href="http://www.jquery2dotnet.com" class="btn btn-google btn-block">Google</a>
-                        </div>
-                    </div>
+                         <!-- div for Google Login -->
+                    	<div class="g-signin2" data-onsuccess="onSignIn" id="my-signin2" data-theme="dark" data-longtitle="true"></div>
                 </div>
                 <div class="or-box row-block">
                     <div class="row">
