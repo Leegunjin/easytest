@@ -20,13 +20,108 @@
     <!-- Custom styles for this template -->
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/resources/css/full-slider.css">
 
+  <style>
+      body {
+        margin: 0px;
+        padding: 0px;
+      }
+      .jbTitle {
+        text-align: center;
+      }
+      
+      
+      .jbleft{
+     
+     	text-align: center;
+        background-color:rgb(24,170,254);
+        padding: 10px 0px;
+        width: 100%;
+         text-decoration: none;
+      
+      }  
+      
+       .jbright{
+      
+     text-align: center;
+        background-color:rgb(24,170,254);
+      
+        width: 100%;
+       
+       margin: 0px 30px 0px 10px;
+        font-weight: bold;
+        font-size: 25px;
+        color: white;
+        text-decoration: none;
+      }   
+      
+       
+      .jbMenu {
+        text-align: center;
+        background-color:rgb(24,170,254);
+        padding: 10px 0px;
+        width: 100%;
+         text-decoration: none;
+      }
+      .jbContent {
+        /* height: 2000px; */
+      }
+      .jbFixed {
+        position: fixed;
+        top: 0px;
+      }
+    </style>
+    <script src="//code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script>
+      $( document ).ready( function() {
+        var jbOffset = $( '.jbMenu' ).offset();
+        $( window ).scroll( function() {
+          if ( $( document ).scrollTop() > jbOffset.top ) {
+            $( '.jbMenu' ).addClass( 'jbFixed' );
+          }
+          else {
+            $( '.jbMenu' ).removeClass( 'jbFixed' );
+          }
+        });
+      } );
+    </script>
+    
   </head>
 
   <body>
   
-	<%@ include file="menubar.jsp" %>
+   <div class="jbTitle">
+     
+    </div>
+    <div class="jbMenu">
+     <div class="jbleft"> <img alt="" src="resources/img/mainlogo.png"> </div>
+   
+   <div class="jbright"> 
+     <a class="jbright" href="/easycodingu"> 마이페이지 </a>
+     <a class="jbright" href="person/loginForm"> 로그인 </a>
+     <a class="jbright" href="/easycodingu"> 게시판 </a>
+     <a class="jbright" href="/easycodingu"> 홈으로 가기 </a>  
+    </div>
+    
+    </div>
+    <div class="jbContent">
+    </div>
+  
+  
+  <!-- <div id="fixed-menu" style="background-color: rgba(24,170,254,0.7);">
+      
+      <ul>
+        <li>Lorem</li>
+        <li>Ipsum</li>
+        <li>Dolor</li>
+      </ul>
+    </div>
+    <div id="main-content"> -->
+      <!-- <img src="resources/img/sample.jpg"> -->
+    </div>
+  
+	<%-- <%@ include file="menubar.jsp" %>
     <!-- Navigation -->
-    <!-- <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
       <div class="container">
         <a class="navbar-brand" href="#"> Java Lingo </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
@@ -51,7 +146,7 @@
           </ul>
         </div>
       </div>
-    </nav> -->
+    </nav> --%>
 
     <header>
       <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">

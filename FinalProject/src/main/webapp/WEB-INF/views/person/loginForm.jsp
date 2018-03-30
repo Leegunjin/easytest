@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -124,7 +124,7 @@
                 <div class="or-box row-block">
                     <div class="row">
                         <div class="col-md-12 row-block">
-                            <a href="http://www.jquery2dotnet.com" class="btn btn-primary btn-block">Create New Account</a>
+                            <a href="joinForm" class="btn btn-primary btn-block">회원가입 할래?</a>
                         </div>
                     </div>
                 </div>

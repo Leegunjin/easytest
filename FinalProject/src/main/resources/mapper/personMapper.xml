@@ -6,7 +6,7 @@
 <!-- 회원정보 처리 SQL -->
 <mapper namespace="com.scitmaster.easycodingu.person.dao.PersonMapper">
 
-	<!-- 회원가입 -->
+	<!-- 회원가입 (인서트 테스트용으로 만들어 놓으신 것 같습니다) -->
 	<insert id="insertPerson" parameterType="person">
 		insert into
 			test
@@ -16,7 +16,26 @@
 				#{name}
 			)
 	</insert>
- 	
+	
+	<!-- 180328 회원 정보 저장 주 지호-->
+	<insert id="insertJoin" parameterType="person">
+		insert into
+			person
+			(
+				id
+				,name
+				,password
+				,email
+				,admin_Flag
+			)values(
+				#{id}
+				, #{name}
+				, #{password}
+				, #{email}
+				, #{admin_Flag}
+			)
+	</insert>
+	
  	<!-- 회원 정보 저장 -->
 	<!-- <insert id="insertMember" parameterType="member">
 		insert into
@@ -43,5 +62,8 @@
 		SELECT * FROM person 
 		WHERE email = #{email}
 	</select>
+ 
+ 
+ 
  
 </mapper>

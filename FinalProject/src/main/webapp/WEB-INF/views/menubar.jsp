@@ -18,6 +18,7 @@
 		}, 400);
 	});
 </script>
+
 <style type="text/css">
 * {
 	margin: 0;
@@ -88,7 +89,7 @@ ul li a {
 		</div>
 	</nav>-->
 
-	<div>
+	<div style="width: auto; height: 30px; background-color: aqua;">
 		<ul>
 			<li><a href="#" class="home">Home</a></li>
 

@@ -1,13 +1,19 @@
 package com.scitmaster.easycodingu.pereson.controller;
 
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.scitmaster.easycodingu.person.dao.PersonDAO;
 import com.scitmaster.easycodingu.person.vo.Person;
@@ -68,4 +74,69 @@ public class PersonViewController {
 	}
 	
 	
+	
+	
+	
+	
+	
+	// 180328 로그인 폼에서 회원가입 폼으로 이동 (주 지호)
+	@RequestMapping(value="joinForm",method=RequestMethod.GET)
+	public String joinForm(){
+		logger.info("회원가입 페이지 이동시작");
+		logger.info("회원가입 페이지 이동시작");
+		return "person/joinForm";
+	}
+	
+	// 180328 회원가입 (주 지호)
+	@RequestMapping(value="join",method=RequestMethod.POST)
+	public String join(Person person, Model model){
+		logger.info("회원가입 시작");
+		person.setAdmin_Flag("user");
+		
+		int result = dao.insertJoin(person);
+		if(result != 1)
+		{
+			//등록 실패
+			model.addAttribute("errorMsg", "회원가입 실패");
+			
+			logger.info("【UserController : return】〓▶▶ 【user/joinForm】(회원가입 실패)" + "\n");
+			return "user/joinForm";
+		}
+
+	//등록 성공 	
+		logger.info("회원가입 종료");
+	return "person/joinComplete";
+		
+	}
+	
+	// 180328 튜토리얼 화면 이동 (주 지호)
+	@RequestMapping(value="tutorial",method=RequestMethod.GET)
+	public String tutorial(){
+		logger.info("튜토리얼 페이지 이동시작");
+		logger.info("튜토리얼 페이지 이동종료");
+		return "person/tutorial";
+	}
+	
+	// 180328 id 중복체크 (주 지호)
+	   @ResponseBody
+	   @RequestMapping(value="idCheck",method=RequestMethod.POST)
+	   public int adminIdCheck(String id){
+	      logger.info("한명 셀렉트 시작");
+	     
+	      
+	      Person person = dao.selectPerson(id);
+	      System.out.println(person);
+	      if(id.length() != 0 && person == null){
+	         //중복된게 없으면 true
+	         return 0;
+	      }else{
+	         logger.info("한명 셀렉트 종료");
+	         
+	         //중복되면 false
+	         
+	         return 1;
+	      }
+	   }
+	
+	  
 }

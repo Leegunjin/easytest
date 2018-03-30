@@ -59,6 +59,7 @@ public class PersonDAO {
 		return person;
 	}
 	
+	
 	/**
 	 * ID 찾기
 	 * @param Email 사용자가 ID를 찾기 위해 입력한 email
@@ -75,5 +76,27 @@ public class PersonDAO {
 		logger.info("selectId END");
 		return person;
 	}
+	
+	
+	
+	/**
+	 * 180328 회원가입 (주 지호)
+	 * 회원가입
+	 * @param person 회원정보를 넘겨주고 가입을 하고 싶다
+	 * @return int 회원가입 여부를 숫자로 받아오고 싶다
+	 * */
+		public int insertJoin(Person person) {
+			PersonMapper mapper = sqlSession.getMapper(PersonMapper.class);
+			
+			//내용을 채우시오
+			int result = 0;
+			
+			try{
+				result = mapper.insertJoin(person);
+			}catch(Exception e){
+				e.printStackTrace();
+			}
+			return result;
+		}
 	
 }

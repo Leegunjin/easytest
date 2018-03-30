@@ -26,4 +26,16 @@ public interface PersonMapper {
 	 * @return Person
 	 * */
 	public Person selectId(String email);
+	
+	
+	/**
+	 * 180328 회원가입 (주 지호)
+	 * insertJoin
+	 * 회원가입
+	 * @param person 
+	 * @return int
+	 * */
+	public int insertJoin(Person person);
+	
+	
 }

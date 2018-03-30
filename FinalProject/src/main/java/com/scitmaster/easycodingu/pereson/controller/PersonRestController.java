@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.scitmaster.easycodingu.pereson.controller.PersonViewController;
@@ -49,5 +50,6 @@ public class PersonRestController {
 		logger.info("findId END");
 		return person;
 	} 
+	
 	
 }
