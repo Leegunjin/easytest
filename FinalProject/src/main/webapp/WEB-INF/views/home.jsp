@@ -21,6 +21,13 @@
          }
          
       })
+      
+		function googleLogout(loginId) {
+			var result = loginId.includes('@gmail.com');
+			if(result) {
+				window.open('https://accounts.google.com/logout', 'popup', 'z-lock=yes, width=600, height=400');
+			}
+		} 
    </script>
 
 
@@ -49,7 +56,7 @@
          <ul>
             <li> <a> Hello ${sessionScope.loginName }(${sessionScope.loginId })  </a> </li>
             <li> <a href="#"> My Page </a> </li>
-            <li> <a href="person/logout"> Logout </a> </li>
+            <li> <a href="person/logout" onclick="googleLogout('${loginId}')"> Logout </a> </li>
             <li> <a href="#"> Board </a> </li>
             <li> <a href="#"> Language </a> </li>
             <li> <a class="active" href="#"> Study </a> </li>

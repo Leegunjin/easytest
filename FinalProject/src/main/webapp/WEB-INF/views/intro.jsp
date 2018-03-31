@@ -27,7 +27,7 @@
             <li>y</li>
             <li>C</li>
             <li>o</li>
-            <li>r</li>
+            <li>d</li>
             <li>i</li>
             <li>n</li>
             <li>g</li>
