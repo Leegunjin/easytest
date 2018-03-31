@@ -73,8 +73,8 @@ body {
 }
 
 .box input[type="submit"] {
-   width: 49%;
-   margin-top: 3px;
+   width: 100%;
+   margin-top: 20px;
    margin-bottom: 20px;
    margin-left:0px;
    background: transparent;
@@ -163,5 +163,22 @@ body {
    margin-top: -20px;
    margin-bottom: 20px;
    
-   
 }
+
+
+.inputBoxHalf { 
+	width: 100%;
+   padding: 10px 0;
+   font-size: 16px;
+   color: #fff;
+   letter-spacing: 1px;
+   margin-bottom: 20px;
+   border: none;
+   border-bottom: 1px solid #fff;
+   outline: none;
+   background: transparent; 
+ 	
+	}
+	
+.box input[type="radio"] {  margin-left:33px; }
+   

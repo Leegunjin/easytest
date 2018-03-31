@@ -6,6 +6,9 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <script type="text/javascript" src="<c:url value="/resources/js/jquery-3.2.1.js"></c:url>"></script>
+
+<link rel="stylesheet" type="text/css" href="../resources/css/styleForgot.css">
+
 <script src="https://smtpjs.com/smtp.js"></script>
 <script type="text/javascript">
    $(function() {
@@ -21,7 +24,7 @@
             success : function(person) {
                if (person != null) {
                   //alert(person.id);
-                   var getId = "아이디 : "+person.id;
+                   var getId = "Your ID : "+person.id;
                      $('#idShowDiv').html(getId);
                      
                } else if (person == null) {
@@ -172,15 +175,43 @@
 </script>
 <title>ID, PW 찾기 페이지</title>
 </head>
-<body>
-   <input type="text" id="email" name="email" placeholder="Email">
-   <input type="button" value="아이디 찾기" id="findIdBtn">
-   <div id="idShowDiv"></div>
 
-   <input type="text" id="id" name="id" placeholder="ID">
-   <input type="button" value="비밀번호 찾기" id="findPwBtn">
-   <div id="emailDiv2"></div>
-   <div id="pwResetDiv"></div>
-   <div id="finishDiv"></div>
+<body>
+
+   <div class="box">
+      <h2>Forgot</h2>
+        
+        
+         <div class="inputBox">
+            <input type="text" id="email" name="email" required>
+            <label>Find ID</label>
+            <input type="button" value="Find ID" id="findIdBtn">
+   			<div id="idShowDiv"> 　</div>
+         </div>
+         
+         
+         <div class="inputBox">
+            <input type="text" id="id" name="id" required>
+            <label>Find Password</label>
+            <input type="button" value="Find PW" id="findPwBtn">
+   			<div id="emailDiv2"></div>
+         </div>
+         
+         <div class="inputBox">
+   			<div id="pwResetDiv"></div>
+         </div>
+         
+         <div class="inputBox">
+   			<div id="finishDiv"></div>
+         </div>
+         
+         
+        
+         <!-- <input type="button" name="" value="Main Page" 
+         onclick="location.href='../home'">    -->
+      
+      
+      </form>
+   </div>
 </body>
 </html>

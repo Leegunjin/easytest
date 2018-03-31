@@ -12,7 +12,6 @@
    <!-- for Google Login -->
    <script src="https://apis.google.com/js/platform.js" async defer></script>
    <meta name="google-signin-client_id" content="433159939394-gr0e19pif57u5474g78obq8lseijnfc7.apps.googleusercontent.com">
-      
    <!-- for Google Login -->
    <script type="text/javascript">
    
@@ -44,15 +43,21 @@
             <input type="password" id="password" name="password" required="">
             <label>Password</label>
          </div>
+        
          
-         <!-- div for Google Login -->
-                       <div class="g-signin2" data-onsuccess="onSignIn" id="my-signin2" data-theme="dark" data-longtitle="true"></div>
-         <a class="google" href="#">Google</a>
+                       
          
-         <a class="forgotLnk" href="forgot">ID, Password 찾기</a>
-         
+         <input name="find" type="button" value="Find Id & Password" onclick="location.href='forgot'">
+        
          
          <input type="submit" name="" value="Submit">
+         
+         <!-- div for Google Login -->
+         <div class="g-signin2" data-onsuccess="onSignIn" id="my-signin2" data-theme="dark" 
+          data-longtitle="true" style="width:auto; height:32px; background-size: cover; 
+          border-radius:3px; box-shadow: 0px 0px 0px 2px #4285f4; margin: 1px 3px 1px 1px; 
+          display: block;"> </div>  
+         
          <input type="button" name="" value="Join" onclick="location.href='joinForm'">   
       
       

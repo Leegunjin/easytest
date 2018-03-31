@@ -6,8 +6,9 @@
 <head>
    <meta charset="UTF-8">
    
-   <link rel="stylesheet" type="text/css" href="../resources/css/styleLogin.css">
+   <link rel="stylesheet" type="text/css" href="../resources/css/styleJoin.css">
    <script type="text/javascript" src="<c:url value="../resources/js/jquery-3.2.1.js"/>"> 
+   
    </script>
    
    <title>Input Form UI Design</title>
@@ -70,6 +71,7 @@
             }
          });
       });
+    
    </script>
    
 </head>
@@ -108,14 +110,15 @@
          </div>
          
          <div class="inputBoxHalf">
+            User Category
             <input type="radio" name="radio" value="admin">admin   
             <input type="radio" name="radio" value="user" checked="checked">user
             
          </div>
          
          <input type="submit" name="" value="join">
-         <input type="button" name="" value="Main Page" 
-         onclick="location.href='../home'">   
+         <!-- <input type="button" name="" value="Main Page" 
+         onclick="location.href='../home'">    -->
       
       
       </form>

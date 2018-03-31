@@ -38,7 +38,7 @@ body {
 }
 
 .box .inputBox input {
-   width: 100%;
+   width: 60%;
    padding: 10px 0;
    font-size: 16px;
    color: #fff;
@@ -72,25 +72,11 @@ body {
    
 }
 
-.box input[type="submit"] {
-   width: 49%;
-   margin-top: 3px;
-   margin-bottom: 20px;
-   margin-left:0px;
-   background: transparent;
-   border: none;
-   outline: none;
-   color: #fff;
-   background: #808080;
-   padding: 10px 20px;
-   cursor: pointer;
-   border-radius: 5px;
-   
-}
 
 .box input[type="button"] {
-   width: 100%;
-   margin-top: 40px;  
+   width: 35%;
+   margin-top: 10px;  
+   margin-left: 10px;
    background: transparent;
    border: none;
    outline: none;
@@ -102,25 +88,9 @@ body {
    
 }
 
-.box input[name="find"] {
-   width: 49%;
-   margin-top: 3px;
-   margin-bottom: 20px;
-  margin-left:0px;
-   background: transparent;
-   border: none;
-   outline: none;
-   color: #fff;
-   background: #808080;
-   padding: 10px 0px;
-   cursor: pointer;
-   border-radius: 5px;
-   
-}
 
-.box input[type="submit"]:HOVER { background: #4285f4; transition: 0.7s;}
+
 .box input[type="button"]:HOVER { background: #4285f4; transition: 0.7s;}
-.box input[name="find"]:HOVER { background: #4285f4; transition: 0.7s;}
 
 
 .forgotLnk
@@ -163,5 +133,28 @@ body {
    margin-top: -20px;
    margin-bottom: 20px;
    
+}
+
+
+.inputBoxHalf { 
+	width: 100%;
+   padding: 10px 0;
+   font-size: 16px;
+   color: #fff;
+   letter-spacing: 1px;
+   margin-bottom: 20px;
+   border: none;
+   border-bottom: 1px solid #fff;
+   outline: none;
+   background: transparent; 
+ 	
+	}
+	
+	.box input[type="radio"] {  margin-left:33px; }
    
+#idShowDiv {
+	margin-top: -10px;
+	margin-bottom: 20px;
+	color: #85dafe;
+	
 }

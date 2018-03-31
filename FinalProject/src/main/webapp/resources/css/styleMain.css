@@ -12,9 +12,9 @@ nav {
    position: fixed;
    top: 0;
    left: 0;
-   width: 100%;
-   height: 100px;
-   padding: 10px 100px;
+   width: 100%; 
+   height: 85px;
+   padding: 2px 30px;
    box-sizing: border-box;
    transition : .3s;
    
@@ -23,13 +23,13 @@ nav {
 
 nav.black {
    background: rgba(0,0,0,0.8);
-   height: 100px;
-   padding: 10px 100px;
+   height: 85px;
+    padding: 2px 30px;
    
 }
 
 nav .logo {
-   padding: 22px 20px;
+   padding: 22px 30px;
    height: 80px;
    float: left;
    font-size: 24px;
@@ -91,15 +91,19 @@ section.sec1 {
    width:100%;
    height:100%;
    background-color: gray;
-   
+   text-align: center;
    
 }
 
-.content p {
+.content p {  
    width: 900px;
-   margin: auto; /* 30px */ 
+   margin: auto;
+   margin-top: 0px;
+   margin-bottom: 30px;
    text-align: justify;
    font-size: 20px;
    line-height: 30px;
    
 }
+
+

@@ -54,7 +54,8 @@
       <nav>
          <div class="logo"> EasyCordingU </div>   
          <ul>
-            <li> <a> Hello ${sessionScope.loginName }(${sessionScope.loginId })  </a> </li>
+            <li> <a style="color: #18aafe; font-weight: bold;"> Hello ${sessionScope.loginName }
+            <span style="color: gray; font-weight: normal;">(${sessionScope.loginId })</span>  </a> </li>
             <li> <a href="#"> My Page </a> </li>
             <li> <a href="person/logout" onclick="googleLogout('${loginId}')"> Logout </a> </li>
             <li> <a href="#"> Board </a> </li>
