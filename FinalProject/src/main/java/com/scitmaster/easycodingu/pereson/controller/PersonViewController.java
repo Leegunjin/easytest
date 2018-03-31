@@ -134,22 +134,50 @@ public class PersonViewController {
 	   }
 	
 	   
-	/**
-	 * googleUser
-	 * @param request 사용자의 구글 계정으로부터 가져온 이름과 Email정보 
-	 * @param session 로그인한 사용자 정보를 session에 저장
-	 * */
-	@RequestMapping(value="/googleUser", method = RequestMethod.GET)
-	public String successGoogleLogin(ServletRequest request, HttpSession session) {
-		
-		String name=(String)request.getParameter("name");
-		String email=(String)request.getParameter("email");
-		
-		logger.info(name);
-		logger.info(email);
-		
-		return "redirect:../";
-	}
+	   /**
+		 * googleUser
+		 * @param request 사용자의 구글 계정으로부터 가져온 이름과 Email정보 
+		 * @param session 로그인한 사용자 정보를 session에 저장
+		 * */
+		@RequestMapping(value="/googleUser", method = RequestMethod.GET)
+		public String successGoogleLogin(ServletRequest request, HttpSession session) {
+			
+			// JavaScript에서 가져온 Google User 정보
+			String name = (String)request.getParameter("name");
+			String email = (String)request.getParameter("email");
+			String password  =(String)request.getParameter("id");
+			
+			// ↑ 가져온 값으로 Person 객체 생성
+			Person person = new Person();
+			person.setId(email);
+			person.setName(name);
+			person.setPassword(password);
+			person.setEmail(email);
+			person.setAdmin_Flag("user");
+			
+			// 회원 DB에 데이터가 존재하는지 여부 확인
+			Person selectPerson = dao.selectPerson(email);
+			
+			// 기존회원이 아니면 DB에 추가 후 Session에 저장
+			if(selectPerson == null) {
+				dao.insertJoin(person);
+				session.setAttribute("loginId", person.getId());
+				session.setAttribute("loginName", person.getName());
+			// 기존 회원이면 Session에만 저장
+			} else {
+				session.setAttribute("loginId", person.getId());
+				session.setAttribute("loginName", person.getName());
+			}
+			
+			
+			
+			logger.info((String)session.getAttribute("loginId"));
+			logger.info((String)session.getAttribute("loginName"));
+			
+			logger.info("login END");
+			
+			return "redirect:../";
+		}
 
 
 	  

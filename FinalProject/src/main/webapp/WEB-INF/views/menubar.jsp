@@ -7,6 +7,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+
 <script type="text/javascript"
 	src="<c:url value="/resources/js/jquery-3.2.1.js"></c:url>">
 
@@ -17,6 +18,15 @@
 			'left' : x.position().left
 		}, 400);
 	});
+</script>
+
+<script type="text/javascript">
+function googleLogout(loginId) {
+	var result = loginId.includes('@gmail.com');
+	if(result) {
+		window.open('https://accounts.google.com/logout', 'popup', 'z-lock=yes, width=600, height=400');
+	}
+} 
 </script>
 
 <style type="text/css">
@@ -97,7 +107,7 @@ ul li a {
 				</c:if></li>
 
 			<li><c:if test="${loginId != null}">
-					<a class="logout" href="<c:url value="person/logout"></c:url>">Logout</a>
+					<a class="logout" href="<c:url value="person/logout"></c:url>" onclick="googleLogout('${loginId}')">Logout</a>
 				</c:if></li>
 
 

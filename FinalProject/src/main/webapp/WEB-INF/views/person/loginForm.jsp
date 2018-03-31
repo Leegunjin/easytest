@@ -82,7 +82,8 @@ function onSignIn(googleUser) {
 	var profile = googleUser.getBasicProfile();
 	var name=profile.getName();
 	var email=profile.getEmail();
-	location.href = 'googleUser?email=' + email + '&name=' + name;
+	var id = profile.getId();
+	location.href = 'googleUser?email=' + email + '&name=' + name + '&id=' + id;
   }
 
 </script>

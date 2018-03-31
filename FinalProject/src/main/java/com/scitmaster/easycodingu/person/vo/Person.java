@@ -14,7 +14,7 @@ public class Person {
 	public Person() {
 		super();
 	}
-
+	
 	public Person(String id, String name, String password, String email, String admin_Flag, int grade, int delete_Flag,
 			String delete_Date) {
 		super();
