@@ -3,87 +3,72 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<!-- 회원정보 처리 SQL -->
+<!-- 회원정보 처리 SQL --> 
 <mapper namespace="com.scitmaster.easycodingu.person.dao.PersonMapper">
 
-	<!-- 회원가입 (인서트 테스트용으로 만들어 놓으신 것 같습니다) -->
-	<insert id="insertPerson" parameterType="person">
-		insert into
-			test
-			(
-				test
-			)values(
-				#{name}
-			)
-	</insert>
-	
-	<!-- 180328 회원 정보 저장 주 지호-->
-	<insert id="insertJoin" parameterType="person">
-		insert into
-			person
-			(
-				id
-				,name
-				,password
-				,email
-				,admin_Flag
-			)values(
-				#{id}
-				, #{name}
-				, #{password}
-				, #{email}
-				, #{admin_Flag}
-			)
-	</insert>
-	
- 	<!-- 회원 정보 저장 -->
-	<!-- <insert id="insertMember" parameterType="member">
-		insert into
-			shop_member
-			(
-				id
-				,password
-				,name
-			)values(
-				#{id}
-				,#{password}
-				,#{name}
-			)
-	</insert> --> 
-	
-	<!-- 로그인 -->
-	<select id="selectPerson" parameterType="String" resultType="person">
-		SELECT * FROM person 
-		WHERE id = #{id}
-	</select>
-	
-	<!-- ID찾기 -->
-	<select id="selectId" parameterType="String" resultType="person">
-		SELECT * FROM person 
-		WHERE email = #{email}
-	</select>
-	
-	<!-- Pw 찾기 -->
- 	<select id="selectPw" parameterType="String" resultType="person">
-	 	SELECT * FROM person
-	 	WHERE id = #{id}
- 	</select>
- 	
- 	<!-- PW 재설정 -->
- 	<update id="updatePw" parameterType="person">
- 		UPDATE person
- 		SET 
- 			id = #{id}
- 			,name = #{name}
- 			,password = #{password}
- 			,email = #{email}
- 			,admin_Flag = #{admin_Flag}
- 			,grade = #{grade}
- 			,delete_Flag = #{delete_Flag}
- 		WHERE id = #{id}
- 	</update>
+   <!-- 회원가입 (인서트 테스트용으로 만들어 놓으신 것 같습니다) -->
+   <insert id="insertPerson" parameterType="person">
+      insert into
+         test
+         (
+            test
+         )values(
+            #{name}
+         )
+   </insert>
+   
+   <!-- 180328 회원 정보 저장 주 지호-->
+   <insert id="insertJoin" parameterType="person">
+      insert into
+         person
+         (
+            id
+            ,name
+            ,password
+            ,email
+            ,admin_Flag
+         )values(
+            #{id}
+            , #{name}
+            , #{password}
+            , #{email}
+            , #{admin_Flag}
+         )
+   </insert>
+   
+   
+   <!-- 로그인 -->
+   <select id="selectPerson" parameterType="String" resultType="person">
+      SELECT * FROM person 
+      WHERE id = #{id}
+   </select>
+   
+   <!-- ID찾기 -->
+   <select id="selectId" parameterType="String" resultType="person">
+      SELECT * FROM person 
+      WHERE email = #{email}
+   </select>
  
- 
+    
+    <!-- Pw 찾기 -->
+    <select id="selectPw" parameterType="String" resultType="person">
+       SELECT * FROM person
+       WHERE id = #{id}
+    </select>
+    
+    <!-- PW 재설정 -->
+    <update id="updatePw" parameterType="person">
+       UPDATE person
+       SET 
+          id = #{id}
+          ,name = #{name}
+          ,password = #{password}
+          ,email = #{email}
+          ,admin_Flag = #{admin_Flag}
+          ,grade = #{grade}
+          ,delete_Flag = #{delete_Flag}
+       WHERE id = #{id}
+    </update>
  
  
 </mapper>

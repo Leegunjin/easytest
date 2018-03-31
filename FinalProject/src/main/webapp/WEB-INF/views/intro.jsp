@@ -6,8 +6,8 @@
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-   <title>회원가입을 축하합니다.</title> 
-   <link rel="stylesheet" type="text/css" href="../resources/css/styleComplete.css">
+   <title>Welcome to JavaLingo</title> 
+   <link rel="stylesheet" type="text/css" href="resources/css/styleIntro.css">
    <script src="http://code.jquery.com/jquery-3.2.1.js"></script>
    
 </head>
@@ -21,18 +21,19 @@
    <div class="welcome-section content-hidden">
       <div class="content-wrap">
          <ul class="fly-in-text">
+            <li>E</li>
+            <li>a</li>
+            <li>s</li>
+            <li>y</li>
             <li>C</li>
             <li>o</li>
-            <li>m</li>
-            <li>p</li>
-            <li>l</li>
-            <li>e</li>
-            <li>t</li>
-            <li>e</li>
-            <li>!</li>
+            <li>r</li>
+            <li>i</li>
+            <li>n</li>
+            <li>g</li>
+            <li>U</li>
          </ul>
-         <a href="loginForm" class="enter-button"> 로그인 페이지 이동 </a>
-         <a href="tutorial" class="enter-button"> 튜토리얼 페이지 이동 </a>
+         <a href="home" class="enter-button"> E N T E R </a>
       
       </div>
    </div>
