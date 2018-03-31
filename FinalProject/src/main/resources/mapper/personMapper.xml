@@ -62,6 +62,26 @@
 		SELECT * FROM person 
 		WHERE email = #{email}
 	</select>
+	
+	<!-- Pw 찾기 -->
+ 	<select id="selectPw" parameterType="String" resultType="person">
+	 	SELECT * FROM person
+	 	WHERE id = #{id}
+ 	</select>
+ 	
+ 	<!-- PW 재설정 -->
+ 	<update id="updatePw" parameterType="person">
+ 		UPDATE person
+ 		SET 
+ 			id = #{id}
+ 			,name = #{name}
+ 			,password = #{password}
+ 			,email = #{email}
+ 			,admin_Flag = #{admin_Flag}
+ 			,grade = #{grade}
+ 			,delete_Flag = #{delete_Flag}
+ 		WHERE id = #{id}
+ 	</update>
  
  
  

@@ -37,5 +37,19 @@ public interface PersonMapper {
 	 * */
 	public int insertJoin(Person person);
 	
+	/**
+	 * selectPw
+	 * Pw찾기
+	 * @param id
+	 * @return Person
+	 * */
+	public Person selectPw(String id);
 	
+	
+	/**
+	 * updatePw
+	 * Pw재설정
+	 * @param person
+	 * */
+	public int updatePw(Person person);
 }
