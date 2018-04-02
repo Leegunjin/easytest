@@ -171,7 +171,7 @@ public class PersonViewController {
          
          logger.info("login END");
          
-         return "redirect:../";
+         return "person/loginComplete";
       }
    
    
