@@ -45,7 +45,7 @@
             <li> <a href="person/loginForm"> Login </a> </li>
             <li> <a href="#"> Board </a> </li>
             <li> <a href="#"> Language </a> </li>
-            <li> <a class="active" href="#"> Study </a> </li>
+            <li> <a class="active" href="contents/contents13"> Study </a> </li>
          </ul>
       </nav>   
       </c:if>
@@ -60,7 +60,7 @@
             <li> <a href="person/logout" onclick="googleLogout('${loginId}')"> Logout </a> </li>
             <li> <a href="#"> Board </a> </li>
             <li> <a href="#"> Language </a> </li>
-            <li> <a class="active" href="#"> Study </a> </li>
+            <li> <a class="active" href="contents/contents13"> Study </a> </li>
          </ul>
       </nav>   
       </c:if>

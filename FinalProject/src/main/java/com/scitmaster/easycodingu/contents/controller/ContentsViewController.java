@@ -29,4 +29,12 @@ public class ContentsViewController {
    
    private static final Logger logger = LoggerFactory.getLogger(ContentsViewController.class);
    
+   @RequestMapping(value = "contents13", method = RequestMethod.GET)
+	public String contents13() {
+		logger.info("QuizPage START");
+		logger.info("QuizPage ENE");
+		return "contents/contents13";
+
+	}
+   
 }
