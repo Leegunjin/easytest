@@ -2,7 +2,7 @@
    pageEncoding="UTF-8"%>
 <!doctype html>
 <html>
-<head>
+<head> 
 <meta charset="utf-8">
 <title>Variable Tutorial - 2</title>
 <script src="http://code.jquery.com/jquery-1.10.2.js"></script>

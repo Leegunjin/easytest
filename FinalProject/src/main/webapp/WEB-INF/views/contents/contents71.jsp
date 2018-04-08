@@ -26,7 +26,7 @@
        slideCount = $slide.length,
        // array
        answerArr = [],
-       // 애니메이션 시간 = 0.3초
+       // 애니메이션 시간 = 0.3초 
        animationTime = 300;
 
      // 슬라이드 크기(면적) Set

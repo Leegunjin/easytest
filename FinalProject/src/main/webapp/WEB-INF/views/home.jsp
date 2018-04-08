@@ -35,6 +35,62 @@
     	  });
     	});
      
+      
+   /* 화면 관련 제이쿼리 */
+   function anim(targetedDiv) {
+	   var targetedLetter = $("#" + targetedDiv + " .rotate").text();
+	   var asciiValue = targetedLetter.charCodeAt(0);
+	   var pointer = 65; /* 아스키 코드 A 번호 */
+	   changeChar();
+	   
+	   
+	   function changeChar() {
+		   if(pointer <= asciiValue) {
+			   $("#" + targetedDiv + " .rotate").text(String.fromCharCode(pointer));
+			   pointer++;
+			   setTimeout(changeChar,20);
+			   
+		   }
+		   else {
+			   $(this).stop;
+		   }
+	   }
+	   
+   }
+   
+   
+   $(document).ready(function() {
+	   
+	   $(".openMenu").click(function() {
+		 $(".mainSection").fadeIn(200);
+		 $(".openMenu").animate({left:"-10%"});
+		 $(".closeMenu").animate({left:"94%"});
+		 $(".menu").animate({left:"-1%"},10);
+	  }); 
+	   
+	   
+	   $(".closeMenu").click(function() {
+		 $(".mainSection").fadeOut(200);
+		 $(".openMenu").animate({left:"0%"});
+		 $(".closeMenu").animate({left:"100%"});
+		 $(".menu").animate({left:"-50%"},10);
+	  }); 
+   });
+      
+    
+   
+   function study1_click() {
+	   location.href = "contents/contents21";
+   }
+   
+   function study2_click() {
+	   location.href = "contents/contents71";
+   }
+   
+   function study3_click() {
+	   location.href = "contents/contents320";
+   }
+   
    </script>
 
 
@@ -42,7 +98,7 @@
 
 <body>
 
-   <div class="wrapper">
+   <!-- <div class="wrapper"> -->
       
       <c:if test="${sessionScope.loginId == null }">
       <nav>
@@ -58,7 +114,7 @@
            <div class="table_center">
        <div class="drop-down">
          <div id="dropDown" class="drop-down__button">
-         	<span class="drop-down__name">Study</span>
+         	<span class="drop-down__name">Language</span>
 			<svg version="1.1" class="drop-down__icon" xmlns="http://www.w3.org/2000/svg" 
 			xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="48.625px" 
 			height="48.625px" viewBox="0 0 48.625 48.625" 
@@ -125,7 +181,7 @@
             <div class="table_center">
        <div class="drop-down">
          <div id="dropDown" class="drop-down__button">
-         	<span class="drop-down__name">Study</span>
+         	<span class="drop-down__name">Language</span>
 			<svg version="1.1" class="drop-down__icon" xmlns="http://www.w3.org/2000/svg" 
 			xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="48.625px" 
 			height="48.625px" viewBox="0 0 48.625 48.625" 
@@ -181,49 +237,74 @@
       
       <section class="sec1"> 
       
-      
+      	
+     
       </section>
       
-      <div class="content"> 
-      <!-- <section class="content">  -->
+      <div class="openMenu">
+     <img alt="" src="resources/img/open.png" width="100px" height="100px">
       
-         
-         
-         <p>Lorem Ipsum is simply dummy text of the printing 
-         and typesetting industry. Lorem Ipsum has been the 
-         industry's standard dummy text ever since the 1500s, 
-         when an unknown printer took a galley of type and 
-         scrambled it to make a type specimen book. It has 
-         survived not only five centuries, but also the leap 
-         into electronic typesetting, remaining essentially 
-         unchanged. It was popularised in the 1960s with the 
-         release of Letraset sheets containing Lorem Ipsum 
-         passages, and more recently with desktop publishing 
-         software like Aldus PageMaker including versions of 
-         Lorem Ipsum.</p>
-         
-         <p>It is a long established fact that a reader will be 
-         distracted by the readable content of a page when looking 
-         at its layout. The point of using Lorem Ipsum is that it 
-         has a more-or-less normal distribution of letters, as 
-         opposed to using 'Content here, content here', making it 
-         look like readable English. Many desktop publishing packages 
-         and web page editors now use Lorem Ipsum as their default 
-         model text, and a search for 'lorem ipsum' will uncover many 
-         web sites still in their infancy. Various versions have 
-         evolved over the years, sometimes by accident, sometimes 
-         on purpose (injected humour and the like).</p>
-         
-         <p>@copyright 2018 Final Project Make By Sosun Kim, Hansol Kim, 
-         Heejin Kim, Jiho Joo, Gunjin Lee </p>
-         
-         <p>영어 글씨체는 예쁜데 한글은 그렇지 못하다. 왜 그럴까?</p>
-         
-         
-         <!-- </section> -->
-         </div>
+      </div>
+        
+        <div class="closeMenu">
+     <img alt="" src="resources/img/close.png" width="100px" height="100px">
       
-   </div>
+      </div>
+      
+      <div class="mainSection">
+      
+      <div class="logoSection">
+      		<img alt="" src="resources/img/study1.png">
+      		
+      	</div>
+      	
+      	<div class="menuSection">
+      		<ul>
+      			<li onmouseover="anim('about')" onclick="study1_click();"> 
+      				<div id="about" class="menu">
+      				HANSO
+      				<div class="rotate">L</div>
+      				</div>
+      			</li>
+      			
+      			<li onmouseover="anim('work')" onclick="study2_click();"> 
+      				<div id="work" class="menu">
+      				SOSU
+      				<div class="rotate">N</div>
+      				</div>
+      			</li>
+      			
+      			<li onmouseover="anim('services')" onclick="study3_click();"> 
+      				<div id="services" class="menu">  
+      				HEEJI
+      				<div class="rotate">N</div>
+      				</div>
+      			</li>
+      		
+      		
+      		</ul>
+      	</div>
+      </div>
+      
+      
+      <div class="box1">
+      <h1>  </h1>
+    	  
+      </div>
+      
+       <div class="box2">
+      <h1>  </h1>
+      
+      </div>
+      
+       <div class="box3">
+      <h1>  </h1>
+      </div>
+     
+      
+      
+      
+   <!-- </div> wrapper를 안 쓰고 있었는데? -->
 
 </body>
 </html>
