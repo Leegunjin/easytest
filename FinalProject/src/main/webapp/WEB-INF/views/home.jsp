@@ -8,6 +8,7 @@
    
    <title>JavaLingo Main</title>
    <link rel="stylesheet" type="text/css" href="resources/css/styleMain.css">
+   <link rel="stylesheet" type="text/css" href="resources/css/styleDropdown.css">
    <link href="http://fonts.googleapis.com/css?family=Quicksand:500" rel="stylesheet">
    <script src="http://code.jquery.com/jquery-3.2.1.js"></script>
    
@@ -28,6 +29,12 @@
 				window.open('https://accounts.google.com/logout', 'popup', 'z-lock=yes, width=600, height=400');
 			}
 		} 
+      $(document).ready(function(){
+    	  $('#dropDown').click(function(){
+    	    $('.drop-down').toggleClass('drop-down--active');
+    	  });
+    	});
+     
    </script>
 
 
@@ -39,13 +46,65 @@
       
       <c:if test="${sessionScope.loginId == null }">
       <nav>
+         
+         
          <div class="logo"> EasyCordingU </div>   
          <ul>
             <li> <!-- <a href=""> </a> --> </li>
             <li> <a href="person/loginForm"> Login </a> </li>
             <li> <a href="#"> Board </a> </li>
             <li> <a href="#"> Language </a> </li>
-            <li> <a class="active" href="contents/contents13"> Study </a> </li>
+           
+           <div class="table_center">
+       <div class="drop-down">
+         <div id="dropDown" class="drop-down__button">
+         	<span class="drop-down__name">Study</span>
+			<svg version="1.1" class="drop-down__icon" xmlns="http://www.w3.org/2000/svg" 
+			xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="48.625px" 
+			height="48.625px" viewBox="0 0 48.625 48.625" 
+			style="enable-background:new 0 0 48.625 48.625;" xml:space="preserve">
+			</svg>
+         </div>
+         
+         <div class="drop-down__menu-box">
+           <ul class="drop-down__menu">
+             <li data-name="profile" class="drop-down__item"> <a href="contents/contents21"> 김한솔 </a> 
+	             <svg version="1.1" class="drop-down__item-icon" 
+	             xmlns="http://www.w3.org/2000/svg" 
+	             xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" 
+	             viewBox="0 0 350 350" style="enable-background:new 0 0 350 350;" 
+	             xml:space="preserve">
+				</svg>
+			</li>
+             
+             <li data-name="dashboard" class="drop-down__item"> <a href="contents/contents71"> 김소선 </a>  
+	             <svg version="1.1" class="drop-down__item-icon" 
+	             xmlns="http://www.w3.org/2000/svg" 
+	             xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" 
+	             width="511.626px" height="511.627px" 
+	             viewBox="0 0 511.626 511.627" 
+	             style="enable-background:new 0 0 511.626 511.627;" 
+	             xml:space="preserve">
+				</svg>
+			</li>
+             
+             <li data-name="activity" class="drop-down__item"> <a href="contents/contents320"> 김희진 </a> 
+	             <svg version="1.1" class="drop-down__item-icon" 
+	             xmlns="http://www.w3.org/2000/svg" 
+	             xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" 
+	             width="95.103px" height="95.103px" viewBox="0 0 95.103 95.103" 
+	             style="enable-background:new 0 0 95.103 95.103;" xml:space="preserve">
+				</svg>
+			</li>
+           
+           </ul>
+         </div>
+       </div>
+</div>
+
+           
+           
+           
          </ul>
       </nav>   
       </c:if>
@@ -60,8 +119,60 @@
             <li> <a href="person/logout" onclick="googleLogout('${loginId}')"> Logout </a> </li>
             <li> <a href="#"> Board </a> </li>
             <li> <a href="#"> Language </a> </li>
-            <li> <a class="active" href="contents/contents13"> Study </a> </li>
-         </ul>
+            
+            
+            
+            <div class="table_center">
+       <div class="drop-down">
+         <div id="dropDown" class="drop-down__button">
+         	<span class="drop-down__name">Study</span>
+			<svg version="1.1" class="drop-down__icon" xmlns="http://www.w3.org/2000/svg" 
+			xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="48.625px" 
+			height="48.625px" viewBox="0 0 48.625 48.625" 
+			style="enable-background:new 0 0 48.625 48.625;" xml:space="preserve">
+			</svg>
+         </div>
+         
+         <div class="drop-down__menu-box">
+           <ul class="drop-down__menu">
+             <li data-name="profile" class="drop-down__item"> <a href="contents/contents99"> 김한솔 </a> 
+	             <svg version="1.1" class="drop-down__item-icon" 
+	             xmlns="http://www.w3.org/2000/svg" 
+	             xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" 
+	             viewBox="0 0 350 350" style="enable-background:new 0 0 350 350;" 
+	             xml:space="preserve">
+				</svg>
+			</li>
+             
+             <li data-name="dashboard" class="drop-down__item"> <a href="contents/contents99"> 김소선 </a>  
+	             <svg version="1.1" class="drop-down__item-icon" 
+	             xmlns="http://www.w3.org/2000/svg" 
+	             xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" 
+	             width="511.626px" height="511.627px" 
+	             viewBox="0 0 511.626 511.627" 
+	             style="enable-background:new 0 0 511.626 511.627;" 
+	             xml:space="preserve">
+				</svg>
+			</li>
+             
+             <li data-name="activity" class="drop-down__item"> <a href="contents/contents99"> 김희진 </a> 
+	             <svg version="1.1" class="drop-down__item-icon" 
+	             xmlns="http://www.w3.org/2000/svg" 
+	             xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" 
+	             width="95.103px" height="95.103px" viewBox="0 0 95.103 95.103" 
+	             style="enable-background:new 0 0 95.103 95.103;" xml:space="preserve">
+				</svg>
+			</li>
+           
+           </ul>
+         </div>
+       </div>
+</div>
+            
+            
+            
+            
+         </ul>  
       </nav>   
       </c:if>
       
