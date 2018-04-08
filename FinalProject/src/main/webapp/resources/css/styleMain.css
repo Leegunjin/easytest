@@ -244,3 +244,8 @@ h1 {
 	left: 100%;
 }
 
+.openMenu:hover, .closeMenu:hover  {
+	background-color:#18aafe;
+	transition:all .1s;
+}
+
