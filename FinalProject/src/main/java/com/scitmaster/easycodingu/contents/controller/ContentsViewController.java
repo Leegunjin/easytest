@@ -29,6 +29,17 @@ public class ContentsViewController {
    
    private static final Logger logger = LoggerFactory.getLogger(ContentsViewController.class);
    
+   
+   
+   //컨텐츠 홈으로 이동
+   @RequestMapping(value = "contentsHome", method = RequestMethod.GET)
+   public String contentsHome(Model model){
+      logger.info("컨텐츠 홈 이동 시작");
+      model.addAttribute("clearLevel", 33);
+      logger.info("컨텐츠 홈 이동 종료");
+      return "contents/selectLevelPage";
+   }
+   
    @RequestMapping(value = "contents13", method = RequestMethod.GET)
 	public String contents13() {
 		logger.info("QuizPage START");
@@ -36,6 +47,16 @@ public class ContentsViewController {
 		return "contents/contents13";
 
 	}
+   
+   
+   @RequestMapping(value = "contents21", method = RequestMethod.GET)
+ 	public String contents21() {
+ 		logger.info("QuizPage START");
+ 		logger.info("QuizPage ENE");
+ 		return "contents/contents21";
+
+ 	}
+   
    
    @RequestMapping(value = "contents71", method = RequestMethod.GET)
 	public String contents71() {
@@ -45,21 +66,17 @@ public class ContentsViewController {
 
 	}
    
+   
    @RequestMapping(value = "contents320", method = RequestMethod.GET)
 	public String contents320() {
 		logger.info("QuizPage START");
 		logger.info("QuizPage ENE");
 		return "contents/contents320";
-
 	}
    
-   @RequestMapping(value = "contents21", method = RequestMethod.GET)
-  	public String contents21() {
-  		logger.info("QuizPage START");
-  		logger.info("QuizPage ENE");
-  		return "contents/contents21";
-
-  	}
+   
+   
+   
   
    
 }
