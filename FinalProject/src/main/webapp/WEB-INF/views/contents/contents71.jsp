@@ -1,50 +1,228 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+   pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
+   <script type="text/javascript" src="<c:url value="/resources/js/jquery-3.2.1.js"></c:url>"></script>
+   <style type="text/css">
    
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <link rel="stylesheet" type="text/css" href="../resources/css/styleContents.css">
+      .home {
+         margin-bottom: 10px;
+         margin-left: 20px;
+      }
+      
+      .javaCode {
+         margin-left: 170px;
+         margin-top: 10px;
+      }
+      
+      .error {
+         margin-left: 20px;
+         margin-bottom: 30px;
+      }
+      
+      .next {
+         margin-left: 170px;
+         margin-bottom: 30px;
+      }
+      
+      .answer {
+         margin: 0; 
+         padding: 0;
+         background-color: #f3fafd; 
+         border: solid 2px #217093; 
+         border-radius: 4px; 
+         box-sizing: border-box;
+         width: 600px; 
+         height: 50px;
+         text-align: center;
+         font-size: 20pt; 
+         color: #353538; 
+         font-weight: 600;
+         font-style: inherit;
+      }
+      
+         @charset "UTF-8";
+      *, html, body {
+        font-family: "TrebuchetMS", trebuchet, sans-serif;
+      }
+      
+      * {
+        -webkit-box-sizing: border-box;
+                box-sizing: border-box;
+      }
+      
+      h1, h2 {
+        text-align: center;
+      }
+      
+      h1 {
+        font-size: 24px;
+        line-height: 30px;
+        font-weight: bold;
+      }
+      
+      h2 {
+        font-size: 18px;
+        line-height: 25px;
+        margin-top: 20px;
+      }
+      
+      button {
+        -webkit-appearance: none;
+           -moz-appearance: none;
+                appearance: none;
+        border: 0;
+        padding: 14px 50px;
+        border-radius: 4px;
+        background-color: #37B595;
+        color: #FFFFFF;
+        text-transform: capitalize;
+        font-size: 18px;
+        line-height: 22px;
+        outline: none;
+        cursor: pointer;
+        -webkit-transition: all 0.2s;
+        transition: all 0.2s;
+      }
+      button:hover {
+        background-color: #1A7F75;
+      }
+      button.previous {
+        background-color: #A2ACAF;
+      }
+      button.previous:hover {
+        background-color: #5A5F61;
+      }
+      
+      .full-width-container {
+        width: 100%;
+        min-width: 320px;
+      }
+      
+      .sized-container {
+        max-width: 900px;
+        width: 100%;
+        margin: 0 auto;
+      }
+      
+      .slide-container {
+        position: relative;
+        left: 0;
+        overflow: hidden;
+        height: 400px;
+      }
+      
+      .slide {
+        float: left;
+      }
+      .slide .sized-container {
+        padding: 10px 25px;
+      }
+      
+      .button-container {
+        border-top: 1px solid black;
+        overflow: hidden;
+        padding-top: 30px;
+      }
+      .button-container button {
+        float: right;
+        margin-left: 30px;
+      }
+      
+      .pagination-container {
+        margin-top: 120px;
+      }
+      
+      .pagination {
+        width: 100%;
+        text-align: center;
+        padding: 0 25px;
+      }
+      
+      .indicator {
+        width: 25px;
+        height: 25px;
+        border: 4px solid lightgray;
+        border-radius: 50%;
+        display: inline-block;
+        -webkit-transition: all 0.3s;
+        transition: all 0.3s;
+        position: relative;
+      }
+      .indicator .tag {
+        position: absolute;
+        top: -30px;
+        left: 50%;
+        -webkit-transform: translateX(-50%);
+                transform: translateX(-50%);
+        color: lightgray;
+        white-space: nowrap;
+      }
+      .indicator.active, .indicator.complete {
+        border-color: #37B595;
+      }
+      .indicator.active .tag, .indicator.complete .tag {
+        color: #37B595;
+      }
+      .indicator.complete:after {
+        content: "✓";
+        position: absolute;
+        color: #37B595;
+        left: 4px;
+        top: 3px;
+        font-size: 14px;
+      }
+      
+      .progress-bar-container {
+        width: 10%;
+        height: 4px;
+        display: inline-block;
+        background-color: lightgray;
+        position: relative;
+        top: -10px;
+      }
+      .progress-bar-container:last-of-type {
+        display: none;
+      }
+      .progress-bar-container .progress-bar {
+        width: 0;
+        height: 100%;
+        background-color: #37B595;
+      }
+      
+      ul{
+         list-style:none;
+         padding-left:0px;
+      }
+      
+      
+   </style>
+   <!-- <link rel="stylesheet" type="text/css" href="../resources/css/styleContents.css"> -->
+   <script type="text/javascript">
    
-    <title>[ contents71.jsp ]</title>
-
-	<!-- JavaScript -->
-	<script type="text/javascript" src="<c:url value="/resources/js/jquery-3.2.1.js"></c:url>"></script>
-	<script type="text/javascript">
-   
-	$(function() {
-     /* 변수 선언 */
-     // 현재 슬라이드 숫자
-      var currentSlide = 0,
-       // ul 태그
+   $(function() {
+      var currentSlide = 0;
+      var testCount = 0;
+      
+      var checkStr = '<button class="check">CHECK</button>';
+      $('#checkBtnDiv').html(checkStr);
+      
        $slideContainer = $('.slide-container'),
-       // li 태그
        $slide = $('.slide'),
-       // 슬라이드 개수 = li 태그의 개수
        slideCount = $slide.length,
-       // array
-       answerArr = [],
-       // 애니메이션 시간 = 0.3초 
        animationTime = 300;
 
-     // 슬라이드 크기(면적) Set
       function setSlideDimensions () {
-        // 현재 윈도우 창의 가로 길이
-      var windowWidth = $(window).width();
-        // 슬라이드 컨테이너(ul)의 가로 길이를 (현재 윈도우 창 가로 길이 * 슬라이드의 개수)
+        var windowWidth = $(window).width();
         $slideContainer.width(windowWidth * slideCount);
-          // 슬라이드(li)의 가로 길이는 윈도우창 가로 길이 
         $slide.width(windowWidth);
       }
    
-     // 상단 페이징처리 Set
       function generatePagination () {
-      // pagination 클래스의 태그를 가져옴
         var $pagination = $('.pagination');
-        
-      for(var i = 0; i < slideCount; i ++){
+        for(var i = 0; i < slideCount; i ++){
           var $indicator = $('<div>').addClass('indicator'),
               $progressBarContainer = $('<div>').addClass('progress-bar-container'),
               $progressBar = $('<div>').addClass('progress-bar'),
@@ -57,117 +235,70 @@
         $pagination.find('.indicator').eq(0).addClass('active');
       }
       
-     // 문제 정답 확인
-     function checkUserAnswer() {
-      // 현재 슬라이드가 슬라이드 카운트 -1보다 작거나 같으면 Return  
-         if(currentSlide >= slideCount - 1) {return}; 
-         // 현재 윈도우 창의 가로 길이
-           var windowWidth = $(window).width();
-         
-         // answer+각 슬라이드 숫자 로 지정된 클래스를 가져온다 
-         var $answerClass = $('.answer' + currentSlide);
-         // $answerClass에 저장된 클래스 개수를 가져온다.
-         var answerCount = $answerClass.length;
-         alert(answerCount);
-
-         
-         for(var i = 1; i <= answerCount; i++) {
-            // answer01, answer02
-            var answer = $('#answer' + currentSlide + i).val();
-            alert(answer);
-            answerArr.push(answer);
-            alert(answerArr);
-         }
-         
-         var cNum = currentSlide +1;
-         
-          $.ajax({
-                url : "contents320",
-                type : "POST",
-                contentType : "application/json; charset=utf-8",
-                dataType : "json",
-                data : JSON.stringify ({
-                   cNum : cNum
-                   , answerArr : answerArr
-                }),
-                success : function(result) {
-                     alert('success');
-                     answerArr = [];
-                   alert(result);
-                },
-                error : function(err) {
-                   console.log(err);
-                   answerArr = [];
-                   alert("fail");
-                }
-                
-             });
-          
-          
-     }
-     
-     
-     // 다음 슬라이드로 이동
-      function goToNextSlide () {
-        // 현재 슬라이드가 슬라이드 카운트 -1보다 작거나 같으면 Return  
-      if(currentSlide >= slideCount - 1) {return}; 
-      // 현재 윈도우 창의 가로 길이
-        var windowWidth = $(window).width();
-      
-      // answer+각 슬라이드 숫자 로 지정된 클래스를 가져온다 
-      var $answerClass = $('.answer' + currentSlide);
-      // $answerClass에 저장된 클래스 개수를 가져온다.
-      var answerCount = $answerClass.length;
-      alert(answerCount);
-
-      
-      for(var i = 1; i <= answerCount; i++) {
-         // answer01, answer02
-         var answer = $('#answer' + currentSlide + i).val();
-         alert(answer);
-         answerArr.push(answer);
-         alert(answerArr);
+      $('.check').on('click', goToCheck);
+      function goToCheck() {
+         //alert(currentSlide);
+         //if (currentSlide == 0) {
+            //var slideNumber = "71"+currentSlide+1;
+            var cNum = currentSlide + 1;
+            //alert("cNum : "+cNum);
+            var answer = $('#answer'+currentSlide).val();
+            //alert(answer);
+                  $.ajax({
+                     url : "contents71",
+                     type : "POST",
+                     //contentType : "application/json; charset=utf-8",
+                     //dataType : "json",
+                     data : {
+                        cNum : cNum,
+                        answer : answer  
+                     },
+                     success : function(result) {
+                       //alert('success');
+                       //alert(result);
+                       var resultStr = '';
+                       if (result == false) {
+                     resultStr = '<div class="resultMsg"><img src="../resources/img/noanswer.png" width="50px"> 오답입니다.</div>';
+                     //resultStr += '<div class="resultMsg">정답입니다.</div>';
+                     $('#answerResultDiv').html(resultStr);
+                    } else if (result == true) {
+                       resultStr = '<div class="resultMsg"><img src="../resources/img/yesanswer.png" width="50px"> 정답입니다.</div>';
+                       //resultStr += '<div class="resultMsg">오답입니다.</div>';
+                      $('#answerResultDiv').html(resultStr);
+                   }
+                      //if (result) {
+                         $('#checkBtnDiv').html("");
+                         var str = '<button class="next">next</button>';
+                     $('#nextBtnDiv').html(str);
+                     $('.next').on('click', goToNextSlide);
+                  //}
+                     },
+                     error : function(err) {
+                        console.log(err);
+                        alert("fail");
+                     }
+                  });
+         //} 
       }
-      
-      var cNum = currentSlide +1;
-      
-       $.ajax({
-             url : "contents320",
-             type : "POST",
-             contentType : "application/json; charset=utf-8",
-             dataType : "json",
-             data : JSON.stringify ({
-                cNum : cNum
-                , answerArr : answerArr
-             }),
-             success : function(result) {
-                  alert('success');
-                  answerArr = [];
-                alert(result);
-             },
-             error : function(err) {
-                console.log(err);
-                answerArr = [];
-                alert("fail");
-             }
-             
-          });
-      
-      
-      
-      // 현재 슬라이드 숫자를 하나씩 증가시킴
+   
+      function goToNextSlide () {
+        $('#answerResultDiv').html("");
+        //if(currentSlide >= slideCount - 1) return; 
+        if(currentSlide >= slideCount - 1){
+          location.href = "contentsHome";
+        }
+        var windowWidth = $(window).width();
         currentSlide++;
-      //ul 태그에 효과를 준닷!
         $slideContainer.animate({
-          // 왼쪽으로 (윈도우 창의 가로길이 * 현재 슬라이드)의 숫자만큼 이동시킴
           left: -(windowWidth * currentSlide)
         });
-      
-      // 
         setActiveIndicator();
         $('.progress-bar').eq(currentSlide - 1).animate({
           width: '100%'
         }, animationTime);
+        $('#checkBtnDiv').html(checkStr);
+        $('#nextBtnDiv').html("");
+        $('.check').on('click', goToCheck);
       }
    
       function goToPreviousSlide () {
@@ -203,241 +334,95 @@
       setSlideDimensions();
       generatePagination();
       $(window).resize(postitionSlides);
-      $('.check').on('click', goToNextSlide);
+      //$('.check').on('click', goToCheck);
+      //$('.next').on('click', goToNextSlide);
       $('.previous').on('click', goToPreviousSlide);
    });
    
    
    </script>
+
+   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+   <title>Trophy Quiz</title>
 </head>
+<body style="overflow-x:hidden"> 
 
 
-<body style="overflow-x:hidden"> <!-- 하단 스크롤바 없애는 설정 -->
-   
-<!-- 모든 화면을 감싸는 영역 -->
-<div class="wrapper">
-
-	<!-- 상단 부분을 감싸는 영역 -->
-	<div class="top">
-		<div class="pagination-container full-width-container">
-	  		<div class="sized-container">
-	    		<div class="pagination"></div>
-	  		</div>
-		</div>
-	</div> <!-- 상단 부분 끝 -->   
-
-
-	<!-- 중단 부분을 감싸는 영역 -->
-	<div class="mid">
-		<div class="viewport full-width-container">
-  			<ul class="slide-container">
-   		 	
-   		 	<!-- 첫 번째 슬라이드 -->
-   		 	<li class="slide" data-tag="Step1">
-   		 	
-	      		<div class="sized-container">
-		        <!-- <h1></h1> -->
-		        <!-- <h2>다음 빈 칸을 채우세요</h2> --> <br>
-	        	
-	        		<!-- 문제 나오는 영역 -->
-		        	<div class="question_area"> 
-		        	<!-- <img src="../resources/img/quiz711.png" width="200px"> -->
-		        	<h1>빈칸에 알맞은 연산자와 기호를 입력해주세요.</h1>
-					    <h2>int x = 5;</h2>
-					    <h2>int y = 2;</h2>
-		        	</div>
-	        
-	        		<!-- 답 입력하는 영역 -->
-			        <div class="answer_area"> 
-			        	<h1>x &nbsp; 
-				        	<input type="text" class="answer0" 
-				        	id="answer01"> &nbsp; y &nbsp; = &nbsp; 7 &nbsp; 
-				        	<input type="text" class="answer0" id="answer02"> 
-			        	</h1>
-			     	</div>
-	      		
-	      		</div>
-    		</li> <!-- 첫 번째 슬라이드 끝 -->
-    		
-    		
-    		<!-- 두 번째 슬라이드 -->
-   		 	<li class="slide" data-tag="Step2">
-   		 	
-	      		<div class="sized-container">
-		        <!-- <h1></h1> -->
-		        <!-- <h2>다음 빈 칸을 채우세요</h2> --> <br>
-	        	
-	        		<!-- 문제 나오는 영역 -->
-		        	<div class="question_area"> 
-		        	<!-- <img src="../resources/img/quiz711.png" width="200px"> -->
-		        	<h1>빈칸에 알맞은 연산자와 기호를 입력해주세요.</h1>
-					    <h2>int x = 5;</h2>
-					    <h2>int y = 2;</h2>
-		        	</div>
-	        
-	        		<!-- 답 입력하는 영역 -->
-			        <div class="answer_area"> 
-			        	 <h1>x &nbsp; <input type="text" class="answer1" 
-			        	 id="answer11"> &nbsp; y &nbsp; = &nbsp; 3 &nbsp; 
-			        	 <input type="text" class="answer1" id="answer12"> 
-			        	 </h1>
-			     	</div>
-	      		
-	      		</div>
-    		</li> <!-- 두 번째 슬라이드 끝 -->
-    		
-    		
-    		<!-- 세 번째 슬라이드 -->
-   		 	<li class="slide" data-tag="Step3">
-   		 	
-	      		<div class="sized-container">
-		        <!-- <h1></h1> -->
-		        <!-- <h2>다음 빈 칸을 채우세요</h2> --> <br>
-	        	
-	        		<!-- 문제 나오는 영역 -->
-		        	<div class="question_area"> 
-		        	<!-- <img src="../resources/img/quiz711.png" width="200px"> -->
-		        	<h1>빈칸에 알맞은 연산자와 기호를 입력해주세요.</h1>
-					    <h2>int x = 5;</h2>
-					    <h2>int y = 2;</h2>
-		        	</div>
-	        
-	        		<!-- 답 입력하는 영역 -->
-			        <div class="answer_area"> 
-			        	<h1>x &nbsp; <input type="text" class="answer2" 
-			        	id="answer21"> &nbsp; y &nbsp; = &nbsp; 10 &nbsp; 
-			        	<input type="text" class="answer2" id="answer22"> 
-			        	</h1>
-			     	</div>
-	      		
-	      		</div>
-    		</li> <!-- 세 번째 슬라이드 끝 -->
-    		
-    		
-    		<!-- 네 번째 슬라이드 -->
-   		 	<li class="slide" data-tag="Step4">
-   		 	
-	      		<div class="sized-container">
-		        <!-- <h1></h1> -->
-		        <!-- <h2>다음 빈 칸을 채우세요</h2> --> <br>
-	        	
-	        		<!-- 문제 나오는 영역 -->
-		        	<div class="question_area"> 
-		        	<!-- <img src="../resources/img/quiz711.png" width="200px"> -->
-		        	<h1>빈칸에 알맞은 연산자와 기호를 입력해주세요.</h1>
-					    <h2>int x = 5;</h2>
-					    <h2>int y = 2;</h2>
-		        	</div>
-	        
-	        		<!-- 답 입력하는 영역 -->
-			        <div class="answer_area"> 
-			        	<h1>x &nbsp; <input type="text" class="answer3" 
-			        	id="answer31"> &nbsp; y &nbsp; = &nbsp; 2 &nbsp; 
-			        	<input type="text" class="answer3" id="answer32"> 
-			        	</h1>
-			     	</div>
-	      		
-	      		</div>
-    		</li> <!-- 네 번째 슬라이드 끝 -->
-    		
-    		
-    		<!-- 다섯 번째 슬라이드 -->
-   		 	<li class="slide" data-tag="Step5">
-   		 	
-	      		<div class="sized-container">
-		        <!-- <h1></h1> -->
-		        <!-- <h2>다음 빈 칸을 채우세요</h2> --> <br>
-	        	
-	        		<!-- 문제 나오는 영역 -->
-		        	<div class="question_area"> 
-		        	<!-- <img src="../resources/img/quiz711.png" width="200px"> -->
-		        	<h1>빈칸에 알맞은 연산자와 기호를 입력해주세요.</h1>
-					    <h2>int x = 5;</h2>
-					    <h2>int y = 2;</h2>
-		        	</div>
-	        
-	        		<!-- 답 입력하는 영역 -->
-			        <div class="answer_area"> 
-			        	<h1>x &nbsp; <input type="text" class="answer4" 
-			        	id="answer41"> &nbsp; y &nbsp; = &nbsp; 1 &nbsp; 
-			        	<input type="text" class="answer4" id="answer42"> 
-			        	</h1>
-			     	</div>
-	      		
-	      		</div>
-    		</li> <!-- 다섯 번째 슬라이드 끝 -->
-    		
-    		
-    		<!-- 여섯 번째 슬라이드 -->
-   		 	<li class="slide" data-tag="Step6">
-   		 	
-	      		<div class="sized-container">
-		        <!-- <h1></h1> -->
-		        <!-- <h2>다음 빈 칸을 채우세요</h2> --> <br>
-	        	
-	        		<!-- 문제 나오는 영역 -->
-		        	<div class="question_area"> 
-		        	<!-- <img src="../resources/img/quiz711.png" width="200px"> -->
-		        	<h1>빈칸에 알맞은 연산자와 기호를 입력해주세요.</h1>
-					    <h2>int x = 5;</h2>
-					    <h2>int y = 2;</h2>
-		        	</div>
-	        
-	        		<!-- 답 입력하는 영역 -->
-			        <div class="answer_area"> 
-			        	<h1>x &nbsp; + &nbsp; y &nbsp; <input type="text" 
-			        	class="answer5" id="answer51"> &nbsp; 7 &nbsp; 
-			        	<input type="text" class="answer5" id="answer52"> 
-			        	</h1>
-			     	</div>
-	      		
-	      		</div>
-    		</li> <!-- 여섯 번째 슬라이드 끝 -->
-    		
-    		
-    		<!-- 일곱 번째 슬라이드 -->
-   		 	<li class="slide" data-tag="Step7">
-   		 	
-	      		<div class="sized-container">
-		        <!-- <h1></h1> -->
-		        <!-- <h2>다음 빈 칸을 채우세요</h2> --> <br>
-	        	
-	        		<!-- 문제 나오는 영역 -->
-		        	<div class="question_area"> 
-		        	<!-- <img src="../resources/img/quiz711.png" width="200px"> -->
-		        	<h1>빈칸에 알맞은 연산자와 기호를 입력해주세요.</h1>
-					    <h2>int x = 5;</h2>
-					    <h2>int y = 2;</h2>
-		        	</div>
-	        
-	        		<!-- 답 입력하는 영역 -->
-			        <div class="answer_area"> 
-			        	<h1>x &nbsp; * &nbsp; y &nbsp; <input type="text" 
-			        	class="answer6" id="answer61"> &nbsp; 20 &nbsp; 
-			        	<input type="text" class="answer6" id="answer62"> 
-			        	</h1>
-			     	</div>
-	      		
-	      		</div>
-    		</li> <!-- 일곱 번째 슬라이드 끝 -->
-    		
-    		</ul>
-		</div> <!-- 중단 부분 끝 -->
-    		
-
-	<!-- 하단 부분을 감싸는 영역 -->
-	<div class="bottom"> 
-
-		<div class="full-width-container">
-		  <div class="button-container sized-container">
-		    <button class="check">check</button>
-		    <button class="previous">previous</button>
-		  </div>
-		</div>
-
-	</div> <!-- 하단 부분 끝 -->
-
-</div> <!-- wrapper 끝 -->
+<div class="pagination-container full-width-container">
+  <div class="sized-container">
+    <div class="pagination"></div>
+  </div>
+</div>
+<div class="viewport full-width-container">
+  <ul class="slide-container">
+    <li class="slide" data-tag="Step1" id="slide1">
+      <div class="sized-container">
+        <!-- <h1></h1> -->
+        <h2>다음 네모의 가로에 해당하는 변수를 선언, 생성하세요.</h2>
+        <br>
+        <!-- <img src="../resources/img/quiz711.png" width="200px"> -->
+        <div class="box_wrapper">
+        
+      </div>
+        <br><br><br>
+        <input type="text" id="answer0" class="answer" placeholder="작성"> 
+      </div>
+    </li>
+    <li class="slide" data-tag="Step2">
+      <div class="sized-container">
+        <!-- <h1></h1> -->
+        <h2>다음 네모의 세로에 해당하는 변수를 선언, 생성하세요.</h2>
+        <br>
+        <!-- <img src="../resources/img/quiz712.png" width="300px"> -->
+        <br><br><br>
+        <input type="text" id="answer1" class="answer" placeholder="작성"> 
+      </div>
+    </li>
+    <li class="slide" data-tag="Step3">
+      <div class="sized-container">
+        <!-- <h1>Lets get a little more in depth.</h1> -->
+        <!-- <h2>Information about this section.</h2> -->
+        <h2>다음 네모의 높이에 해당하는 변수를 선언, 생성하세요.</h2>
+        <input type="text" id="answer2" class="answer" placeholder="작성"> 
+      </div>
+    </li>
+    <li class="slide" data-tag="Step4">
+      <div class="sized-container">
+        <h2>상자를 만들기 위해 지금까지 입력한 가로, 세로, 높이를 곱해봅니다.</h2>
+        <!-- 가로*세로*높이 -->
+        <input type="text" id="answer3" class="answer" placeholder="작성">
+      </div>
+    </li>
+    <li class="slide" data-tag="Step5">
+      <div class="sized-container">
+        <h2>만들어진 상자의 부피가 구해졌습니다!</h2>
+        <input type="text" id="answer4" class="answer" placeholder="작성">
+      </div>
+    </li>
+    <li class="slide" data-tag="Additional">
+      <div class="sized-container">
+        <h1>Mention any additional comments.</h1>
+        <h2>Information about this section.</h2>
+      </div>
+    </li>
+    <li class="slide" data-tag="Confirm">
+      <div class="sized-container">
+        <h1>Confirm your application.</h1>
+        <h2>Information about this section.</h2>
+      </div>
+    </li>
+  </ul>
+</div>
+<div class="full-width-container">
+  <div class="button-container sized-container">
+     <!-- <button class="check">CHECK</button> -->
+     <div id="checkBtnDiv"></div>
+    <div id="nextBtnDiv"></div>
+    <!-- <button class="next">next</button> -->
+    <button class="previous">previous</button>
+    <div id="answerResultDiv"></div>
+  </div>
+</div>
 
 </body>
 </html>

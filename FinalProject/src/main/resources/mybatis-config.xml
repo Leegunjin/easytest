@@ -6,9 +6,15 @@
 	<typeAliases>
 		<typeAlias type="com.scitmaster.easycodingu.person.vo.Person" alias="person" />
 		<typeAlias type="com.scitmaster.easycodingu.contents.vo.Contents" alias="contents" />
+		<typeAlias type="com.scitmaster.easycodingu.learning.vo.Learning" alias="learning" />
+		<typeAlias type="com.scitmaster.easycodingu.board.vo.Board" alias="board" />
+		<typeAlias type="com.scitmaster.easycodingu.reply.vo.Reply" alias="reply" />
 	</typeAliases>
 	<mappers>
 		<mapper resource="mapper/personMapper.xml" />
 		<mapper resource="mapper/contentsMapper.xml" />
+		<mapper resource="mapper/learningMapper.xml" />
+		<mapper resource="mapper/boardMapper.xml" />
+		<mapper resource="mapper/replyMapper.xml" />
 	</mappers>
 </configuration>
