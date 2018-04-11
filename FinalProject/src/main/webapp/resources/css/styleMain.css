@@ -2,79 +2,75 @@
 
 
 body {
-   margin: 0;
-   padding: 0;
-   font-family: Quicksand;
+	margin: 0;
+	padding: 0;
+	font-family: Quicksand;
+	
 }
 
 nav {
-   position: fixed;
-   top: 0;
-   left: 0;
-   width: 100%; 
-   height: 85px;
-   padding: 2px 30px;
-   box-sizing: border-box;
-   transition : .3s;
-   
-      
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%; 
+	height: 85px;
+	padding: 2px 30px;
+	box-sizing: border-box;
+	transition : .3s;
+	z-index: 100;
+	
 }
 
 nav.black {
-   background: rgba(0,0,0,0.8);
-   height: 85px;
-    padding: 2px 30px;
+	background: rgba(0,0,0,0.8);
+	height: 85px;
+	padding: 2px 30px;
    
 }
 
 nav .logo {
-   padding: 22px 30px;
-   height: 80px;
-   float: left;
-   font-size: 24px;
-   transition: .3s; 
-   
+	padding: 18px 0px;
+	height: 80px;
+	float: left;
+	font-size: 28px;
+	font-weight:bolder;
+	transition: .3s;
+	letter-spacing: 0.05em;
+	
 }
 
-nav.black .logo {
-   color: #fff; 
-   
-}
+nav.black .logo { color: #fff; }  
+nav.black .button p { color: #fff; } 
+nav.black .buttonStudy p { color: #fff; }
+nav.black .userInfo p a {color: gray;}
+
 
 nav ul {
-   list-style: none;
-   float: right;
-   margin: 0;
-   padding: 0;
-   display: flex;
-}
-
-nav ul li {
-   list-style: none;
+	list-style: none;
+	float: right;
+	margin: 0;
+	padding: 0;
+	display: flex;
    
 }
+
+nav ul li { list-style: none; }
 
 nav ul li a {
-   line-height: 80px;
-   color: #151515;
-   padding: 12px 30px;
+	line-height: 80px;
+	color: #151515;
+	padding: 12px 30px;
+	
 }
 
-nav.black ul li a {
-   color: #fff;
-   
-}
+nav.black ul li a { color: #fff; }
 
-nav ul li a:FOCUS {
-   outline: none;
-
-}
-
+nav ul li a:FOCUS { outline: none; }
 
 nav ul li a.active {
-   background: #18aafe;
-   color: #fff;
-   border-radius: 6px;
+	background: #18aafe;
+	color: #fff;
+	border-radius: 6px;
    
 }
 
@@ -88,31 +84,30 @@ nav ul li a.active {
 } */
 
 .content {
-   width:100%;
-   height:100%;
-   background-color: gray;
-   text-align: center;
+	width:100%;
+	height:100%;
+	background-color: gray;
+	text-align: center;
    
 }
-
 
 .content p {  
-   width: 900px;
-   margin: auto;
-   margin-top: 0px;
-   margin-bottom: 30px;
-   text-align: justify;
-   font-size: 20px;
-   line-height: 30px;
+	width: 900px;
+	margin: auto;
+	margin-top: 0px;
+	margin-bottom: 30px;
+	text-align: justify;
+	font-size: 20px;
+	line-height: 30px;
    
 }
 
 
-
+/* 바탕화면 (box 숫자만큼 스크롤 내리면 배경화면이 보임) */
 .box1 {
 	height: 100vh;
 	width: 100%;
-	background-image: url("../../resources/img/bg5.png");
+	background-image: url("../../resources/img/sd1.png");
 	background-size: cover;
 	display:table;
 	background-attachment:fixed;
@@ -122,7 +117,7 @@ nav ul li a.active {
 .box2 {
 	height: 100vh;
 	width: 100%;
-	background-image: url("../../resources/img/sd2.jpg");
+	background-image: url("../../resources/img/sd2.png");
 	background-size: cover;
 	display:table;
 	background-attachment:fixed;
@@ -132,7 +127,7 @@ nav ul li a.active {
 .box3 {
 	height: 100vh;
 	width: 100%;
-	background-image: url("../../resources/img/sd1.jpg");
+	background-image: url("../../resources/img/sd3.png");
 	background-size: cover;
 	display:table;
 	background-attachment:fixed;
@@ -146,106 +141,160 @@ h1 {
 	margin: 0px;
 	text-align: center;
 	display:table-cell;
-    vertical-align:middle;
+	vertical-align:middle;
 }
 
-.mainSection {
-    height:100vh;
-    width:100%;
-    position:fixed;
-    display:none;
+/* 바탕화면 속성 끝 */
 
 
+
+/* 상단 NAVI BAR에 있는 버튼들의 속성 */
+
+.buttonWrapper{
+	width: 90%;
+	margin: 0px 7px 0px 7px;
+	text-align: center;
+	
 }
 
-.logoSection {
-    height:100%;
-    width:50%;
-    background-color: #e1feff;
-    box-shadow: 10px 0px 30px rgba(0,0,0,.4);
-    position:absolute;
-    z-index:999;
-
+.buttonContent{
+	text-align:center;
+	transform: translate(0%, 10%);
+	cursor: pointer;
+	
 }
 
-.logoSection img {
-    position:absolute;
-    top:50%;
-    left:50%;
-    transform:translate(-50%, -50%);
-
+.button{
+	font-family: Quicksand;
+    text-align: center;
+    vertical-align: bottom;
+    display: block;
+    height: 35px;
+    width: 110px;
+    cursor: pointer;
+    font-size: 18px;
+    color: #F0F0F0;
+    border-radius: 3px;
+    border-bottom: 2px solid rgba(0,0,0,0);
+    border-right: 2px solid rgba(0,0,0,0);
+    box-shadow: 3px 3px 3px #bbb;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -o-user-select: none;
+  	background: -webkit-linear-gradient(rgba(190,190,190,1), rgba(110,110,110,1));
+    -webkit-transition: background 0.05s linear;
+    -moz-transition: background 0.05s linear;
+    -o-transition: background 0.05s linear;
+    transition: background 0.05s linear;
+    background-size: 1px 200px;
+    transition: all .05s linear;
+    
 }
 
-.menuSection {
-
-    width:50%;
-    height:100%;
-    background-color:#f1f1f1;
-    position:absolute;
-    left:50%;
+.button:hover{
+	background-position:100px;
+	transition: all .2s linear;
+	
 }
 
-.menuSection ul {
-    list-style:none;
-    margin:0px;
-    padding:0px;
-    position:absolute;
-    top:30%;
-    left:-1%;
-   
+.button:active {
+	box-shadow: 2px 2px 2px #777;
+	border-bottom:2px solid rgba(0,0,0,0);
+	border-right: 2px solid rgba(0,0,0,0);
+	transform: translateY(3px);
+	
 }
 
-.menuSection ul li {
-   width:350px;
-   height:100px;
-   font-family:arial black;
-   font-size:60px;
-   line-height:100px;
-   cursor:pointer;
-   
+.button p {
+ transform: translate(0%, 30%);
+ color: #000;
+ 
+}	
+
+.button p:HOVER, .buttonStudy p:HOVER {
+	font-weight: bold;
 }
 
-.menu {
-	width:50px;
-	height:100px;
-	background-color:#18aafe;
-	display:flex;
-	position:absolute;
-	left:-50%;
-	cursor:pointer;
-	pointer-events:none;
-	transition:all .5s;
+.userInfo {
+	transform: translate(-8%, -30%);
+	
+}	
 
-
+.userInfo p {
+	color: #18aafe;
+	font-weight: bold;
+	font-size: 21px;
+	
 }
 
-.rotate {
-	pointer-events:none;
-
+.userInfo p a {
+	color: gray;
+	font-weight: bold;
+	font-size: 21px;
+	margin-left: -22px;
+	margin-right: -22px;
 }
 
-.menuSection ul li:hover .menu {
-	width:350px;
+
+.userInfo p span {
+	color: gray;
+	font-weight: normal;
+	font-size: 12px;
 }
 
-.openMenu,.closeMenu {
-	width:100px;
-	height:100px;
-	background-color:#262626;
-	position:fixed;
-	top:50%;
-	left:0%;
-	transform:translateY(-50%);
-	z-index:999;
-	cursor:pointer;
+
+/* 상단 NAVI BAR 버튼 속성 끝 */
+
+
+/* 상단 NAVI BAR에 있는 버튼들 중 Study버튼 */
+.buttonStudy{
+	font-family: Quicksand;
+    text-align: center;
+    vertical-align: bottom;
+    display: block;
+    height: 35px;
+    width: 110px;
+    cursor: pointer;
+    font-size: 18px;
+    color: #F0F0F0;
+    border-radius: 3px;
+    border-bottom: 2px solid rgba(0,0,0,0);
+    border-right: 2px solid rgba(0,0,0,0);
+    box-shadow: 3px 3px 3px #bbb;
+    background: -webkit-linear-gradient(#21d4ff, #0067F7);
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -o-user-select: none;
+    -webkit-transition: background 0.05s linear;
+    -moz-transition: background 0.05s linear;
+    -o-transition: background 0.05s linear;
+    transition: background 0.05s linear;
+    background-size: 1px 200px;
+    transition: all .05s linear;
+    
 }
 
-.closeMenu {
-	left: 100%;
+.buttonStudy:hover{
+	background-position:100px;
+	transition: all .2s linear;
+	
 }
 
-.openMenu:hover, .closeMenu:hover  {
-	background-color:#18aafe;
-	transition:all .1s;
+.buttonStudy:active {
+	box-shadow: 2px 2px 2px #777;
+	border-bottom:2px solid rgba(0,0,0,0);
+	border-right: 2px solid rgba(0,0,0,0);
+	transform: translateY(3px);
+	
 }
+
+.buttonStudy p {
+	transform: translate(0%, 30%);
+	color: #000;
+	letter-spacing: 0.05em;
+	
+}	
+
 

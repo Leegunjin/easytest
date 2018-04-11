@@ -1,68 +1,107 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+<%-- <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!doctype html>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8">
-<title>Drag & Drop</title>
-<script src="http://code.jquery.com/jquery-1.10.2.js"></script>
-<script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Insert title here</title>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<meta name="google-signin-client_id" content="1013973861169-6idj98k689u967kkqnd3fhcs6n4icjrk.apps.googleusercontent.com">
+<!-- <script src="https://apis.google.com/js/api.js"></script> -->
+<script src="https://apis.google.com/js/platform.js" async defer></script>
+<script src="<c:url value="resources/js/jquery-3.2.1.js"/>"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="<c:url value="resources/js/script.js"/>"></script>
 <style>
-	#images > div, #boards > div {float:left;width:100px;height:100px;border:1px solid #000;margin:5px;}
-	#images div img {width:100px;height:100px;}
-	#boards {clear:both;}
-	#boards > div {font-size:2em;line-height:100px;text-align:center;}
+	.g-signin2{
+		margin-left: 500px;
+		margin-top: 200px;
+	}
+</style>
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<meta name="google-signin-client_id" content="285598325955-7nv3156ff0214a3uk2ujfmq8sjtktuta.apps.googleusercontent.com">
+<script src="https://apis.google.com/js/platform.js" async defer></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="<c:url value="/resources/js/script.js"/>"></script>
+
+<style type="text/css">
+	.g-signin2{
+		margin-left: 500px;
+		margin-top: 200px;
+	}
+	
 </style>
 </head>
+
 <body>
-<div id="images">
-	<div><img src="http://lorempixel.com/100/100/food" id="food"></div>
-	<div><img src="http://lorempixel.com/100/100/city" id="city"></div>
-	<div><img src="http://lorempixel.com/100/100/sports" id="sports"></div>
-	<div><img src="http://lorempixel.com/100/100/animals" id="animals"></div>
-</div>
-<div id="boards">
-	<div title="sports">sports</div>
-	<div title="food">food</div>
-	<div title="animals">animals</div>
-	<div title="city">city</div>
-</div>
-<script>
-	$(function(){
-		$("#images div img").draggable({
-			start: function(event,ui) {
-				$(this).draggable( "option", "revert", true );
-				$("#images div img").css("zIndex",10);
-				$(this).css("zIndex",100);
-			}
-		});
-		$("#boards div").droppable({
-			drop: function(event,ui) {
-				var droptitle = $(this).attr("title");
-				var drophtml = $(this).html();
-				var dragid = ui.draggable.attr("id");
-				if( dragid == droptitle ) {
-					ui.draggable.draggable( "option", "revert", false );
-					var droppableOffset = $(this).offset();
-					var x = droppableOffset.left + 1;
-					var y = droppableOffset.top + 1;
-					ui.draggable.offset({ top: y, left: x });
-				}
-			}
-		});
-	});
-	$(document).ready(function(){
-		$("#images div").sort(function(){
-			return Math.random()*10 > 5 ? 1 : -1;
-		}).each(function(){
-			$(this).appendTo( $(this).parent() );    
-		});
-		$("#boards div").sort(function(){
-			return Math.random()*10 > 5 ? 1 : -1;
-		}).each(function(){
-			$(this).appendTo( $(this).parent() );    
-		});
-	});
-</script>
+
+	<!-- <div class="g-signin2" data-onsuccess="onSignIn">
+	
+	</div>
+	<div class="data">
+		<p>Profile Details</p>
+		<img id="pic" class="img-circle" width="100" height="100"/>
+		<p>Email Address</p>
+		<p id="email" class="alert alert-danger"></p>
+		<button onclick="signOut()" class="btn btn-danger">Sign Out</button>
+	</div> -->
+	
+	<div class="g-signin2" data-onsuccess="onSignIn"></div>
+	<div class="data">
+		<p>Profile Details</p>
+		<img id="pic" class="img-circle" width="100" height="100"/>
+		<p>Email Address</p>
+		<div id="email" class="alert alert-danger"></div>
+		<!-- <p id="email" class="alert alert-danger"></p> -->
+		<button onclick="signOut()" class="btn btn-danger">Sign Out</button>
+	</div>
+
+</body>
+</html> --%>
+
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>[ index.jsp ]</title>
+<script src="https://apis.google.com/js/platform.js" async defer></script>
+<meta name="google-signin-client_id" content="433159939394-gr0e19pif57u5474g78obq8lseijnfc7.apps.googleusercontent.com">
+
+</head>
+<body>
+   <div class="g-signin2" data-onsuccess="onSignIn" id="myP"></div>
+      <img id="myImg"><br>
+      <p id="name"></p>
+      <div id="status">
+   </div>
+   
+   <script type="text/javascript">
+      function onSignIn(googleUser) {
+      var profile = googleUser.getBasicProfile();
+      var imagurl=profile.getImageUrl();
+      var name=profile.getName();
+      var email=profile.getEmail();
+      document.getElementById("myImg").src = imagurl;
+      document.getElementById("name").innerHTML = name;
+      document.getElementById("myP").style.visibility = "hidden";
+      document.getElementById("status").innerHTML = 'Welcome '+name+'!<a href=success.jsp?email='+email+'&name='+name+'/>Continue with Google login</a></p>'
+   }
+   </script>
+   
+   <button onclick="myFunction()">Sign Out</button>
+   
+   <script>
+      function myFunction() {
+      gapi.auth2.getAuthInstance().disconnect();
+      location.reload();
+   }
+   </script>
 </body>
 </html>

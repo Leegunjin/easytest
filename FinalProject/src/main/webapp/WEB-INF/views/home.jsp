@@ -39,7 +39,8 @@
       });
       
       function selectLevelPage() { location.href = "contents/contentsHome"; }
-         
+      function loginForm() { location.href = "person/loginForm"; }  
+      function logout() { location.href = "person/logout"; } 
    </script>
 
 </head>  
@@ -56,54 +57,92 @@
          
          <!-- 로그인 한 사람 없을때 -->
          <c:if test="${sessionScope.loginId == null }">            
-            <li> <a href="person/loginForm"> Login </a> </li>
+            
+            <li class="anitamedButton"> 
+				<div class="buttonWrapper">
+					<div class="buttonContent">
+						<span class="button">
+						 <p onclick="loginForm();"> Login </p>
+					 	</span>
+					</div>
+				</div>
+            </li>
+            
          </c:if>
       
          <!-- 로그인 했을때 -->
          <c:if test="${sessionScope.loginId != null }">
             
             <li> 
-               <a style="color: #18aafe; font-weight: bold;"> 
-               Hello ${sessionScope.loginName }
-                   <span style="color: gray; font-weight: normal;">
+               <div class="userInfo">
+               <p> 
+               <a>Hello</a> ${sessionScope.loginName }
+                   <span>
                     (${sessionScope.loginId })
                     </span>  
-              </a> 
+              </p> 
+              </div>
            </li>
             
-            <li> <a href="#"> My Page </a> </li>
+            <li class="anitamedButton"> 
+           
+				<div class="buttonWrapper">
+					<div class="buttonContent">
+						<span class="button">
+						 <p> My Page </p>
+					 	</span>
+					</div>
+				</div>
             
-            <li> 
-               <a href="person/logout" onclick="googleLogout('${loginId}')"> 
-               Logout 
-               </a> 
             </li>
-         
+            
+            
+            <li class="anitamedButton"> 
+				<div class="buttonWrapper">
+					<div class="buttonContent">
+						<span class="button">
+						 <p onclick="logout();"> Logout </p>
+					 	</span>
+					</div>
+				</div>
+           	</li>
+               
          </c:if>
       
          <!-- 기본 메뉴 (로그인/아웃 여부 상관없이) -->
-         <li> <a href="#"> Board </a> </li>
-         <li> <a href="#"> Language </a> </li>
+         
+         
+         
+          <li class="anitamedButton"> 
+				<div class="buttonWrapper">
+					<div class="buttonContent">
+						<span class="button">
+						 <p> Board </p>
+					 	</span>
+					</div>
+				</div>
+           	</li>
+         
+         <li class="anitamedButton"> 
+				<div class="buttonWrapper">
+					<div class="buttonContent">
+						<span class="button">
+						 <p> Language </p>
+					 	</span>
+					</div>
+				</div>
+           	</li>
       
-                 
-         <div class="table_center">
-            <div class="drop-down">
-               <div id="dropDown" class="drop-down__button">
-            
-               <span class="drop-down__name" onclick="selectLevelPage();">
-               Study
-               </span>
-                  <svg version="1.1" class="drop-down__icon" 
-                      xmlns="http://www.w3.org/2000/svg" 
-                      xmlns:xlink="http://www.w3.org/1999/xlink" 
-                      x="0px" y="0px" width="48.625px" 
-                      height="48.625px" viewBox="0 0 48.625 48.625" 
-                      style="enable-background:new 0 0 48.625 48.625;" 
-                      xml:space="preserve">
-                  </svg>
-               </div>
-            </div>
-         </div> <!-- table_center 끝 -->
+         
+         <li class="anitamedButton"> 
+				<div class="buttonWrapper">
+					<div class="buttonContent">
+						<span class="buttonStudy">
+						 <p onclick="selectLevelPage();"> Study </p>
+					 	</span>
+					</div>
+				</div>
+           	</li>
          
          </ul>
       </nav> <!-- 상단 내비게이션바 끝 -->  

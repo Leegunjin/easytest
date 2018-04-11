@@ -5,13 +5,15 @@
 <html>
 <head>
    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-   <title>[ contents32.jsp ]</title>
+   <title>[ contents320.jsp ]</title>
 
 <!-- CSS -->
 <style type="text/css">
       @charset "UTF-8";
 *, html, body {
   font-family: "TrebuchetMS", trebuchet, sans-serif;
+  margin: 0;
+  padding: 0;
 }
 
 * {
@@ -67,6 +69,12 @@ button.previous:hover {
   min-width: 320px;
 }
 
+.question-container {
+max-width: 900px;
+  width: 100%;
+  margin: 0 auto;
+}
+
 .sized-container {
   max-width: 900px;
   width: 100%;
@@ -89,7 +97,8 @@ button.previous:hover {
   list-style-type: none;
 }
 .slide .sized-container {
-  padding: 75px 0px;
+	padding-top: 10px;
+    padding-bottom: 20px;
 }
 
 .button-container {
@@ -103,13 +112,15 @@ button.previous:hover {
 }
 
 .pagination-container {
-  margin-top: 120px;
+  height: 18vh;
 }
 
 .pagination {
   width: 100%;
+  height: 100%;
   text-align: center;
   padding: 0 25px;
+  padding-top: 60px;
 }
 
 .indicator {
@@ -182,6 +193,10 @@ button.previous:hover {
 ul{
    list-style:none;
    padding-left:0px;
+}
+
+.resultMsg {
+	vertical-align: center;
 }
       
    </style>
@@ -256,7 +271,7 @@ ul{
          var cNum = currentSlide + 1;
          
           $.ajax({
-                url : "contents320",
+                url : "contents310",
                 type : "POST",
                 contentType : "application/json; charset=utf-8",
                 dataType : "json",
@@ -375,46 +390,98 @@ ul{
   </div>
 </div>
 <div class="viewport full-width-container">
-   <h1>빈칸에 알맞은 연산자와 기호를 입력해주세요.</h1>
-   <h2>int x = 5;</h2>
-   <h2>int y = 2;</h2>
+    
   <ul class="slide-container">
     <li class="slide" data-tag="Step1">
+      
+      <div class="question-container"> 
+      <h1>빈칸에 알맞은 연산자를 입력해주세요.</h1>
+      <img alt="" src="../resources/img/31c1.png" style="width: 600px; height: 250px; transform: translate(26%, 0%);">
+      </div>
+      
       <div class="sized-container">
-        <h1>x &nbsp; <input type="text" class="answer0" id="answer01"> &nbsp; y &nbsp; = &nbsp; 7 &nbsp; <input type="text" class="answer0" id="answer02"> </h1>
+        <h1> <input type="text" class="answer0" id="answer01"> </h1>
       </div>
     </li>
+    
     <li class="slide" data-tag="Step2">
+      
+      <div class="question-container"> 
+      <h1>빈칸에 알맞은 연산자를 입력해주세요.</h1>
+      <img alt="" src="../resources/img/31c2.png" style="width: 600px; height: 250px; transform: translate(26%, 0%);">
+      </div>
+      
       <div class="sized-container">
-      <h1>x &nbsp; <input type="text" class="answer1" id="answer11"> &nbsp; y &nbsp; = &nbsp; 3 &nbsp; <input type="text" class="answer1" id="answer12"> </h1>
+        <h1> <input type="text" class="answer1" id="answer11"> </h1>
       </div>
     </li>
+    
     <li class="slide" data-tag="Step3">
+      
+      <div class="question-container"> 
+      <h1>빈칸에 알맞은 연산자를 입력해주세요.</h1>
+      <img alt="" src="../resources/img/31c3.png" style="width: 600px; height: 250px; transform: translate(26%, 0%);">
+      </div>
+      
       <div class="sized-container">
-        <h1>x &nbsp; <input type="text" class="answer2" id="answer21"> &nbsp; y &nbsp; = &nbsp; 10 &nbsp; <input type="text" class="answer2" id="answer22"> </h1>
+        <h1> <input type="text" class="answer2" id="answer21"> </h1>
       </div>
     </li>
+    
     <li class="slide" data-tag="Step4">
+      
+      <div class="question-container"> 
+      <h1>빈칸에 알맞은 연산자를 입력해주세요.</h1>
+      <img alt="" src="../resources/img/31c4.png" style="width: 600px; height: 250px; transform: translate(26%, 0%);">
+      </div>
+      
       <div class="sized-container">
-        <h1>x &nbsp; <input type="text" class="answer3" id="answer31"> &nbsp; y &nbsp; = &nbsp; 2 &nbsp; <input type="text" class="answer3" id="answer32"> </h1>
+        <h1> <input type="text" class="answer3" id="answer31"> </h1>
       </div>
     </li>
-    <li class="slide" data-tag="Step5">
+    
+     <li class="slide" data-tag="Step5">
+      
+      <div class="question-container"> 
+      <h1>빈칸에 알맞은 연산자를 입력해주세요.</h1>
+      <img alt="" src="../resources/img/31c5.png" style="width: 600px; height: 250px; transform: translate(26%, 0%);">
+      </div>
+      
       <div class="sized-container">
-        <h1>x &nbsp; <input type="text" class="answer4" id="answer41"> &nbsp; y &nbsp; = &nbsp; 1 &nbsp; <input type="text" class="answer4" id="answer42"> </h1>
+        <h1> <input type="text" class="answer4" id="answer41"> </h1>
       </div>
     </li>
+    
     <li class="slide" data-tag="Step6">
+      
+      <div class="question-container"> 
+      <h1>빈칸에 공통으로 들어갈 연산자를 입력해주세요.</h1>
+      <img alt="" src="../resources/img/31c6.png" style="width: 600px; height: 250px; transform: translate(26%, 0%);">
+      </div>
+      
       <div class="sized-container">
-        <h1>x &nbsp; + &nbsp; y &nbsp; <input type="text" class="answer5" id="answer51"> &nbsp; 7 &nbsp; <input type="text" class="answer5" id="answer52"> </h1>
+        <h1> <input type="text" class="answer5" id="answer51"> </h1>
       </div>
     </li>
-    <li class="slide" data-tag="Step7">
-      <div class="sized-container">
-        <h1>x &nbsp; * &nbsp; y &nbsp; <input type="text" class="answer6" id="answer61"> &nbsp; 20 &nbsp; <input type="text" class="answer6" id="answer62"> </h1>
+    
+     <li class="slide" data-tag="Step7">
+      
+      <div class="question-container"> 
+      <h1>빈칸에 공통으로 들어갈 연산자를 입력해주세요.</h1>
+      <img alt="" src="../resources/img/31c7.png" style="width: 600px; height: 250px; transform: translate(26%, 0%);">
       </div>
-   </li>
-       
+      
+      <div class="sized-container">
+        <h1> <input type="text" class="answer6" id="answer61"> </h1>
+      </div>
+    </li>
+    
+    <!--  </li>
+        <li class="slide" data-tag="Step9">
+      <div class="sized-container">
+        <h1>x &nbsp; <input type="text" class="answer8" id="answer81"> &nbsp; y &nbsp; = &nbsp; 1 &nbsp; <input type="text" class="answer8" id="answer82"> </h1>
+      </div> 
+    </li> -->
   </ul>
 </div>
 <div class="full-width-container">

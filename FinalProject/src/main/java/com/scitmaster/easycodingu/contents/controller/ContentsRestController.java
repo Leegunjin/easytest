@@ -64,6 +64,37 @@ public class ContentsRestController {
       return result;
    }
    
+  
+   @RequestMapping(value = "contents310", method = RequestMethod.POST)
+   public boolean Contents310(@RequestBody HashMap<String, Object> userAnswer) {
+      
+      boolean result = false;
+      
+      String c_num = "31" + (Integer) userAnswer.get("cNum");
+      logger.info(c_num);
+   
+      Contents contents31 = dao.selectContent(Integer.parseInt(c_num));
+      String answer = contents31.getC_answer();
+      String[] answerArr = answer.split("&");
+      
+      ArrayList<String> userAnswerArr = (ArrayList) userAnswer.get("answerArr");
+      
+     for(int i = 0; i < answerArr.length; i++) {
+         logger.info(answerArr[i]);
+         logger.info(userAnswerArr.get(i));
+         
+         if(answerArr[i].equals(userAnswerArr.get(i))) {
+            result = true;
+         } else {
+            result = false;
+            return result;
+         }
+      }
+
+      return result;
+   }
+   
+   
    @RequestMapping(value = "contents320", method = RequestMethod.POST)
    public boolean Contents320(@RequestBody HashMap<String, Object> userAnswer) {
       
