@@ -168,6 +168,17 @@ public class PersonViewController {
 
 		return "person/loginComplete";
 	}
+	
+	
+	/**
+	 * 유저 마이페이지로 이동
+	 */
+	@RequestMapping(value = "mypageUser", method = RequestMethod.GET)
+	public String mypageUser() {
+		logger.info("forgot START");
+		logger.info("forgot END");
+		return "person/mypageUser";
+	}
 
 	
 }

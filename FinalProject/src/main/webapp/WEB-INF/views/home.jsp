@@ -41,6 +41,8 @@
       function selectLevelPage() { location.href = "contents/contentsHome"; }
       function loginForm() { location.href = "person/loginForm"; }  
       function logout() { location.href = "person/logout"; } 
+      function mypageUser() { location.href = "person/mypageUser"; } 
+     
    </script>
 
 </head>  
@@ -89,7 +91,7 @@
 				<div class="buttonWrapper">
 					<div class="buttonContent">
 						<span class="button">
-						 <p> My Page </p>
+						 <p onclick="mypageUser();"> My Page </p>
 					 	</span>
 					</div>
 				</div>
