@@ -33,7 +33,7 @@ public class ContentsViewController {
    @RequestMapping(value = "contentsHome", method = RequestMethod.GET)
    public String contentsHome(Model model){
 	   logger.info("컨텐츠 홈 이동 시작");
-	   model.addAttribute("clearLevel", 77);
+	   model.addAttribute("clearLevel", 22);
 	   logger.info("컨텐츠 홈 이동 종료");
 	   return "contents/selectLevelPage";
    }

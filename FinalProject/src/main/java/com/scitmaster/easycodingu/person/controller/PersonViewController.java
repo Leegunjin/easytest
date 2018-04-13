@@ -96,6 +96,9 @@ public class PersonViewController {
 		if (person != null && person.getPassword().equals(password)) {
 			session.setAttribute("loginId", person.getId());
 			session.setAttribute("loginName", person.getName());
+			
+			/*값 넘어가나 보려고 잠시 Grade 컬럼 좀 빌려서 사용합니다 - g호*/
+			session.setAttribute("testUserLevel", person.getGrade()); 
 		}
 		logger.info("login END");
 		return "person/loginComplete";

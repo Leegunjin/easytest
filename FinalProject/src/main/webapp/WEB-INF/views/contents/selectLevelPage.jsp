@@ -14,6 +14,7 @@
            rel="stylesheet">
    <script src="http://code.jquery.com/jquery-3.2.1.js"></script>
    
+   
    <script type="text/javascript">
    $(function(){
 	      $('img').each(function(){
@@ -117,7 +118,14 @@
       function gohome() { location.href = "../../easycodingu/home"; }
       function loginForm() { location.href = "../person/loginForm"; }  
       function logout() { location.href = "../person/logout"; } 
-   </script>
+      function myPage() { location.href = "../person/mypageUser"; } 
+      
+      
+   // FireFox CodePen.io Fix
+      $('MypageButton').click(function(e){
+        e.preventDefault();
+      });
+      </script>
 
 </head>  
 
@@ -186,7 +194,7 @@
 		   	   		<div class="buttonWrapper">
 						<div class="buttonContent">
 							<span class="button">
-						 		<p> My Page </p>
+						 		<p onclick="myPage();"> My Page </p>
 					 		</span>
 						</div>
 					</div>
@@ -243,123 +251,164 @@
          
          	<div class="leftContentsList">
          	
-         	<div id="trophy" class="trophyWapper">
-            
-            
-           <div class="trophyNQ">
-            
-	            <div class="trophyNqText">
-	            <img alt="icon1" src="../resources/img/icon1.png" id="11">  
-	            <p> Level 11 </p>
-	            </div>
-	            
-	            <div class="trophyNqText">
-	            <img alt="icon2" src="../resources/img/icon2.png" id="12"> 
-	           	<p> Level 12 </p>
-	            </div>
-            
-            </div>
-            
-            <div class="trophyNQ">
-	            
-	            <div class="trophyNqText">
-	            <img alt="icon3" src="../resources/img/icon3.png" id="21">   
-	            <p> Level 21 </p>
-	            </div>
-	            
-	            <div class="trophyNqText">
-	            <img alt="icon4" src="../resources/img/icon4.png" id="22">
-	           	<p> Level 22 </p>
-	            </div>
-	            
-            </div>
-            
-            <div class="trophyNQ">
-            
-            	<div class="trophyNqText">
-	            <img alt="icon5" src="../resources/img/icon5.png" id="31">   
-	            <p> Level 31 </p>
-	            </div>
-	            
-	            <div class="trophyNqText">
-	            <img alt="icon6" src="../resources/img/icon6.png" id="32">
-	           	<p> Level 32 </p>
-	            </div>
+         	<span style="background-image: url('../resources/img/1111.png');">
+         	
+         	<ul>
+				
+				<div class="trophyNqText11">
+					<li>
+						<i> 
+							<img alt="icon1" src="../resources/img/icon1.png" 
+								 class="icon1" id="11" aria-hidden="true">   
+						</i> 
+					 	<p> Level 11 </p>
+					</li>  
+				</div>
+				
+				<div class="trophyNqText12">
+					<li>
+						<i> 
+							<img alt="icon2" src="../resources/img/icon2.png" 
+								 class="icon2" id="12" aria-hidden="true">   
+						</i> 
+						<p> Level 12 </p>
+					</li> 
+				</div> 
+				
+				<div class="trophyNqText21">
+					<li>
+						<i> 
+							<img alt="icon3" src="../resources/img/icon3.png" 
+							     class="icon3" id="21" aria-hidden="true">   
+						</i> 
+						<p> Level 21 </p>
+					</li>  
+				</div>
+				
+	            <div class="trophyNqText22">
+		        	<li>
+						<i> 
+							<img alt="icon4" src="../resources/img/icon4.png" 
+							     class="icon4" id="22" aria-hidden="true">   
+						</i> 
+						<p> Level 22 </p>
+					</li>  
+				</div>
+		
+				<div class="trophyNqText31">
+					<li>
+						<i> 
+							<img alt="icon5" src="../resources/img/icon5.png" 
+								 class="icon5" id="31" aria-hidden="true">   
+						</i> 
+						<p> Level 31 </p>
+					</li> 
+				</div>
+				
+				<div class="trophyNqText32">
+					<li>
+						<i> 
+							<img alt="icon6" src="../resources/img/icon6.png" 
+								 class="icon6" id="32" aria-hidden="true">   
+						</i> 
+						<p> Level 32 </p>
+					</li>  
+         		</div>
+         		
+         		<div class="trophyYqText71">
+					<li>
+						<i> 
+							 <img alt="icon12" src="../resources/img/icon12.png" 
+							 class="trophy3" id="71" aria-hidden="true">  
+						</i> 
+						<p> Trophy Quiz 1 </p>
+					</li>
+				</div>
+				
+				<div class="trophyNqText41">
+					<li>
+						<i> 
+							<img alt="icon7" src="../resources/img/icon7.png" 
+								 class="icon7" id="41" aria-hidden="true">   
+						</i> 
+						<p> Level 41 </p>
+					</li>  
+         		</div>	
+         		
+         		<div class="trophyNqText42">
+					<li>
+						<i> 
+							<img alt="icon8" src="../resources/img/icon8.png" 
+								 class="icon8" id="42" aria-hidden="true">   
+						</i> 
+						<p> Level 42 </p>
+					</li>  
+         		</div>
+         		
+         		<div class="trophyNqText51">
+					<li>
+						<i> 
+							<img alt="icon9" src="../resources/img/icon9.png" 
+								 class="icon9" id="51" aria-hidden="true">   
+						</i> 
+						<p> Level 51 </p>
+					</li>  
+         		</div>
+         		
+         		<div class="trophyNqText52">
+					<li>
+						<i> 
+							<img alt="icon10" src="../resources/img/icon10.png" 
+								 class="icon10" id="52" aria-hidden="true">   
+						</i> 
+						<p> Level 52 </p>
+					</li>  
+         		</div>
+         		
+         		<div class="trophyYqText72">
+					<li>
+						<i> 
+							 <img alt="icon12" src="../resources/img/icon12.png" 
+							 class="trophy3" id="72" aria-hidden="true">  
+						</i> 
+						<p> Trophy Quiz 2 </p>
+					</li>
+				</div>	
+				
+				<div class="trophyNqText61">
+					<li>
+						<i> 
+							<img alt="icon11" src="../resources/img/icon11.png" 
+								 class="icon11" id="61" aria-hidden="true">   
+						</i> 
+						<p> Level 61 </p>
+					</li>  
+         		</div>	
+         		
+         		<div class="trophyNqText62">
+					<li>
+						<i> 
+							<img alt="icon1" src="../resources/img/icon1.png" 
+								 class="icon1" id="62" aria-hidden="true">   
+						</i> 
+						<p> Level 62 </p>
+					</li>  
+         		</div>		
+         		
+         		<div class="trophyYqText73">
+					<li>
+						<i> 
+							 <img alt="icon12" src="../resources/img/icon12.png" 
+							 class="trophy3" id="73" aria-hidden="true">  
+						</i> 
+						<p> Trophy Quiz 3 </p>
+					</li>
+				</div>	
 
-            </div>
-           
-            <div class="trophyYQ"> 
-            
-            	<div class="trophyYqText">
-	            <img alt="icon12" src="../resources/img/icon12.png" id="71" class="trophy3">  
-	            <p> Trophy Quiz 1 </p>
-	            </div>
-            
-            </div>
-           
-			<div class="trophyNQ">            
-            
-            	<div class="trophyNqText">
-	            <img alt="icon7" src="../resources/img/icon7.png" id="41">   
-	            <p> Level 41 </p>
-	            </div>
-	            
-	            <div class="trophyNqText">
-	            <img alt="icon8" src="../resources/img/icon8.png" id="42">
-	           	<p> Level 42 </p>
-	            </div>
-            
-            </div>
-           
-            <div class="trophyNQ">
-            
-            	<div class="trophyNqText">
-	            <img alt="icon9" src="../resources/img/icon9.png" id="51">   
-	            <p> Level 51 </p>
-	            </div>
-	            
-	            <div class="trophyNqText">
-	            <img alt="icon10" src="../resources/img/icon10.png" id="52"> 
-	           	<p> Level 52 </p>
-	            </div>
-            
-            </div>
-           
-            <div class="trophyYQ">
-            
-            	<div class="trophyYqText">
-	            <img alt="icon12" src="../resources/img/icon12.png" id="72" class="trophy3">   
-	            <p> Trophy Quiz 2 </p>
-	            </div>
-            
-            </div>
-          
-			<div class="trophyNQ">            
-            
-            	<div class="trophyNqText">
-	            <img alt="icon11" src="../resources/img/icon11.png" id="61">   
-	            <p> Level 61 </p>
-	            </div>
-	            
-	            <div class="trophyNqText">
-	            <img alt="icon1" src="../resources/img/icon1.png" id="62"> 
-	           	<p> Level 62 </p>
-	            </div>
-             
-            </div>
-           
-            <div class="trophyYQ">
-            
-            	<div class="trophyYqText">
-	            <img alt="icon12" src="../resources/img/icon12.png" id="73" class="trophy3">    
-	            <p> Trophy Quiz 3 </p>
-	            </div>
-            
-            </div>
-            
-            
-         </div>
-       </div>
+         	
+         	</ul>
+         	
+       </div> <!-- leftContentsList 끝 -->
      </div> <!--  box1 끝 -->
          
      
@@ -371,17 +420,24 @@
      	<div class="rightYourLevel">
       		
       		<p> 
-      			<a> ${sessionScope.loginName } </a> 
-      			<span>님의 레벨은</span>   
+      			<a> Level </a> 
+      			<span> ${sessionScope.testUserLevel} </span>   
       		</p> 
       	
-      		<!-- 레벨 바가 표시되는 영역 -->	
-      		<div class="rightLevelBar">
+      	</div>
+      	
+      	
+      	<!-- 진도율을 보여주는 영역 -->
+      	<div class="rightYourLProgress">
+      		<p> 
+      			<a>  </a> 
+      			<span>Progress</span>   
+      		</p> 
       		
-	      		<div class="perspective">
+      		<div class="perspective">
 				 
 				  <!-- 실제로 바를 숫자값에 맞게 이동시키려면 aria-valuenow 값을 조정하면 된다 -->
-				  <div class="bar cyan" role="progressbar" aria-valuenow="32" 
+				  <div class="bar cyan" role="progressbar" aria-valuenow="${sessionScope.testUserLevel *10 }" 
 				  	   aria-valuemin="0" aria-valuemax="100">
 				    <div class="bar-face roof percentage"></div>
 				    <div class="bar-face back percentage"></div>
@@ -391,26 +447,24 @@
 				    <div class="bar-face front percentage"> 
 				    
 				    <!-- 여기에 숫자를 입력하면 바 앞에 표시가 된다 -->
-				    <div class="LevelPercentage">32</div> 
+				    <div class="LevelPercentage">${sessionScope.testUserLevel * 10}%</div> 
 				    
 				    </div>
 				  </div>
 				</div>
-			</div> 	
-      	</div> <!-- 레벨 표시되는 영역 -->
-      	
-      	
-      	<!-- 진도율을 보여주는 영역 -->
-      	<div class="rightYourLProgress">
-      		<p> 
-      			<a> ${sessionScope.loginName } </a> 
-      			<span>님의 진도율은</span>   
-      		</p> 
       	
       	
       	
       	
       	</div> <!-- 진도율을 보여주는 영역 끝 -->
+      	
+      	
+      	<!-- 마이페이지로 보내주는 영역 -->
+      	<div class="rightGoMypage">
+      	
+      	<a href="#" class="MypageButton" onclick="myPage();"> <span> My Page</span> </a>
+      	
+      	</div> <!-- 마이페이지로 보내주는 영역 끝 -->
       
       
       </div> <!-- box2 끝 -->

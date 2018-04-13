@@ -31,7 +31,7 @@
 	           
 	      function loginForm() { location.href = "../person/loginForm"; } 
 	      function logout() { location.href = "../person/logout"; } 
-	      function goHome() { location.href = "../home"; } 
+	      function goHome() { location.href = "/easycodingu/home"; } 
 	
    </script>
 
@@ -44,7 +44,7 @@
       <body style="overflow-y:hidden">
       
 	      <nav>
-	      	<div class="logo"> My Page </div>   
+	      	<div class="logo"> My Page </div>    
 	        
 	        <ul>
 	           	<li class="anitamedButton"> 
