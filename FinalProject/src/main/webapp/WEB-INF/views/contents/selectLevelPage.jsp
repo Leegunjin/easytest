@@ -19,6 +19,7 @@
    $(function(){
 	      $('img').each(function(){
 	         $(this).addClass('notClear');
+
 	         var thisLevel = $(this).attr('id');
 	         //클리어 했으면
 	         if(thisLevel < ${clearLevel}){ 
@@ -166,6 +167,7 @@
      	  <!-- 좌측 컨텐츠들을 감싸고 있는 영역 -->       
      	  <div class="box1Logout"> 
      	  	<h1> 문제를 풀고 싶으면 로그인을 하여라. </h1> 
+     	  	
      	  </div>
 
       </c:if> <!-- 로그아웃 상황 끝 -->

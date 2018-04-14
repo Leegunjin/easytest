@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page import="java.util.*, java.text.*"  %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,7 +9,7 @@
    
    <title>My page</title>
    
-   <link rel="stylesheet" type="text/css" href="../resources/css/styleContentsMain.css">
+   <link rel="stylesheet" type="text/css" href="../resources/css/styleMyPage.css">
    <link rel="stylesheet" type="text/css" href="../resources/css/styleDropdown.css">
    <link href="http://fonts.googleapis.com/css?family=Quicksand:500" 
            rel="stylesheet">
@@ -29,10 +30,21 @@
       });
 
 	           
-	      function loginForm() { location.href = "../person/loginForm"; } 
-	      function logout() { location.href = "../person/logout"; } 
-	      function goHome() { location.href = "/easycodingu/home"; } 
+	      function logout() { location.href = "logout"; } 
+	      function gohome() { location.href = "../home"; } 
+	      
+	      
 	
+	      
+	      
+	   // Stop annoying page refresh!
+	      var submit = document.querySelector('#btn-submit'),
+	          form = document.querySelector('#form');
+
+	      submit.addEventListener('click', function (e) {
+	      	e.preventDefault();
+	      	form.reset();
+	      }, false);
    </script>
 
 </head>  
@@ -47,15 +59,6 @@
 	      	<div class="logo"> My Page </div>    
 	        
 	        <ul>
-	           	<li class="anitamedButton"> 
-					<div class="buttonWrapper">
-						<div class="buttonContent">
-							<span class="button">
-							 <p onclick="loginForm();"> Login </p>
-						 	</span>
-						</div>
-					</div>
-	          	 </li>
 	            
 	            <li class="anitamedButton"> 
 					<div class="buttonWrapper">
@@ -84,7 +87,7 @@
       <c:if test="${sessionScope.loginId != null }">
       
       	<nav>
-	    	<div class="logo"> Contents </div>   
+	    	<div class="logo"> My Page </div>   
       
             <ul>
 	        	<li> 
@@ -97,7 +100,6 @@
               </p> 
               </div>
            </li>
-            
 	                      
 	           <li class="anitamedButton"> 
 					<div class="buttonWrapper">
@@ -148,10 +150,110 @@
          <!-- 반으로 나눴을  때 왼쪽을 감싸는 영역 -->
          <div class="box1"> 
          
-         	<div class="leftContentsList">
-         	
-         	
-       		</div>
+         	<div class="container">
+
+  <section class="up"></section>
+
+  <div class="left">
+
+    <section class="cam"></section>
+
+    <div class="top">
+
+      <ul>
+        <li>
+		<%
+		 java.text.SimpleDateFormat formatter = new java.text.SimpleDateFormat("HH:mm");
+		 String today = formatter.format(new java.util.Date());
+		
+		 out.println(today);
+		%>
+        <li>
+        
+          <span><i class="fas fa-signal"></i></span>
+          <span><i class="fas fa-wifi"></i></span>
+          <span><i class="fas fa-battery-three-quarters"></i>
+</span>
+        </li>
+      </ul>
+
+    </div>
+
+    <div class="profile-info">
+
+      <section class="dots"><i class="fas fa-ellipsis-v"></i></section>
+
+      <ul>
+        <li><img src="../resources/img/hs1.png" /></li>
+        <li>
+          <h2> ${sessionScope.loginName }</h2>
+        </li>
+        <li> </li>
+        <li>${sessionScope.loginId }</li>
+        <li>Level &ensp;|&ensp; ${sessionScope.testUserLevel}</li>
+        <li>
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fas fa-globe"></i></a>
+        </li>
+      </ul>
+
+    </div>
+
+    <div class="numbers">
+
+      <ul>
+        <li><span>30</span>posts</li>
+        <li><span>4</span>collections</li>
+        <li><span>1.2k</span>votes</li>
+      </ul>
+
+    </div>
+
+    <div class="posts">
+
+      <section class="dots"><i class="fas fa-ellipsis-v"></i></section>
+
+      <div class="one">
+        <p>#PROGRAMMING #CODE</p>
+        <p>Don't copy paste code. Type it out yourself.</p>
+      </div>
+
+      <div class="two">
+        <ul>
+          <li><img class="image" src="https://goo.gl/BAE7JV" /></li>
+          <li>
+            <span>Amanda Baker</span>
+            <span>Jan 22, 2018.</span>
+            <span>&ensp;10h ago.</span>
+          </li>
+        </ul>
+        <ul>
+          <li><i class="fas fa-heart"></i> 23k</li>
+          <li><i class="fas fa-comment"></i> 117</li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="bottom">
+      <ul>
+        <li><i class="fas fa-home"></i></li>
+        <li><i class="fas fa-search"></i></li>
+        <li><i class="fas fa-user"></i></li>
+        <li><i class="fas fa-ellipsis-h"></i></li>
+      </ul>
+    </div>
+
+  </div>
+
+  <!-------------------- -->
+  <!-------------------- -->
+  <!-------------------- -->
+
+ 
+
+</div>
      	</div> <!--  box1 끝 -->
          
          
@@ -163,7 +265,7 @@
       		
       		<p> 
       			<a> ${sessionScope.loginName } </a> 
-      			<span>님의 레벨은</span>   
+      			<span>레벨</span>   
       		</p> 
       	
       		<!-- 레벨 바가 표시되는 영역 -->	
@@ -195,7 +297,7 @@
       	<div class="rightYourLProgress">
       		<p> 
       			<a> ${sessionScope.loginName } </a> 
-      			<span>님의 진도율은</span>   
+      			<span>진도율</span>   
       		</p> 
       	
       	
