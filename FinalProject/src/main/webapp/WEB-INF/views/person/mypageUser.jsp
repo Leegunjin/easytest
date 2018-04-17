@@ -15,6 +15,24 @@
            rel="stylesheet">
    <script src="http://code.jquery.com/jquery-3.2.1.js"></script>
    
+   
+   <script src="https://smtpjs.com/smtp.js"></script>
+
+   
+   
+   <script type="text/javascript">
+  
+   $(function() {
+   	   $('.btn').click(function() {
+   	     $(this).toggleClass('active');
+   	     return $('.box').toggleClass('open');
+   	   });
+
+   	 }).call(this);
+   
+	</script>
+
+   
    <script type="text/javascript">
   
    $(function() 
@@ -80,6 +98,9 @@
 	      	e.preventDefault();
 	      	form.reset();
 	      }, false);
+	      
+	      
+	      
 	      
 	      
 	      
@@ -225,7 +246,26 @@
       <section class="dots"><i class="fas fa-ellipsis-v"></i></section>
 
       <ul>
-        <li><img src="../resources/img/hs1.png" /></li>
+        <li>
+        
+       <div class="profile">
+  <div class="content">
+    <div class="btn"><span></span></div>
+  </div>
+  <div class="box">
+  
+  <i class="fa fa-codepen"></i>
+  <i class="fa fa-facebook"></i>
+  <i class="fa fa-github"></i>
+  <i class="fa fa-tumblr"></i>
+  <i class="fa fa-twitter"></i>
+  
+  </div>
+</div>
+        
+        
+        
+        </li>
         <li>
           <h2> ${sessionScope.loginName }</h2>
         </li>
