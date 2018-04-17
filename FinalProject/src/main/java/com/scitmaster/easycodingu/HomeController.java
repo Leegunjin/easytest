@@ -33,7 +33,7 @@ public class HomeController {
       
       model.addAttribute("serverTime", formattedDate );
       
-      return "intro";
+      return "intro"; 
    }
    
    // 180331 인트로에서 홈으로 이동 합니다 (주 지호)

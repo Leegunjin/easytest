@@ -504,10 +504,10 @@ h1 {
 /* 레벨이 표시되는 영역 */
 .rightYourLevel {
 	width: 70%;
-	height: 12vh;
+	height: 35vh;
 	border-radius: 10px;
 	background-color: white;
-	transform: translate(5%, 130%); 
+	transform: translate(5%, 60%); 
 	font-size: 30px;
 	font-weight: bold;
 	
@@ -523,7 +523,7 @@ h1 {
   perspective: 12em;
   perspective-origin: 50% 50%;
   text-align: center;
-  transform: translate(0%, -43%);
+  transform: translate(0%, 23%);
 }
 
 .bar {
@@ -713,7 +713,7 @@ h1 {
 	height: 28vh;
 	border-radius: 10px;
 	background-color: white;
-	transform: translate(5%, 50%); 
+	transform: translate(5%, 100%); 
 	font-size: 30px;
 	font-weight: bold;
 }

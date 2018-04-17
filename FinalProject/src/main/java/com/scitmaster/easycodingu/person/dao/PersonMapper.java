@@ -53,6 +53,14 @@ public interface PersonMapper {
        * @param person
        * */
       public int updatePw(Person person);
+      
+      
+      /**
+       * updateUser
+       * 마이페이지 개인정보 수정
+       * @param person
+       * */
+      public int updateUser(Person person);
    
    
 }

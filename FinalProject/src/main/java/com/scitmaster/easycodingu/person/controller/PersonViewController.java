@@ -15,12 +15,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.bind.support.SessionStatus;
+
 
 import com.scitmaster.easycodingu.person.dao.PersonDAO;
 import com.scitmaster.easycodingu.person.vo.Person;
 
 @Controller
 @RequestMapping(value = "person")
+@SessionAttributes("person")
 public class PersonViewController {
 
 	@Autowired
@@ -70,12 +74,12 @@ public class PersonViewController {
 	/**
 	 * loginForm 로그인 폼으로 이동
 	 */
-	@RequestMapping(value = "loginForm", method = RequestMethod.GET)
+	/*@RequestMapping(value = "loginForm", method = RequestMethod.GET)
 	public String loginForm() {
 		logger.info("로그인 페이지 이동시작");
 		logger.info("로그인 페이지 이동시작");
 		return "person/loginForm";
-	}
+	}*/
 
 	/**
 	 * login
@@ -88,33 +92,36 @@ public class PersonViewController {
 	 *            세션에 ID를 setAttribute하기 위한 HttpSession
 	 * @return redirect:../ home.jsp로 돌아간다
 	 */
-	@RequestMapping(value = "login", method = RequestMethod.POST)
-	public String login(String id, String password, HttpSession session) {
+	/*@RequestMapping(value = "login", method = RequestMethod.POST)
+	public String login(Person person, HttpSession session, Model model) {
 		logger.info("login START");
-		Person person = dao.selectPerson(id);
-		System.out.println(person);
-		if (person != null && person.getPassword().equals(password)) {
-			session.setAttribute("loginId", person.getId());
-			session.setAttribute("loginName", person.getName());
-			
-			/*값 넘어가나 보려고 잠시 Grade 컬럼 좀 빌려서 사용합니다 - g호*/
-			session.setAttribute("testUserLevel", person.getGrade()); 
+		Person vo = dao.selectPerson(person.getId());
+		
+		
+		if(vo != null && vo.getPassword().equals(person.getPassword()))
+		{
+			session.setAttribute("loginId", vo.getId());
+			session.setAttribute("loginName", vo.getName());
 		}
+		
+			값 넘어가나 보려고 잠시 Grade 컬럼 좀 빌려서 사용합니다 - g호
+			session.setAttribute("testUserLevel", person.getGrade()); 
+		
 		logger.info("login END");
 		return "person/loginComplete";
-	}
+	}*/
 
-	@RequestMapping(value = "logoutComplete", method = RequestMethod.GET)
+	/*@RequestMapping(value = "logoutComplete", method = RequestMethod.GET)
 	public String logoutComplete(HttpSession session) {
 		session.removeAttribute("loginName");
 		return "/home";
-	}
+	}*/
 
-	@RequestMapping(value = "logout", method = RequestMethod.GET)
+	/*@RequestMapping(value = "logout", method = RequestMethod.GET)
 	public String logout(HttpSession session) {
 		session.removeAttribute("loginId");
 		return "person/logoutComplete";
-	}
+	}*/
 
 	/**
 	 * forgot 로그인 페이지에서 ID, PW 찾기 링크를 클릭시 forgotForm으로 이동
@@ -177,11 +184,54 @@ public class PersonViewController {
 	 * 유저 마이페이지로 이동
 	 */
 	@RequestMapping(value = "mypageUser", method = RequestMethod.GET)
-	public String mypageUser() {
+	public String mypageUser(HttpSession session , Model model) {
 		logger.info("forgot START");
+		
+		String loginId = (String)session.getAttribute("loginId");
+		
+		Person person = dao.selectPerson(loginId);
+		model.addAttribute("person", person);
+		
 		logger.info("forgot END");
 		return "person/mypageUser";
 	}
+	
+	/**
+	 * 개인 정보 수정
+	 */
+	@RequestMapping(value="modify", method=RequestMethod.POST)
+	public String modify(SessionStatus status , @ModelAttribute("person") Person person, 
+			HttpSession session , Model model){
+		 
+		System.out.println("화면에서 넘겨준 펄슨" + person);
+		
+		int result = dao.updateUser(person);
+		
+		
+		if(result != 1)
+		{
+			model.addAttribute("errorMsg", "개인정보수정 실패");
+			
+			logger.info("【UserController : return】〓▶▶ 【user/modifyForm】(정보수정 실패)" + "\n");
+			return "person/mypageUser";
+		}
+		
+		session.setAttribute("loginName", person.getName());
+		session.setAttribute("loginPassword", person.getPassword());
+		
+		model.addAttribute("loginName", person.getName());
+		model.addAttribute("loginPassword", person.getPassword());
+		
+		System.out.println("모델" + model);
+		System.out.println("세션" + session);
+		
+		status.setComplete();
+		
+		logger.info("【UserController : return】〓▶▶ 【redirect:/】(정보수정 성공)" + "\n");
+		return "redirect:/home";
+		
+	}
+		
 
 	
 }

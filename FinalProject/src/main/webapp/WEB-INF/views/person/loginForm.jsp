@@ -23,6 +23,9 @@
       location.href = 'googleUser?email=' + email + '&name=' + name + '&id=' + id;
      }
 
+   
+   <c:if test="${errorMsg != null }">alert('${errorMsg }');</c:if>
+  
    </script>
    
 </head>

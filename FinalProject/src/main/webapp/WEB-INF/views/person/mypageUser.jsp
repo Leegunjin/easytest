@@ -17,6 +17,41 @@
    
    <script type="text/javascript">
   
+   $(function() 
+	 {
+	  
+	  $('#modifyCheck').submit(function() {
+		var name = $('#name').val();
+		var name2 = $('#name2').val();
+		var password = $('#password').val();
+		var password2 = $('#password2').val();
+		
+		
+		if(name == "") { 
+			alert('오류 : id칸에 공백이 있습니다.'); 
+			name.focus(); return false; 
+		}   
+		
+		if(name == name2) { 
+			alert('오류 : 같은 id는 입력 할 수 없습니다.'); 
+			return false; 
+		}                                                                                                           
+		
+		
+		if(password == "") {
+			alert('오류 : 비밀번호칸에 공백이 있습니다.'); 
+			return false; 
+		}
+		
+		if(password != password2) {
+			alert('오류 : 같은 비밀번호를 입력해주세요.'); 
+			return false; 
+		}
+		
+	  });
+	  return true;
+	  
+	 });	 
 
 	   
 	   /* 내비 바 관련 스크립트 */
@@ -45,6 +80,12 @@
 	      	e.preventDefault();
 	      	form.reset();
 	      }, false);
+	      
+	      
+	      
+	       
+	      
+	      
    </script>
 
 </head>  
@@ -214,25 +255,15 @@
 
       <section class="dots"><i class="fas fa-ellipsis-v"></i></section>
 
-      <div class="one">
-        <p>#PROGRAMMING #CODE</p>
-        <p>Don't copy paste code. Type it out yourself.</p>
-      </div>
-
-      <div class="two">
-        <ul>
-          <li><img class="image" src="https://goo.gl/BAE7JV" /></li>
-          <li>
-            <span>Amanda Baker</span>
-            <span>Jan 22, 2018.</span>
-            <span>&ensp;10h ago.</span>
-          </li>
-        </ul>
-        <ul>
-          <li><i class="fas fa-heart"></i> 23k</li>
-          <li><i class="fas fa-comment"></i> 117</li>
-        </ul>
-      </div>
+		<form action="modify" method="post" id="modifyCheck"> 
+		회원정보수정
+		
+		<input type="hidden" id="name2" name="name2" value="${sessionScope.loginName }">
+		<input type="text" id="name" name="name" value="${sessionScope.loginName }">
+		<input type="password" id="password" name="password" value="${person.password }">
+		<input type="password" id="password2" placeholder="비밀번호 재입력">
+		<br> <input type="submit" value="정보수정">
+		</form>
 
     </div>
 
@@ -264,7 +295,7 @@
      	<div class="rightYourLevel">
       		
       		<p> 
-      			<a> ${sessionScope.loginName } </a> 
+      			<%-- <a> ${sessionScope.loginName } </a>  --%>
       			<span>레벨</span>   
       		</p> 
       	
@@ -274,7 +305,7 @@
 	      		<div class="perspective">
 				 
 				  <!-- 실제로 바를 숫자값에 맞게 이동시키려면 aria-valuenow 값을 조정하면 된다 -->
-				  <div class="bar cyan" role="progressbar" aria-valuenow="32" 
+				  <div class="bar cyan" role="progressbar" aria-valuenow="${sessionScope.testUserLevel}" 
 				  	   aria-valuemin="0" aria-valuemax="100">
 				    <div class="bar-face roof percentage"></div>
 				    <div class="bar-face back percentage"></div>
@@ -284,7 +315,7 @@
 				    <div class="bar-face front percentage"> 
 				    
 				    <!-- 여기에 숫자를 입력하면 바 앞에 표시가 된다 -->
-				    <div class="LevelPercentage">32</div> 
+				    <div class="LevelPercentage">${sessionScope.testUserLevel}</div> 
 				    
 				    </div>
 				  </div>
@@ -296,8 +327,13 @@
       	<!-- 진도율을 보여주는 영역 -->
       	<div class="rightYourLProgress">
       		<p> 
-      			<a> ${sessionScope.loginName } </a> 
-      			<span>진도율</span>   
+      			<a> 진도율  </a>
+      			<span> ${sessionScope.testUserLevel * 10}% </span>   
+      		</p> 
+      		
+      		<p> 
+      			<a> 수강일  </a>
+      			<span> ${sessionScope.testDate} </span>   
       		</p> 
       	
       	
