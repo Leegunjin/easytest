@@ -387,11 +387,11 @@
   <input type="hidden" id="red" name="profile_Image" value="red">
   </i>
   
-  <i class="fa fa-github">
+  <!-- <i class="fa fa-github">
    <input type="hidden" id="blue" name="profile_Image" value="blue">
   </i>
   <i class="fa fa-tumblr"></i>
-  <i class="fa fa-twitter"></i>
+  <i class="fa fa-twitter"></i> -->
   
   </div>
   
@@ -429,15 +429,48 @@
 
       <section class="dots"><i class="fas fa-ellipsis-v"></i></section>
 
-		<form action="modify" method="post" id="modifyCheck"> 
-		회원정보수정
+	
 		
-		<input type="hidden" id="name2" name="name2" value="${sessionScope.loginName }">
-		<input type="text" id="name" name="name" value="${sessionScope.loginName }">
-		<input type="password" id="password" name="password" value="${person.password }">
-		<input type="password" id="password2" placeholder="비밀번호 재입력">
-		<br> <input type="submit" value="정보수정">
-		</form>
+		
+		<div class="wrapper">
+
+	<div class="form8">
+
+		<div class="stripes">
+			<div class="stripe stripe1"></div>
+			<div class="stripe stripe2"></div>
+			<div class="stripe stripe3"></div>
+			<div class="stripe stripe4"></div>
+			<div class="stripe stripe5"></div>
+			<div class="stripe stripe6"></div>
+			<div class="stripe stripe7"></div>
+		</div>
+		
+		<div class="form8__log">
+			<span class="form8__text">
+				<span>Modify</span> My Info
+			</span>
+			<form action="modify" method="post" id="modifyCheck"> 
+				<input type="hidden" id="name2" name="name2" value="${sessionScope.loginName }">
+				<input type="text" id="name" name="name" value="${sessionScope.loginName }">
+				<input type="password" id="password" name="password" value="${person.password }">
+				<input type="password" id="password2" placeholder="비밀번호 재입력">
+				<input type="submit" class="form8__btn" value="Submit">
+			</form>
+		</div>
+
+
+	</div>
+	
+</div>
+		
+		
+		
+		
+		
+		
+		
+		
 
     </div>
 
