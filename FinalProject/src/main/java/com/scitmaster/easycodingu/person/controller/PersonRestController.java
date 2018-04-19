@@ -12,10 +12,13 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.support.SessionStatus;
 
 import com.scitmaster.easycodingu.person.controller.PersonViewController;
 import com.scitmaster.easycodingu.person.dao.PersonDAO;
@@ -145,5 +148,42 @@ public class PersonRestController {
          return false;
       }
    }
+   
+   
+   
+   /**
+	 * 개인 정보 수정
+	 */
+    @ResponseBody
+	@RequestMapping(value="modifyImage", method=RequestMethod.POST)
+	public String modify(SessionStatus status , @RequestBody @ModelAttribute("person") Person person, 
+			HttpSession session , Model model){
+		 
+		System.out.println("화면에서 넘겨준 펄슨" + person.getProfile_Image());
+		
+		int result = dao.updateProfile(person);
+		System.out.println("화면에서 넘겨준 리절트" + result);
+		
+		if(result != 1)
+		{
+			model.addAttribute("errorMsg", "개인정보수정 실패");
+			
+			logger.info("【UserController : return】〓▶▶ 【user/modifyForm】(정보수정 실패)" + "\n");
+			return "fail";
+		}
+		
+		session.setAttribute("profileImage", person.getProfile_Image());
+		
+		model.addAttribute("profileImage", person.getProfile_Image());
+		
+		System.out.println("모델" + model);
+		System.out.println("세션" + session);
+		
+		status.setComplete();
+		
+		logger.info("【UserController : return】〓▶▶ 【redirect:/】(정보수정 성공)" + "\n");
+		return "ok";
+		
+	}
    
 }

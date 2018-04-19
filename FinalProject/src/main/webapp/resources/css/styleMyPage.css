@@ -1267,7 +1267,6 @@ span:first-of-type {
   transform: translate(-50%, -50%);
   box-shadow: 0 0 2rem #babbbc;
   animation: show-profile 0.5s forwards ease-in-out;
-  background-image: url("../../resources/img/hs1.png");
   background-size: cover;
   background-position: center;
 }

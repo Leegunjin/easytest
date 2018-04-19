@@ -19,6 +19,107 @@
    <script src="https://smtpjs.com/smtp.js"></script>
 
    
+   <script type="text/javascript">
+
+   $(function() {
+ 	 
+ 		 var profile = $('.testImage').val();
+ 		 var select1 = $('#aqua').val();
+ 		 var select2 = $('#red').val();
+ 		 var select3 = $('#blue').val();
+ 		 
+ 		 alert(profile);
+ 		 if(profile == "blank") {
+ 			 $('#image').css('background','black');
+ 		 }
+ 		 
+ 		 if(profile == "red") {
+ 			 $('#image').css('background','red');
+ 		 }
+ 		 
+ 		if(profile == "green") {
+			 $('#image').css('background','green');
+		 }
+ 		
+ 		 $('.fa-codepen').click(function() {
+ 			 $('#image').css('background','aqua');
+ 	   	 	 alert(select1);
+ 	   	     
+ 	   	 	 
+ 	   	 	 $.ajax({
+				
+				url : "modifyImage",
+				type : "post",
+				data : {
+					profile_Image : select1
+				},
+				dataType : "text", // 서버로부터 받아오는 데이터의 타입 (보내는 타입 아님)
+				success : function(data) {
+					alert("섭어에서 전달받은 문자열 : " + data);
+					
+				},
+				error : function(e) {
+					/*여기서는 alert() 알럿으로 찍으면 객체 타입만 나옴 (오브젝트, 오브젝트 로 나옴)*/
+					alert(JSON.gtringify(e)); /* 이렇게 해야 에러내용을 볼 수 있어 */
+					
+				} 
+			});
+ 	   	 	 
+ 	   	     
+ 	   	     return true; 
+ 		 });
+ 		 
+ 		$('.fa-facebook').click(function() {
+	   	     $('#image').css('background','red');
+	   	     alert(select2);
+	   	     
+	   	  $.ajax({
+				
+				url : "modifyImage",
+				type : "post",
+				data : {
+					profile_Image : select2
+				},
+				dataType : "text", // 서버로부터 받아오는 데이터의 타입 (보내는 타입 아님)
+				success : function(data) {
+					alert("섭어에서 전달받은 문자열 : " + data);
+					
+				},
+				error : function(e) {
+					/*여기서는 alert() 알럿으로 찍으면 객체 타입만 나옴 (오브젝트, 오브젝트 로 나옴)*/
+					alert(JSON.gtringify(e)); /* 이렇게 해야 에러내용을 볼 수 있어 */
+					
+				} 
+			});
+	   	     
+	   	     
+	   	     return true; 
+		 });
+ 		
+ 		$('.fa-github').click(function() {
+	   	     $('#image').css('background','blue');
+	   	  	 alert(select3);
+	   	     
+	   	     return true; 
+		 });
+ 		
+ 		$('.fa-tumblr').click(function() {
+	   	     $('#image').css('background','yellow');
+	   	 	 return true; 
+		 });
+ 		
+ 		$('.fa-twitter').click(function() {
+	   	     $('#image').css('background','green');
+	   	 	 return true; 
+		 });
+ 		
+ 	 
+  });
+   
+   
+   </script>
+   
+   
    
    <script type="text/javascript">
   
@@ -248,19 +349,52 @@
       <ul>
         <li>
         
+   <c:if test="${person.profile_Image == 'blank' }">
        <div class="profile">
-  <div class="content">
+  	<input type="hidden" id="blank" name="blank" class="testImage" value="${person.profile_Image}">
+  
+  <div class="content" id="image">
+    
     <div class="btn"><span></span></div>
+   
   </div>
+  </c:if>
+  
+  
+  <c:if test="${person.profile_Image == 'green' }">
+       <div class="profile">
+       <input type="hidden" id="green" name="green" class="testImage" value="${person.profile_Image}">
+  
+  
+  <div class="content" id="image">
+    
+    <div class="btn"><span></span></div>
+   
+  </div>
+  </c:if>
+  
+
+  
+  
+  
   <div class="box">
   
-  <i class="fa fa-codepen"></i>
-  <i class="fa fa-facebook"></i>
-  <i class="fa fa-github"></i>
+  <i class="fa fa-codepen">
+  <input type="hidden" id="aqua" name="profile_Image" value="aqua">
+  </i>
+  
+  <i class="fa fa-facebook">
+  <input type="hidden" id="red" name="profile_Image" value="red">
+  </i>
+  
+  <i class="fa fa-github">
+   <input type="hidden" id="blue" name="profile_Image" value="blue">
+  </i>
   <i class="fa fa-tumblr"></i>
   <i class="fa fa-twitter"></i>
   
   </div>
+  
 </div>
         
         

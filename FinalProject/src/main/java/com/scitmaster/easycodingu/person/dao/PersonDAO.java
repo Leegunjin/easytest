@@ -141,4 +141,25 @@ public class PersonDAO {
             return result;
          }
    
+         	
+         	 
+             /**
+              * 마이페이지 정보수정
+              * @param Person PersonRestController의 resetPw에서 select해 온 person정보 
+              * */
+             	public int updateProfile(Person person){
+                logger.info("updateProfile START");
+                int result = 0;
+                
+                PersonMapper mapper = sqlSession.getMapper(PersonMapper.class);
+                
+                try {
+                  result = mapper.updateProfile(person);
+                } catch (Exception e) {
+                   e.printStackTrace();
+                   
+                }
+                logger.info("updateUser END");
+                return result;
+             }	 
 }

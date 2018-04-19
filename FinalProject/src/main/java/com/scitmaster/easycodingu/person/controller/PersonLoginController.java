@@ -47,6 +47,7 @@ public class PersonLoginController {
 			session.setAttribute("loginName", vo.getName());
 			session.setAttribute("testUserLevel", vo.getGrade()); /*그레이드 컬럼 좀 빌립니다*/
 			session.setAttribute("testDate", vo.getDelete_Date()); /*델리트 데이트 좀 빌립니다*/
+			session.setAttribute("profileImage", vo.getProfile_Image()); /*델리트 데이트 좀 빌립니다*/
 		}
 		else
 		{ 
