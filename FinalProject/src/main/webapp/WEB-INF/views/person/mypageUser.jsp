@@ -30,21 +30,25 @@
  		 
  		 alert(profile);
  		 if(profile == "blank") {
- 			 $('#image').css('background','black');
+ 			$('#image').css('background','red');
+ 			
  		 }
- 		 
+
  		 if(profile == "red") {
  			 $('#image').css('background','red');
  		 }
  		 
- 		if(profile == "green") {
+ 		 if(profile == "green") {
 			 $('#image').css('background','green');
+		 }
+ 		 
+ 		 if(profile == "aqua") {
+			 $('#image').css('background','aqua');
 		 }
  		
  		 $('.fa-codepen').click(function() {
- 			 $('#image').css('background','aqua');
- 	   	 	 alert(select1);
- 	   	     
+  			$('#image').attr("src","../resources/img/profile1.jpg");
+  			 alert(select1);
  	   	 	 
  	   	 	 $.ajax({
 				
@@ -55,7 +59,9 @@
 				},
 				dataType : "text", // 서버로부터 받아오는 데이터의 타입 (보내는 타입 아님)
 				success : function(data) {
-					alert("섭어에서 전달받은 문자열 : " + data);
+					$('.content').attr("src","../resources/img/profile1.jpg");
+					$('.content').css("z-index","100");
+					 
 					
 				},
 				error : function(e) {
@@ -69,8 +75,9 @@
  	   	     return true; 
  		 });
  		 
+      
  		$('.fa-facebook').click(function() {
-	   	     $('#image').css('background','red');
+ 			$('#image').attr("src","../resources/img/profile2.png");
 	   	     alert(select2);
 	   	     
 	   	  $.ajax({
@@ -82,8 +89,9 @@
 				},
 				dataType : "text", // 서버로부터 받아오는 데이터의 타입 (보내는 타입 아님)
 				success : function(data) {
-					alert("섭어에서 전달받은 문자열 : " + data);
-					
+					$('.content').attr("src","../resources/img/profile2.png");
+					$('.content').css("z-index","100");
+					 
 				},
 				error : function(e) {
 					/*여기서는 alert() 알럿으로 찍으면 객체 타입만 나옴 (오브젝트, 오브젝트 로 나옴)*/
@@ -98,7 +106,6 @@
  		
  		$('.fa-github').click(function() {
 	   	     $('#image').css('background','blue');
-	   	  	 alert(select3);
 	   	     
 	   	     return true; 
 		 });
@@ -205,14 +212,14 @@
 	      
 	      
 	      
-	       
-	      
-	      
    </script>
 
 </head>  
 
 <body>
+
+
+<div class="test"></div>
      
       <!-- 로그아웃 상황 -->
       <c:if test="${sessionScope.loginId == null }">
@@ -313,11 +320,11 @@
          <!-- 반으로 나눴을  때 왼쪽을 감싸는 영역 -->
          <div class="box1"> 
          
-         	<div class="container">
+         	<div class="container" >
 
   <section class="up"></section>
 
-  <div class="left">
+  <div class="left" >
 
     <section class="cam"></section>
 
@@ -373,6 +380,30 @@
   </div>
   </c:if>
   
+  <c:if test="${person.profile_Image == 'red' }">
+       <div class="profile">
+       <input type="hidden" id="red" name="red" class="testImage" value="${person.profile_Image}">
+  
+  
+  <div class="content" id="image">
+   
+    <div class="btn"><span></span></div>
+   
+  </div>
+  </c:if>
+  
+    <c:if test="${person.profile_Image == 'aqua' }">
+       <div class="profile">
+       <input type="hidden" id="aqua" name="aqua" class="testImage" value="${person.profile_Image}">
+  
+  
+  <div class="content" id="image">
+  
+    <div class="btn"><span></span></div>
+   
+  </div>
+  </c:if>
+  
 
   
   
@@ -381,17 +412,23 @@
   
   <i class="fa fa-codepen">
   <input type="hidden" id="aqua" name="profile_Image" value="aqua">
+  
   </i>
   
   <i class="fa fa-facebook">
   <input type="hidden" id="red" name="profile_Image" value="red">
+  
   </i>
   
-  <!-- <i class="fa fa-github">
+  <i class="fa fa-github">
    <input type="hidden" id="blue" name="profile_Image" value="blue">
   </i>
-  <i class="fa fa-tumblr"></i>
-  <i class="fa fa-twitter"></i> -->
+  
+  <i class="fa fa-tumblr">
+    <input type="hidden" id="yellow" name="profile_Image" value="yellow">
+  </i>
+  
+ <!--  <i class="fa fa-twitter"></i> -->
   
   </div>
   
@@ -501,49 +538,16 @@
      	<!-- 레벨 표시되는 영역 -->
      	<div class="rightYourLevel">
       		
-      		<p> 
-      			<%-- <a> ${sessionScope.loginName } </a>  --%>
-      			<span>레벨</span>   
-      		</p> 
-      	
-      		<!-- 레벨 바가 표시되는 영역 -->	
-      		<div class="rightLevelBar">
       		
-	      		<div class="perspective">
-				 
-				  <!-- 실제로 바를 숫자값에 맞게 이동시키려면 aria-valuenow 값을 조정하면 된다 -->
-				  <div class="bar cyan" role="progressbar" aria-valuenow="${sessionScope.testUserLevel}" 
-				  	   aria-valuemin="0" aria-valuemax="100">
-				    <div class="bar-face roof percentage"></div>
-				    <div class="bar-face back percentage"></div>
-				    <div class="bar-face floor percentage"></div>
-				    <div class="bar-face left"></div>
-				    <div class="bar-face right"></div>
-				    <div class="bar-face front percentage"> 
-				    
-				    <!-- 여기에 숫자를 입력하면 바 앞에 표시가 된다 -->
-				    <div class="LevelPercentage">${sessionScope.testUserLevel}</div> 
-				    
-				    </div>
-				  </div>
-				</div>
-			</div> 	
       	</div> <!-- 레벨 표시되는 영역 -->
       	
       	
       	<!-- 진도율을 보여주는 영역 -->
       	<div class="rightYourLProgress">
-      		<p> 
-      			<a> 진도율  </a>
-      			<span> ${sessionScope.testUserLevel * 10}% </span>   
-      		</p> 
       		
-      		<p> 
-      			<a> 수강일  </a>
-      			<span> ${sessionScope.testDate} </span>   
-      		</p> 
-      	
-      	
+      		
+      		
+      		
       	</div> <!-- 진도율을 보여주는 영역 끝 -->
       
       

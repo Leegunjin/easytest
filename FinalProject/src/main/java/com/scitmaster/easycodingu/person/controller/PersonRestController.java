@@ -156,11 +156,18 @@ public class PersonRestController {
 	 */
     @ResponseBody
 	@RequestMapping(value="modifyImage", method=RequestMethod.POST)
-	public String modify(SessionStatus status , @RequestBody @ModelAttribute("person") Person person, 
-			HttpSession session , Model model){
-		 
-		System.out.println("화면에서 넘겨준 펄슨" + person.getProfile_Image());
-		
+	public String modify(SessionStatus status , HttpSession session , Model model, String profile_Image){
+			
+    	System.out.println("ajax 프로필 : " + profile_Image);
+    	
+    	//System.out.println("화면에서 넘겨준 펄슨" + person.getProfile_Image());
+
+    	Person person = new Person();
+    	String id = (String)session.getAttribute("loginId");
+    	person.setId(id);
+    	person.setProfile_Image(profile_Image);
+    	
+    	System.out.println("넘길 person + " + person);
 		int result = dao.updateProfile(person);
 		System.out.println("화면에서 넘겨준 리절트" + result);
 		
