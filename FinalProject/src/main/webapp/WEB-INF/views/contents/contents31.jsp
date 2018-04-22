@@ -1,205 +1,217 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
-   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-   <title>[ contents320.jsp ]</title>
-
-<!-- CSS -->
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>[ contents320.jsp ]</title>
+<link rel="stylesheet" type="text/css"
+	href="../resources/css/styleContents31.css?ver=1">
 <style type="text/css">
-      @charset "UTF-8";
+@charset "UTF-8";
+
 *, html, body {
-  font-family: "TrebuchetMS", trebuchet, sans-serif;
-  margin: 0;
-  padding: 0;
+	font-family: "TrebuchetMS", trebuchet, sans-serif;
+	margin: 0;
+	padding: 0;
 }
 
 * {
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
 }
 
 h1, h2 {
-  text-align: center;
+	text-align: center;
 }
 
 h1 {
-  font-size: 24px;
-  line-height: 30px;
-  font-weight: bold;
+	font-size: 24px;
+	line-height: 30px;
+	font-weight: bold;
+	margin-top: 59px;
 }
 
 h2 {
-  font-size: 18px;
-  line-height: 25px;
-  margin-top: 20px;
+	font-size: 18px;
+	line-height: 25px;
+	margin-top: 20px;
 }
 
 button {
-  -webkit-appearance: none;
-     -moz-appearance: none;
-          appearance: none;
-  border: 0;
-  padding: 14px 50px;
-  border-radius: 4px;
-  background-color: #37B595;
-  color: #FFFFFF;
-  text-transform: capitalize;
-  font-size: 18px;
-  line-height: 22px;
-  outline: none;
-  cursor: pointer;
-  -webkit-transition: all 0.2s;
-  transition: all 0.2s;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	border: 0;
+	padding: 14px 50px;
+	border-radius: 4px;
+	background-color: #37B595;
+	color: #FFFFFF;
+	text-transform: capitalize;
+	font-size: 18px;
+	line-height: 22px;
+	outline: none;
+	cursor: pointer;
+	-webkit-transition: all 0.2s;
+	transition: all 0.2s;
 }
+
 button:hover {
-  background-color: #1A7F75;
+	background-color: #1A7F75;
 }
+
 button.previous {
-  background-color: #A2ACAF;
+	background-color: #A2ACAF;
 }
+
 button.previous:hover {
-  background-color: #5A5F61;
+	background-color: #5A5F61;
 }
 
 .full-width-container {
-  width: 100%;
-  min-width: 320px;
+	width: 100%;
+	min-width: 320px;
 }
 
 .question-container {
-max-width: 900px;
-  width: 100%;
-  margin: 0 auto;
+	max-width: 900px;
+	width: 100%;
+	margin: 0 auto;
 }
 
 .sized-container {
-  max-width: 900px;
-  width: 100%;
-  margin: 0 auto;
+	max-width: 900px;
+	width: 100%;
+	margin: 0 auto;
 }
+
 .slide-container {
-  margin: 0; 
-  padding: 0 1em 0;
-  padding-left: 0px;
-  position: relative;
-  left: 0;
-  overflow: hidden;
-  width: 7840px;
+	margin: 0;
+	padding: 0 1em 0;
+	padding-left: 0px;
+	position: relative;
+	left: 0;
+	overflow: hidden;
+	width: 7840px;
 }
-
-
 
 .slide {
-  float: left;
-  list-style-type: none;
+	float: left;
+	list-style-type: none;
 }
+
 .slide .sized-container {
 	padding-top: 10px;
-    padding-bottom: 20px;
+	padding-bottom: 20px;
 }
 
 .button-container {
-  border-top: 1px solid black;
-  overflow: hidden;
-  padding-top: 30px;
+	border-top: 1px solid black;
+	overflow: hidden;
+	padding-top: 30px;
 }
+
 .button-container button {
-  float: right;
-  margin-left: 30px;
+	float: right;
+	margin-left: 30px;
 }
 
 .pagination-container {
-  height: 18vh;
+	height: 18vh;
 }
 
 .pagination {
-  width: 100%;
-  height: 100%;
-  text-align: center;
-  padding: 0 25px;
-  padding-top: 60px;
+	width: 100%;
+	height: 100%;
+	text-align: center;
+	padding: 0 25px;
+	padding-top: 60px;
 }
 
 .indicator {
-  width: 25px;
-  height: 25px;
-  border: 4px solid lightgray;
-  border-radius: 50%;
-  display: inline-block;
-  -webkit-transition: all 0.3s;
-  transition: all 0.3s;
-  position: relative;
+	width: 25px;
+	height: 25px;
+	border: 4px solid lightgray;
+	border-radius: 50%;
+	display: inline-block;
+	-webkit-transition: all 0.3s;
+	transition: all 0.3s;
+	position: relative;
 }
+
 .indicator .tag {
-  position: absolute;
-  top: -30px;
-  left: 50%;
-  -webkit-transform: translateX(-50%);
-          transform: translateX(-50%);
-  color: lightgray;
-  white-space: nowrap;
+	position: absolute;
+	top: -30px;
+	left: 50%;
+	-webkit-transform: translateX(-50%);
+	transform: translateX(-50%);
+	color: lightgray;
+	white-space: nowrap;
 }
+
 .indicator.active, .indicator.complete {
-  border-color: #37B595;
+	border-color: #37B595;
 }
+
 .indicator.active .tag, .indicator.complete .tag {
-  color: #37B595;
+	color: #37B595;
 }
+
 .indicator.complete:after {
-  content: "?";
-  position: absolute;
-  color: #37B595;
-  left: 4px;
-  top: 3px;
-  font-size: 14px;
+	content: "?";
+	position: absolute;
+	color: #37B595;
+	left: 4px;
+	top: 3px;
+	font-size: 14px;
 }
 
 .progress-bar-container {
-  width: 10%;
-  height: 4px;
-  display: inline-block;
-  background-color: lightgray;
-  position: relative;
-  top: -10px;
+	width: 5%;
+	height: 4px;
+	display: inline-block;
+	background-color: lightgray;
+	position: relative;
+	top: -10px;
 }
+
 .progress-bar-container:last-of-type {
-  display: none;
+	display: none;
 }
+
 .progress-bar-container .progress-bar {
-  width: 0;
-  height: 100%;
-  background-color: #37B595;
+	width: 0;
+	height: 100%;
+	background-color: #37B595;
 }
 
 [class^="answer"] {
-      margin: 0; 
-      padding: 0;
-      background-color: #f3fafd; 
-      border: solid 2px #217093; 
-      border-radius: 4px; 
-      box-sizing: border-box;
-      width: 50px; 
-      height: 50px;
-      text-align: center;
-      font-size: 20pt; 
-      color: #353538; 
-      font-weight: 600;
-      font-style: inherit;
+	margin: 0;
+	padding: 0;
+	background-color: #f3fafd;
+	border: solid 2px #217093;
+	border-radius: 4px;
+	box-sizing: border-box;
+	width: 50px;
+	height: 50px;
+	text-align: center;
+	font-size: 20pt;
+	color: #353538;
+	font-weight: 600;
+	font-style: inherit;
 }
 
-ul{
-   list-style:none;
-   padding-left:0px;
+ul {
+	list-style: none;
+	padding-left: 0px;
 }
 
 .resultMsg {
 	vertical-align: center;
 }
-      
-   </style>
+</style>
+
 
 <!-- JavaScript -->
 <script type="text/javascript" src="<c:url value="/resources/js/jquery-3.2.1.js"></c:url>"></script>
@@ -212,8 +224,15 @@ ul{
       
       // 체크 버튼 생성
       var checkStr = '<button class="check">CHECK</button>';
-      $('#checkBtnDiv').html(checkStr);
-      
+      var str = '<button class="next">next</button>';
+      if (currentSlide == 0) {
+       $('#checkBtnDiv').html("");    
+       $('#nextBtnDiv').html(str);
+        $('.next').on('click', goToNextSlide);
+     } /* else {
+         $('#checkBtnDiv').html(checkStr);
+         $('.check').on('click', goToCheck);
+     } */
        // ul 태그
       var $slideContainer = $('.slide-container'),
        // li 태그
@@ -225,7 +244,7 @@ ul{
        // 애니메이션 시간 = 0.3초
        animationTime = 300;
 
-     // 슬라이드 크기(면적) Set
+        // 슬라이드 크기(면적) Set
       function setSlideDimensions () {
         // 현재 윈도우 창의 가로 길이
       var windowWidth = $(window).width();
@@ -262,37 +281,41 @@ ul{
          // $answerClass에 저장된 클래스 개수를 가져온다.
          var answerCount = $answerClass.length;
 
-         for(var i = 1; i <= answerCount; i++) {
+         for(var i = 0; i <= answerCount; i++) {
             // answer01, answer02
-            var answer = $('#answer' + currentSlide + i).val();
+            var userAnswer = $('#answer' + currentSlide + i).val();
             answerArr.push(answer);
          }
          
          var cNum = currentSlide + 1;
          
-          $.ajax({
+             $.ajax({
                 url : "contents310",
                 type : "POST",
                 contentType : "application/json; charset=utf-8",
                 dataType : "json",
                 data : JSON.stringify ({
                    cNum : cNum
-                   , answerArr : answerArr
+                   ,userAnswer : userAnswer
                 }),
-                success : function(result) {
+                success : function(blankMap) {
                      alert('success');
                      answerArr = [];
-                   alert(result);
                    var resultStr = '';
                     
-                   if (result == false) {
-                     resultStr = '<div class="resultMsg"><img src="../resources/img/noanswer.png" width="250px"> </div>';
+                   if (blankMap.result == false) {
+                     resultStr = '<div class="resultMsg"><img src="../resources/img/noanswer.png" width="250px"><br>';
+                   //  resultStr += '사용자가 입력한 답 : '+blankMap.wrongAnswerArr+'<br>'; 
+                     resultStr += '정답 : '+blankMap.rightAnswerArr+'<br>';
+                     resultStr += '틀린 이유 : ' + blankMap.errorReasonArr+'<br>';
+                     resultStr += '</div>';
                      //resultStr += '<div class="resultMsg">정답입니다.</div>';
+                     /* alert("blankMap.rightAnswer : "+blankMap.rightAnswer);
+                     alert("blankMap.wrongAnswer : "+blankMap.wrongAnswer); */
                      $('#answerResultDiv').html(resultStr);
                     
-                   } else if (result == true) {
-                       resultStr = '<div class="resultMsg"><img src="../resources/img/yesanswer.png" width="250px"> </div>';
-                       //resultStr += '<div class="resultMsg">오답입니다.</div>';
+                   } else if (blankMap.result == true) {
+                      resultStr = '<div class="resultMsg"><img src="../resources/img/yesanswer.png" width="250px"></div>';
                          $('#answerResultDiv').html(resultStr);
                       }
                        //if (result) {
@@ -336,9 +359,15 @@ ul{
           width: '100%'
         }, animationTime);
         
-        $('#checkBtnDiv').html(checkStr);
-        $('#nextBtnDiv').html("");
-        $('.check').on('click', goToCheck);
+        if (currentSlide == 6 || currentSlide == 9) {
+           $('#checkBtnDiv').html("");    
+           $('#nextBtnDiv').html(str);
+            $('.next').on('click', goToNextSlide);
+      } else {
+           $('#checkBtnDiv').html(checkStr);
+           $('#nextBtnDiv').html("");
+           $('.check').on('click', goToCheck);
+      }
       }
      
    
@@ -381,118 +410,326 @@ ul{
    
    
    </script>
+
 </head>
-<body style="overflow-x:hidden">
-   
-<div class="pagination-container full-width-container">
-  <div class="sized-container">
-    <div class="pagination"></div>
-  </div>
-</div>
-<div class="viewport full-width-container">
-    
-  <ul class="slide-container">
-    <li class="slide" data-tag="Step1">
-      
-      <div class="question-container"> 
-      <h1>빈칸에 알맞은 연산자를 입력해주세요.</h1>
-      <img alt="" src="../resources/img/31c1.png" style="width: 600px; height: 250px; transform: translate(26%, 0%);">
-      </div>
-      
-      <div class="sized-container">
-        <h1> <input type="text" class="answer0" id="answer01"> </h1>
-      </div>
-    </li>
-    
-    <li class="slide" data-tag="Step2">
-      
-      <div class="question-container"> 
-      <h1>빈칸에 알맞은 연산자를 입력해주세요.</h1>
-      <img alt="" src="../resources/img/31c2.png" style="width: 600px; height: 250px; transform: translate(26%, 0%);">
-      </div>
-      
-      <div class="sized-container">
-        <h1> <input type="text" class="answer1" id="answer11"> </h1>
-      </div>
-    </li>
-    
-    <li class="slide" data-tag="Step3">
-      
-      <div class="question-container"> 
-      <h1>빈칸에 알맞은 연산자를 입력해주세요.</h1>
-      <img alt="" src="../resources/img/31c3.png" style="width: 600px; height: 250px; transform: translate(26%, 0%);">
-      </div>
-      
-      <div class="sized-container">
-        <h1> <input type="text" class="answer2" id="answer21"> </h1>
-      </div>
-    </li>
-    
-    <li class="slide" data-tag="Step4">
-      
-      <div class="question-container"> 
-      <h1>빈칸에 알맞은 연산자를 입력해주세요.</h1>
-      <img alt="" src="../resources/img/31c4.png" style="width: 600px; height: 250px; transform: translate(26%, 0%);">
-      </div>
-      
-      <div class="sized-container">
-        <h1> <input type="text" class="answer3" id="answer31"> </h1>
-      </div>
-    </li>
-    
-     <li class="slide" data-tag="Step5">
-      
-      <div class="question-container"> 
-      <h1>빈칸에 알맞은 연산자를 입력해주세요.</h1>
-      <img alt="" src="../resources/img/31c5.png" style="width: 600px; height: 250px; transform: translate(26%, 0%);">
-      </div>
-      
-      <div class="sized-container">
-        <h1> <input type="text" class="answer4" id="answer41"> </h1>
-      </div>
-    </li>
-    
-    <li class="slide" data-tag="Step6">
-      
-      <div class="question-container"> 
-      <h1>빈칸에 공통으로 들어갈 연산자를 입력해주세요.</h1>
-      <img alt="" src="../resources/img/31c6.png" style="width: 600px; height: 250px; transform: translate(26%, 0%);">
-      </div>
-      
-      <div class="sized-container">
-        <h1> <input type="text" class="answer5" id="answer51"> </h1>
-      </div>
-    </li>
-    
-     <li class="slide" data-tag="Step7">
-      
-      <div class="question-container"> 
-      <h1>빈칸에 공통으로 들어갈 연산자를 입력해주세요.</h1>
-      <img alt="" src="../resources/img/31c7.png" style="width: 600px; height: 250px; transform: translate(26%, 0%);">
-      </div>
-      
-      <div class="sized-container">
-        <h1> <input type="text" class="answer6" id="answer61"> </h1>
-      </div>
-    </li>
-    
-    <!--  </li>
+<body style="overflow-x: hidden">
+
+	<div class="pagination-container full-width-container">
+		<div class="sized-container">
+			<div class="pagination"></div>
+		</div>
+	</div>
+	<div class="viewport full-width-container">
+
+		<ul class="slide-container">
+			<li class="slide" data-tag="Step1">
+
+				<div class="question-container">
+					<div class="all">
+						<div class="container-button">
+							<div class="toggle-button-2">
+								<div class="cubeshape cube2">
+									<div class="first_cube2">
+										<img alt="if_quiz_21" src="../resources/img/plus.png"
+											style="width: 100px; height: 100px;">
+									</div>
+									<div class="second_cube2">
+										<h1 class="image_name" style="font-size: 80px;">+</h1>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="container-button">
+							<div class="toggle-button-2">
+								<div class="cubeshape cube2">
+									<div class="first_cube2">
+										<img alt="if_quiz_21" src="../resources/img/minus.png"
+											style="width: 100px; height: 100px;">
+									</div>
+									<div class="second_cube2">
+										<h1 class="image_name" style="font-size: 140px;">-</h1>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="container-button">
+							<div class="toggle-button-2">
+								<div class="cubeshape cube2">
+									<div class="first_cube2">
+										<img alt="if_quiz_21" src="../resources/img/multiply.png"
+											style="width: 100px; height: 100px;">
+									</div>
+									<div class="second_cube2">
+										<h1 class="image_name" style="font-size: 30px;">Java에서는<BR> *
+											로 사용합니다.</h1>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="container-button">
+							<div class="toggle-button-2">
+								<div class="cubeshape cube2">
+									<div class="first_cube2">
+										<img alt="if_quiz_21" src="../resources/img/division.png"
+											style="width: 100px; height: 100px;">
+
+									</div>
+									<div class="second_cube2">
+										<h1 class="image_name" style="font-size: 30px;">Java에서는<BR> /
+											로 사용합니다.</h1>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</li>
+
+
+			<li class="slide" data-tag="Step2">
+
+				<div class="question-container">
+					<h1>빈칸에 알맞은 연산자를 입력해주세요.</h1>
+					<img alt="" src="../resources/img/31c1.png"
+						style="width: 600px; height: 250px; transform: translate(26%, 0%);">
+				</div>
+
+				<div class="sized-container">
+					<h1>
+						<input type="text" class="answer1" id="answer11">
+					</h1>
+				</div>
+			</li>
+
+			<li class="slide" data-tag="Step3">
+
+				<div class="question-container">
+					<h1>빈칸에 알맞은 연산자를 입력해주세요.</h1>
+					<img alt="" src="../resources/img/31c2.png"
+						style="width: 600px; height: 250px; transform: translate(26%, 0%);">
+				</div>
+
+				<div class="sized-container">
+					<h1>
+						<input type="text" class="answer2" id="answer21">
+					</h1>
+				</div>
+			</li>
+
+			<li class="slide" data-tag="Step4">
+
+				<div class="question-container">
+					<h1>빈칸에 알맞은 연산자를 입력해주세요.</h1>
+					<img alt="" src="../resources/img/31c3.png"
+						style="width: 600px; height: 250px; transform: translate(26%, 0%);">
+				</div>
+
+				<div class="sized-container">
+					<h1>
+						<input type="text" class="answer3" id="answer31">
+					</h1>
+				</div>
+			</li>
+
+			<li class="slide" data-tag="Step5">
+
+				<div class="question-container">
+					<h1>빈칸에 알맞은 연산자를 입력해주세요.</h1>
+					<img alt="" src="../resources/img/31c4.png"
+						style="width: 600px; height: 250px; transform: translate(26%, 0%);">
+				</div>
+
+				<div class="sized-container">
+					<h1>
+						<input type="text" class="answer4" id="answer41">
+					</h1>
+				</div>
+			</li>
+
+		 	<li class="slide" data-tag="Step6">
+
+				<div class="question-container">
+					<h1>빈칸에 알맞은 연산자를 입력해주세요.</h1>
+					<img alt="" src="../resources/img/31c5.png"
+						style="width: 600px; height: 250px; transform: translate(26%, 0%);">
+				</div>
+
+				<div class="sized-container">
+					<h1>
+						<input type="text" class="answer5" id="answer51">
+					</h1>
+				</div>
+			</li>
+			<li class="slide" data-tag="Step7">
+				<div class="question-container">
+					<div class="all2">
+						<div class="container-button">
+							<div class="toggle-button-2">
+								<div class="cubeshape cube2">
+									<div class="first_cube2">
+										<img alt="if_quiz_21" src="../resources/img/equal.png"
+											style="width: 150px; height: 150px;">
+									</div>
+									<div class="second_cube2">
+										<h1 class="image_name" style="font-size: 30px;">A == B <br><br>A와 B는 같다</h1>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="container-button">
+							<div class="toggle-button-2">
+								<div class="cubeshape cube2">
+									<div class="first_cube2">
+										<img alt="if_quiz_21" src="../resources/img/not.png"
+											style="width: 150px; height: 150px
+											;">
+									</div>
+									<div class="second_cube2">
+										<h1 class="image_name" style="font-size: 30px;">A != B <br><br>A와 B는 같지않다</h1>
+									</div>
+								</div>
+							</div>
+						</div>
+			</li>
+
+			<li class="slide" data-tag="Step8">
+
+				<div class="question-container">
+					<h1>빈칸에 공통으로 들어갈 연산자를 입력해주세요.</h1>
+					<img alt="" src="../resources/img/31c6.png"
+						style="width: 600px; height: 250px; transform: translate(26%, 0%);">
+				</div>
+
+				<div class="sized-container">
+					<h1>
+						<input type="text" class="answer7" id="answer71">
+					</h1>
+				</div>
+			</li>
+
+			<li class="slide" data-tag="Step9">
+
+				<div class="question-container">
+					<h1>빈칸에 공통으로 들어갈 연산자를 입력해주세요.</h1>
+					<img alt="" src="../resources/img/31c7.png"
+						style="width: 600px; height: 250px; transform: translate(26%, 0%);">
+				</div>
+
+				<div class="sized-container">
+					<h1>
+						<input type="text" class="answer8" id="answer81">
+					</h1>
+				</div>
+			</li>
+			<li class="slide" data-tag="Step10">
+					<div class="question-container">
+					<div class="all">
+						<div class="container-button">
+							<div class="toggle-button-2">
+								<div class="cubeshape cube2">
+									<div class="first_cube2">
+										<img alt="if_quiz_21" src="../resources/img/left.png"
+											style="width: 100px; height: 100px;">
+									</div>
+									<div class="second_cube2">
+										<h1 class="image_name" style="font-size: 30px;">A > B<br>
+										A가 B보다 큽니다</h1>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="container-button">
+							<div class="toggle-button-2">
+								<div class="cubeshape cube2">
+									<div class="first_cube2">
+										<img alt="if_quiz_21" src="../resources/img/right.png"
+											style="width: 100px; height: 100px;">
+									</div>
+									<div class="second_cube2">
+										<h1 class="image_name" style="font-size: 30px;">A < B <br>
+										B가 A보다 큽니다</h1>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="container-button">
+							<div class="toggle-button-2">
+								<div class="cubeshape cube2">
+									<div class="first_cube2">
+										<img alt="if_quiz_21" src="../resources/img/var1.png"
+											style="width: 100px; height: 100px;">
+									</div>
+									<div class="second_cube2">
+											<h1 class="image_name" style="font-size: 30px;">A <= B<BR> 
+											A가 B보다 작거나 같으면 참,<br> 그렇지 않으면 거짓</h1>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="container-button">
+							<div class="toggle-button-2">
+								<div class="cubeshape cube2">
+									<div class="first_cube2">
+										<img alt="if_quiz_21" src="../resources/img/var2.png"
+											style="width: 100px; height: 100px;">
+
+									</div>
+									<div class="second_cube2">
+										<h1 class="image_name" style="font-size: 30px;">A >= B<BR> 
+											A가 B보다 크거나 같으면 참,<br>그렇지 않으면 거짓</h1>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</li>
+	<li class="slide" data-tag="Step11">
+
+				<div class="question-container">
+					<h1>빈칸에 공통으로 들어갈 연산자를 입력해주세요.</h1>
+					<img alt="" src="../resources/img/sic.png"
+						style="width: 600px; height: 250px; transform: translate(26%, 0%);">
+				</div>
+
+				<div class="sized-container">
+					<h1>
+						<input type="text" class="answer10" id="answer3110">
+					</h1>
+				</div>
+			</li>
+
+			<li class="slide" data-tag="Step12">
+
+				<div class="question-container">
+					<h1>빈칸에 공통으로 들어갈 연산자를 입력해주세요.</h1>
+					<img alt="" src="../resources/img/duk.png"
+						style="width: 600px; height: 250px; transform: translate(26%, 0%);">
+				</div>
+
+				<div class="sized-container">
+					<h1>
+						<input type="text" class="answer11" id="answer3111">
+					</h1>
+				</div>
+			</li>
+			<!--  </li>
         <li class="slide" data-tag="Step9">
       <div class="sized-container">
         <h1>x &nbsp; <input type="text" class="answer8" id="answer81"> &nbsp; y &nbsp; = &nbsp; 1 &nbsp; <input type="text" class="answer8" id="answer82"> </h1>
       </div> 
     </li> -->
-  </ul>
-</div>
-<div class="full-width-container">
-  <div class="button-container sized-container">
-     <div id="checkBtnDiv"></div>
-    <div id="nextBtnDiv"></div>
-  <!--   <button class="check">check</button>  -->    
-  <button class="previous">previous</button>
-    <div id="answerResultDiv"></div>
-  </div>
-</div>
+		</ul>
+	</div>
+	<div class="full-width-container">
+		<div class="button-container sized-container">
+			<div id="checkBtnDiv"></div>
+			<div id="nextBtnDiv"></div>
+			<!--   <button class="check">check</button>  -->
+			<button class="previous">previous</button>
+			<div id="answerResultDiv"></div>
+		</div>
+	</div>
 
 
 </body>

@@ -4,8 +4,11 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link rel="stylesheet" type="text/css"
+	href="../resources/css/styleContents21.css?ver=1">
 <script type="text/javascript"
 	src="<c:url value="/resources/js/jquery-3.2.1.js"></c:url>"></script>
+
 <style type="text/css">
 .home {
 	margin-bottom: 10px;
@@ -52,6 +55,9 @@
 * {
 	-webkit-box-sizing: border-box;
 	box-sizing: border-box;
+	text-align: center;
+	margin-left: -13px;
+	
 }
 
 h1, h2 {
@@ -103,11 +109,11 @@ button.previous:hover {
 .full-width-container {
 	width: 100%;
 	min-width: 320px;
+	max-height: 550px;
 }
 
 .sized-container {
 	max-width: 900px;
-	height:80px;
 	width: 100%;
 	margin: 0 auto;
 }
@@ -116,7 +122,7 @@ button.previous:hover {
 	position: relative;
 	left: 0;
 	overflow: hidden;
-	height: 400px;
+	height: 500px;
 }
 
 .slide {
@@ -130,11 +136,11 @@ button.previous:hover {
 .button-container {
 	border-top: 1px solid black;
 	overflow: hidden;
-	padding-top: 30px;
 }
 
 .button-container button {
 	float: right;
+	    margin-top: 20px;
 	margin-left: 30px;
 }
 
@@ -145,7 +151,8 @@ button.previous:hover {
 .pagination {
 	width: 100%;
 	text-align: center;
-	padding: 0 25px;
+	margin-left:5px;
+	padding: 0 15px;
 }
 
 .indicator {
@@ -209,19 +216,12 @@ ul {
 	list-style: none;
 	padding-left: 0px;
 }
-
-
 </style>
-<!-- <link rel="stylesheet" type="text/css" href="../resources/css/styleContents.css"> -->
+
 <script type="text/javascript">
 	$(function() {
-
 		var currentSlide = 0;
 		var testCount = 0;
-
-		var checkStr = '<button class="check">CHECK</button>';
-		$('#checkBtnDiv').html(checkStr);
-
 		$slideContainer = $('.slide-container'), $slide = $('.slide'),
 				slideCount = $slide.length, animationTime = 300;
 
@@ -230,72 +230,27 @@ ul {
 			$slideContainer.width(windowWidth * slideCount);
 			$slide.width(windowWidth);
 		}
-
 		function generatePagination() {
 			var $pagination = $('.pagination');
 			for (var i = 0; i < slideCount; i++) {
-				var $indicator = $('<div>').addClass('indicator'), $progressBarContainer = $(
-						'<div>').addClass('progress-bar-container'), $progressBar = $(
-						'<div>').addClass('progress-bar'), indicatorTagText = $slide
-						.eq(i).attr('data-tag'), $tag = $('<div>').addClass(
-						'tag').text(indicatorTagText);
+				var $indicator = $('<div>').addClass('indicator'), 
+				$progressBarContainer = $('<div>').addClass('progress-bar-container'),
+				$progressBar = $('<div>').addClass('progress-bar'),
+				indicatorTagText = $slide.eq(i).attr('data-tag'), 
+				$tag = $('<div>').addClass('tag').text(indicatorTagText);
 				$indicator.append($tag);
 				$progressBarContainer.append($progressBar);
 				$pagination.append($indicator).append($progressBarContainer);
 			}
 			$pagination.find('.indicator').eq(0).addClass('active');
 		}
-
-		$('.check').on('click', goToCheck);
-		function goToCheck() {
-			//alert(currentSlide);
-			//if (currentSlide == 0) {
-			//var slideNumber = "71"+currentSlide+1;
+			function goToCheck() {
 			var cNum = currentSlide + 1;
-			//alert("cNum : "+cNum);
-			var answer = $('#answer' + currentSlide).val();
-			//alert(answer);
-			$
-					.ajax({
-						url : "contents211",
-						type : "POST",
-						//contentType : "application/json; charset=utf-8",
-						//dataType : "json",
-						data : {
-							cNum : cNum,
-							answer : answer
-						},
-						success : function(result) {
-							//alert('success');
-							//alert(result);
-							var resultStr = '';
-							if (result == false) {
-								resultStr = '<div class="resultMsg"><img src="../resources/img/noanswer.png" width="50px"> 오답입니다.</div>';
-								//resultStr += '<div class="resultMsg">정답입니다.</div>';
-								$('#answerResultDiv').html(resultStr);
-							} else if (result == true) {
-								resultStr = '<div class="resultMsg"><img src="../resources/img/yesanswer.png" width="50px"> 정답입니다.</div>';
-								//resultStr += '<div class="resultMsg">오답입니다.</div>';
-								$('#answerResultDiv').html(resultStr);
-							}
-							//if (result) {
-							$('#checkBtnDiv').html("");
-							var str = '<button class="next">next</button>';
-							$('#nextBtnDiv').html(str);
-							$('.next').on('click', goToNextSlide);
-							//}
-						},
-						error : function(err) {
-							console.log(err);
-							alert("fail");
-						}
-					});
-			//} 
+			var checkedValue = $('#checkedValue' + currentSlide).val();
+			
 		}
-
 		function goToNextSlide() {
 			$('#answerResultDiv').html("");
-			//if(currentSlide >= slideCount - 1) return; 
 			if (currentSlide >= slideCount - 1) {
 				location.href = "contentsHome";
 			}
@@ -308,11 +263,9 @@ ul {
 			$('.progress-bar').eq(currentSlide - 1).animate({
 				width : '100%'
 			}, animationTime);
-			$('#checkBtnDiv').html(checkStr);
 			$('#nextBtnDiv').html("");
-			$('.check').on('click', goToCheck);
+			$('#javaCodeDiv').empty();
 		}
-
 		function goToPreviousSlide() {
 			if (currentSlide <= 0)
 				return;
@@ -326,7 +279,6 @@ ul {
 				width : '0%'
 			}, animationTime);
 		}
-
 		function postitionSlides() {
 			var windowWidth = $(window).width();
 			setSlideDimensions();
@@ -334,7 +286,6 @@ ul {
 				left : -(windowWidth * currentSlide)
 			}, animationTime);
 		}
-
 		function setActiveIndicator() {
 			var $indicator = $('.indicator');
 			$indicator.removeClass('active').removeClass('complete');
@@ -343,19 +294,43 @@ ul {
 				$indicator.eq(i).addClass('complete');
 			}
 		}
-
 		setSlideDimensions();
 		generatePagination();
 		$(window).resize(postitionSlides);
-		//$('.check').on('click', goToCheck);
-		//$('.next').on('click', goToNextSlide);
+		$('.radioBtn').on('click', goToCheck);
 		$('.previous').on('click', goToPreviousSlide);
-
+		
+		//answer -  태그
+		//내가 비교해야 할것은 태그와 value와 값이 같은지 
+		$(".radio-button").on("click",function() {
+							var answer = $(this).closest(".slide").attr('data-tag');
+							var checkedValue = $("input[type=radio][name=radioBtn]:checked").val();
+							var btnId = $('input[name=radioBtn]:checked').attr('id');
+							var resultStr = '';
+							//alert(checkedValue);
+							//alert(answer);
+							// 자바코드로 보기 div에 출력할 값
+							//alert(checkedValue+"="+btnId);
+							// 안에들어가는 값은 페이지 data-tag와비교
+							if (answer == checkedValue) {
+								resultStr = '<div class="resultMsg"><img src="../resources/img/yesanswer.png" width="270px"> </div>';
+								$('#answerResultDiv').html(resultStr);
+								$('#javaCodeDiv').html(checkedValue+"="+btnId);
+								
+								$('.next').removeAttr('disabled');
+								$('.next').off().on('click', goToNextSlide);
+							} else {
+								resultStr = '<div class="resultMsg"><img src="../resources/img/noanswer.png" width="270px"></div>';
+								$('#nextBtnDiv').html("");
+								$('#answerResultDiv').html(resultStr);
+								$('#javaCodeDiv').html("");
+							}
+						});
 	});
 </script>
 
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>튜토리얼</title>
+<title>EasyCodingU</title>
 </head>
 <body style="overflow-x: hidden">
 
@@ -367,40 +342,39 @@ ul {
 	</div>
 	<div class="viewport full-width-container" style="padding: 5px;">
 		<ul class="slide-container">
-			<li class="slide" data-tag="INT">
-				<div class="sized-container" >
-						<jsp:include page="contents211.jsp" flush="true" />
+			<li class="slide" data-tag="int">
+				<div class="sized-container">
+					<jsp:include page="contents211.jsp" flush="true" />
 				</div>
 			</li>
-			<li class="slide" data-tag="DOUBLE">
+			<li class="slide" data-tag="double">
 				<div class="sized-container">
-					<!-- <h1></h1> -->
-					<h2>자료형에 맞는 변수를 골라주세요!</h2>
-					
+					<jsp:include page="contents212.jsp" flush="true" />
 				</div>
 			</li>
-			<li class="slide" data-tag="STRING">
+			<li class="slide" data-tag="string">
 				<div class="sized-container">
-					<!-- <h1></h1> -->
-					<h2>자료형에 맞는 변수를 골라주세요!</h2>
-					
+					<jsp:include page="contents213.jsp" flush="true" />
 				</div>
 			</li>
-			<li class="slide" data-tag="BOOLEAN">
+			<li class="slide" data-tag="boolean">
 				<div class="sized-container">
-				
+					<jsp:include page="contents214.jsp" flush="true" />
 				</div>
+
 			</li>
 
 		</ul>
 	</div>
 	<div class="full-width-container">
 		<div class="button-container sized-container">
-			<div id="checkBtnDiv"></div>
+
 			<div id="nextBtnDiv"></div>
-			<!-- <button class="next">next</button> -->
+			<button class="next">next</button>
 			<button class="previous">previous</button>
-			<div id="answerResultDiv"></div>
+			<div id="answerResultDiv" style="height: 50px; height: 30px; font-size: 15px;"></div>
+				<div id="javaCodeDiv" style="font-size:30px; font-weight: bolder; width: 120px; height: 40px;"></div>
+		
 		</div>
 	</div>
 

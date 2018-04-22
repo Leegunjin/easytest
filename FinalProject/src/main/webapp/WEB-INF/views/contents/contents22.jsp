@@ -5,8 +5,48 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>TEST PAGE</title>
+<title>EasyCodingU</title>
+<link rel="stylesheet" type="text/css" href="../resources/css/styleContents.css?ver=1">
+<script type="text/javascript"
+	src="<c:url value="/resources/js/jquery-3.2.1.js"></c:url>"></script>
+
 <style type="text/css">
+.home {
+	margin-bottom: 10px;
+	margin-left: 20px;
+}
+
+.javaCode {
+	margin-left: 170px;
+	margin-top: 10px;
+}
+
+.error {
+	margin-left: 20px;
+	margin-bottom: 30px;
+}
+
+.next {
+	margin-left: 170px;
+	margin-bottom: 30px;
+}
+
+.answer {
+	margin: 0;
+	padding: 0;
+	background-color: #f3fafd;
+	border: solid 2px #217093;
+	border-radius: 4px;
+	box-sizing: border-box;
+	width: 600px;
+	height: 50px;
+	text-align: center;
+	font-size: 20pt;
+	color: #353538;
+	font-weight: 600;
+	font-style: inherit;
+}
+
 @charset "UTF-8";
 
 *, html, body {
@@ -29,9 +69,9 @@ h1 {
 }
 
 h2 {
-	font-size: 15px;
+	font-size: 18px;
 	line-height: 25px;
-	margin-top: 10px;
+	margin-top: 20px;
 }
 
 button {
@@ -39,7 +79,7 @@ button {
 	-moz-appearance: none;
 	appearance: none;
 	border: 0;
-	padding: 7px 25px;
+	padding: 14px 50px;
 	border-radius: 4px;
 	background-color: #37B595;
 	color: #FFFFFF;
@@ -67,34 +107,35 @@ button.previous:hover {
 .full-width-container {
 	width: 100%;
 	min-width: 320px;
+	max-height: 450px;
 }
 
 .sized-container {
-	max-width: 1100px;
-	width: 600px;
+	max-width: 900px;
+	height: 30px;
+	width: 100%;
 	margin: 0 auto;
-	width: 80%;
 }
 
 .slide-container {
 	position: relative;
-	height: 500px;
 	left: 0;
 	overflow: hidden;
+	height: 500px;
 }
 
 .slide {
 	float: left;
+	height: 50vh;
 }
 
 .slide .sized-container {
-	padding: 5px 10px;
+	padding: 10px 25px;
 }
 
 .button-container {
 	border-top: 1px solid black;
 	overflow: hidden;
-	padding-top: 15px;
 }
 
 .button-container button {
@@ -103,13 +144,13 @@ button.previous:hover {
 }
 
 .pagination-container {
-	margin-top: 60px;
+	margin-top: 120px;
 }
 
 .pagination {
 	width: 100%;
 	text-align: center;
-	padding: 45 25px;
+	padding: 0 25px;
 }
 
 .indicator {
@@ -168,38 +209,49 @@ button.previous:hover {
 	height: 100%;
 	background-color: #37B595;
 }
+
+ul {
+	list-style: none;
+	padding-left: 0px;
+}
 </style>
-<script type="text/javascript"
-	src="<c:url value="/resources/js/jquery-3.2.1.js"></c:url>"></script>
-<script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+
 <script type="text/javascript">
 	$(function() {
-		var currentSlide = 0, $slideContainer = $('.slide-container'), $slide = $('.slide'), slideCount = $slide.length, animationTime = 300;
+		var currentSlide = 0;
+		var testCount = 0;
+		$slideContainer = $('.slide-container'), $slide = $('.slide'),
+				slideCount = $slide.length, animationTime = 300;
 
 		function setSlideDimensions() {
 			var windowWidth = $(window).width();
 			$slideContainer.width(windowWidth * slideCount);
 			$slide.width(windowWidth);
 		}
-
 		function generatePagination() {
 			var $pagination = $('.pagination');
 			for (var i = 0; i < slideCount; i++) {
-				var $indicator = $('<div>').addClass('indicator'), $progressBarContainer = $(
-						'<div>').addClass('progress-bar-container'), $progressBar = $(
-						'<div>').addClass('progress-bar'), indicatorTagText = $slide
-						.eq(i).attr('data-tag'), $tag = $('<div>').addClass(
-						'tag').text(indicatorTagText);
+				var $indicator = $('<div>').addClass('indicator'), 
+				$progressBarContainer = $('<div>').addClass('progress-bar-container'),
+				$progressBar = $('<div>').addClass('progress-bar'),
+				indicatorTagText = $slide.eq(i).attr('data-tag'), 
+				$tag = $('<div>').addClass('tag').text(indicatorTagText);
 				$indicator.append($tag);
 				$progressBarContainer.append($progressBar);
 				$pagination.append($indicator).append($progressBarContainer);
 			}
 			$pagination.find('.indicator').eq(0).addClass('active');
 		}
-
+		function goToCheck() {
+			var cNum = currentSlide + 1;
+			var checkedValue = $('#checkedValue' + currentSlide).val();
+			
+		}
 		function goToNextSlide() {
-			if (currentSlide >= slideCount - 1)
-				return;
+			$('#answerResultDiv').html("");
+			if (currentSlide >= slideCount - 1) {
+				location.href = "contentsHome";
+			}
 			var windowWidth = $(window).width();
 			currentSlide++;
 			$slideContainer.animate({
@@ -209,8 +261,12 @@ button.previous:hover {
 			$('.progress-bar').eq(currentSlide - 1).animate({
 				width : '100%'
 			}, animationTime);
+			$('#nextBtnDiv').html("");
+			$('#javaCodeDiv').html("");
+			
+		
 		}
-
+		
 		function goToPreviousSlide() {
 			if (currentSlide <= 0)
 				return;
@@ -224,7 +280,6 @@ button.previous:hover {
 				width : '0%'
 			}, animationTime);
 		}
-
 		function postitionSlides() {
 			var windowWidth = $(window).width();
 			setSlideDimensions();
@@ -232,7 +287,6 @@ button.previous:hover {
 				left : -(windowWidth * currentSlide)
 			}, animationTime);
 		}
-
 		function setActiveIndicator() {
 			var $indicator = $('.indicator');
 			$indicator.removeClass('active').removeClass('complete');
@@ -241,13 +295,129 @@ button.previous:hover {
 				$indicator.eq(i).addClass('complete');
 			}
 		}
-
 		setSlideDimensions();
 		generatePagination();
 		$(window).resize(postitionSlides);
-		$('.next').on('click', goToNextSlide);
-		$('.previous').on('click', goToPreviousSlide);
+		
+		
+		
+	
+		
+		$("#name1").on('change', function() {
+			var name1 = document.getElementById('name1').value;
+			var name11 = document.getElementById('names');
+			name11.innerHTML = "int" + " " + name1 + " = ";
+		
+		});
+		$("#name2").on('change', function() {
+			var name2 = document.getElementById('name2').value;
+			var name22 = document.getElementById('names');
+			name22.innerHTML = "double" + " " + name2 + " = ";
+		});
+		$("#name3").on('change', function() {
+			var name3 = document.getElementById('name3').value;
+			var name33 = document.getElementById('names');
+			name33.innerHTML = "String" + " " + name3 + " = ";
+		});
+		$("#name4").on('change', function() {
+			var name4 = document.getElementById('name4').value;
+			var name44 = document.getElementById('names');
+			name44.innerHTML = "boolean" + " " + name4 + " = ";
+		});
+
+	
+		$("#images div img").draggable({
+			start : function(event, ui) {
+				$(this).draggable("option", "revert", true);
+				$("#images div img").css("zIndex", 10);
+				$(this).css("zIndex", 100);
+				
+			}
+		
+		
+		});
+		var count = 0;
+		$("#boards img").droppable({
+			drop : function(event, ui) {
+				var droptitle = ui.draggable.attr("title");
+				var dragid = $(this).attr("id");
+				//alert(droptitle); - 스티커
+				//alert(dragid);- 박스
+				var dropid = ui.draggable.attr("id");
+				var resultStr = '';
+				
+				// div에 값 출력하기
+				//alert(dragid+names+"="+dropid);
+				//alert(dragid+"="+dropid);
+				if (dragid == droptitle) {
+					ui.draggable.hide();
+					
+					//'<div class="javaCodeDiv"></div>'
+					$('#javaCodeDiv').html(dragid+"="+dropid);
+					resultStr = '<div class="resultMsg"><img src="../resources/img/yesanswer.png"  width="200px"></div>';
+					$('#answerResultDiv').html(resultStr);
+					$('.next').removeAttr('disabled');
+					$('.next').off().on('click', goToNextSlide);
+					
+					
+					
+					
+					if (droptitle == "boolean") {
+						document.getElementById('names').innerHTML = "Boolean"
+								+ " "
+								+ document.getElementById('name4').value
+								+ " = "
+								+ ui.draggable.attr("value");
+					}
+
+					if (droptitle == "string") {
+						document.getElementById('names').innerHTML = "String"
+								+ " "
+								+ document.getElementById('name3').value
+								+ " = "
+								+ ui.draggable.attr("value");
+					}
+					if (droptitle == "double") {
+						document.getElementById('names').innerHTML = "Double"
+								+ " "
+								+ document.getElementById('name2').value
+								+ " = "
+								+ ui.draggable.attr("value");
+					}
+					if (droptitle == "int") {
+						document.getElementById('names').innerHTML = "Int"
+								+ " "
+								+ document.getElementById('name1').value
+								+ " = "
+								+ ui.draggable.attr("value");
+					}
+					
+					ui.draggable.draggable("option", "revert", false);
+					var droppableOffset = $(this).offset();
+					var x = droppableOffset.left + 1;
+					var y = droppableOffset.top + 1;
+					ui.draggable.offset({
+						top : y,
+						left : x
+					});
+				}
+			}
+		});
 	});
+	
+	$(document).ready(function() {
+		$("#images div").sort(function() {
+			return Math.random() * 10 > 5 ? 1 : -1;
+		}).each(function() {
+			$(this).appendTo($(this).parent());
+		});
+		$("#boards div").sort(function() {
+			return Math.random() * 10 > 5 ? 1 : -1;
+		}).each(function() {
+			$(this).appendTo($(this).parent());
+		});
+		
+	});	
 </script>
 </head>
 <body>
@@ -260,14 +430,14 @@ button.previous:hover {
 	<div class="viewport full-width-container" style="padding: 5px;">
 		<ul class="slide-container">
 
-			<li class="slide" data-tag="Chapter Info">
+			<li class="slide" data-tag="Quiz-1">
 				<div class="sized-container">
 					<div id="">
 						<jsp:include page="contents221.jsp" flush="true" />
 					</div>
 				</div>
 			</li>
-			<li class="slide" data-tag="Concept">
+			<li class="slide" data-tag="Quiz-2">
 				<div class="sized-container">
 
 					<div id="">
@@ -276,15 +446,17 @@ button.previous:hover {
 				</div>
 		</ul>
 	</div>
-	<div class="full-width-container">
-
+        
+        
+        <div class="full-width-container">
 		<div class="button-container sized-container">
-			<button class="javaCode">JAVACODE 보기</button>
+			<div id="nextBtnDiv"></div>
 			<button class="next">next</button>
-			<button class="previous">previous</button>
+			
+			<div id="answerResultDiv"></div>
+			<div id="javaCodeDiv" style="font-size: 30px; font-weight: bolder;" ></div>
+			
 		</div>
 	</div>
-
-
 </body>
 </html>

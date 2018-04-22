@@ -1,0 +1,43 @@
+@CHARSET "UTF-8";
+
+#images>div, #boards>div {
+	float: right;
+	margin: 40px;
+	height: 40px;
+	width: 60px;
+}
+
+
+#images div img {
+	width: 123px;
+    height: 116px;
+    padding-left: 58px;
+}
+
+#boards {
+	clear: both;
+	margin-left: 50px;
+	margin: 50px;
+}
+
+#boards div {
+	/*font-size: 1.5em;
+	text-align: center;
+	float: left;
+	margin-left: 10px;*/
+	width: 202px;
+	height: 140px;
+	padding-left: 54px;
+	padding-right: 10px;
+}
+
+#boards>div p {
+	
+    width: 89px;
+    height: 30px;
+    text-align: center;
+    margin-left: 16px;
+    margin-top: -45px;
+    font-weight: bolder;
+    font-size: 20px;
+}
