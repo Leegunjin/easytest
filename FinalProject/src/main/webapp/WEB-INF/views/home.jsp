@@ -46,7 +46,7 @@
 	      function loginForm() { location.href = "person/loginForm"; }  
 	      function logout() { location.href = "person/logout"; } 
 	      function mypageUser() { location.href = "person/mypageUser"; } 
-	     
+	      function board() { location.href = "board/boardList"; } 
 	   </script>
 	
 	</head>  
@@ -235,7 +235,7 @@
 				  		</div>
 				  	
 				  		<div class="wrapper1">
-				    		<div class="card"> 
+				    		<div class="card" onclick="board();"> 
 				    			<i class="fal fa-arrow-right"></i> 
 				    		</div>
 				  		</div>

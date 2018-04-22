@@ -26,7 +26,7 @@
          margin-bottom: 30px;
       }
       
-      .answer {
+     /*  .answer {
          margin: 0; 
          padding: 0;
          background-color: #f3fafd; 
@@ -40,8 +40,26 @@
          color: #353538; 
          font-weight: 600;
          font-style: inherit;
-      }
+      } */
       
+      .answer{
+			background-color: black;
+			color: #8bf95c;
+			margin: 0;
+			width: 400px;
+			height: 50px;
+			font-size: large;
+		}
+      	
+      	.answerShort{
+      		background-color: black;
+			color: #8bf95c;
+			margin: 0;
+			width: 100px;
+			height: 50px;
+			font-size: large;
+      	}
+      	
          @charset "UTF-8";
       *, html, body {
         font-family: "TrebuchetMS", trebuchet, sans-serif;
@@ -198,11 +216,13 @@
          padding-left:0px;
       }
       
-      
+      #showDiv{
+      	background-color: #37B595;
+      }
       /* 돌아가는박스 */
       .box_wrapper {
         position: absolute;
-        top: 50%;
+        top: 75%;
         left: 93%;
         -webkit-transform: translate(-50%, -50%);
         -moz-transform: translate(-50%, -50%);
@@ -237,7 +257,7 @@
         opacity: 0.8;
         -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=80)";
         filter: alpha(opacity=80);
-        background-color: #9baec8;
+        background-color: #37B595;
         border: solid 1px #eee;
         -webkit-transition: -webkit-transform 0.2s ease-in;
         -moz-transition: -moz-transform 0.2s ease-in;
@@ -413,122 +433,8 @@
           transform: rotateX(360deg) rotateY(360deg);
         }
       }
-      
-      
-      /* 큐브접기 */
-      
-      /* body {
-        width: 100vw;
-        height: 100vh;
-        perspective: 600px;
-     }
-      
-     h1, h2 {
-        transform: translateX(-50%);
-        text-transform: uppercase;
-     }
-      
-      .ksstest{
-        position: absolute;
-        width: 120px;
-        height: 120px;
-        top: 0;
-        background: rgba(255, 255, 255, 0.4);
-        box-shadow: 0 0 0 2px white inset;
-        border-radius: 3px;
-        cursor: all-scroll;
-        transition: all 0.5s ease-in-out;
-        transform-style: preserve-3d;
-      }
-      
-      div#base {
-        top: 55%;
-        left: 50%;
-        background: #2440cc;
-        box-shadow: 0 0 60px 15px #2440cc;
-        transform: translate(-50%, -50%) rotateX(70deg) rotate(-45deg);
-      }
-      
-      div#base.rotate {
-        animation: rotate 6s linear infinite;
-      }
-      
-      div#right {
-        transform-origin: 0% 50%;
-        transform: translateX(120px);
-      }
-      
-      div#right.on {
-        transform: translateX(120px) rotateY(-90deg);
-      }
-      
-      div#left {
-        transform-origin: 100% 50%;
-        transform: translateX(-120px);
-      }
-      
-      div#left.on {
-        transform: translateX(-120px) rotateY(90deg);
-      }
-      
-      div#front {
-        transform-origin: 50% 0%;
-        transform: translateY(120px);
-      }
-      
-      div#front.on {
-        transform: translateY(120px) rotateX(90deg);
-      }
-      
-      div#back,
-      div#top {
-        transform-origin: 50% 100%;
-        transform: translateY(-120px);
-      }
-      
-      div#back.on,
-      div#top.on {
-        transform: translateY(-120px) rotateX(-90deg);
-      }
-      
-      ul.timeline {
-        position: absolute;
-        width: 200px;
-        height: 2px;
-        top: 80%;
-        left: 50%;
-        background: rgba(255, 255, 255, 0.4);
-        opacity: 0;
-        transition: all 0.4s ease-in-out;
-        transform: translateX(-50%) translateY(100px) scale(0.4);
-      }
-      ul.timeline li {
-        position: absolute;
-        height: 100%;
-        top: 0;
-        left: 0;
-        background: white;
-      }
-      
-      ul.timeline.visible {
-        opacity: 1;
-        transition: all 0.4s ease-in-out;
-        transform: translateX(-50%) translateY(0) scale(1);
-      }
-      
-      @keyframes rotate {
-        from {
-          transform: translate(-50%, -50%) rotateX(70deg) rotate(-45deg);
-        }
-        to {
-          transform: translate(-50%, -50%) rotateX(70deg) rotate(315deg);
-        }
-      } */
-            
-   </style>
-  
-   <script type="text/javascript">
-   
+	</style>
+	<script type="text/javascript">
    $(function() {
       var currentSlide = 0;
       var testCount = 0;
@@ -564,72 +470,59 @@
       
       $('.check').on('click', goToCheck);
       function goToCheck() {
-         //alert(currentSlide);
-         //if (currentSlide == 0) {
-            //var slideNumber = "71"+currentSlide+1;
-            var cNum = currentSlide + 1;
-            //alert("cNum : "+cNum);
-            var answer = $('#answer'+currentSlide).val();
-            //alert(answer);
+            var test = null;
+    	    var cNum = currentSlide + 1;
+            var userAnswer = null;
+            if (cNum == 4) {
+            	userAnswer = $('#answer31').val() +"/"+ $('#answer32').val() +"/"+ $('#answer33').val();
+			} else {
+            	userAnswer = $('#answer'+currentSlide).val();
+			}
                   $.ajax({
                      url : "contents71",
                      type : "POST",
-                     //contentType : "application/json; charset=utf-8",
-                     //dataType : "json",
                      data : {
                         cNum : cNum,
-                        answer : answer  
+                        userAnswer : userAnswer  
                      },
-                     /* success : function(result) {
-                       //alert('success');
-                       //alert(result);
-                       var resultStr = '';
-                       if (result == false) {
-                     resultStr = '<div class="resultMsg"><img src="../resources/img/noanswer.png" width="250px"> </div>';
-                     //resultStr += '<div class="resultMsg">정답입니다.</div>';
-                     $('#answerResultDiv').html(resultStr);
-                    } else if (result == true) {
-                       resultStr = '<div class="resultMsg"><img src="../resources/img/yesanswer.png" width="250px"> </div>';
-                       //resultStr += '<div class="resultMsg">오답입니다.</div>';
-                      $('#answerResultDiv').html(resultStr);
-                   }
-                      //if (result) {
-                         $('#checkBtnDiv').html("");
-                         var str = '<button class="next">next</button>';
-                     $('#nextBtnDiv').html(str);
-                     $('.next').on('click', goToNextSlide);
-                  //}
-                     }, */
                      success : function(resultMap) {
-                         //alert('success');
-                         //alert(result);
-                         var resultStr = '';
-                         if (resultMap.result == false) {
-                       resultStr = '<div class="resultMsg"><img src="../resources/img/noanswer.png" width="250px"> </div>';
-                       resultStr += '<div> 정답 : '+resultMap.answer+'</div>';
-                       $('#answerResultDiv').html(resultStr);
-                      } else if (resultMap.result == true) {
-                         resultStr = '<div class="resultMsg"><img src="../resources/img/yesanswer.png" width="250px"></div>';
-                        $('#answerResultDiv').html(resultStr);
-                     }
-                        //if (result) {
-                           $('#checkBtnDiv').html("");
-                           var str = '<button class="next">next</button>';
-                       $('#nextBtnDiv').html(str);
-                       $('.next').on('click', goToNextSlide);
-                    //}
-                       },
+                        var resultStr = '';
+                        if (resultMap.result == false) {
+		                	resultStr = '<div class="resultMsg"><img src="../resources/img/noanswer.png" width="50px"> </div>';
+		                    resultStr += '<div> 에러 이유 : '+resultMap.errorReason+'</div>';
+		                    var temp = resultMap.errorReason;
+		                    console.log(temp);
+		                    $('#answerResultDiv').html(resultStr);
+                      	} else if (resultMap.result == true) {
+	                        resultStr = '<div class="resultMsg"><img src="../resources/img/yesanswer.png" width="50px"> </div>';
+	                        //alert("vbValue : " + resultMap.vbValue);
+	                        //alert("vbName : " + resultMap.vbName);
+	                        $('#answerResultDiv').html(resultStr);
+	                        $('#checkBtnDiv').html("");
+	                        var str = '<button class="next">next</button>';
+		                    /* if (resultMap.xSum != null && cNum == 5) {
+								userAnswer = resultMap.xSum;
+							} */
+                      	}
+                        $('#nextBtnDiv').html(str);
+	                    $('.next').on('click', goToNextSlide);
+                        /* alert("resultMap.slideNum : "+resultMap.slideNum);
+                        if (resultMap.slideNum == 715) {
+                        	alert("rrr715");
+                        	var showResult = '<div class="resultMsg"> 계산 결과는 : '+resultMap.xSum+'</div>';
+                        	$('#showDiv').html(showResult);
+						} */
+                     },
                      error : function(err) {
                         console.log(err);
                         alert("fail");
                      }
-                  });
+                });
          //} 
       }
    
       function goToNextSlide () {
         $('#answerResultDiv').html("");
-        //if(currentSlide >= slideCount - 1) return; 
         if(currentSlide >= slideCount - 1){
           location.href = "contentsHome";
         }
@@ -686,42 +579,41 @@
    
    //큐브접기
    /* $(function () {
-      function on(e) {
-         var time = 6000; // Same as animation duration in CSS:45
+	   function on(e) {
+		   var time = 6000; // Same as animation duration in CSS:45
 
-         var target = document.getElementById(e.target.id);
-         if (target.classList.contains("on")) target.classList.remove("on");
-         else target.classList.add("on");
+		   var target = document.getElementById(e.target.id);
+		   if (target.classList.contains("on")) target.classList.remove("on");
+		   else target.classList.add("on");
 
-         if (divs.length === document.querySelectorAll("div.on").length) {
-           base.classList.add("rotate");
-           timeline.classList.add("visible");
+		   if (divs.length === document.querySelectorAll("div.on").length) {
+		     base.classList.add("rotate");
+		     timeline.classList.add("visible");
 
-           // Timeline
-           var width = 0;
-           setInterval(function() {
-             if (width == 100) clearInterval();
-             else document.querySelector(".timeline li").style.width = width++ + "%";
-           }, time / 100);
+		     // Timeline
+		     var width = 0;
+		     setInterval(function() {
+		       if (width == 100) clearInterval();
+		       else document.querySelector(".timeline li").style.width = width++ + "%";
+		     }, time / 100);
 
-           // Reset divs & timeline after the rotation
-           setTimeout(function() {
-             base.classList.remove("rotate");
-             timeline.classList.remove("visible");
-             for (i = 1; i < divs.length; i++) divs[i].classList.remove("on");
-           }, time);
-         }
-       }
+		     // Reset divs & timeline after the rotation
+		     setTimeout(function() {
+		       base.classList.remove("rotate");
+		       timeline.classList.remove("visible");
+		       for (i = 1; i < divs.length; i++) divs[i].classList.remove("on");
+		     }, time);
+		   }
+		 }
 
-       var base = document.getElementById("base"),
-         timeline = document.querySelector(".timeline"),
-         divs = document.querySelectorAll("div");
-       base.addEventListener("click", on, false);
+		 var base = document.getElementById("base"),
+		   timeline = document.querySelector(".timeline"),
+		   divs = document.querySelectorAll("div");
+		 base.addEventListener("click", on, false);
 
-   }); */
+	}); */
    
    </script>
-
    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
    <title>Trophy Quiz</title>
 </head>
@@ -742,6 +634,7 @@
         <br>
         <img src="../resources/img/cube3.png" width="250px">
         <input type="text" id="answer0" class="answer" placeholder="작성">
+        <!-- <textarea rows="3" cols="10" class="answer" id="answer0"></textarea> -->
         <div class="box_wrapper">
          </div>
         <br><br><br>
@@ -768,34 +661,40 @@
       <div class="sized-container">
         <h2>상자를 만들기 위해 지금까지 입력한 가로, 세로, 높이 변수를 곱해 cube라는 변수에 담아주세요.</h2>
         <!-- 가로*세로*높이 -->
-        <input type="text" id="answer3" class="answer" placeholder="작성">
+        int cube = 
+        <input type="text" id="answer31" class="answerShort" placeholder="작성" width="30px"> 
+        *
+        <input type="text" id="answer32" class="answerShort" placeholder="작성" width="30px">
+        *
+        <input type="text" id="answer33" class="answerShort" placeholder="작성" width="30px">;
       </div>
     </li>
     <li class="slide" data-tag="Step5">
       <div class="sized-container">
-        <h2>만들어진 상자의 부피가 구해졌습니다!</h2>
-        <input type="text" id="answer4" class="answer" placeholder="작성">
+        <div id="showDiv"> 
+        	<%@ include file="cube.jsp" %> 
+        </div>
       </div>
     </li>
     <li class="slide" data-tag="Step6">
-      <div class="sized-container">
-        <!-- 큐브접기 -->
-      <!-- <div class="on" id="base" class="ksstest">
-        <div id="left" class="ksstest"></div>
-        <div id="right" class="ksstest"></div>
-        <div id="front" class="ksstest"></div>
-        <div id="back" class="ksstest">
-          <div id="top" class="ksstest"></div>
-        </div>
-      </div> -->
-      <ul class="timeline">
-        <li></li>
-      </ul>
+      <div class="sized-container"> 
+      	<%-- <%@ include file="cube.jsp" %> --%>	
+      	<!-- 돌아가는 박스 -->
+        <div class="box_wrapper">
+           <div class="box">
+             <div class="front"></div>
+             <div class="back"></div>
+             <div class="top"></div>
+             <div class="bottom"></div>
+             <div class="left"></div>
+             <div class="right"></div>
+           </div>
+      </div> 		
       </div>
     </li>
-    <li class="slide" data-tag="Step7">
+    <!-- <li class="slide" data-tag="Step7">
       <div class="sized-container">
-      <!-- 돌아가는 박스 -->
+      돌아가는 박스
         <div class="box_wrapper">
            <div class="box">
              <div class="front"></div>
@@ -807,7 +706,7 @@
            </div>
       </div>    
       </div>
-    </li>
+    </li> -->
   </ul>
 </div>
 <div class="full-width-container">

@@ -6,6 +6,112 @@
 <!-- 회원정보 처리 SQL --> 
 <mapper namespace="com.scitmaster.easycodingu.board.dao.BoardMapper">
 
+	<select id="getTotal" parameterType="hashmap" resultType="int">
+		SELECT
+			count(*)
+		FROM
+			board
+		<if test="searchText != null">	
+		WHERE
+			${searchSelect} like '%' || #{searchText} || '%'
+		</if>
+	</select>
+	
+	<insert id="insertBoard" parameterType="board">
+	INSERT INTO board
+		(
+			b_num
+			,b_id
+			,b_title
+			,b_contents
+			<if test="hashTag != null">
+			,hashTag
+			</if>
+			<if test="originalFileName != null and savedFileName != null">
+			,originalFileName
+			,savedFileName
+			</if>
+		)VALUES(
+			board_seq.nextval
+			,#{b_id}
+			,#{b_title}
+			,#{b_contents}
+			<if test="hashTag != null">
+			,#{hashTag}
+			</if>
+			<if test="originalFileName != null and savedFileName != null">
+			,#{originalFileName}
+			,#{savedFileName}
+			</if>
+		)
+	</insert>
   
+	<select id="selectBoardAll" resultType="board" parameterType="hashmap">
+	SELECT
+		b_num
+		,b_id
+		,b_title
+		,b_contents
+		,to_char(b_date, 'yyyy/MM/dd-hh24:mi:ss') b_date
+		,hits
+	FROM
+		board
+	<if test="searchText != null">	
+	WHERE
+		${searchSelect} like '%' || #{searchText} || '%'
+	</if>
+	ORDER BY
+		b_num desc
+	</select>  
  
+	<update id="updateHits" parameterType="int">
+		UPDATE
+			board
+		SET
+			hits = hits + 1
+		WHERE
+			b_num = #{b_num}
+	</update> 
+	
+	<select id="selectBoardOne" resultType="board" parameterType="int">
+	SELECT
+		b_num
+		,b_id
+		,b_title
+		,b_contents
+		,hashTag
+		,to_char(b_date, 'yyyy/MM/dd-hh24:mi:ss') b_date
+		,hits
+		,originalFileName
+		,savedFileName
+	FROM
+		board
+	WHERE
+		b_num = #{b_num}
+	</select>
+	
+	<delete id="deleteBoard" parameterType="int">
+	DELETE FROM
+		board
+	WHERE
+		b_num = #{b_num}
+	</delete>
+	
+	<update id="updateBoard" parameterType="board">
+	UPDATE
+		board
+	SET
+		b_num = #{b_num}
+		,b_id = #{b_id}
+		,b_title = #{b_title}
+		,b_contents = #{b_contents}
+		<if test="originalFileName != null and savedFileName != null">
+		,originalFileName = #{originalFileName}
+		,savedFileName = #{savedFileName}
+		</if>
+	WHERE
+		b_num = #{b_num}
+	</update>
+	
+	
 </mapper>

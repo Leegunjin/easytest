@@ -5,7 +5,42 @@
 
 <!-- 회원정보 처리 SQL --> 
 <mapper namespace="com.scitmaster.easycodingu.reply.dao.ReplyMapper">
-
+	
+	<insert id="insertReply" parameterType="reply">
+	INSERT INTO reply
+			(
+				r_num
+				,b_num
+				,r_id
+				,r_contents
+			)VALUES(
+				reply_seq.nextval
+				,#{b_num}
+				,#{r_id}
+				,#{r_contents}
+			)
+	</insert>
+	
+	<select id="selectReplyAll" resultType="reply" parameterType="int">
+	SELECT 
+		r_num
+		,b_num
+		,r_id
+		,r_contents
+		,to_char(r_date, 'yyyy/MM/dd-hh24:mi:ss') r_date
+	FROM
+		reply
+	WHERE 
+		b_num = #{b_num}
+	ORDER BY
+		r_date
+	</select>
   
+	<delete id="deleteReply" parameterType="int">
+	DELETE FROM
+		reply
+	WHERE 
+		r_num = #{r_num}
+	</delete>  
  
 </mapper>

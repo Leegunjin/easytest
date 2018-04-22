@@ -20,12 +20,13 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.scitmaster.easycodingu.board.dao.BoardDAO;
+import com.scitmaster.easycodingu.reply.vo.Reply;
 
 @RestController
 @RequestMapping(value="board")
 public class BoardRestController {
    
-   @Autowired 
+   @Autowired
    BoardDAO dao;
    
    private static final Logger logger = LoggerFactory.getLogger(BoardRestController.class);

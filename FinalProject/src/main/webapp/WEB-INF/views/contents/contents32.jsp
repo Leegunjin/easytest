@@ -286,44 +286,48 @@ ul{
          
          var cNum = currentSlide + 1;
          
-          $.ajax({
-                url : "contents6",
-                type : "POST",
-                contentType : "application/json; charset=utf-8",
-                dataType : "json",
-                data : JSON.stringify ({
-                   cNum : cNum
-                   , answerArr : answerArr
-                }),
-                success : function(result) {
-                   /*   alert('success'); */
-                     answerArr = [];
-                  /*  alert(result); */
-                   var resultStr = '';
-                    
-                   if (result == false) {
-                     resultStr = '<div class="resultMsg"><img src="../resources/img/noanswer.png" width="250px"> </div>';
-                     //resultStr += '<div class="resultMsg">정답입니다.</div>';
-                     $('#answerResultDiv').html(resultStr);
-                    
-                   } else if (result == true) {
-                       resultStr = '<div class="resultMsg"><img src="../resources/img/yesanswer.png" width="250px"> </div>';
-                       //resultStr += '<div class="resultMsg">오답입니다.</div>';
-                         $('#answerResultDiv').html(resultStr);
-                      }
-                   
-                       $('#checkBtnDiv').html("");
-                         var str = '<button class="next">next</button>';
-                        $('#nextBtnDiv').html(str);
-                        $('.next').on('click', goToNextSlide);
-                },
-                error : function(err) {
-                   console.log(err);
-                   answerArr = [];
-                  /*  alert("fail"); */
-                }
-                
-             });
+         $.ajax({
+             url : "contents6",
+             type : "POST",
+             contentType : "application/json; charset=utf-8",
+             dataType : "json",
+             data : JSON.stringify ({
+                cNum : cNum
+                ,answerArr : answerArr
+             }),
+             success : function(blankMap) {
+                  alert('success');
+                  answerArr = [];
+                var resultStr = '';
+                 
+                if (blankMap.result == false) {
+                  resultStr = '<div class="resultMsg"><img src="../resources/img/noanswer.png" width="250px"><br>';
+                  resultStr += '사용자가 입력한 답 : '+blankMap.wrongAnswerArr+'<br>'; 
+                  resultStr += '정답 : '+blankMap.rightAnswerArr+'<br>';
+                  resultStr += '틀린 이유 : ' + blankMap.errorReasonArr+'<br>';
+                  resultStr += '</div>';
+                  //resultStr += '<div class="resultMsg">정답입니다.</div>';
+                  /* alert("blankMap.rightAnswer : "+blankMap.rightAnswer);
+                  alert("blankMap.wrongAnswer : "+blankMap.wrongAnswer); */
+                  $('#answerResultDiv').html(resultStr);
+                 
+                } else if (blankMap.result == true) {
+             	   resultStr = '<div class="resultMsg"><img src="../resources/img/yesanswer.png" width="250px"></div>';
+                      $('#answerResultDiv').html(resultStr);
+                   }
+                    //if (result) {
+                    $('#checkBtnDiv').html("");
+                      var str = '<button class="next">next</button>';
+                     $('#nextBtnDiv').html(str);
+                     $('.next').on('click', goToNextSlide);
+             },
+             error : function(err) {
+                console.log(err);
+                answerArr = [];
+                alert("fail");
+             }
+             
+          });
          
      }
      

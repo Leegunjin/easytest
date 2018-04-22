@@ -105,5 +105,13 @@ public class ContentsViewController {
 		return "contents/contents52";
 
 		}
+	
+	 @RequestMapping(value = "contents73", method = RequestMethod.GET)
+		public String contents15() {
+			logger.info("QuizPage START");
+			logger.info("QuizPage ENE");
+			return "contents/contents73";
+
+		}
 
 }
