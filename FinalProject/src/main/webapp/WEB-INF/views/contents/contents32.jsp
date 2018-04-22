@@ -11,180 +11,211 @@
 <style type="text/css">
       @charset "UTF-8";
 *, html, body {
-  font-family: "TrebuchetMS", trebuchet, sans-serif;
+	font-family: "TrebuchetMS", trebuchet, sans-serif;
 }
 
 * {
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
 }
 
 h1, h2 {
-  text-align: center;
+	text-align: center;
+	font-family: NanumSquareRound Extrabold;
 }
 
 h1 {
-  font-size: 24px;
-  line-height: 30px;
-  font-weight: bold;
+	font-size: 29px;
+	line-height: 30px;
+	font-weight: bolder;
+	margin-top: 40px;
+	margin-bottom: 20px;
 }
 
 h2 {
-  font-size: 18px;
-  line-height: 25px;
-  margin-top: 20px;
+	font-size: 28px;
+	line-height: 25px;
+	margin-top: 0px;
+	margin-bottom: 30px;
 }
 
 button {
-  -webkit-appearance: none;
-     -moz-appearance: none;
-          appearance: none;
-  border: 0;
-  padding: 14px 50px;
-  border-radius: 4px;
-  background-color: #37B595;
-  color: #FFFFFF;
-  text-transform: capitalize;
-  font-size: 18px;
-  line-height: 22px;
-  outline: none;
-  cursor: pointer;
-  -webkit-transition: all 0.2s;
-  transition: all 0.2s;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	border: 0;
+	padding: 14px 50px;
+	border-radius: 4px;
+	background-color: #37B595;
+	color: #FFFFFF;
+	text-transform: capitalize;
+	font-size: 18px;
+	line-height: 22px;
+	outline: none;
+	cursor: pointer;
+	-webkit-transition: all 0.2s;
+	transition: all 0.2s;
 }
 button:hover {
-  background-color: #1A7F75;
+	background-color: #1A7F75;
 }
 button.previous {
-  background-color: #A2ACAF;
+	background-color: #A2ACAF;
 }
 button.previous:hover {
-  background-color: #5A5F61;
+	background-color: #5A5F61;
 }
 
 .full-width-container {
-  width: 100%;
-  min-width: 320px;
+	width: 100%;
+	min-width: 320px;
 }
 
 .sized-container {
-  max-width: 900px;
-  width: 100%;
-  margin: 0 auto;
+	max-width: 900px;
+	width: 100%;
+	margin: 0 auto;
 }
 .slide-container {
-  margin: 0; 
-  padding: 0 1em 0;
-  padding-left: 0px;
-  position: relative;
-  left: 0;
-  overflow: hidden;
-  width: 7840px;
+	margin: 0; 
+	padding: 0 1em 0;
+	padding-left: 0px;
+	position: relative;
+	left: 0;
+	overflow: hidden;
+	width: 6860px;
+	height: 200px;
 }
-
-
 
 .slide {
-  float: left;
-  list-style-type: none;
+	float: left;
+	list-style-type: none;
 }
 .slide .sized-container {
-  padding: 75px 0px;
+ 	padding: 10px 0px;
 }
 
 .button-container {
-  border-top: 1px solid black;
-  overflow: hidden;
-  padding-top: 30px;
+	border-top: 1px solid black;
+	overflow: hidden;
+	padding-top: 30px;
 }
 .button-container button {
-  float: right;
-  margin-left: 30px;
+	float: right;
+	margin-left: 30px;
 }
 
 .pagination-container {
-  margin-top: 120px;
+	margin-top: 80px;
 }
 
 .pagination {
-  width: 100%;
-  text-align: center;
-  padding: 0 25px;
+	width: 100%;
+	text-align: center;
+	padding: 0 25px;
 }
 
 .indicator {
-  width: 25px;
-  height: 25px;
-  border: 4px solid lightgray;
-  border-radius: 50%;
-  display: inline-block;
-  -webkit-transition: all 0.3s;
-  transition: all 0.3s;
-  position: relative;
+	width: 25px;
+	height: 25px;
+	border: 4px solid lightgray;
+	border-radius: 50%;
+	display: inline-block;
+	-webkit-transition: all 0.3s;
+	transition: all 0.3s;
+	position: relative;
 }
 .indicator .tag {
-  position: absolute;
-  top: -30px;
-  left: 50%;
-  -webkit-transform: translateX(-50%);
-          transform: translateX(-50%);
-  color: lightgray;
-  white-space: nowrap;
+	position: absolute;
+	top: -30px;
+	left: 50%;
+	-webkit-transform: translateX(-50%);
+	transform: translateX(-50%);
+	color: lightgray;
+	white-space: nowrap;
 }
 .indicator.active, .indicator.complete {
-  border-color: #37B595;
+	border-color: #37B595;
 }
 .indicator.active .tag, .indicator.complete .tag {
-  color: #37B595;
+	color: #37B595;
 }
 .indicator.complete:after {
-  content: "?";
-  position: absolute;
-  color: #37B595;
-  left: 4px;
-  top: 3px;
-  font-size: 14px;
+	content: "?";
+	position: absolute;
+	color: #37B595;
+	left: 4px;
+	top: 3px;
+	font-size: 14px;
 }
 
 .progress-bar-container {
-  width: 10%;
-  height: 4px;
-  display: inline-block;
-  background-color: lightgray;
-  position: relative;
-  top: -10px;
+	width: 8%;
+	height: 4px;
+	display: inline-block;
+	background-color: lightgray;
+	position: relative;
+	top: -10px;
 }
 .progress-bar-container:last-of-type {
-  display: none;
+	display: none;
 }
 .progress-bar-container .progress-bar {
-  width: 0;
-  height: 100%;
-  background-color: #37B595;
+	width: 0;
+	height: 100%;
+	background-color: #37B595;
 }
 
 [class^="answer"] {
-      margin: 0; 
-      padding: 0;
-      background-color: #f3fafd; 
-      border: solid 2px #217093; 
-      border-radius: 4px; 
-      box-sizing: border-box;
-      width: 50px; 
-      height: 50px;
-      text-align: center;
-      font-size: 20pt; 
-      color: #353538; 
-      font-weight: 600;
-      font-style: inherit;
+	margin: 0; 
+	padding: 0;
+	background-color: #f3fafd; 
+	border: solid 2px #00a8f3; 
+	border-radius: 4px; 
+	box-sizing: border-box;
+	width: 50px; 
+	height: 50px;
+	text-align: center;
+	font-size: 20pt; 
+	color: #353538; 
+	font-weight: 600;
+	font-style: inherit;
 }
 
 ul{
    list-style:none;
    padding-left:0px;
 }
+
+#question_box {
+	font-family: NanumSquareRound Extrabold;
+	font-size: 30pt;
+	border: solid 4px #00a8f3;
+	border-radius: 5px;
+	width: 400px;
+	height: auto;
+	padding: 5px;
+	margin-top : 50px;
+	margin-left: 560px;
+	text-align: center;
+	background-color: #f3fafd;
+}
+
+[id^="question_p"] {
+	font-family: NanumSquareRound Extrabold;
+	font-size: 30pt;
+	margin: 20px;
+}
+
+#question_p1 {
+	color: #e21b96;
+}
+
+#question_p2 {
+	color: #3f48cc;
+}
       
-   </style>
+</style>
 
 <!-- JavaScript -->
 <script type="text/javascript" src="<c:url value="/resources/js/jquery-3.2.1.js"></c:url>"></script>
@@ -256,7 +287,7 @@ ul{
          var cNum = currentSlide + 1;
          
           $.ajax({
-                url : "contents320",
+                url : "contents6",
                 type : "POST",
                 contentType : "application/json; charset=utf-8",
                 dataType : "json",
@@ -265,9 +296,9 @@ ul{
                    , answerArr : answerArr
                 }),
                 success : function(result) {
-                     alert('success');
+                   /*   alert('success'); */
                      answerArr = [];
-                   alert(result);
+                  /*  alert(result); */
                    var resultStr = '';
                     
                    if (result == false) {
@@ -280,7 +311,7 @@ ul{
                        //resultStr += '<div class="resultMsg">오답입니다.</div>';
                          $('#answerResultDiv').html(resultStr);
                       }
-                       //if (result) {
+                   
                        $('#checkBtnDiv').html("");
                          var str = '<button class="next">next</button>';
                         $('#nextBtnDiv').html(str);
@@ -289,7 +320,7 @@ ul{
                 error : function(err) {
                    console.log(err);
                    answerArr = [];
-                   alert("fail");
+                  /*  alert("fail"); */
                 }
                 
              });
@@ -375,46 +406,64 @@ ul{
   </div>
 </div>
 <div class="viewport full-width-container">
-   <h1>빈칸에 알맞은 연산자와 기호를 입력해주세요.</h1>
-   <h2>int x = 5;</h2>
-   <h2>int y = 2;</h2>
+   <h1>빈 칸에 알맞은 연산자와 기호를 입력해주세요.</h1>
+<!--    <img alt="operator_quiz_01" src="../resources/img/operator_quiz_10.png" style="height: 150px; width: auto;"> -->
+	<div id="question_box">
+		<p id="question_p1">int a = 2;</p>
+		<p id="question_p2">int b = 5;</p>
+	</div>
   <ul class="slide-container">
     <li class="slide" data-tag="Step1">
       <div class="sized-container">
-        <h1>x &nbsp; <input type="text" class="answer0" id="answer01"> &nbsp; y &nbsp; = &nbsp; 7 &nbsp; <input type="text" class="answer0" id="answer02"> </h1>
+        <h1>a &nbsp; <input type="text" class="answer0" id="answer01" maxlength="1"> &nbsp; b &nbsp; = &nbsp; 7 &nbsp; <input type="text" class="answer0" id="answer02" maxlength="1"> &nbsp; </h1>
       </div>
     </li>
     <li class="slide" data-tag="Step2">
       <div class="sized-container">
-      <h1>x &nbsp; <input type="text" class="answer1" id="answer11"> &nbsp; y &nbsp; = &nbsp; 3 &nbsp; <input type="text" class="answer1" id="answer12"> </h1>
+      <h1>a &nbsp; <input type="text" class="answer1" id="answer11" maxlength="1"> &nbsp; b &nbsp; = &nbsp; 3 &nbsp; <input type="text" class="answer1" id="answer12" maxlength="1"> &nbsp; </h1>
       </div>
     </li>
     <li class="slide" data-tag="Step3">
       <div class="sized-container">
-        <h1>x &nbsp; <input type="text" class="answer2" id="answer21"> &nbsp; y &nbsp; = &nbsp; 10 &nbsp; <input type="text" class="answer2" id="answer22"> </h1>
+        <h1>a &nbsp; <input type="text" class="answer2" id="answer21" maxlength="1"> &nbsp; b &nbsp; = &nbsp; 10 &nbsp; <input type="text" class="answer2" id="answer22" maxlength="1"> &nbsp; </h1>
       </div>
     </li>
     <li class="slide" data-tag="Step4">
       <div class="sized-container">
-        <h1>x &nbsp; <input type="text" class="answer3" id="answer31"> &nbsp; y &nbsp; = &nbsp; 2 &nbsp; <input type="text" class="answer3" id="answer32"> </h1>
+        <h1>a &nbsp; <input type="text" class="answer3" id="answer31" maxlength="1"> &nbsp; b &nbsp; = &nbsp; 2 &nbsp; <input type="text" class="answer3" id="answer32" maxlength="1"> &nbsp; </h1>
       </div>
     </li>
     <li class="slide" data-tag="Step5">
       <div class="sized-container">
-        <h1>x &nbsp; <input type="text" class="answer4" id="answer41"> &nbsp; y &nbsp; = &nbsp; 1 &nbsp; <input type="text" class="answer4" id="answer42"> </h1>
+        <h1>a &nbsp; <input type="text" class="answer4" id="answer41" maxlength="1"> &nbsp; b &nbsp; = &nbsp; 1 &nbsp; <input type="text" class="answer4" id="answer42" maxlength="1"> &nbsp; </h1>
       </div>
     </li>
     <li class="slide" data-tag="Step6">
       <div class="sized-container">
-        <h1>x &nbsp; + &nbsp; y &nbsp; <input type="text" class="answer5" id="answer51"> &nbsp; 7 &nbsp; <input type="text" class="answer5" id="answer52"> </h1>
+        <h1>a &nbsp; + &nbsp; b &nbsp; <input type="text" class="answer5" id="answer51" maxlength="2" style="width: 75px"> &nbsp; 7 &nbsp; <input type="text" class="answer5" id="answer52" maxlength="2"> &nbsp; </h1>
       </div>
     </li>
     <li class="slide" data-tag="Step7">
       <div class="sized-container">
-        <h1>x &nbsp; * &nbsp; y &nbsp; <input type="text" class="answer6" id="answer61"> &nbsp; 20 &nbsp; <input type="text" class="answer6" id="answer62"> </h1>
+        <h1>a &nbsp; * &nbsp; b &nbsp; <input type="text" class="answer6" id="answer61" maxlength="2" style="width: 75px"> &nbsp; 20 &nbsp; <input type="text" class="answer6" id="answer62" maxlength="2"> &nbsp; </h1>
       </div>
    </li>
-       
+     <li class="slide" data-tag="Step8">
+      <div class="sized-container">
+	 	<h1 style="padding:20px; margin: 0px;">a &nbsp; <input type="text" class="answer7" id="answer72" maxlength="2" style="width: 75px"> &nbsp; 3 ; &nbsp; </h1>
+	 	<h1 style="padding:10px; margin: 0px;">b &nbsp; <input type="text" class="answer7" id="answer72" maxlength="2" style="width: 75px"> &nbsp; 3 ; &nbsp; </h1>
+      </div>
+   </li>
+   </li>
+     <li class="slide" data-tag="Step9">
+      <div class="sized-container">
+        <h1 style="font-size: 16pt; padding:5px; margin: 0px;"> 각각 공통으로 들어갈 연산자를 입력해주세요. </h1>
+        <h1 style="padding:10px; margin: 0px;">① &nbsp; a &nbsp; <input type="text" class="answer8" id="answer81" maxlength="2" style="width: 75px"> &nbsp; 2 ; &nbsp;
+        	또는 &nbsp; a &nbsp; <input type="text" class="answer8" id="answer82" maxlength="2" style="width: 75px"> &nbsp;5 ; </h1>
+	 	<h1 style="padding:10px; margin: 0px;">② &nbsp; b &nbsp; <input type="text" class="answer8" id="answer83" maxlength="2" style="width: 75px"> &nbsp; 2 ; &nbsp;
+	 		또는 &nbsp; b &nbsp; <input type="text" class="answer8" id="answer84" maxlength="2" style="width: 75px"> &nbsp;5 ; </h1>
+      </div>
+   </li>
   </ul>
 </div>
 <div class="full-width-container">

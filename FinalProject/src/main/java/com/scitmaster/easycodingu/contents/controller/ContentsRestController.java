@@ -62,8 +62,8 @@ public class ContentsRestController {
 		return result;
 	}
 
-	/*@RequestMapping(value = "contents310", method = RequestMethod.POST)
-	public HashMap Contents310(int cNum, String userAnswer) {
+	/*@RequestMapping(value = "contents5", method = RequestMethod.POST)
+	public HashMap Contents31(int cNum, String userAnswer) {
 		System.out.println("userAnswer : " + userAnswer);
 		
 		HashMap<String, Object> blankMap = new HashMap<>();
@@ -137,33 +137,88 @@ public class ContentsRestController {
 		return blankMap;
 	}*/
 
-	@RequestMapping(value = "contents320", method = RequestMethod.POST)
-	public boolean Contents320(@RequestBody HashMap<String, Object> userAnswer) {
+	 
+		@RequestMapping(value = "contents6", method = RequestMethod.POST)
+		public boolean Contents32(@RequestBody HashMap<String, Object> userAnswer) {
+	      
+	      boolean result = false;
+	      
+	      String c_num = "32" + (Integer) userAnswer.get("cNum");
+	      logger.info(c_num);
+	   
+	      Contents contents32 = dao.selectContent(Integer.parseInt(c_num));
+	      String answer = contents32.getC_answer();
+	      String[] answerArr = answer.split("&");
+	      
+	      ArrayList<String> userAnswerArr = (ArrayList) userAnswer.get("answerArr");
+	      
+	     for(int i = 0; i < answerArr.length; i++) {
+	         logger.info(answerArr[i]);
+	         logger.info(userAnswerArr.get(i));
+	         
+	         if(answerArr[i].equals(userAnswerArr.get(i))) {
+	            result = true;
+	         } else {
+	            result = false;
+	            return result;
+	         }
+	      }
 
-		boolean result = false;
+	      return result;
+	   }
+	   
+	   @RequestMapping(value = "contents8", method = RequestMethod.POST)
+	   public boolean Contents42(@RequestBody HashMap<String, Object> userAnswerMap) {
+	      
+	      boolean result = false;
+	      
+	      String c_num = "42" + (Integer) userAnswerMap.get("cNum");
+	      logger.info(c_num);
+	   
+	      Contents contents42 = dao.selectContent(Integer.parseInt(c_num));
+	      String answer = contents42.getC_answer();
+	      
+	      String userAnswer = (String) userAnswerMap.get("answer");
+	      
+	         logger.info(userAnswer);
+	         
+	         if(answer.equals(userAnswer)) {
+	            result = true;
+	         } else {
+	            result = false;
+	            return result;
+	         }
 
-		String c_num = "32" + (Integer) userAnswer.get("cNum");
-		logger.info(c_num);
+	         return result;
+	   }
+	      
+	   @RequestMapping(value = "contents10", method = RequestMethod.POST)
+	   public boolean Contents52(@RequestBody HashMap<String, Object> userAnswer) {
+	         
+		   boolean result = false;
+	         
+	         String c_num = "52" + (Integer) userAnswer.get("cNum");
+	         logger.info(c_num);
+	      
+	         Contents contents52 = dao.selectContent(Integer.parseInt(c_num));
+	         String answer = contents52.getC_answer();
+	         String[] answerArr = answer.split("#3355#");
+	         
+	         ArrayList<String> userAnswerArr = (ArrayList) userAnswer.get("answerArr");
+	         
+	        for(int i = 0; i < answerArr.length; i++) {
+	            logger.info(answerArr[i]);
+	            logger.info(userAnswerArr.get(i));
+	            
+	            if(answerArr[i].equals(userAnswerArr.get(i))) {
+	               result = true;
+	            } else {
+	               result = false;
+	               return result;
+	            }
+	         }
 
-		Contents contents32 = dao.selectContent(Integer.parseInt(c_num));
-		String answer = contents32.getC_answer();
-		String[] answerArr = answer.split("&");
-
-		ArrayList<String> userAnswerArr = (ArrayList) userAnswer.get("answerArr");
-
-		for (int i = 0; i < answerArr.length; i++) {
-			logger.info(answerArr[i]);
-			logger.info(userAnswerArr.get(i));
-
-			if (answerArr[i].equals(userAnswerArr.get(i))) {
-				result = true;
-			} else {
-				result = false;
-				return result;
-			}
-		}
-
-		return result;
-	}
+	         return result;
+	      }
 
 }

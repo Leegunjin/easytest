@@ -89,5 +89,21 @@ public class ContentsViewController {
 		return "contents/contents72";
 
 	}
+	
+	@RequestMapping(value = "contents42", method = RequestMethod.GET)
+	public String contents42() {
+		logger.info("QuizPage START");
+		logger.info("QuizPage END");
+		return "contents/contents42";
+
+		}
+	
+	@RequestMapping(value = "contents52", method = RequestMethod.GET)
+	public String contents52() {
+		logger.info("QuizPage START");
+		logger.info("QuizPage END");
+		return "contents/contents52";
+
+		}
 
 }

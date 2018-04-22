@@ -290,7 +290,7 @@ ul {
          var cNum = currentSlide + 1;
          
              $.ajax({
-                url : "contents310",
+                url : "contents5",
                 type : "POST",
                 contentType : "application/json; charset=utf-8",
                 dataType : "json",
