@@ -10,13 +10,14 @@ public class Person {
 	private int grade;			//회원 레벨
 	private int delete_Flag;	//탈퇴 신청 여부
 	private String delete_Date;	//탈퇴 신청 날짜
+	private String profile_Image;	//탈퇴 신청 날짜
 	
 	public Person() {
 		super();
 	}
-	
+
 	public Person(String id, String name, String password, String email, String admin_Flag, int grade, int delete_Flag,
-			String delete_Date) {
+			String delete_Date, String profile_Image) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -26,6 +27,7 @@ public class Person {
 		this.grade = grade;
 		this.delete_Flag = delete_Flag;
 		this.delete_Date = delete_Date;
+		this.profile_Image = profile_Image;
 	}
 
 	public String getId() {
@@ -92,12 +94,21 @@ public class Person {
 		this.delete_Date = delete_Date;
 	}
 
+	public String getProfile_Image() {
+		return profile_Image;
+	}
+
+	public void setProfile_Image(String profile_Image) {
+		this.profile_Image = profile_Image;
+	}
+
 	@Override
 	public String toString() {
 		return "Person [id=" + id + ", name=" + name + ", password=" + password + ", email=" + email + ", admin_Flag="
 				+ admin_Flag + ", grade=" + grade + ", delete_Flag=" + delete_Flag + ", delete_Date=" + delete_Date
-				+ "]";
+				+ ", profile_Image=" + profile_Image + "]";
 	}
+	
 	
 	
 	

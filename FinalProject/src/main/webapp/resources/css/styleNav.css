@@ -1,0 +1,185 @@
+@CHARSET "UTF-8";
+
+
+
+
+/* 상단 내비 제목이랑 옆에 세션 로그인 정보 */
+
+nav .slogan { color: black; }
+nav .slogan .list { color: #18aafe; }
+nav.black .slogan { color: #fff; } 
+
+
+nav {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%; 
+	height: 85px;
+	padding: 2px 30px;
+	box-sizing: border-box;
+	transition : .3s;
+	z-index: 100;
+}
+
+nav.black {
+	background: rgba(0,0,0,0.8);
+	height: 85px;
+	padding: 2px 30px;
+}
+
+
+nav.black .button p { color: #fff; } 
+nav.black .buttonStudy p { color: #fff; }
+nav.black .userInfo p a {color: gray;}
+
+
+nav ul {
+	list-style: none;
+	float: right;
+	margin: 0;
+	padding: 0;
+	display: flex;
+}
+
+nav ul li { list-style: none; }
+
+nav ul li a {
+	line-height: 80px;
+	color: #151515;
+	padding: 12px 30px;
+}
+
+nav.black ul li a { color: #fff; }
+
+nav ul li a:FOCUS { outline: none; }
+
+nav ul li a.active {
+	background: #18aafe;
+	color: #fff;
+	border-radius: 6px;
+}
+
+
+.slogan {
+  overflow: hidden;
+  height: 50px;
+  width: 50%;
+  line-height: 40px;
+  font-size: 35px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  color: #fff;
+  transform: translate(0%, 30%);
+}
+.slogan:before {  content: '['; padding-right: 10px; }
+.slogan:after  {  content: ']'; padding-left: 10px;  }
+
+.slogan:before, .slogan:after {
+  color: #16a085;
+  font-size: 40px;
+  -webkit-animation: opacity 2s infinite;
+          animation: opacity 2s infinite;
+}
+
+.slogan li {  transform: translate(0%, 0%); }
+
+.list {
+  font-size: 24px;
+  letter-spacing: 2px;
+  vertical-align: middle;
+  display: inline-block;
+  list-style: none;
+  -webkit-animation: text 30s ease infinite;
+          animation: text 30s ease infinite;
+          
+}
+
+.list li {
+  left: 0;
+  top: 0;
+  width: 500px;
+  height: 50px;
+  margin-top: 3px;
+  text-align: left;
+  transform: translate(25%, -80%);
+ 
+}
+
+.list span { color: gray; }
+
+.displayLevel { 
+	top: 0;
+	left: 0;
+	width: 100px;
+	height: 30px;
+	color: #18aafe; 
+	font-size: 24px;
+	font-weight: bolder;
+	transform: translate(740%, -90%); 
+	float: left;
+}
+	
+.displayLevel span { 
+	color: gray; 
+	font-size: 24px; 
+	font-weight: bolder; 
+	float: left; 
+}
+
+.displayProgress{ 
+	top: 0;
+	left: 0;
+	width: 300px;
+	height: 100px;
+	color: #18aafe; 
+	font-size: 24px;
+	font-weight: bolder;
+	transform: translate(260%, -30%); 
+	float: left;
+}
+
+.displayProgress span { 
+	color: gray; 
+	font-size: 24px; 
+	font-weight: bolder; 
+	float: left; 
+}
+
+
+
+@-webkit-keyframes text {
+  0%, 8% { -webkit-transform: translate(0, 0%); transform: translate(0, 0%); }
+  11%, 19% { -webkit-transform: translate(0, -20%); transform: translate(0, -20%); }
+  22%, 30% { -webkit-transform: translate(0, -40%); transform: translate(0, -40%); }
+  33%, 41% { -webkit-transform: translate(0, -60%); transform: translate(0, -60%); }
+  44%, 52% { -webkit-transform: translate(0, -80%); transform: translate(0, -80%); }
+  55%, 63% { -webkit-transform: translate(0, -60%); transform: translate(0, -60%); }
+  66%, 74% { -webkit-transform: translate(0, -40%); transform: translate(0, -40%); }
+  77%, 85% { -webkit-transform: translate(0, -20%); transform: translate(0, -20%); }
+  88%, 96% { -webkit-transform: translate(0, 0);    transform: translate(0, 0); }
+}
+
+@keyframes text {
+  0%, 8%   { -webkit-transform: translate(0, 0%);    transform: translate(0, 0%); }
+  11%, 19% { -webkit-transform: translate(0, -20%);  transform: translate(0, -20%); }
+  22%, 30% { -webkit-transform: translate(0, -40%);  transform: translate(0, -40%); }
+  33%, 41% { -webkit-transform: translate(0, -60%);  transform: translate(0, -60%); }
+  44%, 52% { -webkit-transform: translate(0, -80%);  transform: translate(0, -80%); }
+  55%, 63% { -webkit-transform: translate(0, -60%);  transform: translate(0, -60%); }
+  66%, 74% { -webkit-transform: translate(0, -40%);  transform: translate(0, -40%); }
+  77%, 85% { -webkit-transform: translate(0, -20%);  transform: translate(0, -20%); }
+  88%, 96% { -webkit-transform: translate(0, 0);     transform: translate(0, 0);  }
+}
+
+@-webkit-keyframes opacity { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+@keyframes opacity {         0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+
+/* 상단 내비 제목이랑 옆에 세션 로그인 정보 */
+
+
+/* 상단 NAVI BAR에 있는 버튼들의 속성 */
+
+
+
+/* 상단 NAVI BAR 버튼 속성 끝 */

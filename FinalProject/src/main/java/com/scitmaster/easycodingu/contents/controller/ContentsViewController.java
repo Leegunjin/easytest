@@ -31,7 +31,7 @@ public class ContentsViewController {
 
 	// 컨텐츠 홈으로 이동
 	@RequestMapping(value = "contentsHome", method = RequestMethod.GET)
-	public String contentsHome(Model model) {
+	public String contentsHome(Model model, Person person) {
 		logger.info("컨텐츠 홈 이동 시작");
 		model.addAttribute("clearLevel", 72);
 		logger.info("컨텐츠 홈 이동 종료");

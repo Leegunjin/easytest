@@ -69,6 +69,26 @@
           ,delete_Flag = #{delete_Flag}
        WHERE id = #{id}
     </update>
+    
+  
+    
+    <!-- 마이페이지 정보수정 -->
+    <update id="updateUser" parameterType="person">
+       UPDATE person
+       SET 
+          name = #{name}
+          ,password = #{password}
+       WHERE  id = #{id}
+    </update>
+    
+    
+     <!-- 마이페이지 프로필수정 -->
+    <update id="updateProfile" parameterType="person">
+       UPDATE person
+       SET 
+          profile_Image = #{profile_Image}
+       WHERE  id = #{id}
+    </update>
  
  
 </mapper>

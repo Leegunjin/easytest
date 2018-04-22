@@ -15,8 +15,169 @@
            rel="stylesheet">
    <script src="http://code.jquery.com/jquery-3.2.1.js"></script>
    
+   
+   <script src="https://smtpjs.com/smtp.js"></script>
+
+   
+   <script type="text/javascript">
+
+   $(function() {
+ 	 
+ 		 var profile = $('.testImage').val();
+ 		 var select1 = $('#aqua').val();
+ 		 var select2 = $('#red').val();
+ 		 var select3 = $('#blue').val();
+ 		 
+ 		 alert(profile);
+ 		 if(profile == "blank") {
+ 			$('#image').css('background','red');
+ 			
+ 		 }
+
+ 		 if(profile == "red") {
+ 			 $('#image').css('background','red');
+ 		 }
+ 		 
+ 		 if(profile == "green") {
+			 $('#image').css('background','green');
+		 }
+ 		 
+ 		 if(profile == "aqua") {
+			 $('#image').css('background','aqua');
+		 }
+ 		
+ 		 $('.fa-codepen').click(function() {
+  			$('#image').attr("src","../resources/img/profile1.jpg");
+  			 alert(select1);
+ 	   	 	 
+ 	   	 	 $.ajax({
+				
+				url : "modifyImage",
+				type : "post",
+				data : {
+					profile_Image : select1
+				},
+				dataType : "text", // 서버로부터 받아오는 데이터의 타입 (보내는 타입 아님)
+				success : function(data) {
+					$('.content').attr("src","../resources/img/profile1.jpg");
+					$('.content').css("z-index","100");
+					 
+					
+				},
+				error : function(e) {
+					/*여기서는 alert() 알럿으로 찍으면 객체 타입만 나옴 (오브젝트, 오브젝트 로 나옴)*/
+					alert(JSON.gtringify(e)); /* 이렇게 해야 에러내용을 볼 수 있어 */
+					
+				} 
+			});
+ 	   	 	 
+ 	   	     
+ 	   	     return true; 
+ 		 });
+ 		 
+      
+ 		$('.fa-facebook').click(function() {
+ 			$('#image').attr("src","../resources/img/profile2.png");
+	   	     alert(select2);
+	   	     
+	   	  $.ajax({
+				
+				url : "modifyImage",
+				type : "post",
+				data : {
+					profile_Image : select2
+				},
+				dataType : "text", // 서버로부터 받아오는 데이터의 타입 (보내는 타입 아님)
+				success : function(data) {
+					$('.content').attr("src","../resources/img/profile2.png");
+					$('.content').css("z-index","100");
+					 
+				},
+				error : function(e) {
+					/*여기서는 alert() 알럿으로 찍으면 객체 타입만 나옴 (오브젝트, 오브젝트 로 나옴)*/
+					alert(JSON.gtringify(e)); /* 이렇게 해야 에러내용을 볼 수 있어 */
+					
+				} 
+			});
+	   	     
+	   	     
+	   	     return true; 
+		 });
+ 		
+ 		$('.fa-github').click(function() {
+	   	     $('#image').css('background','blue');
+	   	     
+	   	     return true; 
+		 });
+ 		
+ 		$('.fa-tumblr').click(function() {
+	   	     $('#image').css('background','yellow');
+	   	 	 return true; 
+		 });
+ 		
+ 		$('.fa-twitter').click(function() {
+	   	     $('#image').css('background','green');
+	   	 	 return true; 
+		 });
+ 		
+ 	 
+  });
+   
+   
+   </script>
+   
+   
+   
    <script type="text/javascript">
   
+   $(function() {
+   	   $('.btn').click(function() {
+   	     $(this).toggleClass('active');
+   	     return $('.box').toggleClass('open');
+   	   });
+
+   	 }).call(this);
+   
+	</script>
+
+   
+   <script type="text/javascript">
+  
+   $(function() 
+	 {
+	  
+	  $('#modifyCheck').submit(function() {
+		var name = $('#name').val();
+		var name2 = $('#name2').val();
+		var password = $('#password').val();
+		var password2 = $('#password2').val();
+		
+		
+		if(name == "") { 
+			alert('오류 : id칸에 공백이 있습니다.'); 
+			name.focus(); return false; 
+		}   
+		
+		if(name == name2) { 
+			alert('오류 : 같은 id는 입력 할 수 없습니다.'); 
+			return false; 
+		}                                                                                                           
+		
+		
+		if(password == "") {
+			alert('오류 : 비밀번호칸에 공백이 있습니다.'); 
+			return false; 
+		}
+		
+		if(password != password2) {
+			alert('오류 : 같은 비밀번호를 입력해주세요.'); 
+			return false; 
+		}
+		
+	  });
+	  return true;
+	  
+	 });	 
 
 	   
 	   /* 내비 바 관련 스크립트 */
@@ -45,11 +206,20 @@
 	      	e.preventDefault();
 	      	form.reset();
 	      }, false);
+	      
+	      
+	      
+	      
+	      
+	      
    </script>
 
 </head>  
 
 <body>
+
+
+<div class="test"></div>
      
       <!-- 로그아웃 상황 -->
       <c:if test="${sessionScope.loginId == null }">
@@ -150,11 +320,11 @@
          <!-- 반으로 나눴을  때 왼쪽을 감싸는 영역 -->
          <div class="box1"> 
          
-         	<div class="container">
+         	<div class="container" >
 
   <section class="up"></section>
 
-  <div class="left">
+  <div class="left" >
 
     <section class="cam"></section>
 
@@ -184,7 +354,89 @@
       <section class="dots"><i class="fas fa-ellipsis-v"></i></section>
 
       <ul>
-        <li><img src="../resources/img/hs1.png" /></li>
+        <li>
+        
+   <c:if test="${person.profile_Image == 'blank' }">
+       <div class="profile">
+  	<input type="hidden" id="blank" name="blank" class="testImage" value="${person.profile_Image}">
+  
+  <div class="content" id="image">
+    
+    <div class="btn"><span></span></div>
+   
+  </div>
+  </c:if>
+  
+  
+  <c:if test="${person.profile_Image == 'green' }">
+       <div class="profile">
+       <input type="hidden" id="green" name="green" class="testImage" value="${person.profile_Image}">
+  
+  
+  <div class="content" id="image">
+    
+    <div class="btn"><span></span></div>
+   
+  </div>
+  </c:if>
+  
+  <c:if test="${person.profile_Image == 'red' }">
+       <div class="profile">
+       <input type="hidden" id="red" name="red" class="testImage" value="${person.profile_Image}">
+  
+  
+  <div class="content" id="image">
+   
+    <div class="btn"><span></span></div>
+   
+  </div>
+  </c:if>
+  
+    <c:if test="${person.profile_Image == 'aqua' }">
+       <div class="profile">
+       <input type="hidden" id="aqua" name="aqua" class="testImage" value="${person.profile_Image}">
+  
+  
+  <div class="content" id="image">
+  
+    <div class="btn"><span></span></div>
+   
+  </div>
+  </c:if>
+  
+
+  
+  
+  
+  <div class="box">
+  
+  <i class="fa fa-codepen">
+  <input type="hidden" id="aqua" name="profile_Image" value="aqua">
+  
+  </i>
+  
+  <i class="fa fa-facebook">
+  <input type="hidden" id="red" name="profile_Image" value="red">
+  
+  </i>
+  
+  <i class="fa fa-github">
+   <input type="hidden" id="blue" name="profile_Image" value="blue">
+  </i>
+  
+  <i class="fa fa-tumblr">
+    <input type="hidden" id="yellow" name="profile_Image" value="yellow">
+  </i>
+  
+ <!--  <i class="fa fa-twitter"></i> -->
+  
+  </div>
+  
+</div>
+        
+        
+        
+        </li>
         <li>
           <h2> ${sessionScope.loginName }</h2>
         </li>
@@ -214,25 +466,48 @@
 
       <section class="dots"><i class="fas fa-ellipsis-v"></i></section>
 
-      <div class="one">
-        <p>#PROGRAMMING #CODE</p>
-        <p>Don't copy paste code. Type it out yourself.</p>
-      </div>
+	
+		
+		
+		<div class="wrapper">
 
-      <div class="two">
-        <ul>
-          <li><img class="image" src="https://goo.gl/BAE7JV" /></li>
-          <li>
-            <span>Amanda Baker</span>
-            <span>Jan 22, 2018.</span>
-            <span>&ensp;10h ago.</span>
-          </li>
-        </ul>
-        <ul>
-          <li><i class="fas fa-heart"></i> 23k</li>
-          <li><i class="fas fa-comment"></i> 117</li>
-        </ul>
-      </div>
+	<div class="form8">
+
+		<div class="stripes">
+			<div class="stripe stripe1"></div>
+			<div class="stripe stripe2"></div>
+			<div class="stripe stripe3"></div>
+			<div class="stripe stripe4"></div>
+			<div class="stripe stripe5"></div>
+			<div class="stripe stripe6"></div>
+			<div class="stripe stripe7"></div>
+		</div>
+		
+		<div class="form8__log">
+			<span class="form8__text">
+				<span>Modify</span> My Info
+			</span>
+			<form action="modify" method="post" id="modifyCheck"> 
+				<input type="hidden" id="name2" name="name2" value="${sessionScope.loginName }">
+				<input type="text" id="name" name="name" value="${sessionScope.loginName }">
+				<input type="password" id="password" name="password" value="${person.password }">
+				<input type="password" id="password2" placeholder="비밀번호 재입력">
+				<input type="submit" class="form8__btn" value="Submit">
+			</form>
+		</div>
+
+
+	</div>
+	
+</div>
+		
+		
+		
+		
+		
+		
+		
+		
 
     </div>
 
@@ -263,44 +538,16 @@
      	<!-- 레벨 표시되는 영역 -->
      	<div class="rightYourLevel">
       		
-      		<p> 
-      			<a> ${sessionScope.loginName } </a> 
-      			<span>레벨</span>   
-      		</p> 
-      	
-      		<!-- 레벨 바가 표시되는 영역 -->	
-      		<div class="rightLevelBar">
       		
-	      		<div class="perspective">
-				 
-				  <!-- 실제로 바를 숫자값에 맞게 이동시키려면 aria-valuenow 값을 조정하면 된다 -->
-				  <div class="bar cyan" role="progressbar" aria-valuenow="32" 
-				  	   aria-valuemin="0" aria-valuemax="100">
-				    <div class="bar-face roof percentage"></div>
-				    <div class="bar-face back percentage"></div>
-				    <div class="bar-face floor percentage"></div>
-				    <div class="bar-face left"></div>
-				    <div class="bar-face right"></div>
-				    <div class="bar-face front percentage"> 
-				    
-				    <!-- 여기에 숫자를 입력하면 바 앞에 표시가 된다 -->
-				    <div class="LevelPercentage">32</div> 
-				    
-				    </div>
-				  </div>
-				</div>
-			</div> 	
       	</div> <!-- 레벨 표시되는 영역 -->
       	
       	
       	<!-- 진도율을 보여주는 영역 -->
       	<div class="rightYourLProgress">
-      		<p> 
-      			<a> ${sessionScope.loginName } </a> 
-      			<span>진도율</span>   
-      		</p> 
-      	
-      	
+      		
+      		
+      		
+      		
       	</div> <!-- 진도율을 보여주는 영역 끝 -->
       
       

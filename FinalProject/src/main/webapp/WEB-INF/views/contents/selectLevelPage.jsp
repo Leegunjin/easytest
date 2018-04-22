@@ -9,7 +9,7 @@
    <title>contents</title>
    
    <link rel="stylesheet" type="text/css" href="../resources/css/styleContentsMain.css">
-   <link rel="stylesheet" type="text/css" href="../resources/css/styleDropdown.css">
+   <link rel="stylesheet" type="text/css" href="../resources/css/styleNav.css">
    <link href="http://fonts.googleapis.com/css?family=Quicksand:500" 
            rel="stylesheet">
    <script src="http://code.jquery.com/jquery-3.2.1.js"></script>
@@ -137,36 +137,45 @@
       <body style="overflow-y:hidden">
       
 	      <nav>
-	      	<div class="logo"> Contents </div>   
+	      	
+	        <c:if test="${sessionScope.loginId == null }">       
+        
+        <div class="slogan">
+		Contents
+		  <ul class="list">
+		    <li> WelCome To Web Page </li>
+		    <li> ${sessionScope.loginName} </li>
+		    <li> ${sessionScope.loginId} </li>
+		    <li> ${sessionScope.loginName} </li>
+		    <li> Thank You </li>
+		  </ul>
+		</div>
+       <ul>
+         
+            <li class="anitamedButton"> 
+				<div class="buttonWrapper">
+					<div class="buttonContent">
+						 <button class="btn-animate" onclick="loginForm();">Login</button>
+					</div>
+				</div>
+            </li>
+            
+            <li class="anitamedButton"> 
+				<div class="buttonWrapper">
+					<div class="buttonContent">
+						 <button class="btn-animate" onclick="gohome();">Home</button>
+					</div>
+				</div>
+            </li>
+            
+         </c:if>
 	        
-	        <ul>
-	           	<li class="anitamedButton"> 
-					<div class="buttonWrapper">
-						<div class="buttonContent">
-							<span class="button">
-							 <p onclick="loginForm();"> Login </p>
-						 	</span>
-						</div>
-					</div>
-	          	 </li>
-	            
-	            <li class="anitamedButton"> 
-					<div class="buttonWrapper">
-						<div class="buttonContent">
-							<span class="button">
-							 <p onclick="gohome();"> Home </p>
-						 	</span>
-						</div>
-					</div>
-	           	</li>
-	            
-	        </ul>
 	      </nav> <!-- 상단 내비게이션바 끝 -->  
             
       
      	  <!-- 좌측 컨텐츠들을 감싸고 있는 영역 -->       
      	  <div class="box1Logout"> 
-     	  	<h1> 문제를 풀고 싶으면 로그인을 하여라. </h1> 
+     	  	<h1> 로그인 후에 컨텐츠 이용 가능 </h1> 
      	  	
      	  </div>
 

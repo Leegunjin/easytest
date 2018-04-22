@@ -30,6 +30,4 @@ public class BoardRestController {
    
    private static final Logger logger = LoggerFactory.getLogger(BoardRestController.class);
    
-    
-   
 }
