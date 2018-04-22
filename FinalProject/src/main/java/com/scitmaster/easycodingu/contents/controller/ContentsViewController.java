@@ -26,14 +26,14 @@ public class ContentsViewController {
 
 	@Autowired
 	ContentsDAO dao;
-
+ 
 	private static final Logger logger = LoggerFactory.getLogger(ContentsViewController.class);
 
 	// 컨텐츠 홈으로 이동
 	@RequestMapping(value = "contentsHome", method = RequestMethod.GET)
 	public String contentsHome(Model model, Person person) {
 		logger.info("컨텐츠 홈 이동 시작");
-		model.addAttribute("clearLevel", 72);
+		model.addAttribute("clearLevel", 100);
 		logger.info("컨텐츠 홈 이동 종료");
 		return "contents/selectLevelPage";
 	}
@@ -80,6 +80,13 @@ public class ContentsViewController {
 		logger.info("QuizPage START");
 		logger.info("QuizPage ENE");
 		return "contents/contents32";
+
+	}
+	@RequestMapping(value = "contents72", method = RequestMethod.GET)
+	public String contents72() {
+		logger.info("QuizPage START");
+		logger.info("QuizPage ENE");
+		return "contents/contents72";
 
 	}
 
