@@ -10,7 +10,7 @@
 	href="../resources/css/styleContents31.css?ver=1">
 <style type="text/css">
 @charset "UTF-8";
-
+ 
 *, html, body {
 	font-family: "TrebuchetMS", trebuchet, sans-serif;
 	margin: 0;

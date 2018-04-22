@@ -7,7 +7,7 @@
 <title>EasyCodingU</title>
 <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
 <script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
-</head>
+</head> 
 <body>
 	<br>
 	<br>

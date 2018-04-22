@@ -23,7 +23,7 @@ import com.scitmaster.easycodingu.board.dao.BoardDAO;
 public class BoardViewController {
 
    @Autowired
-   BoardDAO dao;
+   BoardDAO dao; 
    
    private static final Logger logger = LoggerFactory.getLogger(BoardViewController.class);
    

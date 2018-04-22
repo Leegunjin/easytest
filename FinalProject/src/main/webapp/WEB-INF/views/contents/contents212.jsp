@@ -7,7 +7,7 @@
 
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Double</title>
-</head>
+</head> 
 <body>
 
 	<div class="container">

@@ -25,7 +25,7 @@ import com.scitmaster.easycodingu.board.dao.BoardDAO;
 @RequestMapping(value="board")
 public class BoardRestController {
    
-   @Autowired
+   @Autowired 
    BoardDAO dao;
    
    private static final Logger logger = LoggerFactory.getLogger(BoardRestController.class);

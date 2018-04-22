@@ -9,7 +9,7 @@
 <link rel="stylesheet" type="text/css" href="../resources/css/styleContents.css?ver=1">
 <script type="text/javascript"
 	src="<c:url value="/resources/js/jquery-3.2.1.js"></c:url>"></script>
-
+ 
 <style type="text/css">
 .home {
 	margin-bottom: 10px;
