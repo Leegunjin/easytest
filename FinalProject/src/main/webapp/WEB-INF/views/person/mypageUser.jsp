@@ -10,7 +10,7 @@
    <title>My page</title>
    
    <link rel="stylesheet" type="text/css" href="../resources/css/styleMyPage.css">
-   <link rel="stylesheet" type="text/css" href="../resources/css/styleDropdown.css">
+   <link rel="stylesheet" type="text/css" href="../resources/css/styleNav.css">
    <link href="http://fonts.googleapis.com/css?family=Quicksand:500" 
            rel="stylesheet">
    <script src="http://code.jquery.com/jquery-3.2.1.js"></script>
@@ -226,21 +226,16 @@
       <body style="overflow-y:hidden">
       
 	      <nav>
-	      	<div class="logo"> My Page </div>    
-	        
-	        <ul>
-	            
-	            <li class="anitamedButton"> 
-					<div class="buttonWrapper">
-						<div class="buttonContent">
-							<span class="button">
-							 <p onclick="gohome();"> Home </p>
-						 	</span>
-						</div>
-					</div>
-	           	</li>
-	            
-	        </ul>
+	      	<div class="slogan">
+				EasyCodingU
+				  	<ul class="list">
+					    <li> WelCome To Web Page </li>
+					    <li> Thank You </li>
+					    <li> WelCome To Web Page </li>
+					    <li> Thank You </li>
+					    <li> WelCome To Web Page </li>
+				  	</ul>
+				</div>
 	      </nav> <!-- 상단 내비게이션바 끝 -->  
             
       
@@ -257,63 +252,27 @@
       <c:if test="${sessionScope.loginId != null }">
       
       	<nav>
-	    	<div class="logo"> My Page </div>   
-      
-            <ul>
-	        	<li> 
-               <div class="userInfo">
-               <p> 
-               <a>Hello</a> ${sessionScope.loginName }
-                   <span>
-                    (${sessionScope.loginId })
-                    </span>  
-              </p> 
-              </div>
-           </li>
-	                      
-	           <li class="anitamedButton"> 
-					<div class="buttonWrapper">
-						<div class="buttonContent">
-							<span class="button">
-							 	<p onclick="logout();"> Logout </p>
-						 	</span>
-						</div>
-					</div>
-	           </li>
-               
-         
-		       <li class="anitamedButton"> 
-					<div class="buttonWrapper">
-						<div class="buttonContent">
-							<span class="button">
-								<p> Board </p>
-							</span>
-						</div>
-					</div>
-		       </li>
-           	
-	           <li class="anitamedButton"> 
-					<div class="buttonWrapper">
-						<div class="buttonContent">
-							<span class="button">
-							 	<p> Language </p>
-						 	</span>
-						</div>
-					</div>
-	           	</li>
-           	
-           	
-	           	<li class="anitamedButton"> 
-					<div class="buttonWrapper">
-						<div class="buttonContent">
-							<span class="button">
-							 	<p onclick="gohome();"> Home </p>
-						 	</span>
-						</div>
-					</div>
-	           	</li>
-         
-         	</ul>
+	    	<div class="slogan">
+				EasyCodingU
+					<ul class="list">
+					    <li> WelCome To Web Page </li>
+					    <li> <span> Name : </span> ${sessionScope.loginName} </li>
+					    <li> <span> Id : </span> ${sessionScope.loginId} </li>
+					    <li> <span> Name : </span> ${sessionScope.loginName} </li>
+					    <li>  Thank You </li>
+					</ul>
+				</div>
+				
+				<div class="displayLevel"> 
+					<span> level : </span> 
+					${sessionScope.testUserLevel } 
+				</div>
+				
+				<div class="displayProgress"> 
+					<span> progress : </span> 
+					${sessionScope.testUserLevel * 10 }%  
+				</div>
+				
       	</nav> <!-- 상단 내비게이션바 끝 -->  
          
          

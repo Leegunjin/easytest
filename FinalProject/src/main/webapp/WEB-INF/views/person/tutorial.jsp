@@ -7,7 +7,7 @@
 
 	<head>
 		<meta charset="UTF-8">
-		<title> Tutorial Slider </title>
+		<title> Tutorial </title>
 				       
         <link rel="stylesheet" type="text/css" href="../resources/css/styleTutorial.css">
 

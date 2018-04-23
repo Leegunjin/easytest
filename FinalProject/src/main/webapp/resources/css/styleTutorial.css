@@ -221,16 +221,16 @@ html, body {
   background: transparent;
 }
 .nav-elem.nav-1 {
-  background-image: url("../../resources/img/Tutorial1.png");
+  background-image: url("../../resources/img/tutorial/Tutorial1.png");
 }
 .nav-elem.nav-2 {
-  background-image: url("../../resources/img/Tutorial2.png");
+  background-image: url("../../resources/img/tutorial/Tutorial2.png");
 }
 .nav-elem.nav-3 {
-  background-image: url("../../resources/img/Tutorial3.png");
+  background-image: url("../../resources/img/tutorial/Tutorial3.png");
 }
 .nav-elem.nav-4 {
-  background-image: url("../../resources/img/Tutorial4.png");
+  background-image: url("../../resources/img/tutorial/Tutorial4.png");
 }
 .nav-elem.nav-5 {
   background-image: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/142996/captainamerica.jpg");
@@ -258,28 +258,28 @@ html, body {
   height: 100%;
 }
 .section.section-1 .left-part {
-  background-image: url("../../resources/img/Tutorial1.png");
+  background-image: url("../../resources/img/tutorial/Tutorial1.png");
 }
 .section.section-1 .bg-part {
-  background-image: url("../../resources/img/Tutorial1.png");
+  background-image: url("../../resources/img/tutorial/Tutorial1.png");
 }
 .section.section-2 .left-part {
-  background-image: url("../../resources/img/Tutorial2.png");
+  background-image: url("../../resources/img/tutorial/Tutorial2.png");
 }
 .section.section-2 .bg-part {
-  background-image: url("../../resources/img/Tutorial2.png");
+  background-image: url("../../resources/img/tutorial/Tutorial2.png");
 }
 .section.section-3 .left-part {
-  background-image: url("../../resources/img/Tutorial3.png");
+  background-image: url("../../resources/img/tutorial/Tutorial3.png");
 }
 .section.section-3 .bg-part {
-  background-image: url("../../resources/img/Tutorial3.png");
+  background-image: url("../../resources/img/tutorial/Tutorial3.png");
 }
 .section.section-4 .left-part {
-  background-image: url("../../resources/img/Tutorial4.png");
+  background-image: url("../../resources/img/tutorial/Tutorial4.png");
 }
 .section.section-4 .bg-part {
-  background-image: url("../../resources/img/Tutorial4.png");
+  background-image: url("../../resources/img/tutorial/Tutorial4.png");
 }
 .section.section-5 .left-part {
   background-image: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/142996/captainamerica.jpg");
