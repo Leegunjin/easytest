@@ -19,29 +19,29 @@
 	    <script type="text/javascript">
 	    
 		$(function(){
+			
+			//alert('${bestLevel}');
 			$('.card').each(function(){
 		    
-				$(this).addClass('notClear');
+				//$(this).addClass('notClear');
 		
-		     
 				var thisLevel = $(this).attr('id');
-		     
 				//클리어 했으면
 		     
-				if(thisLevel < ${clearLevel}){ 
+				/* if(thisLevel < ${bestLevel}){ 
 					$(this).removeClass('notClear');
 					$(this).addClass('clear');
-					$(this).attr('disabled', true);
+					$(this).attr('disabled', true); */
 					
 					$(this).on('click',function(){
-		           
+						//alert(thisLevel);		           
 					var level = $(this).attr('id');
 					location.href = 'contents' + level;
 		           //alert(level);
-		        	}) 
-		     	}
-		})
- 	});	
+		        	});
+		     	//}
+			})
+ 		});	
 
            
 		function googleLogout(loginId) {
@@ -187,14 +187,14 @@
 							
 							<div class="BtnContainer1">
 					
-								<div class="wrapper11" id="11" aria-hidden="true">
-						    		<div class="card" onclick=""> 
+								<div class="wrapper11"  aria-hidden="true">
+						    		<div class="card" id="1"> 
 						    			<i class="fal fa-arrow-right"></i> 
 						    		</div>
 						  		</div>
 						  	
-						  		<div class="wrapper12" id="12" aria-hidden="true">
-						    		<div class="card" onclick="">  
+						  		<div class="wrapper12" aria-hidden="true">
+						    		<div class="card" id="2">  
 						    			<i class="fal fa-arrow-right"></i> 
 						    		</div>
 						  		</div>
@@ -211,14 +211,14 @@
 							
 							<div class="BtnContainer2">
 					
-								<div class="wrapper21" id="21" aria-hidden="true">
-						    		<div class="card" onclick=""> 
+								<div class="wrapper21" aria-hidden="true">
+						    		<div class="card" id="3"> 
 						    			<i class="fal fa-arrow-right"></i> 
 						    		</div>
 						  		</div>
 						  	
-						  		<div class="wrapper22" id="22" aria-hidden="true">
-						    		<div class="card" onclick=""> 
+						  		<div class="wrapper22" aria-hidden="true">
+						    		<div class="card" id="4"> 
 						    			<i class="fal fa-arrow-right"></i> 
 						    		</div>
 						  		</div>
@@ -234,14 +234,14 @@
 							
 							<div class="BtnContainer3">
 					
-								<div class="wrapper31" id="31" aria-hidden="true">
-						    		<div class="card" onclick=""> 
+								<div class="wrapper31" aria-hidden="true">
+						    		<div class="card" id="5"> 
 						    			<i class="fal fa-arrow-right"></i> 
 						    		</div>
 						  		</div>
 						  	
-						  		<div class="wrapper32" id="32" aria-hidden="true">
-						    		<div class="card" onclick=""> 
+						  		<div class="wrapper32" aria-hidden="true">
+						    		<div class="card" id="6"> 
 						    			<i class="fal fa-arrow-right"></i> 
 						    		</div>
 						  		</div>
@@ -257,20 +257,20 @@
 							
 							<div class="BtnContainer4">
 					
-								<div class="wrapperTro1" id="71" aria-hidden="true">
-						    		<div class="card" onclick=""> 
+								<div class="wrapperTro1" aria-hidden="true">
+						    		<div class="card" id="13"> 
 						    			<i class="fal fa-arrow-right"></i> 
 						    		</div>
 						  		</div>
 						  	
-						  		<div class="wrapper41" id="41" aria-hidden="true">
-						    		<div class="card" onclick=""> 
+						  		<div class="wrapper41" aria-hidden="true">
+						    		<div class="card" id="7"> 
 						    			<i class="fal fa-arrow-right"></i> 
 						    		</div>
 						  		</div>
 						  		
-						  		<div class="wrapper42" id="42" aria-hidden="true">
-						    		<div class="card" onclick=""> 
+						  		<div class="wrapper42" aria-hidden="true">
+						    		<div class="card" id="8"> 
 						    			<i class="fal fa-arrow-right"></i> 
 						    		</div>
 						  		</div>
@@ -284,16 +284,15 @@
 							<h2> Chapter 5 </h2>
 							<p> Level 51, Level 52 </p>
 							
-							<div class="BtnContainer5" id="51" aria-hidden="true">
-					
+							<div class="BtnContainer5" aria-hidden="true">
 								<div class="wrapper51">
-						    		<div class="card" onclick=""> 
+						    		<div class="card" id="9"> 
 						    			<i class="fal fa-arrow-right"></i> 
 						    		</div>
 						  		</div>
 						  	
-						  		<div class="wrapper52" id="52" aria-hidden="true">
-						    		<div class="card" onclick=""> 
+						  		<div class="wrapper52" aria-hidden="true">
+						    		<div class="card" id="10"> 
 						    			<i class="fal fa-arrow-right"></i> 
 						    		</div>
 						  		</div>
@@ -309,20 +308,20 @@
 							
 							<div class="BtnContainer6">
 					
-								<div class="wrapperTro2" id="72" aria-hidden="true">
-						    		<div class="card" onclick=""> 
+								<div class="wrapperTro2" aria-hidden="true">
+						    		<div class="card" id="14"> 
 						    			<i class="fal fa-arrow-right"></i> 
 						    		</div>
 						  		</div>
 						  	
-						  		<div class="wrapper61" id="61" aria-hidden="true">
-						    		<div class="card" onclick=""> 
+						  		<div class="wrapper61" aria-hidden="true">
+						    		<div class="card" id="11"> 
 						    			<i class="fal fa-arrow-right"></i> 
 						    		</div>
 						  		</div>
 						  		
-						  		<div class="wrapper62" id="62" aria-hidden="true">
-						    		<div class="card" onclick=""> 
+						  		<div class="wrapper62" aria-hidden="true">
+						    		<div class="card" id="12"> 
 						    			<i class="fal fa-arrow-right"></i> 
 						    		</div>
 						  		</div>
@@ -338,20 +337,20 @@
 							
 							<div class="BtnContainer7">
 					
-								<div class="wrapperTro3" id="73" aria-hidden="true">
-						    		<div class="card" onclick=""> 
+								<div class="wrapperTro3" aria-hidden="true">
+						    		<div class="card" id="15"> 
 						    			<i class="fal fa-arrow-right"></i> 
 						    		</div>
 						  		</div>
 						  	
 						  		<div class="wrapper71" id="71" aria-hidden="true">
-						    		<div class="card" onclick=""> 
+						    		<div class="card"> 
 						    			<i class="fal fa-arrow-right"></i> 
 						    		</div>
 						  		</div>
 						  		
 						  		<div class="wrapper72" id="72" aria-hidden="true">
-						    		<div class="card" onclick=""> 
+						    		<div class="card"> 
 						    			<i class="fal fa-arrow-right"></i> 
 						    		</div>
 						  		</div>

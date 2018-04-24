@@ -89,6 +89,16 @@
           profile_Image = #{profile_Image}
        WHERE  id = #{id}
     </update>
+    
+    <!-- 레벨업 -->
+	<update id="updateGrade" parameterType="String">
+		update person
+		set
+			grade = grade + 1
+		where
+			id = #{id}
+	</update> 
+    
  
  
 </mapper>

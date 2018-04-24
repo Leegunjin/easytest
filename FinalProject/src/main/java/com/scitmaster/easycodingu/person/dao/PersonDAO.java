@@ -85,81 +85,98 @@ public class PersonDAO {
       
       
       /**
-          * Pw 찾기
-          * @param Id 사용자가 Pw를 찾기 위해 입력한 id
-          * @return Person Id로 SELECT 해 온 Person 한 명의 모든 정보
-          * */
-         public Person selectPw(String id){
-            logger.info("selectPw START");
-            System.out.println("Id"+id);
-            
-            PersonMapper mapper = sqlSession.getMapper(PersonMapper.class);
-            Person person = mapper.selectPw(id);
-            
-            System.out.println("Person:"+person);
-            logger.info("selectPw END");
-            return person;
-         }
-         
-         /**
-          * Pw 재설정
-          * @param Person PersonRestController의 resetPw에서 select해 온 person정보 
-          * */
-         public int updatePw(Person person){
-            logger.info("updatePw START");
-            System.out.println(person);
-            PersonMapper mapper = sqlSession.getMapper(PersonMapper.class);
-            
-            try {
-               mapper.updatePw(person);
-            } catch (Exception e) {
-               e.printStackTrace();
-               return 0;
-            }
-            logger.info("updatePw END");
-            return 1;
-         }
-         
-         
-         /**
-          * 마이페이지 정보수정
-          * @param Person PersonRestController의 resetPw에서 select해 온 person정보 
-          * */
-         	public int updateUser(Person person){
-            logger.info("updateUser START");
-            int result = 0;
-            
-            PersonMapper mapper = sqlSession.getMapper(PersonMapper.class);
-            
-            try {
-              result = mapper.updateUser(person);
-            } catch (Exception e) {
-               e.printStackTrace();
-               
-            }
-            logger.info("updateUser END");
-            return result;
-         }
+      * Pw 찾기
+      * @param Id 사용자가 Pw를 찾기 위해 입력한 id
+      * @return Person Id로 SELECT 해 온 Person 한 명의 모든 정보
+      * */
+     public Person selectPw(String id){
+        logger.info("selectPw START");
+        System.out.println("Id"+id);
+        
+        PersonMapper mapper = sqlSession.getMapper(PersonMapper.class);
+        Person person = mapper.selectPw(id);
+        
+        System.out.println("Person:"+person);
+        logger.info("selectPw END");
+        return person;
+     }
+     
+     /**
+      * Pw 재설정
+      * @param Person PersonRestController의 resetPw에서 select해 온 person정보 
+      * */
+     public int updatePw(Person person){
+        logger.info("updatePw START");
+        System.out.println(person);
+        PersonMapper mapper = sqlSession.getMapper(PersonMapper.class);
+        
+        try {
+           mapper.updatePw(person);
+        } catch (Exception e) {
+           e.printStackTrace();
+           return 0;
+        }
+        logger.info("updatePw END");
+        return 1;
+     }
+     
+     
+     /**
+      * 마이페이지 정보수정
+      * @param Person PersonRestController의 resetPw에서 select해 온 person정보 
+      * */
+	public int updateUser(Person person){
+		logger.info("updateUser START");
+		int result = 0;
+		
+		PersonMapper mapper = sqlSession.getMapper(PersonMapper.class);
+		
+		try {
+		  result = mapper.updateUser(person);
+		} catch (Exception e) {
+		   e.printStackTrace();
+		   
+		}
+		logger.info("updateUser END");
+		    return result;
+	}
    
          	
          	 
-             /**
-              * 마이페이지 정보수정
-              * @param Person PersonRestController의 resetPw에서 select해 온 person정보 
-              * */
-             	public int updateProfile(Person person){
-                logger.info("updateProfile START");
-                int result = 0;
-                
-                PersonMapper mapper = sqlSession.getMapper(PersonMapper.class);
-                
-                try {
-                  result = mapper.updateProfile(person);
-                } catch (Exception e) {
-                   e.printStackTrace();
-                   
-                }
-                logger.info("updateUser END");
-                return result;
-             }	 
+     /**
+      * 마이페이지 정보수정
+      * @param Person PersonRestController의 resetPw에서 select해 온 person정보 
+      * */
+	public int updateProfile(Person person){
+		logger.info("updateProfile START");
+		int result = 0;
+		
+		PersonMapper mapper = sqlSession.getMapper(PersonMapper.class);
+		
+		try {
+		  result = mapper.updateProfile(person);
+		} catch (Exception e) {
+		   e.printStackTrace();
+		   
+		}
+		logger.info("updateUser END");
+		    return result;
+	}	 
+     	
+    /**
+     * 레벨업
+     * @param 로그인한 아이디
+     */
+	public void updateGrade(String id){
+		logger.info("레벨업 시작");
+		PersonMapper mapper = sqlSession.getMapper(PersonMapper.class);
+		 
+		try{
+			mapper.updateGrade(id);
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		logger.info("레벨업 종료");
+	}
+
 }

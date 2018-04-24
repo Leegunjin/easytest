@@ -70,5 +70,13 @@ public interface PersonMapper {
        * */
       public int updateProfile(Person person);
       
+      /**
+       * updateGrade
+       * 레벨업
+       * @param id
+       */
+      public void updateGrade(String id);
+
+      
    
 }

@@ -5,23 +5,18 @@ public class Learning {
 	private int c_num;
 	private String id;
 	private int pass_Flag;
-	private int wrong_Flag;
-	private String wrong_Contents;
 	private String pass_Date;
 	
 	public Learning() {
 		super();
 	}
 
-	public Learning(int no, int c_num, String id, int pass_Flag, int wrong_Flag, String wrong_Contents,
-			String pass_Date) {
+	public Learning(int no, int c_num, String id, int pass_Flag, String pass_Date) {
 		super();
 		this.no = no;
 		this.c_num = c_num;
 		this.id = id;
 		this.pass_Flag = pass_Flag;
-		this.wrong_Flag = wrong_Flag;
-		this.wrong_Contents = wrong_Contents;
 		this.pass_Date = pass_Date;
 	}
 
@@ -57,22 +52,6 @@ public class Learning {
 		this.pass_Flag = pass_Flag;
 	}
 
-	public int getWrong_Flag() {
-		return wrong_Flag;
-	}
-
-	public void setWrong_Flag(int wrong_Flag) {
-		this.wrong_Flag = wrong_Flag;
-	}
-
-	public String getWrong_Contents() {
-		return wrong_Contents;
-	}
-
-	public void setWrong_Contents(String wrong_Contents) {
-		this.wrong_Contents = wrong_Contents;
-	}
-
 	public String getPass_Date() {
 		return pass_Date;
 	}
@@ -83,8 +62,8 @@ public class Learning {
 
 	@Override
 	public String toString() {
-		return "Learning [no=" + no + ", c_num=" + c_num + ", id=" + id + ", pass_Flag=" + pass_Flag + ", wrong_Flag="
-				+ wrong_Flag + ", wrong_Contents=" + wrong_Contents + ", pass_Date=" + pass_Date + "]";
+		return "Learning [no=" + no + ", c_num=" + c_num + ", id=" + id + ", pass_Flag=" + pass_Flag + ", pass_Date="
+				+ pass_Date + "]";
 	}
 	
 	

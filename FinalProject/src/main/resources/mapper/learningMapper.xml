@@ -6,6 +6,52 @@
 <!-- 회원정보 처리 SQL --> 
 <mapper namespace="com.scitmaster.easycodingu.learning.dao.LearningMapper">
 
-   
+<!-- 학습내역 저장 -->
+<insert id="insertLearning" parameterType="learning">
+	insert into
+		learning(
+			no
+			,c_num
+			,id
+			,pass_Flag
+			,pass_Date
+		)values(
+			learning_seq.nextval
+			,#{c_num}
+			,#{id}
+			,#{pass_Flag}
+			,sysdate
+		)
+</insert>
+
+<!-- 클리어한 최종 레벨 셀렉트 -->
+<select id="selectBestLevel" parameterType="String" resultType="int">
+	select max(c_num) 
+		from learning
+	where
+		id = #{id}
+	and
+		pass_Flag = 1
+</select>
+
+<!-- 중복된 c_num 제거한 개수, 사용자 레벨 정의 -->
+<select id="selectClearCount" parameterType="String" resultType="int">
+	select count(distinct c_num)
+		from learning
+	where
+		id = #{id}
+	and
+		pass_Flag = 1
+</select>
+
+<!-- c_num과 id를 넘겨받아 내역이 존재하는지 확인 --> 
+<select id="selectLearning" parameterType="learning" resultType="learning">
+	select * 
+		from learning
+	where
+		id = #{id}
+	and
+		c_num = #{c_num}
+</select>
  
 </mapper>
