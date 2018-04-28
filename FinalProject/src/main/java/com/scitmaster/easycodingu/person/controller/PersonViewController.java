@@ -228,10 +228,29 @@ public class PersonViewController {
 		status.setComplete();
 		
 		logger.info("【UserController : return】〓▶▶ 【redirect:/】(정보수정 성공)" + "\n");
-		return "redirect:/home";
+		return "person/mypageUser";
 		
 	}
 		
+	
+	
+	/*마이페이지 개선용도로 만든 테스트 페이지*/
+	/**
+	 * 유저 마이페이지로 이동
+	 */
+	@RequestMapping(value = "test67", method = RequestMethod.GET)
+	public String test67(HttpSession session , Model model) {
+		logger.info("forgot START");
+		
+		String loginId = (String)session.getAttribute("loginId");
+		
+		Person person = dao.selectPerson(loginId);
+		model.addAttribute("person", person);
+		
+		logger.info("forgot END");
+		return "person/test67";
+	}
+	
 
 	
 }

@@ -214,7 +214,7 @@
 	  		</div>
 	  		
 		  	<div class="sidebar-real">
-			    <div data-page="1" class="nav-elem nav-1 active"></div>
+			    <div data-page="1" class="nav-elem nav-1"></div>
 			    <div data-page="2" class="nav-elem nav-2"></div>
 			    <div data-page="3" class="nav-elem nav-3"></div>
 			    <div data-page="4" class="nav-elem nav-4"></div>

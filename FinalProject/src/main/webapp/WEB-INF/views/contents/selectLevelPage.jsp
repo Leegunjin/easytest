@@ -23,11 +23,21 @@
 			//alert('${bestLevel}');
 			$('.card').each(function(){
 		    
+				
+				var test = document.getElementById("st-panel-4");
+				
+				
 				//$(this).addClass('notClear');
 		
 				var thisLevel = $(this).attr('id');
 				//클리어 했으면
 		     
+				$(this).on('focus',function(){ 
+					$("#st-control-2").css('display','none');
+					
+				});
+				
+				
 				/* if(thisLevel < ${bestLevel}){ 
 					$(this).removeClass('notClear');
 					$(this).addClass('clear');
@@ -148,7 +158,45 @@
 		        }, 1000);
 		    });
 		</script>
-       
+		
+		<script type="text/javascript">
+		
+		<!-- 상단 내비게이션바에 출력하는 실시간 시계 -->
+    	
+    		setInterval("dpTime()",1000);
+    	    
+    			function dpTime(){
+    	        
+    				var now = new Date();
+    	        
+    				hours = now.getHours();
+    				minutes = now.getMinutes();
+    				seconds = now.getSeconds();
+    	 
+    	        /* 여기 주석을 풀면 12시간제로 표기 
+    				if (hours > 12){
+    					hours -= 12;
+    					ampm = "오후 ";
+    				} 
+    				else {
+    					ampm = "오전 ";
+    	       		}
+    				
+    				if (hours < 10) {
+    	            hours = "0" + hours;
+    	        	} */
+    	        
+    				if (minutes < 10) {
+    	            minutes = "0" + minutes;
+    	        	}
+    				
+    	        	if (seconds < 10){
+    	            seconds = "0" + seconds;
+    	        	}
+    	
+    	        	document.getElementById("timeNav").innerHTML = hours + ":" + minutes + ":" + seconds;
+    			}
+		</script>
 
 	</head>  
 	
@@ -173,8 +221,7 @@
 				<a href="#st-panel-5">Chapter 5</a>
 				<input type="radio" name="radio-set" id="st-control-6"/>
 				<a href="#st-panel-5">Chapter 6</a>
-				<input type="radio" name="radio-set" id="st-control-7"/>
-				<a href="#st-panel-5">Chapter 7</a>
+				
 					
 					<div class="st-scroll">
 					
@@ -183,7 +230,7 @@
 						<section class="st-panel" id="st-panel-1">
 	            		<div class="st-deco" data-icon="&#xf069;"></div>
 							<h2> Chapter 1 </h2>
-							<p> Level 11, Level 12 </p>
+							<p> 자료형 1 </p>
 							
 							<div class="BtnContainer1">
 					
@@ -207,7 +254,7 @@
 						<section class="st-panel st-color" id="st-panel-2">
 							<div class="st-deco" data-icon="&#xf118;"></div>
 							<h2> Chapter 2 </h2>
-							<p> Level 21, Level 22 </p>
+							<p> 자료형 2 </p>
 							
 							<div class="BtnContainer2">
 					
@@ -230,7 +277,7 @@
 						<section class="st-panel" id="st-panel-3">
 							<div class="st-deco" data-icon="&#xf0f4;"></div>
 							<h2> Chapter 3 </h2>
-							<p> Level 31, Level 32 </p>
+							<p> 연산자 </p>
 							
 							<div class="BtnContainer3">
 					
@@ -250,19 +297,13 @@
 							
 						</section>
 						
-						<section class="st-panel st-color" id="st-panel-4">
+						<section class="st-panel st-color" id="st-panel-4" value="4">
 							<div class="st-deco" data-icon="&#xf06c;"></div>
 							<h2> Chapter 4 </h2>
-							<p> Trophiy Quiz 1, Level 41, Level 42 </p>
+							<p> 조건문, 트로피 퀴즈 1 </p>
 							
 							<div class="BtnContainer4">
 					
-								<div class="wrapperTro1" aria-hidden="true">
-						    		<div class="card" id="13"> 
-						    			<i class="fal fa-arrow-right"></i> 
-						    		</div>
-						  		</div>
-						  	
 						  		<div class="wrapper41" aria-hidden="true">
 						    		<div class="card" id="7"> 
 						    			<i class="fal fa-arrow-right"></i> 
@@ -275,6 +316,12 @@
 						    		</div>
 						  		</div>
 						  		
+						  		<div class="wrapperTro1" aria-hidden="true">
+						    		<div class="card" id="13"> 
+						    			<i class="fal fa-arrow-right"></i> 
+						    		</div>
+						  		</div>
+						  		
 						  	</div> <!-- container 끝 -->
 						  		
 						</section>
@@ -282,9 +329,10 @@
 						<section class="st-panel" id="st-panel-5">
 							<div class="st-deco" data-icon="&#xf004;"></div>
 							<h2> Chapter 5 </h2>
-							<p> Level 51, Level 52 </p>
+							<p> While문, 트로피 퀴즈 2 </p>
 							
 							<div class="BtnContainer5" aria-hidden="true">
+																
 								<div class="wrapper51">
 						    		<div class="card" id="9"> 
 						    			<i class="fal fa-arrow-right"></i> 
@@ -297,23 +345,24 @@
 						    		</div>
 						  		</div>
 						  		
+						  		<div class="wrapperTro2" aria-hidden="true">
+						    		<div class="card" id="14"> 
+						    			<i class="fal fa-arrow-right"></i> 
+						    		</div>
+						  		</div>
+						  		
+						  		
 							</div> <!-- container 끝 -->
 							
 						</section>
 						
 						<section class="st-panel st-color" id="st-panel-6">
 							<div class="st-deco" data-icon="&#xf004;"></div>
-							<h2> Chapter 6 </h2>
-							<p> Trophiy Quiz 2, Level 61, Level 62 </p>
+							<h2> Final Chapter </h2>
+							<p> 종합문제, 트로피 퀴즈 3 </p>
 							
 							<div class="BtnContainer6">
 					
-								<div class="wrapperTro2" aria-hidden="true">
-						    		<div class="card" id="14"> 
-						    			<i class="fal fa-arrow-right"></i> 
-						    		</div>
-						  		</div>
-						  	
 						  		<div class="wrapper61" aria-hidden="true">
 						    		<div class="card" id="11"> 
 						    			<i class="fal fa-arrow-right"></i> 
@@ -326,39 +375,16 @@
 						    		</div>
 						  		</div>
 						  		
-						  	</div> <!-- container 끝 -->
-						  	
-						</section>
-						  
-						<section class="st-panel" id="st-panel-7">
-							<div class="st-deco" data-icon="&#xf004;"></div>
-							<h2> Final Chapter </h2>
-							<p> Trophiy Quiz 3, Level 71, Level 72 </p>
-							
-							<div class="BtnContainer7">
-					
-								<div class="wrapperTro3" aria-hidden="true">
+						  		<div class="wrapperTro3" aria-hidden="true">
 						    		<div class="card" id="15"> 
 						    			<i class="fal fa-arrow-right"></i> 
 						    		</div>
 						  		</div>
-						  	
-						  		<div class="wrapper71" id="71" aria-hidden="true">
-						    		<div class="card"> 
-						    			<i class="fal fa-arrow-right"></i> 
-						    		</div>
-						  		</div>
-						  		
-						  		<div class="wrapper72" id="72" aria-hidden="true">
-						    		<div class="card"> 
-						    			<i class="fal fa-arrow-right"></i> 
-						    		</div>
-						  		</div>
 						  		
 						  	</div> <!-- container 끝 -->
 						  	
 						</section>
-						
+						  
 	
 					</div><!-- // st-scroll -->
 					
@@ -386,7 +412,8 @@
 		      		<ul>
 		        		<li> 
 							
-							<div id="dt_now"></div>
+							<!-- 시간을 띄워 줄 div -->        
+				        	<div id='timeNav'> </div>
 		        		
 		        		</li>
 				        
