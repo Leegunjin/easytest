@@ -106,6 +106,7 @@ public class ContentsViewController {
 					bestLevel2 = 12;
 					break;
 				}
+				System.out.println("최고레벨:"+bestLevel2);
 				model.addAttribute("bestLevel", bestLevel2);
 			}else if(bestLevel1 == null){
 				model.addAttribute("bestLevel", 0);

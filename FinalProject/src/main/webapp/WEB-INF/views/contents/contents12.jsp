@@ -1,184 +1,433 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!doctype html>
+<!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8">
-<title>Drag & Drop</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
 <script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
-<script>
-	$(function(){
-		var currentSlide = 0;
-		var testCount = 0;
+
+<script type="text/javascript">
+
+$(function() {
+	$('div[answer="no"] p:nth-child(2)').hide();
+	
+	$('div[sort="true"]').sort(function(){
+		return Math.random()*10 > 5 ? 1 : -1;
+	}).each(function(){
+		$(this).appendTo( $(this).parent() );    
+	});
+	
+	$('#draggable').draggable({
+		start: function(event,ui) {
+			$(this).draggable( "option", "revert", true );
+		}
+	});
+	
+	$('#next').attr('disabled', false);
+	$('#previous').hide();
+	$('#btnShowJava').hide();
+	$('.buttonDiv + div').hide();
+	$('#answerResultDiv').empty();
+	
+	var resultStr = '';
+	$('.buttonDiv input').on('click', function(){
+		var clickedVal = $(this).val();
+		var clickedAns = $(this).attr('answer');
+		var slideAns = $(this).parent().attr('answer');
+		//alert(clickedAns);
+		//alert(slideAns);
+		if(clickedAns == slideAns){
+			//클릭한 답이 맞으면
+			//next버튼 눌리게 하고
+			$('#next').attr('disabled', false);
+			//정답 이미지 넣고
+			resultStr = '<div class="resultMsg"><img src="../../resources/img/yesanswer.png" width="250px"> </div>';
+			//메세지 컨캣
+            //resultStr += '<div> 정답입니다! </div>';
+            //정답메세지 삽입
+            $('#answerResultDiv').html(resultStr);
+			//자바로 보기 버튼 나타내기
+            $('#btnShowJava').show();
+			//자바로 보기 누르면
+            $('#btnShowJava').on('click',function(){
+            	var testClass = '.divShowJava' + currentSlide;
+            	//alert(testClass);
+            	var javacode = clickedAns + ' 변수이름 = ' + clickedVal + ';';
+            	$(testClass).show();
+				$(testClass).html(javacode);
+				//$('.divShowJava0').show();
+				//$('.divShowJava0').html(javacode);
+            });
+            
+		}else{
+			//틀렸으면
+			resultStr = '<div class="resultMsg"><img src="../../resources/img/noanswer.png" width="250px"> </div>';
+            resultStr += '<div> 틀렸습니다! 그건 '+ clickedAns +' 이예요 </div>';
+            $('#answerResultDiv').html(resultStr);
+		}
+	});
+	
+	var currentSlide = 0;
+	
+	$slideContainer = $('.slide-container'), $slide = $('.slide'),
+	slideCount = $slide.length, animationTime = 300;
+
+	function setSlideDimensions() {
+		var windowWidth = $(window).width();
+		$slideContainer.width(windowWidth * slideCount);
+		$slide.width(windowWidth);
+	}
+
+	function generatePagination() {
+		var $pagination = $('.pagination');
+		for (var i = 0; i < slideCount; i++) {
+			var $indicator = $('<div>').addClass('indicator'), $progressBarContainer = $(
+					'<div>').addClass('progress-bar-container'), $progressBar = $(
+					'<div>').addClass('progress-bar'), indicatorTagText = $slide
+					.eq(i).attr('data-tag'), $tag = $('<div>').addClass(
+					'tag').text(indicatorTagText);
+			$indicator.append($tag);
+			$progressBarContainer.append($progressBar);
+			$pagination.append($indicator).append($progressBarContainer);
+		}
+		$pagination.find('.indicator').eq(0).addClass('active');
+	}
+
+	var title1 = "마우스를 올려 자료형을 확인해 보세요";
+	var title2 = "int 자료형을 골라보세요";
+	var title3 = "double 자료형을 골라보세요";
+	var title4 = "boolean 자료형을 골라보세요"
+	var title5 = "String 자료형을 골라보세요"
+	$('#next').on('click',goToNextSlide);
+	function goToNextSlide() {
+		//alert(currentSlide);
+		switch(currentSlide){
+			case 0:
+				$('#contentsTitle').text(title2);
+				break;
+			case 1:
+				$('#contentsTitle').text(title3);
+				break;
+			case 2:
+				$('#contentsTitle').text(title4);
+				break;
+			case 3:
+				$('#contentsTitle').text(title5);
+				break;
+		}
+		/* if(currentSlide == 0){
+			$('#contentsTitle').text(title2);
+		} */
+		$('#answerResultDiv').html("");
+		if (currentSlide >= slideCount - 1) {
+			location.href = "clearChapter?c_num=120";
+		}
+		var windowWidth = $(window).width();
+		currentSlide++;
+		$slideContainer.animate({
+			left : -(windowWidth * currentSlide)
+		});
+		setActiveIndicator();
+		$('.progress-bar').eq(currentSlide - 1).animate({
+			width : '100%'
+		}, animationTime);
+		$('#btnShowJava').hide();
+		$('#next').attr('disabled', true);
+		$('#answerResultDiv').empty();
+		$('#previous').show();
+	}
+	
+	function goToPreviousSlide() {
+		if (currentSlide <= 0)
+			return;
+		if(currentSlide == 1){
+			$('#contentsTitle').text(title1);
+		}
+		switch(currentSlide){
+			case 1:
+				$('#contentsTitle').text(title1);
+				break;
+			case 2:
+				$('#contentsTitle').text(title2);
+				break;
+			case 3:
+				$('#contentsTitle').text(title3);
+				break;
+			case 4:
+				$('#contentsTitle').text(title4);
+				break;
+			case 5:
+				$('#contentsTitle').text(title5);
+				break;
+		}
 		
-		$slideContainer = $('.slide-container'), $slide = $('.slide'),
-		slideCount = $slide.length, animationTime = 300;
+		var windowWidth = $(window).width();
+		currentSlide--;
+		$slideContainer.animate({
+			left : -(windowWidth * currentSlide)
+		}, animationTime);
+		setActiveIndicator();
+		$('.progress-bar').eq(currentSlide).animate({
+			width : '0%'
+		}, animationTime);
+		$('#next').attr('disabled',false);
+		/* $('#btnShowJava').show(); */
+		$('#answerResultDiv').empty();
+	}
 
-		function setSlideDimensions() {
-			var windowWidth = $(window).width();
-			$slideContainer.width(windowWidth * slideCount);
-			$slide.width(windowWidth);
-		}
-
-		function generatePagination() {
-			var $pagination = $('.pagination');
-			for (var i = 0; i < slideCount; i++) {
-				var $indicator = $('<div>').addClass('indicator'), $progressBarContainer = $(
-						'<div>').addClass('progress-bar-container'), $progressBar = $(
-						'<div>').addClass('progress-bar'), indicatorTagText = $slide
-						.eq(i).attr('data-tag'), $tag = $('<div>').addClass(
-						'tag').text(indicatorTagText);
-				$indicator.append($tag);
-				$progressBarContainer.append($progressBar);
-				$pagination.append($indicator).append($progressBarContainer);
-			}
-			$pagination.find('.indicator').eq(0).addClass('active');
-		}
-
-		$('#next').on('click',goToNextSlide);
-		function goToNextSlide() {
-			$('#answerResultDiv').html("");
-			if (currentSlide >= slideCount - 1) {
-				location.href = "clearChapter?c_num=120";
-			}
-			var windowWidth = $(window).width();
-			currentSlide++;
-			$slideContainer.animate({
-				left : -(windowWidth * currentSlide)
-			});
-			setActiveIndicator();
-			$('.progress-bar').eq(currentSlide - 1).animate({
-				width : '100%'
-			}, animationTime);
-			$('#btnShowJava').hide();
-			$('#next').attr('disabled', true);
-		}
-		
-		
-
-		function goToPreviousSlide() {
-			if (currentSlide <= 0)
-				return;
-			var windowWidth = $(window).width();
-			currentSlide--;
-			$slideContainer.animate({
-				left : -(windowWidth * currentSlide)
-			}, animationTime);
-			setActiveIndicator();
-			$('.progress-bar').eq(currentSlide).animate({
-				width : '0%'
-			}, animationTime);
-			$('#next').attr('disabled',false);
-			$('#btnShowJava').show();
-		}
-
-		function postitionSlides() {
-			var windowWidth = $(window).width();
-			setSlideDimensions();
-			$slideContainer.css({
-				left : -(windowWidth * currentSlide)
-			}, animationTime);
-		}
-
-		function setActiveIndicator() {
-			var $indicator = $('.indicator');
-			$indicator.removeClass('active').removeClass('complete');
-			$indicator.eq(currentSlide).addClass('active');
-			for (var i = 0; i < currentSlide; i++) {
-				$indicator.eq(i).addClass('complete');
-			}
-		}
-
+	function postitionSlides() {
+		var windowWidth = $(window).width();
 		setSlideDimensions();
-		generatePagination();
-		$(window).resize(postitionSlides);
-		$('#previous').on('click', goToPreviousSlide);
-		
-		var a = $('#textTest').val();
-		$('#textTest').keyup(function(){
-			alert(a);
-		});
-		$("#images div img").draggable({
-			start: function(event,ui) {
-				$(this).draggable( "option", "revert", true );
-				$("#images div img").css("zIndex",10);
-				$(this).css("zIndex",100);
-			}
-		});
-		var count = 0;
-		$("#boards div").droppable({
-			drop: function(event,ui) {
-				var dropanswer = $(this).attr("answer");
-				var drophtml = $(this).html();
-				var draganswer = ui.draggable.attr("answer");
-				if( draganswer == dropanswer ) {
-					//$('#ansDiv').append("<img src='resources/img/number3.png'>");
-					//$('#ansDiv').append();
-					$(this).remove();
-					
-					count++;
-					if(count == 3){
-						//alert(count);
-						$('#showJava').show();
-						$('#goNext').show();
-					}
-					$(this).html('');
-					ui.draggable.draggable( "option", "revert", false );
-					var droppableOffset = $(this).offset();
-					var x = droppableOffset.left + 1;
-					var y = droppableOffset.top + 1;
-					ui.draggable.offset({ top: y, left: x });
+		$slideContainer.css({
+			left : -(windowWidth * currentSlide)
+		}, animationTime);
+	}
+
+	function setActiveIndicator() {
+		var $indicator = $('.indicator');
+		$indicator.removeClass('active').removeClass('complete');
+		$indicator.eq(currentSlide).addClass('active');
+		for (var i = 0; i < currentSlide; i++) {
+			$indicator.eq(i).addClass('complete');
+		}
+	}
+
+	setSlideDimensions();
+	generatePagination();
+	$(window).resize(postitionSlides);
+	$('#previous').on('click', goToPreviousSlide);
+	
+	$('li[data-tag="int"] div[slide="2"]').on('click', contentsCheck);
+	$('li[data-tag="double"] div[slide="3"]').on('click', contentsCheck);
+	$('li[data-tag="boolean"] div[slide="4"]').on('click', contentsCheck);
+	$('li[data-tag="String"] div[slide="5"]').on('click', contentsCheck);
+	
+	var ansCount = 0;
+	function contentsCheck(){
+		var answer = $(this).attr('answer');
+		if(answer == 'yes'){
+			$(this).empty();
+			$('#answerResultDiv').empty();
+			ansCount++;
+			//alert(ansCount);
+			if($(this).attr('slide')=="4"){
+				if(ansCount == 2){
+					$('#next').attr('disabled',false);
+					ansCount = 0;
 				}
+			}else{
+				if(ansCount == 4){
+					$('#next').attr('disabled',false);
+					ansCount = 0;
+				}	
 			}
-		});
-	});
-	$(document).ready(function(){
-		$("#images div").sort(function(){
-			return Math.random()*10 > 5 ? 1 : -1;
-		}).each(function(){
-			$(this).appendTo( $(this).parent() );    
-		});
-		$("#boards div").sort(function(){
-			return Math.random()*10 > 5 ? 1 : -1;
-		}).each(function(){
-			$(this).appendTo( $(this).parent() );    
-		});
-	});
+		}else{
+			resultStr = '<div class="resultMsg"><img src="../../resources/img/noanswer.png" width="200px"></div>';
+			$('#answerResultDiv').html(resultStr);
+			$(this).addClass('wrongAns');
+			
+		}
+	};
+
+});
+
 </script>
-<style>
-	*{
-		border: none;
-	}
-	
-	
-	
-	#images > div, #boards > div {
-		float:left;
-		width:100px;
-		height:100px;
-		/* border:1px solid #000; */
-		margin:5px;
-	}
-	#images div img {
-		width:100px;
-		height:100px;
-		margin-left: 10px;
-	}
-	#boards {
-		clear:both;
-	}
-	#boards > div {
-		font-size:2em;
-		line-height:100px;
-		text-align:center;
-		margin: 5px;
-	}
-	.ansDiv{
-		background-color: yellow;
-	}
-	
-	.home {
+<style type="text/css">
+*{
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+h1{
+  font-size: 2.5rem;
+  font-family: 'Montserrat';
+  font-weight: normal;
+  color: #444;
+  text-align: center;
+  margin: 2rem 0;
+}
+
+.wrapper{
+  width: 90%;
+  margin: 0 auto;
+  max-width: 80rem;
+}
+
+.cols{
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.col{
+  width: calc(25% - 2rem);
+  margin: 1rem;
+  cursor: pointer;
+}
+
+.container, .containerDrop{
+  -webkit-transform-style: preserve-3d;
+          transform-style: preserve-3d;
+	-webkit-perspective: 1000px;
+	        perspective: 1000px;
+}
+
+.front,
+.back{
+  background-size: cover;
+	background-position: center;
+	-webkit-transition: -webkit-transform .7s cubic-bezier(0.4, 0.2, 0.2, 1);
+	transition: -webkit-transform .7s cubic-bezier(0.4, 0.2, 0.2, 1);
+	-o-transition: transform .7s cubic-bezier(0.4, 0.2, 0.2, 1);
+	transition: transform .7s cubic-bezier(0.4, 0.2, 0.2, 1);
+	transition: transform .7s cubic-bezier(0.4, 0.2, 0.2, 1), -webkit-transform .7s cubic-bezier(0.4, 0.2, 0.2, 1);
+	-webkit-backface-visibility: hidden;
+	        backface-visibility: hidden;
+	text-align: center;
+	min-height: 150px;
+	height: auto;
+	border-radius: 10px;
+	color: #fff;
+	font-size: 1.5rem;
+}
+
+.back{
+  background: #cedce7;
+  background: -webkit-linear-gradient(45deg,  #cedce7 0%,#596a72 100%);
+  background: -o-linear-gradient(45deg,  #cedce7 0%,#596a72 100%);
+  background: linear-gradient(45deg,  #cedce7 0%,#596a72 100%);
+}
+
+.front:after{
+	position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    content: '';
+    display: block;
+    opacity: .6;
+    background-color: #000;
+    -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+    border-radius: 10px;
+}
+.container:hover .front,
+.container:hover .back{
+    -webkit-transition: -webkit-transform .7s cubic-bezier(0.4, 0.2, 0.2, 1);
+    transition: -webkit-transform .7s cubic-bezier(0.4, 0.2, 0.2, 1);
+    -o-transition: transform .7s cubic-bezier(0.4, 0.2, 0.2, 1);
+    transition: transform .7s cubic-bezier(0.4, 0.2, 0.2, 1);
+    transition: transform .7s cubic-bezier(0.4, 0.2, 0.2, 1), -webkit-transform .7s cubic-bezier(0.4, 0.2, 0.2, 1);
+}
+
+.back{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+
+.inner{
+    -webkit-transform: translateY(-50%) translateZ(60px) scale(0.94);
+            transform: translateY(-50%) translateZ(60px) scale(0.94);
+    top: 50%;
+    position: absolute;
+    left: 0;
+    width: 100%;
+    padding: 2rem;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+    outline: 1px solid transparent;
+    -webkit-perspective: inherit;
+            perspective: inherit;
+    z-index: 2;
+}
+
+.container .back, .containerDrop .back{
+    -webkit-transform: rotateY(180deg);
+            transform: rotateY(180deg);
+    -webkit-transform-style: preserve-3d;
+            transform-style: preserve-3d;
+}
+
+.container .front, .containerDrop .front{
+    -webkit-transform: rotateY(0deg);
+            transform: rotateY(0deg);
+    -webkit-transform-style: preserve-3d;
+            transform-style: preserve-3d;
+}
+
+.container:hover .back{
+  -webkit-transform: rotateY(0deg);
+          transform: rotateY(0deg);
+  -webkit-transform-style: preserve-3d;
+          transform-style: preserve-3d;
+}
+
+.container:hover .front{
+  -webkit-transform: rotateY(-180deg);
+          transform: rotateY(-180deg);
+  -webkit-transform-style: preserve-3d;
+          transform-style: preserve-3d;
+}
+
+.front .inner p{
+  font-size: 20px;
+  margin-bottom: 2rem;
+  position: relative;
+}
+
+.front .inner p:after{
+  content: '';
+  width: 4rem;
+  height: 2px;
+  position: absolute;
+  background: #C6D4DF;
+  display: block;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  bottom: -.75rem;
+}
+
+.front .inner span{
+  color: rgba(255,255,255,0.7);
+  font-family: 'Montserrat';
+  font-weight: 300;
+}
+
+@media screen and (max-width: 64rem){
+  .col{
+    width: calc(33.333333% - 2rem);
+  }
+}
+
+@media screen and (max-width: 48rem){
+  .col{
+    width: calc(50% - 2rem);
+  }
+}
+
+@media screen and (max-width: 32rem){
+  .col{
+    width: 100%;
+    margin: 0 0 2rem 0;
+  }
+}
+
+
+/* 탬플릿 css */
+.home {
 	margin-bottom: 10px;
 	margin-left: 20px;
 }
@@ -381,116 +630,729 @@ ul {
 	padding-left: 0px;
 }
 
-li {
-	text-align: center;
+.concept{
+	background-color: yellow;
 }
 
-li div{
-	display: inline-block;
-	text-align: center;
-}
-
-/* #images{
+.example{
+	/* background-color: green; */
 	margin-left: auto;
 	margin-right: auto;
 	width: 800px;
 	height: 170px;
-	margin-top: 20px;
+	margin-top: 50px;
 	padding: 10px;
 	border: 1px solid orange; 
 	border-radius: 1em;
+}
+
+.buttonDiv{
+	/* background-color: blue; */
 	text-align: center;
 }
 
-#boards{
-	margin-left: auto;
-	margin-right: auto;
-	width: 800px;
-	height: 170px;
-	padding: 10px; 
+.buttonDiv input{
+	width:100px;
+    background-color: #f1f1f1;
+    border: thick;
+    color:black;
+    padding: 15px 0;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 15px;
+    margin: 4px;
+    cursor: pointer;
+}
+
+.buttonDiv :HOVER {
+	background-color: black;
+	color: white;
+}
+
+.buttonDiv + div{
+	/* background-color: green; */
+	text-align: center;
+	margin-top: 70px;
+	margin-left: 130px;
+	width: 500px;
+	height: 50px;
+	padding: 10px;
 	border: 1px solid orange; 
 	border-radius: 1em;
-	/* text-align: center; */
-} */
-
-#images div div, #boards div div{
-	display: inline-block;
 }
 
-#images > div, #board > div{
-	text-align: center;
-	margin: 10px;
+.wrongAns{
+	border: 3px solid red;
+	border-radius: 10px;
 }
+
+
 </style>
+<title>Insert title here</title>
 </head>
 <body style="overflow-x: hidden">
 
 <div class="pagination-container full-width-container">
-	<div class="sized-container">
-		<div class="pagination"></div>
+		<div class="sized-container">
+			<div class="pagination"></div>
+		</div>
 	</div>
-</div>
-<div class="viewport full-width-container" style="padding: 5px;">
-	<ul class="slide-container">
-		<li class="slide" data-tag="int">
-			<div class="sized-container" >
-				<div id="images">
-						<div><img src="../resources/img/number1.png" answer="int" id="int"></div>
-						<div><img src="../resources/img/double2.png" answer="double" id="double"></div>
-						<div><img src="../resources/img/true.png" answer="boolean" id="boolean"></div>
-						<div><img src="../resources/img/name.png" answer="String" id="String"></div>
-				</div>
-				<div id="boards">
-						<div answer="int" id="test1">
-							<img src="../resources/img/basket.png" answer="int">
+	<div class="viewport full-width-container" style="padding: 5px;">
+	<h1 id="contentsTitle">마우스를 올려 자료형을 확인해보세요</h1>
+		<ul class="slide-container">
+			<li class="slide" data-tag="Step1">
+				<div class="sized-container">
+					<!-- <h1>마우스를 올려 자료형을 확인해보세요</h1> -->
+					<div class="wrapper">
+					  <div class="cols">
+						<div class="col" sort="true" ontouchstart="this.classList.toggle('hover');">
+							<div class="container">
+								<div class="front" style="background-image: url(https://unsplash.it/500/500/)">
+									<div class="inner">
+										<p>4</p>
+					            <span>Check</span>
+									</div>
+								</div>
+								<div class="back">
+									<div class="inner">
+									  <p>int</p>
+									</div>
+								</div>
+							</div>
 						</div>
-						<div answer="double" id="test2">
-							<img src="../resources/img/basket.png" answer="double">
+						<div class="col" sort="true" ontouchstart="this.classList.toggle('hover');">
+							<div class="container">
+								<div class="front" style="url(https://unsplash.it/506/506/)">
+									<div class="inner">
+										<p>254</p>
+					            <span>Check</span>
+									</div>
+								</div>
+								<div class="back">
+									<div class="inner">
+										<p>int</p>
+									</div>
+								</div>
+							</div>
 						</div>
-						<div answer="boolean" id="test3">
-							<img src="../resources/img/basket.png" answer="boolean">
+						<div class="col" sort="true" ontouchstart="this.classList.toggle('hover');">
+							<div class="container">
+								<div class="front" style="background-image: url(https://unsplash.it/502/502/)">
+									<div class="inner">
+										<p>0.7</p>
+					            <span>Check</span>
+									</div>
+								</div>
+								<div class="back">
+									<div class="inner">
+										<p>double</p>
+									</div>
+								</div>
+							</div>
 						</div>
-						<div answer="String">
-							<img src="../resources/img/basket.png" answer="String">
+						<div class="col" sort="true" ontouchstart="this.classList.toggle('hover');">
+							<div class="container">
+								<div class="front" style="background-image: url(https://unsplash.it/503/503/)">
+									<div class="inner">
+										<p>19.47</p>
+					            <span>Check</span>
+									</div>
+								</div>
+								<div class="back">
+									<div class="inner">
+										<p>double</p>
+									</div>
+								</div>
+							</div>
 						</div>
-				</div>
-			</div>
-		</li>
-		<li class="slide" data-tag="int">
-			<div class="sized-container" >
-				<div id="images">
-					<div><img src="resources/img/number1.png" title="int" id="int"></div>
-					<div><img src="resources/img/number2.png" title="int" id="double"></div>
-					<div><img src="resources/img/basket.png" title="boolean" id="boolean"></div>
-					<div><img src="resources/img/basket.png" title="String" id="String"></div>
-				</div>
-				<div id="boards">
-					<div title="int" id="test1">
-						<img src="resources/img/basket.png" title="int">
+						<div class="col" sort="true" ontouchstart="this.classList.toggle('hover');">
+							<div class="container">
+								<div class="front" style="background-image: url(https://unsplash.it/504/504/">
+									<div class="inner">
+										<p>true</p>
+					            <span>Check</span>
+									</div>
+								</div>
+								<div class="back">
+									<div class="inner">
+										<p>boolean</p>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col" sort="true" ontouchstart="this.classList.toggle('hover');">
+							<div class="container">
+								<div class="front" style="background-image: url(https://unsplash.it/505/505/)">
+									<div class="inner">
+										<p>false</p>
+					            <span>Check</span>
+									</div>
+								</div>
+								<div class="back">
+									<div class="inner">
+										<p>boolean</p>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col" sort="true" ontouchstart="this.classList.toggle('hover');">
+							<div class="container">
+								<div class="front" style="background-image: url(https://unsplash.it/506/506/)">
+									<div class="inner">
+										<p>"Hello"</p>
+					            <span>Check</span>
+									</div>
+								</div>
+								<div class="back">
+									<div class="inner">
+										<p>String</p>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col" sort="true" ontouchstart="this.classList.toggle('hover');">
+							<div class="container">
+								<div class="front" style="background-image: url(https://unsplash.it/508/508/)">
+									<div class="inner">
+										<p>"Java"</p>
+					            <span>Check</span>
+									</div>
+								</div>
+								<div class="back">
+									<div class="inner">
+										<p>String</p>
+									</div>
+								</div>
+							</div>
+						</div>
 					</div>
-					<div title="double" id="test2">
-						<img src="resources/img/basket.png" title="double">
 					</div>
-					<div title="boolean" id="test3">
-						<img src="resources/img/basket.png" title="boolean">
+		  		</div>
+			</li>
+			<li class="slide" data-tag="Step2">
+				<div class="sized-container" >
+					<div class="wrapper">
+					  <div class="cols">
+						<div class="col" sort="true" ontouchstart="this.classList.toggle('hover');">
+							<div class="container" slide="2" answer="yes">
+								<div class="front" style="background-image: url(https://unsplash.it/500/500/)">
+									<div class="inner">
+										<p>28</p>
+					            <span>Click me!</span>
+									</div>
+								</div>
+								<div class="back">
+									<div class="inner">
+									  <p></p>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col" sort="true" ontouchstart="this.classList.toggle('hover');">
+							<div class="container" slide="2" answer="yes">
+								<div class="front" style="url(https://unsplash.it/511/511/)">
+									<div class="inner">
+										<p>6428</p>
+					            <span>Click me!</span>
+									</div>
+								</div>
+								<div class="back">
+									<div class="inner">
+										<p></p>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col" sort="true" ontouchstart="this.classList.toggle('hover');">
+							<div class="container" slide="2" answer="yes">
+								<div class="front" style="background-image: url(https://unsplash.it/502/502/)">
+									<div class="inner">
+										<p>0</p>
+					            <span>Click me!</span>
+									</div>
+								</div>
+								<div class="back">
+									<div class="inner">
+										<p></p>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col" sort="true" ontouchstart="this.classList.toggle('hover');">
+							<div class="container" slide="2" answer="yes">
+								<div class="front" style="background-image: url(https://unsplash.it/503/503/)">
+									<div class="inner">
+										<p>-5</p>
+					            <span>Click me!</span>
+									</div>
+								</div>
+								<div class="back">
+									<div class="inner">
+										<p></p>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col" sort="true" ontouchstart="this.classList.toggle('hover');">
+							<div class="container" slide="2" answer="no">
+								<div class="front" style="background-image: url(https://unsplash.it/504/504/">
+									<div class="inner">
+										<p>"here"</p>
+					            <span>Click me!</span>
+									</div>
+								</div>
+								<div class="back">
+									<div class="inner">
+										<p>String</p>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col" sort="true" ontouchstart="this.classList.toggle('hover');">
+							<div class="container" slide="2" answer="no">
+								<div class="front" style="background-image: url(https://unsplash.it/505/505/)">
+									<div class="inner">
+										<p>true</p>
+					            <span>Click me!</span>
+									</div>
+								</div>
+								<div class="back">
+									<div class="inner">
+										<p>boolean</p>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col" sort="true" ontouchstart="this.classList.toggle('hover');">
+							<div class="container" slide="2" answer="no">
+								<div class="front" style="background-image: url(https://unsplash.it/506/506/)">
+									<div class="inner">
+										<p>"37"</p>
+					            <span>Click me!</span>
+									</div>
+								</div>
+								<div class="back">
+									<div class="inner">
+										<p>String</p>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col" sort="true" ontouchstart="this.classList.toggle('hover');">
+							<div class="containerDrop" slide="2" answer="no">
+								<div class="front" style="background-image: url(https://unsplash.it/508/508/)">
+									<div class="inner">
+										<p>"easy"</p>
+					            <span>Click me!</span>
+									</div>
+								</div>
+								<div class="back">
+									<div class="inner">
+										<p>String</p>
+									</div>
+								</div>
+							</div>
+						</div>
 					</div>
-					<div title="String">
-						<img src="resources/img/basket.png" title="String">
 					</div>
-				</div>
-			</div>
-		</li>
-	</ul>
-</div>
-<div class="full-width-container">
-	<div class="button-container sized-container">
-		<div id="checkBtnDiv"></div>
-		<div id="nextBtnDiv"></div>
-		<button class="next" id="next">next</button>
-		<button class="previous" id="previous">previous</button>
-		<button class="next" id="btnShowJava">Java로 보기</button>
-		<div id="answerResultDiv"></div>
+		  		</div>
+			</li>
+			<li class="slide" data-tag="Step3">
+				<div class="sized-container" >
+					<div class="wrapper">
+					  <div class="cols">
+						<div class="col" sort="true" ontouchstart="this.classList.toggle('hover');">
+							<div class="container" slide="3" answer="no">
+								<div class="front" style="background-image: url(https://unsplash.it/500/500/)">
+									<div class="inner">
+										<p>28</p>
+					            <span>Click me!</span>
+									</div>
+								</div>
+								<div class="back">
+									<div class="inner">
+									  <p></p>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col" sort="true" ontouchstart="this.classList.toggle('hover');">
+							<div class="container" slide="3" answer="no">
+								<div class="front" style="url(https://unsplash.it/511/511/)">
+									<div class="inner">
+										<p>6428</p>
+					            <span>Click me!</span>
+									</div>
+								</div>
+								<div class="back">
+									<div class="inner">
+										<p></p>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col" sort="true" ontouchstart="this.classList.toggle('hover');">
+							<div class="container" slide="3" answer="yes">
+								<div class="front" style="background-image: url(https://unsplash.it/502/502/)">
+									<div class="inner">
+										<p>42.195</p>
+					            <span>Click me!</span>
+									</div>
+								</div>
+								<div class="back">
+									<div class="inner">
+										<p></p>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col" sort="true" ontouchstart="this.classList.toggle('hover');">
+							<div class="container" slide="3" answer="yes">
+								<div class="front" style="background-image: url(https://unsplash.it/503/503/)">
+									<div class="inner">
+										<p>-3.0</p>
+					            <span>Click me!</span>
+									</div>
+								</div>
+								<div class="back">
+									<div class="inner">
+										<p></p>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col" sort="true" ontouchstart="this.classList.toggle('hover');">
+							<div class="container" slide="3" answer="no">
+								<div class="front" style="background-image: url(https://unsplash.it/504/504/">
+									<div class="inner">
+										<p>"hello"</p>
+					            <span>Click me!</span>
+									</div>
+								</div>
+								<div class="back">
+									<div class="inner">
+										<p></p>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col" sort="true" ontouchstart="this.classList.toggle('hover');">
+							<div class="container" slide="3" answer="no">
+								<div class="front" style="background-image: url(https://unsplash.it/505/505/)">
+									<div class="inner">
+										<p>false</p>
+					            <span>Click me!</span>
+									</div>
+								</div>
+								<div class="back">
+									<div class="inner">
+										<p></p>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col" sort="true" ontouchstart="this.classList.toggle('hover');">
+							<div class="container" slide="3" answer="yes">
+								<div class="front" style="background-image: url(https://unsplash.it/506/506/)">
+									<div class="inner">
+										<p>0.25</p>
+					            <span>Click me!</span>
+									</div>
+								</div>
+								<div class="back">
+									<div class="inner">
+										<p></p>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col" sort="true" ontouchstart="this.classList.toggle('hover');">
+							<div class="containerDrop" slide="3" answer="yes">
+								<div class="front" style="background-image: url(https://unsplash.it/508/508/)">
+									<div class="inner">
+										<p>4.27</p>
+					            <span>Click me!</span>
+									</div>
+								</div>
+								<div class="back">
+									<div class="inner">
+										<p></p>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					</div>
+		  		</div>
+			</li>
+			<li class="slide" data-tag="Step4">
+				<div class="sized-container" >
+					<div class="wrapper">
+					  <div class="cols">
+						<div class="col" sort="true" ontouchstart="this.classList.toggle('hover');">
+							<div class="container" slide="4" answer="no">
+								<div class="front" style="background-image: url(https://unsplash.it/500/500/)">
+									<div class="inner">
+										<p>31</p>
+					            <span>Click me!</span>
+									</div>
+								</div>
+								<div class="back">
+									<div class="inner">
+									  <p></p>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col" sort="true" ontouchstart="this.classList.toggle('hover');">
+							<div class="container" slide="4" answer="no">
+								<div class="front" style="url(https://unsplash.it/511/511/)">
+									<div class="inner">
+										<p>62</p>
+					            <span>Click me!</span>
+									</div>
+								</div>
+								<div class="back">
+									<div class="inner">
+										<p></p>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col" sort="true" ontouchstart="this.classList.toggle('hover');">
+							<div class="container" slide="4" answer="no">
+								<div class="front" style="background-image: url(https://unsplash.it/502/502/)">
+									<div class="inner">
+										<p>0.52</p>
+					            <span>Click me!</span>
+									</div>
+								</div>
+								<div class="back">
+									<div class="inner">
+										<p></p>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col" sort="true" ontouchstart="this.classList.toggle('hover');">
+							<div class="container" slide="4" answer="yes">
+								<div class="front" style="background-image: url(https://unsplash.it/503/503/)">
+									<div class="inner">
+										<p>true</p>
+					            <span>Click me!</span>
+									</div>
+								</div>
+								<div class="back">
+									<div class="inner">
+										<p></p>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col" sort="true" ontouchstart="this.classList.toggle('hover');">
+							<div class="container" slide="4" answer="yes">
+								<div class="front" style="background-image: url(https://unsplash.it/504/504/">
+									<div class="inner">
+										<p>false</p>
+					            <span>Click me!</span>
+									</div>
+								</div>
+								<div class="back">
+									<div class="inner">
+										<p></p>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col" sort="true" ontouchstart="this.classList.toggle('hover');">
+							<div class="container" slide="4" answer="no">
+								<div class="front" style="background-image: url(https://unsplash.it/505/505/)">
+									<div class="inner">
+										<p>"false"</p>
+					            <span>Click me!</span>
+									</div>
+								</div>
+								<div class="back">
+									<div class="inner">
+										<p></p>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col" sort="true" ontouchstart="this.classList.toggle('hover');">
+							<div class="container" slide="4" answer="no">
+								<div class="front" style="background-image: url(https://unsplash.it/506/506/)">
+									<div class="inner">
+										<p>"true"</p>
+					            <span>Click me!</span>
+									</div>
+								</div>
+								<div class="back">
+									<div class="inner">
+										<p></p>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col" sort="true" ontouchstart="this.classList.toggle('hover');">
+							<div class="containerDrop" slide="4" answer="no">
+								<div class="front" style="background-image: url(https://unsplash.it/508/508/)">
+									<div class="inner">
+										<p>"bye"</p>
+					            <span>Click me!</span>
+									</div>
+								</div>
+								<div class="back">
+									<div class="inner">
+										<p></p>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					</div>
+		  		</div>
+			</li>
+			<li class="slide" data-tag="Step5">
+				<div class="sized-container" >
+					<div class="wrapper">
+					  <div class="cols">
+						<div class="col" sort="true" ontouchstart="this.classList.toggle('hover');">
+							<div class="container" slide="5" answer="yes">
+								<div class="front" style="background-image: url(https://unsplash.it/500/500/)">
+									<div class="inner">
+										<p>"hello"</p>
+					            <span>Click me!</span>
+									</div>
+								</div>
+								<div class="back">
+									<div class="inner">
+									  <p></p>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col" sort="true" ontouchstart="this.classList.toggle('hover');">
+							<div class="container" slide="5" answer="yes">
+								<div class="front" style="url(https://unsplash.it/511/511/)">
+									<div class="inner">
+										<p>"sum41"</p>
+					            <span>Click me!</span>
+									</div>
+								</div>
+								<div class="back">
+									<div class="inner">
+										<p></p>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col" sort="true" ontouchstart="this.classList.toggle('hover');">
+							<div class="container" slide="5" answer="yes">
+								<div class="front" style="background-image: url(https://unsplash.it/502/502/)">
+									<div class="inner">
+										<p>"one"</p>
+					            <span>Click me!</span>
+									</div>
+								</div>
+								<div class="back">
+									<div class="inner">
+										<p></p>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col" sort="true" ontouchstart="this.classList.toggle('hover');">
+							<div class="container" slide="5" answer="yes">
+								<div class="front" style="background-image: url(https://unsplash.it/503/503/)">
+									<div class="inner">
+										<p>"true"</p>
+					            <span>Click me!</span>
+									</div>
+								</div>
+								<div class="back">
+									<div class="inner">
+										<p></p>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col" sort="true" ontouchstart="this.classList.toggle('hover');">
+							<div class="container" slide="5" answer="no">
+								<div class="front" style="background-image: url(https://unsplash.it/504/504/">
+									<div class="inner">
+										<p>false</p>
+					            <span>Click me!</span>
+									</div>
+								</div>
+								<div class="back">
+									<div class="inner">
+										<p></p>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col" sort="true" ontouchstart="this.classList.toggle('hover');">
+							<div class="container" slide="5" answer="no">
+								<div class="front" style="background-image: url(https://unsplash.it/505/505/)">
+									<div class="inner">
+										<p>524</p>
+					            <span>Click me!</span>
+									</div>
+								</div>
+								<div class="back">
+									<div class="inner">
+										<p></p>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col" sort="true" ontouchstart="this.classList.toggle('hover');">
+							<div class="container" slide="5" answer="no">
+								<div class="front" style="background-image: url(https://unsplash.it/506/506/)">
+									<div class="inner">
+										<p>true</p>
+					            <span>Click me!</span>
+									</div>
+								</div>
+								<div class="back">
+									<div class="inner">
+										<p></p>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col" sort="true" ontouchstart="this.classList.toggle('hover');">
+							<div class="containerDrop" slide="5" answer="no">
+								<div class="front" style="background-image: url(https://unsplash.it/508/508/)">
+									<div class="inner">
+										<p>0</p>
+					            <span>Click me!</span>
+									</div>
+								</div>
+								<div class="back">
+									<div class="inner">
+										<p></p>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					</div>
+		  		</div>
+			</li>
+		</ul>
 	</div>
-</div>
+	<div class="full-width-container">
+		<div class="button-container sized-container">
+			<div id="checkBtnDiv"></div>
+			<div id="nextBtnDiv"></div>
+			<button class="next" id="next">next</button>
+			<button class="previous" id="previous">previous</button>
+			<button class="next" id="btnShowJava">Java로 보기</button>
+			<div id="answerResultDiv"></div>
+		</div>
+	</div>
 </body>
 </html>

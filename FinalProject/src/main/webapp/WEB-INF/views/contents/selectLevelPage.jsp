@@ -24,24 +24,25 @@
 			$('.card').each(function(){
 		    
 				
+				//$(this).attr('disabled',true);
 				var test = document.getElementById("st-panel-4");
 				
 				
 				//$(this).addClass('notClear');
 		
 				var thisLevel = $(this).attr('id');
-				//클리어 했으면
-		     
+				/* if(thisLevel < ${bestLevel+2}){ 
+					//$(this).removeClass('notClear');
+					//$(this).addClass('clear');
+					$(this).attr('disabled', false);
+				} */
 				$(this).on('focus',function(){ 
 					$("#st-control-2").css('display','none');
 					
 				});
 				
 				
-				/* if(thisLevel < ${bestLevel}){ 
-					$(this).removeClass('notClear');
-					$(this).addClass('clear');
-					$(this).attr('disabled', true); */
+				
 					
 					$(this).on('click',function(){
 						//alert(thisLevel);		           
@@ -439,7 +440,7 @@
 				        
 				        <li> </li>
 				        
-				        <li> level &ensp;| <span> &ensp; ${sessionScope.testUserLevel } </span> </li>
+				        <li> level &ensp;| <span> &ensp; ${bestLevel } </span> </li>
 				        <li>
 				        	<a href="#"><i class="fab fa-facebook-f"></i></a>
 				            <a href="#"><i class="fab fa-twitter"></i></a>
@@ -460,7 +461,7 @@
 				        <!-- 원형 프로그래스바 -->
 				    	<div class="row">
   
-		  					<div class="progress" cid="1" percent="${sessionScope.testUserLevel * 10}" 
+		  					<div class="progress" cid="1" percent="${bestLevel / 12 * 100}" 
 		  					textcolor="#000000" progresscolor="red" innercolor="gray" bar="#18aaaa">
 					    		<div class="progress-1">
 							    	<div class="progress-circle">

@@ -6,6 +6,201 @@
 <head>
 <script type="text/javascript" src="<c:url value="/resources/js/jquery-3.2.1.js"></c:url>"></script>
 <style type="text/css">
+
+/* 카드 */
+*{
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+h1{
+  font-size: 2.5rem;
+  font-family: 'Montserrat';
+  font-weight: normal;
+  color: #444;
+  text-align: center;
+  margin: 2rem 0;
+}
+
+.wrapper{
+  width: 90%;
+  margin: 0 auto;
+  max-width: 80rem;
+}
+
+.cols{
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.col{
+  width: calc(25% - 2rem);
+  margin: 1rem;
+  cursor: pointer;
+}
+
+.container{
+  -webkit-transform-style: preserve-3d;
+          transform-style: preserve-3d;
+	-webkit-perspective: 1000px;
+	        perspective: 1000px;
+}
+
+.front,
+.back{
+  background-size: cover;
+	background-position: center;
+	-webkit-transition: -webkit-transform .7s cubic-bezier(0.4, 0.2, 0.2, 1);
+	transition: -webkit-transform .7s cubic-bezier(0.4, 0.2, 0.2, 1);
+	-o-transition: transform .7s cubic-bezier(0.4, 0.2, 0.2, 1);
+	transition: transform .7s cubic-bezier(0.4, 0.2, 0.2, 1);
+	transition: transform .7s cubic-bezier(0.4, 0.2, 0.2, 1), -webkit-transform .7s cubic-bezier(0.4, 0.2, 0.2, 1);
+	-webkit-backface-visibility: hidden;
+	        backface-visibility: hidden;
+	text-align: center;
+	min-height: 300px;
+	height: auto;
+	border-radius: 10px;
+	color: #fff;
+	font-size: 1.5rem;
+}
+
+.back{
+  background: #cedce7;
+  background: -webkit-linear-gradient(45deg,  #cedce7 0%,#596a72 100%);
+  background: -o-linear-gradient(45deg,  #cedce7 0%,#596a72 100%);
+  background: linear-gradient(45deg,  #cedce7 0%,#596a72 100%);
+}
+
+.front:after{
+	position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    content: '';
+    display: block;
+    opacity: .6;
+    background-color: #000;
+    -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+    border-radius: 10px;
+}
+.container:hover .front,
+.container:hover .back{
+    -webkit-transition: -webkit-transform .7s cubic-bezier(0.4, 0.2, 0.2, 1);
+    transition: -webkit-transform .7s cubic-bezier(0.4, 0.2, 0.2, 1);
+    -o-transition: transform .7s cubic-bezier(0.4, 0.2, 0.2, 1);
+    transition: transform .7s cubic-bezier(0.4, 0.2, 0.2, 1);
+    transition: transform .7s cubic-bezier(0.4, 0.2, 0.2, 1), -webkit-transform .7s cubic-bezier(0.4, 0.2, 0.2, 1);
+}
+
+.back{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+
+.inner{
+    -webkit-transform: translateY(-50%) translateZ(60px) scale(0.94);
+            transform: translateY(-50%) translateZ(60px) scale(0.94);
+    top: 50%;
+    position: absolute;
+    left: 0;
+    width: 100%;
+    padding: 2rem;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+    outline: 1px solid transparent;
+    -webkit-perspective: inherit;
+            perspective: inherit;
+    z-index: 2;
+}
+
+.container .back{
+    -webkit-transform: rotateY(180deg);
+            transform: rotateY(180deg);
+    -webkit-transform-style: preserve-3d;
+            transform-style: preserve-3d;
+}
+
+.container .front{
+    -webkit-transform: rotateY(0deg);
+            transform: rotateY(0deg);
+    -webkit-transform-style: preserve-3d;
+            transform-style: preserve-3d;
+}
+
+.container:hover .back{
+  -webkit-transform: rotateY(0deg);
+          transform: rotateY(0deg);
+  -webkit-transform-style: preserve-3d;
+          transform-style: preserve-3d;
+}
+
+.container:hover .front{
+  -webkit-transform: rotateY(-180deg);
+          transform: rotateY(-180deg);
+  -webkit-transform-style: preserve-3d;
+          transform-style: preserve-3d;
+}
+
+.front .inner p{
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  position: relative;
+}
+
+.front .inner p:after{
+  content: '';
+  width: 4rem;
+  height: 2px;
+  position: absolute;
+  background: #C6D4DF;
+  display: block;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  bottom: -.75rem;
+}
+
+.front .inner span{
+  color: rgba(255,255,255,0.7);
+  font-family: 'Montserrat';
+  font-weight: 300;
+}
+
+@media screen and (max-width: 64rem){
+  .col{
+    width: calc(33.333333% - 2rem);
+  }
+}
+
+@media screen and (max-width: 48rem){
+  .col{
+    width: calc(50% - 2rem);
+  }
+}
+
+@media screen and (max-width: 32rem){
+  .col{
+    width: 100%;
+    margin: 0 0 2rem 0;
+  }
+}
+
+/* 원래꺼 */
+
 .home {
 	margin-bottom: 10px;
 	margin-left: 20px;
@@ -109,6 +304,7 @@ button.previous:hover {
 	height:80px;
 	width: 100%;
 	margin: 0 auto;
+	text-align: center;
 }
 
 .slide-container {
@@ -210,7 +406,7 @@ ul {
 }
 
 .concept{
-	background-color: yellow;
+	/* background-color: yellow; */
 }
 
 .example{
@@ -231,18 +427,57 @@ ul {
 }
 
 .buttonDiv input{
+	/* background:#1AAB8A;
+  color:#fff;
+  border:none;
+  position:relative;
+  height:60px;
+  font-size:1.6em;
+  padding:0 2em;
+  cursor:pointer;
+  transition:800ms ease all;
+  outline:none; */
+
 	width:100px;
-    background-color: #f1f1f1;
+    background-color: #37B595;
     border: thick;
-    color:black;
+    color:white;
     padding: 15px 0;
     text-align: center;
     text-decoration: none;
     display: inline-block;
     font-size: 15px;
     margin: 4px;
+    margin-top: 30px;
     cursor: pointer;
+    transition:800ms ease all;
+    border-radius: 1em;
 }
+.buttonDiv input:hover{
+  background:#fff;
+  color:#1AAB8A;
+}
+.buttonDiv input:before,.buttonDiv input:after{
+  content:'';
+  position:absolute;
+  top:0;
+  right:0;
+  height:2px;
+  width:0;
+  background: #1AAB8A;
+  transition:400ms ease all;
+}
+.buttonDiv input:after{
+  right:inherit;
+  top:inherit;
+  left:0;
+  bottom:0;
+}
+.buttonDiv input:hover:before,.buttonDiv input:hover:after{
+  width:100%;
+  transition:800ms ease all;
+}
+
 
 .buttonDiv :HOVER {
 	background-color: black;
@@ -261,12 +496,49 @@ ul {
 	border-radius: 1em;
 }
 
+#typeDetail{
+	width: 500px;
+	height: 200px;
+	display: inline-block;
+}
+
+
+
+
+
+
+
+
+
 </style>
 <!-- <link rel="stylesheet" type="text/css" href="../resources/css/styleContents.css"> -->
 <script type="text/javascript">
 	$(function() {
 		var currentSlide = 0;
 		var testCount = 0;
+		
+		var count1 = 0;
+		$('.col').on('click',function(){
+			var data_type = $(this).attr('data-type');
+			switch(data_type){
+				case 'int':
+					$('#typeDetail').html("int는 소수가 아닌 숫자를 표현합니다");
+					break;
+				case 'double':
+					$('#typeDetail').html("double는 소수를 표현합니다");
+					break;
+				case 'boolean':
+					$('#typeDetail').html("boolean은 참 또는 거짓을 표현합니다");
+					break;
+				case 'String':
+					$('#typeDetail').html('String은 " " 안에 넣을 수 있는 문자열을 표현합니다');
+					break;
+			}
+			count1++;
+			if(count1 == 4){
+				$('#next').attr('disabled',false);
+			}
+		});
 		
 		$('#next').attr('disabled', true);
 		$('#btnShowJava').hide();
@@ -403,7 +675,6 @@ ul {
 </head>
 <body style="overflow-x: hidden">
 
-
 	<div class="pagination-container full-width-container">
 		<div class="sized-container">
 			<div class="pagination"></div>
@@ -411,7 +682,78 @@ ul {
 	</div>
 	<div class="viewport full-width-container" style="padding: 5px;">
 		<ul class="slide-container">
-			<li class="slide" data-tag="int">
+			<li class="slide" data-tag="Step1">
+				<div class="sized-container" >
+					<div class="wrapper">
+				  		<div class="cols">
+							<div class="col" data-type="int" ontouchstart="this.classList.toggle('hover');">
+								<div class="container">
+									<div class="front" style="background-image: url(https://unsplash.it/500/500/)">
+										<div class="inner">
+											<p>int</p>
+				              <span>check!</span>
+										</div>
+									</div>
+									<div class="back">
+										<div class="inner">
+										  <p></p>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="col" data-type="double" ontouchstart="this.classList.toggle('hover');">
+								<div class="container">
+									<div class="front" style="url(https://unsplash.it/511/511/)">
+										<div class="inner">
+											<p>double</p>
+				              <span>check!</span>
+										</div>
+									</div>
+									<div class="back">
+										<div class="inner">
+											<p></p>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="col" data-type="boolean" ontouchstart="this.classList.toggle('hover');">
+								<div class="container">
+									<div class="front" style="background-image: url(https://unsplash.it/502/502/)">
+										<div class="inner">
+											<p>boolean</p>
+				              <span>check!</span>
+										</div>
+									</div>
+									<div class="back">
+										<div class="inner">
+											<p></p>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="col" data-type="String" ontouchstart="this.classList.toggle('hover');">
+								<div class="container">
+									<div class="front" style="background-image: url(https://unsplash.it/508/508/)">
+										<div class="inner">
+											<p>String</p>
+				              <span>check!</span>
+										</div>
+									</div>
+									<div class="back">
+										<div class="inner">
+											<p></p>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+				 	</div>
+				 	<div id="typeDetail">
+				 	
+				 	</div>
+				</div>
+			</li>
+			<li class="slide" data-tag="Step2">
 				<div class="sized-container" >
 					<div class="concept">
 						<h1>
@@ -426,13 +768,13 @@ ul {
 							<input type="button" value="10" answer="int">
 							<input type="button" value="0.1" answer="double">
 							<input type="button" value="true" answer="boolean">
-							<input type="button" value="hello" answer="String">
+							<input type="button" value="&quot;hello&quot;" answer="String">
 						</div>
-						<div class="divShowJava0"></div>
+						<div class="divShowJava1"></div>
 					</div>
 				</div>
 			</li>
-			<li class="slide" data-tag="double">
+			<li class="slide" data-tag="Step3">
 				<div class="sized-container">
 					<div class="concept">
 						<h1>
@@ -447,13 +789,13 @@ ul {
 							<input type="button" value="10" answer="int">
 							<input type="button" value="0.1" answer="double">
 							<input type="button" value="true" answer="boolean">
-							<input type="button" value="hello" answer="String">
+							<input type="button" value="&quot;hello&quot;" answer="String">
 						</div>
-						<div class="divShowJava1"></div>
+						<div class="divShowJava2"></div>
 					</div>
 				</div>
 			</li>
-			<li class="slide" data-tag="String">
+			<li class="slide" data-tag="Step4">
 				<div class="sized-container">
 					<div class="concept">
 						<h1>
@@ -468,13 +810,13 @@ ul {
 							<input type="button" value="10" answer="int">
 							<input type="button" value="0.1" answer="double">
 							<input type="button" value="true" answer="boolean">
-							<input type="button" value="hello" answer="String">
+							<input type="button" value="&quot;hello&quot;" answer="String">
 						</div>
-						<div class="divShowJava2"></div>
+						<div class="divShowJava3"></div>
 					</div>
 				</div>
 			</li>
-			<li class="slide" data-tag="boolean">
+			<li class="slide" data-tag="Step5">
 				<div class="sized-container">
 					<div class="concept">
 						<h1>
@@ -489,13 +831,12 @@ ul {
 							<input type="button" value="10" answer="int">
 							<input type="button" value="0.1" answer="double">
 							<input type="button" value="true" answer="boolean">
-							<input type="button" value="hello" answer="String">
+							<input type="button" value="&quot;hello&quot;" answer="String">
 						</div>
-						<div class="divShowJava3"></div>
+						<div class="divShowJava4"></div>
 					</div>
 				</div>
 			</li>
-
 		</ul>
 	</div>
 	<div class="full-width-container">
