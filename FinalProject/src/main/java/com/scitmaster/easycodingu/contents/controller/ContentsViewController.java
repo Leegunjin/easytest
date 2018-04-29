@@ -42,6 +42,7 @@ public class ContentsViewController {
 	public String contentsHome(Model model, HttpSession session) {
 		logger.info("컨텐츠 홈 이동 시작");
 		String loginId = (String)session.getAttribute("loginId");
+		Person person = p_dao.selectPerson(loginId);
 		
 		if(loginId != null){
 			//로그인 했을 때
@@ -56,6 +57,8 @@ public class ContentsViewController {
 				
 				//화면으로 넘겨줄 변수 선언
 				int bestLevel2 = 0;
+				//첫 화면 페이지 수 나타낼 변수
+				int initPage = 0;
 				
 				switch (temp) {
 				case 11:
@@ -106,12 +109,30 @@ public class ContentsViewController {
 					bestLevel2 = 12;
 					break;
 				}
+				if(bestLevel2 == 1){
+					initPage = 1;
+				}else if(bestLevel2 == 2 || bestLevel2 == 3){
+					initPage = 2;
+				}else if(bestLevel2 == 4 || bestLevel2 == 5){
+					initPage = 3;
+				}else if(bestLevel2 == 6 || bestLevel2 == 7){
+					initPage = 4;
+				}else if(bestLevel2 == 8 || bestLevel2 == 9){
+					initPage = 5;
+				}else if(bestLevel2 == 10 || bestLevel2 == 11){
+					initPage = 6;
+				}else if(bestLevel2 == 12){
+					initPage = 7;
+				}
 				System.out.println("최고레벨:"+bestLevel2);
+				model.addAttribute("initPage", initPage);
 				model.addAttribute("bestLevel", bestLevel2);
 			}else if(bestLevel1 == null){
 				model.addAttribute("bestLevel", 0);
+				model.addAttribute("initPage", 1);
 			}
 		}
+		model.addAttribute("person", person);
 		logger.info("컨텐츠 홈 이동 종료");
 		return "contents/selectLevelPage";
 	}

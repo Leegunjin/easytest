@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 
 <html>
@@ -19,37 +20,52 @@
 	    <script type="text/javascript">
 	    
 		$(function(){
-			
-			//alert('${bestLevel}');
+			//alert(${initPage});
+			if(${initPage} == 1){
+				var offset = $('#st-panel-'+${initPage}).offset();
+		        $('html, body').animate({scrollTop : offset.top}, 400);
+			}else{
+				var offset = $('#st-panel-'+${initPage-1}).offset();
+		        $('html, body').animate({scrollTop : offset.top}, 400);
+			}
+	        $('#st-control-'+${initPage}).attr('checked',true);
+	        
+			alert("어디까지 깼나"+${bestLevel});
 			$('.card').each(function(){
-		    
 				
 				//$(this).attr('disabled',true);
-				var test = document.getElementById("st-panel-4");
-				
+				//var test = document.getElementById("st-panel-4");
 				
 				//$(this).addClass('notClear');
 		
 				var thisLevel = $(this).attr('id');
-				/* if(thisLevel < ${bestLevel+2}){ 
-					//$(this).removeClass('notClear');
-					//$(this).addClass('clear');
-					$(this).attr('disabled', false);
+				/*if(thisLevel <= ){
+					
 				} */
-				$(this).on('focus',function(){ 
+				
+				/* $(this).on('focus',function(){ 
 					$("#st-control-2").css('display','none');
 					
-				});
+				}); */
 				
-				
-				
-					
+				//클리어한 레벨과 그 다음 레벨까지 클릭할 수 있게
+				if(thisLevel <= ${bestLevel+1}){
 					$(this).on('click',function(){
 						//alert(thisLevel);		           
-					var level = $(this).attr('id');
-					location.href = 'contents' + level;
-		           //alert(level);
+						var level = $(this).attr('id');
+						location.href = 'contents' + level;
+			           //alert(level);
 		        	});
+				}
+				
+				if(thisLevel == ${bestLevel+1}){
+					$(this).addClass('blink');
+				}
+				
+				if(thisLevel > ${bestLevel+1}){
+					$(this).css({ opacity: 0.5 });
+				}
+					
 		     	//}
 			})
  		});	
@@ -231,7 +247,7 @@
 						<section class="st-panel" id="st-panel-1">
 	            		<div class="st-deco" data-icon="&#xf069;"></div>
 							<h2> Chapter 1 </h2>
-							<p> 자료형 1 </p>
+							<p> 자료형 </p>
 							
 							<div class="BtnContainer1">
 					
@@ -255,7 +271,7 @@
 						<section class="st-panel st-color" id="st-panel-2">
 							<div class="st-deco" data-icon="&#xf118;"></div>
 							<h2> Chapter 2 </h2>
-							<p> 자료형 2 </p>
+							<p> 변수 </p>
 							
 							<div class="BtnContainer2">
 					
@@ -330,7 +346,7 @@
 						<section class="st-panel" id="st-panel-5">
 							<div class="st-deco" data-icon="&#xf004;"></div>
 							<h2> Chapter 5 </h2>
-							<p> While문, 트로피 퀴즈 2 </p>
+							<p> 반복문, 트로피 퀴즈 2 </p>
 							
 							<div class="BtnContainer5" aria-hidden="true">
 																
@@ -360,7 +376,7 @@
 						<section class="st-panel st-color" id="st-panel-6">
 							<div class="st-deco" data-icon="&#xf004;"></div>
 							<h2> Final Chapter </h2>
-							<p> 종합문제, 트로피 퀴즈 3 </p>
+							<p> 배열, 트로피 퀴즈 3 </p>
 							
 							<div class="BtnContainer6">
 					
@@ -440,7 +456,7 @@
 				        
 				        <li> </li>
 				        
-				        <li> level &ensp;| <span> &ensp; ${bestLevel } </span> </li>
+				        <li> level &ensp;| <span> &ensp; ${person.grade } </span> </li>
 				        <li>
 				        	<a href="#"><i class="fab fa-facebook-f"></i></a>
 				            <a href="#"><i class="fab fa-twitter"></i></a>
@@ -460,8 +476,8 @@
 		        
 				        <!-- 원형 프로그래스바 -->
 				    	<div class="row">
-  
-		  					<div class="progress" cid="1" percent="${bestLevel / 12 * 100}" 
+  							<%-- <c:set var="temp" value="<fmt:parseNumber value='${bestLevel / 12 * 100}' integerOnly='true'/>"></c:set> --%>
+		  					<div class="progress" cid="1" percent="<fmt:parseNumber value='${bestLevel / 12 * 100}' integerOnly='true'/>" 
 		  					textcolor="#000000" progresscolor="red" innercolor="gray" bar="#18aaaa">
 					    		<div class="progress-1">
 							    	<div class="progress-circle">
