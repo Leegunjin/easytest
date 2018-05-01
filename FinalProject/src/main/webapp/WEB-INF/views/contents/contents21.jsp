@@ -243,7 +243,7 @@ ul {
 				$pagination.append($indicator).append($progressBarContainer);
 			}
 			$pagination.find('.indicator').eq(0).addClass('active');
-		}
+		} 
 			function goToCheck() {
 			var cNum = currentSlide + 1;
 			var checkedValue = $('#checkedValue' + currentSlide).val();
@@ -342,22 +342,42 @@ ul {
 	</div>
 	<div class="viewport full-width-container" style="padding: 5px;">
 		<ul class="slide-container">
-			<li class="slide" data-tag="int">
+			<li class="slide" data-tag="page1">
+				<div class="sized-container">
+					<jsp:include page="contents215.jsp" flush="true" />
+				</div>
+			</li>
+			<li class="slide" data-tag="page2">
 				<div class="sized-container">
 					<jsp:include page="contents211.jsp" flush="true" />
 				</div>
 			</li>
-			<li class="slide" data-tag="double">
+			<li class="slide" data-tag="page3">
+				<div class="sized-container">
+					<jsp:include page="contents216.jsp" flush="true" />
+				</div>
+			</li>
+			<li class="slide" data-tag="page4">
 				<div class="sized-container">
 					<jsp:include page="contents212.jsp" flush="true" />
 				</div>
 			</li>
-			<li class="slide" data-tag="string">
+			<li class="slide" data-tag="page5">
+				<div class="sized-container">
+					<jsp:include page="contents217.jsp" flush="true" />
+				</div>
+			</li>
+			<li class="slide" data-tag="page6">
 				<div class="sized-container">
 					<jsp:include page="contents213.jsp" flush="true" />
 				</div>
 			</li>
-			<li class="slide" data-tag="boolean">
+			<li class="slide" data-tag="page7">
+				<div class="sized-container">
+					<jsp:include page="contents218.jsp" flush="true" />
+				</div>
+			</li>
+			<li class="slide" data-tag="page8">
 				<div class="sized-container">
 					<jsp:include page="contents214.jsp" flush="true" />
 				</div>
