@@ -6,7 +6,7 @@
 
 <link href="https://fonts.googleapis.com/css?family=Jua" rel="stylesheet">
 <style type="text/css">
-
+ 
 .resulta>p{
 margin-left: 16px;
 margin-top: 100px;

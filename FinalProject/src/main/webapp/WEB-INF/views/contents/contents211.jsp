@@ -8,7 +8,7 @@
 <title>INT</title>
 </head>
 <body> 
-
+ 
 	<div class="container">
 		<div class="radio-tile-group">
 			<h2 style="height: 20px;">자료형에 알맞는 변수를 선택하세요</h2>
