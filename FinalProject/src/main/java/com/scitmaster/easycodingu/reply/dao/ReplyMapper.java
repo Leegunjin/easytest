@@ -15,4 +15,8 @@ public interface ReplyMapper {
    
 	//댓글 삭제 delete
 	public int deleteReply(int r_num);
+	
+	// 게시글 삭제
+	public Reply selectReplyOne (int r_num);
+	
 }

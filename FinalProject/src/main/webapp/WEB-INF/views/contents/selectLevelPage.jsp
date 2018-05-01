@@ -49,16 +49,16 @@
 				}); */
 				
 				//클리어한 레벨과 그 다음 레벨까지 클릭할 수 있게
-				if(thisLevel <= ${bestLevel+1}){
+				//if(thisLevel <= ${bestLevel+1}){
 					$(this).on('click',function(){
 						//alert(thisLevel);		           
 						var level = $(this).attr('id');
 						location.href = 'contents' + level;
 			           //alert(level);
 		        	});
-				}
+				//}
 				
-				if(thisLevel == ${bestLevel+1}){
+				/* if(thisLevel == ${bestLevel+1}){
 					$(this).addClass('blink');
 				}
 				
@@ -85,7 +85,7 @@
 						location.href = 'contents' + 15;
 					});
 					$('#15').css({ opacity: 1.0 });
-				}
+				} */
 					
 		     	//}
 			})

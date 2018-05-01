@@ -44,7 +44,8 @@ public class BoardRestController {
 	   if (board.getHashTag() != null) {
 		   String[] hashtagArr = board.getHashTag().split("#");
 	   }
-		
+	   System.out.println("Board : " + board);
+	   System.out.println("BoardNum : " + board.getB_num());
 	   logger.info("read END");
 	   return board;
    }
@@ -71,12 +72,12 @@ public class BoardRestController {
 		return "redirect:boardList";
 	}*/
    
-   @RequestMapping(value="delBoard", method=RequestMethod.POST)
-   public boolean delBoard(int bnum, HttpSession session){
-	   logger.info("delBoard START");
-	   
+   @RequestMapping(value="dBoard", method=RequestMethod.GET)
+   public boolean dBoard(String bnum, HttpSession session){
+	   logger.info("dBoard START");
+	   System.out.println("dBoard : " + bnum);
 	   boolean result = true;
-	   int b_num = bnum;
+	   int b_num = Integer.parseInt(bnum);
 	   Board board= dao.selectBoardOne(b_num);
 	   
 	   String id = (String)session.getAttribute("loginId");
@@ -93,7 +94,7 @@ public class BoardRestController {
 	   }
 	   
 	   /*boolean flag = FileService.deleteFile(uploadPath + "/" + vo.getSavedFileName());*/
-	   logger.info("delBoard END");
+	   logger.info("dBoard END");
 	   return result;
    }
    

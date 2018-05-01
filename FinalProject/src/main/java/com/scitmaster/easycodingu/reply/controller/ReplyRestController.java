@@ -30,7 +30,7 @@ public class ReplyRestController {
    @Autowired
    ReplyDAO dao;
    
-   private static final Logger logger = LoggerFactory.getLogger(ReplyViewController.class);
+   private static final Logger logger = LoggerFactory.getLogger(ReplyRestController.class);
    
    @RequestMapping(value="writeReply", method=RequestMethod.POST)
 	public void writeReply(@RequestBody Reply reply, HttpSession session){
@@ -54,11 +54,24 @@ public class ReplyRestController {
 		return replyList;
 	}
    
+   
+   // 리플삭제
    @RequestMapping(value="replyDelete", method=RequestMethod.POST)
-	public void replyDelete(int r_num){
-		logger.info("replyDelete START");
-		dao.deleteReply(r_num);
-		logger.info("replyDelete END");
-	}
+   public boolean replyDelete(int r_num, HttpSession session){
+      logger.info("replyDelete START!!!!!!");
+      String loginId = (String)session.getAttribute("loginId");
+      System.out.println("loginId : "+loginId);
+      Reply reply = dao.selectReplyOne(r_num);
+      String r_id = reply.getR_id();
+      System.out.println("r_id : "+r_id);
+      boolean result = false;
+      if (loginId.equals(r_id)) {
+         dao.deleteReply(r_num);
+         result = true;
+      }
+      
+      logger.info("replyDelete END");
+      return result;
+   }
    
 }

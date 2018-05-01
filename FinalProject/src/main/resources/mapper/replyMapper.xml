@@ -41,6 +41,17 @@
 		reply
 	WHERE 
 		r_num = #{r_num}
-	</delete>  
+	</delete>
+	
+	
+	<select id="selectReplyOne" parameterType="int" resultType="reply">
+	   SELECT
+	      *
+	   FROM
+	      reply
+	   WHERE
+	      r_num = #{r_num}
+   </select>
+	  
  
 </mapper>

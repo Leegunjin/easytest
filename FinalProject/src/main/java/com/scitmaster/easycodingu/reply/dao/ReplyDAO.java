@@ -50,7 +50,7 @@ public class ReplyDAO {
 	}
    
    public int deleteReply(int r_num){
-		
+		logger.info("deleteReply Start");
 	   ReplyMapper mapper = sqlSession.getMapper(ReplyMapper.class);
 		int result = 0;
 		try {
@@ -58,6 +58,22 @@ public class ReplyDAO {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		logger.info("deleteReply END");
 		return result;
 	}
+   
+   
+   // 게시글 삭제
+   public Reply selectReplyOne (int r_num){
+	      logger.info("selectReplyOne START");
+	      ReplyMapper mapper = sqlSession.getMapper(ReplyMapper.class);
+	      Reply reply = null;
+	      try {
+	         reply = mapper.selectReplyOne(r_num);
+	      } catch (Exception e) {
+	         e.printStackTrace();
+	      }
+	      logger.info("selectReplyOne END");
+	      return reply;
+	   }
 }
