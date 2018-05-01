@@ -22,6 +22,9 @@ body {
 	overflow: hidden;
 	text-align: center;
 	display: inline-block;
+	  margin-top: -27px;
+	  margin-left: -7px;
+	 
 }
 
 .radio-tile-group .imgdiv {
@@ -81,8 +84,7 @@ body {
 	transform: scale(1.1, 1.1);
 }
 
-.radio-tile-group .input-container .radio-button:checked+.radio-tile .radio-tile-label
-	{
+.radio-tile-group .input-container .radio-button:checked+.radio-tile .radio-tile-label{
 	color: white;
 	background-color: #079ad9;
 }

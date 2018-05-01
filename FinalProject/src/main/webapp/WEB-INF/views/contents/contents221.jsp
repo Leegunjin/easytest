@@ -7,28 +7,29 @@
 <title>EasyCodingU</title>
 <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
 <script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+ <link rel="stylesheet" type="text/css" href="../resources/css/styleContents22.css?ver=1"> 
 </head> 
 <body>
 	<br>
 	<br>
 
 	<div id="images">
-		<div>
+		<div class="i">
 			<img src="../resources/img/calendar.png" title="int" id="7">
 		</div>
-		<div>
+		<div class="i">
 			<img src="../resources/img/pizza.png" title="double" id="1/8">
 		</div>
-		<div>
+		<div class="i">
 			<img src="../resources/img/name.png" title="string" id="김철수">
 		</div>
-		<div>
+		<div class="i">
 			<img src="../resources/img/ox.png" title="boolean" id="O 또는 X">
 		</div>
 
 	</div>
 	<div id="boards">
-		<div title="int" >
+		<div title="int">
 			<img src="../resources/img/basket.png" id="int">
 			<p>int</p>
 		</div>

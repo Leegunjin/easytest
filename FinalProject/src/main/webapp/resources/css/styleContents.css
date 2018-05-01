@@ -98,11 +98,6 @@ transform: translate(0%, 50%);
    
       }
    
-   
-   
-   
-   
-   
    * {
      -webkit-box-sizing: border-box;
              box-sizing: border-box;
@@ -154,6 +149,7 @@ transform: translate(0%, 50%);
    .full-width-container {
      width: 100%;
      min-width: 320px;
+     max-height: 400px;
    }
    
    .sized-container {
@@ -177,12 +173,13 @@ transform: translate(0%, 50%);
      left: 0;
      overflow: hidden;
      width: 6860px;
+     height: 370px;
      
    }
    
    .slide {
      float: left;
-     height: 50vh;
+     height: 60vh;
    }
    .slide .sized-container {
      padding: 10px 25px;
@@ -191,7 +188,8 @@ transform: translate(0%, 50%);
    .button-container {
      border-top: 1px solid black;
      overflow: hidden;
-     padding-top: 30px;
+     height: 91px;
+     padding-top: 12px;
      transform: translate(0%, 0%);
    }
    .button-container button {
@@ -278,12 +276,18 @@ transform: translate(0%, 50%);
 
 
 input[type=text] {
-	width: 30px;
+	width: 79px;
 	height: 30px;
 	font-size: 15px;
 	color: red;
 	
 } 
+#javaCodeDiv{
+	    font-size: 26px;
+    font-weight: bolder;
+    margin-left: 213px;
+    margin-top: -44px;
+}
 
 .previous { display: none;}
 
@@ -302,6 +306,7 @@ input[type=text] {
 #images div img {
    width: 50px;
    height: 50px;
+ 
 }
 
 #boards {
@@ -312,7 +317,7 @@ input[type=text] {
 
 #boards>div {
    font-size: 1.5em;
-   
+   width
    text-align: center;
    margin-left: 50px;
    float: left;

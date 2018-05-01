@@ -5,14 +5,15 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>[ contents320.jsp ]</title>
-<link rel="stylesheet" type="text/css"
-	href="../resources/css/styleContents31.css?ver=1">
+<title>contents31</title>
+<link href="https://ss.googleapis.com/css?family=Jua" rel="stylesheet">
+<!--  <link rel="stylesheet" type="text/css"
+	href="../resources/css/styleContents31.css?ver=1"> -->
 <style type="text/css">
 @charset "UTF-8";
- 
+
 *, html, body {
-	font-family: "TrebuchetMS", trebuchet, sans-serif;
+	font-family: 'Jua', sans-serif;
 	margin: 0;
 	padding: 0;
 }
@@ -28,6 +29,7 @@ h1, h2 {
 
 h1 {
 	font-size: 24px;
+	font-family: 'Jua', sans-serif;
 	line-height: 30px;
 	font-weight: bold;
 	margin-top: 59px;
@@ -35,8 +37,10 @@ h1 {
 
 h2 {
 	font-size: 18px;
-	line-height: 25px;
-	margin-top: 20px;
+	font-family: 'Jua', sans-serif;
+	line-height: 88px;
+	margin-top: 0px;
+	background-color: #37B595;
 }
 
 button {
@@ -51,6 +55,7 @@ button {
 	text-transform: capitalize;
 	font-size: 18px;
 	line-height: 22px;
+	font-family: 'Jua', sans-serif;
 	outline: none;
 	cursor: pointer;
 	-webkit-transition: all 0.2s;
@@ -72,6 +77,7 @@ button.previous:hover {
 .full-width-container {
 	width: 100%;
 	min-width: 320px;
+	margin-top: -15px;
 }
 
 .question-container {
@@ -93,23 +99,24 @@ button.previous:hover {
 	position: relative;
 	left: 0;
 	overflow: hidden;
-	width: 7840px;
+	width: 10800px;
 }
 
 .slide {
 	float: left;
 	list-style-type: none;
+	height: 470px;
 }
 
 .slide .sized-container {
-	padding-top: 10px;
+	padding-top: -8px;
 	padding-bottom: 20px;
 }
 
 .button-container {
 	border-top: 1px solid black;
 	overflow: hidden;
-	padding-top: 30px;
+	padding-top: 9px;
 }
 
 .button-container button {
@@ -165,6 +172,7 @@ button.previous:hover {
 	left: 4px;
 	top: 3px;
 	font-size: 14px;
+	font-family: 'Jua', sans-serif;
 }
 
 .progress-bar-container {
@@ -196,6 +204,8 @@ button.previous:hover {
 	width: 50px;
 	height: 50px;
 	text-align: center;
+	margin-top: -17px;
+	font-family: 'Jua', sans-serif;
 	font-size: 20pt;
 	color: #353538;
 	font-weight: 600;
@@ -210,11 +220,142 @@ ul {
 .resultMsg {
 	vertical-align: center;
 }
+.divfont{
+margin-left: 30px;
+}
+/* html, body{
+  width:100%;
+  height:100%;
+  margin:0;
+} */
+
+.page-wrapper{
+  width:100%;
+  height:100%;
+  background:url(https://i.imgur.com/2ZgHKbQ.jpg) center no-repeat;
+  background-size:cover;
+}
+
+/* .blur{
+  -webkit-filter: blur(5px);
+  -moz-filter: blur(5px);
+  -o-filter: blur(5px);
+  -ms-filter: blur(5px);
+  filter: blur(5px);
+} */
+
+a.btn{
+     width:150px;
+     height:50px;
+     display:block;
+     margin:7px 0 0 -75px;
+     position:absolute;
+     top:86.5%; left:42%;
+     font:1.125em 'Arial', sans-serif;
+     font-weight:700;
+     text-align:center;
+     text-decoration:none;
+     color:#fff;
+     border-radius:5px;
+     background:rgba(217,67,86,1);
+     font-size: 30px;
+     padding-top: 10px;
+   }
+   
+   .modal-wrapper{
+     width:100%;
+     height:100%;
+     position:fixed;
+     top:0; left:0;
+     /* background:rgba(255,257,153,0.75); */
+     visibility:hidden;
+     opacity:0;
+     -webkit-transition: all 0.25s ease-in-out;
+     -moz-transition: all 0.25s ease-in-out;
+     -o-transition: all 0.25s ease-in-out;
+     transition: all 0.25s ease-in-out;
+   }
+      
+   .modal-wrapper.open{
+     opacity:1;
+     visibility:visible;
+   }
+   
+   .modal{
+     width:600px;
+     height:400px;
+     display:block;
+     margin:50% 0 0 -300px;
+     position:relative;
+     top:50%; left:50%;
+     background:#EEEEEE;
+     opacity:0;
+     -webkit-transition: all 0.5s ease-in-out;
+     -moz-transition: all 0.5s ease-in-out;
+     -o-transition: all 0.5s ease-in-out;
+     transition: all 0.5s ease-in-out;
+   }
+   
+   .modal-wrapper.open .modal{
+     margin-top:-200px;
+     opacity:1;
+   }
+   
+   .head1{
+     width:100%;
+     height:40px;
+     padding:1.5em 5%;
+     overflow:hidden;
+     /* background:#01bce5; */
+     background-color: rgba(217,67,86,1);
+     font-size: 40px;
+     font-family:  'Jua', sans-serif;
+     color: white;
+   }
+   
+   .btn-close{
+     width:32px;
+     height:32px;
+     display:block;
+     float:right;
+   }
+   
+   .btn-close::before, .btn-close::after{
+     content:'';
+     width:32px;
+     height:6px;
+     display:block;
+     background:#fff;
+   }
+   
+   .btn-close::before{
+     margin-top:12px;
+     -webkit-transform:rotate(45deg);
+     -moz-transform:rotate(45deg);
+     -o-transform:rotate(45deg);
+     transform:rotate(45deg);
+   }
+   
+   .btn-close::after{
+     margin-top:-6px;
+     -webkit-transform:rotate(-45deg);
+     -moz-transform:rotate(-45deg);
+     -o-transform:rotate(-45deg);
+     transform:rotate(-45deg);
+   }
+  #contentsError.content{
+      font-family: 'Jua', sans-serif;
+    font-size: 28px;
+    color: #393E46;
+    padding-left: 3%;
+    padding-top: 19%;
+}
 </style>
 
 
 <!-- JavaScript -->
-<script type="text/javascript" src="<c:url value="/resources/js/jquery-3.2.1.js"></c:url>"></script>
+<script type="text/javascript"
+	src="<c:url value="/resources/js/jquery-3.2.1.js"></c:url>"></script>
 <script type="text/javascript">
    
    $(function() {
@@ -229,10 +370,10 @@ ul {
        $('#checkBtnDiv').html("");    
        $('#nextBtnDiv').html(str);
         $('.next').on('click', goToNextSlide);
-     } /* else {
+     }  else {
          $('#checkBtnDiv').html(checkStr);
          $('.check').on('click', goToCheck);
-     } */
+     } 
        // ul 태그
       var $slideContainer = $('.slide-container'),
        // li 태그
@@ -273,21 +414,11 @@ ul {
       }
      
      $('.check').on('click', goToCheck);
-     
-     // 정답 체크
+    
+    // 정답 체크
      function goToCheck() {
-    	alert("HEllo GO TO CHECK");
-    	 // answer+각 슬라이드 숫자 로 지정된 클래스를 가져온다 
-         var $answerClass = $('.answer' + currentSlide);
-         // $answerClass에 저장된 클래스 개수를 가져온다.
-         var answerCount = $answerClass.length;
-
-         for(var i = 0; i <= answerCount; i++) {
-            // answer01, answer02
-            var userAnswer = $('#answer' + currentSlide + i).val();
-            answerArr.push(userAnswer);
-         }
-          
+       
+         var userAnswer = $('#answer' + currentSlide).val();
          var cNum = currentSlide + 1;
          
              $.ajax({
@@ -295,24 +426,30 @@ ul {
                 type : "POST",
                 contentType : "application/json; charset=utf-8",
                 dataType : "json",
-                data : {
-                   cNum : cNum,
-                   userAnswer : userAnswer
-                },
-                success : function(blankMap) {
-                     alert('success');
-                     answerArr = [];
+                data : JSON.stringify ({
+                   cNum : cNum
+                   ,userAnswer : userAnswer
+                }),
+                /*success : function(blankMap) {
+                     //alert('success');
                    var resultStr = '';
                     
                    if (blankMap.result == false) {
                      resultStr = '<div class="resultMsg"><img src="../resources/img/noanswer.png" width="250px"><br>';
-                   //  resultStr += '사용자가 입력한 답 : '+blankMap.wrongAnswerArr+'<br>'; 
-                     resultStr += '정답 : '+blankMap.rightAnswerArr+'<br>';
-                     resultStr += '틀린 이유 : ' + blankMap.errorReasonArr+'<br>';
+                      resultStr += '사용자가 입력한 답 : '+blankMap.wrongAnswer+'<br>'; 
+                     resultStr += '정답 : ' + blankMap.rightAnswer + '<br>';
+                     resultStr += '틀린 이유 : ' + blankMap.errorReason + '<br>';
                      resultStr += '</div>';
+                     $( document ).ready(function() {
+                    	  $('.trigger').click(function() {
+                    	     $('.modal-wrapper').toggleClass('open');
+                    	    $('.page-wrapper').toggleClass('blur');
+                    	     return false;
+                    	  });
+                    	});
                      //resultStr += '<div class="resultMsg">정답입니다.</div>';
                      /* alert("blankMap.rightAnswer : "+blankMap.rightAnswer);
-                     alert("blankMap.wrongAnswer : "+blankMap.wrongAnswer); */
+                     alert("blankMap.wrongAnswer : "+blankMap.wrongAnswer); 
                      $('#answerResultDiv').html(resultStr);
                     
                    } else if (blankMap.result == true) {
@@ -321,18 +458,82 @@ ul {
                       }
                        //if (result) {
                        $('#checkBtnDiv').html("");
-                         var str = '<button class="next">next</button>';
+                         var str = '<button class="next"> next </button>';
                         $('#nextBtnDiv').html(str);
                         $('.next').on('click', goToNextSlide);
                 },
                 error : function(err) {
                    console.log(err);
-                   answerArr = [];
                    alert("fail");
                 }
                 
-             });
-         
+             });*/
+                success : function(blankMap) {
+                   // alert('success');
+                    answerArr = [];
+                  var resultStr = '';
+                  var userAnswerFull = ''; 
+                  var erTest = '';
+                  if (blankMap.result == false) {
+                    resultStr = '<div class="resultMsg"><img src="../resources/img/noanswer.png" width="250px"></div><br>';
+                    resultStr += '<div class="page-wrapper"><a class="btn trigger" href="javascript:;">Error</a></div>';
+                    
+                    /* var wrongAnswer = blankMap.wrongAnswer;
+                    var rightAnswer = blankMap.rightAnswer; */
+              		erTest = blankMap.errorReason;
+                    //alert("errorReason : "+erTest);
+                    
+                    /* resultStr += '사용자가 입력한 답 : ' + blankMap.wrongAnswerArr+'<br>'; 
+                    resultStr += '정답 : ' + blankMap.rightAnswerArr+'<br>';
+                    resultStr += '틀린 이유 : ' + blankMap.errorReasonArr+'<br>';
+                 */
+                    //resultStr += '<div class="resultMsg">정답입니다.</div>';
+                    /* alert("blankMap.rightAnswer : "+blankMap.rightAnswer);
+                    alert("blankMap.wrongAnswer : "+blankMap.wrongAnswer); */
+                    $('#answerResultDiv').html(resultStr);
+                   
+                  } else if (blankMap.result == true) {
+                     resultStr = '<div class="resultMsg"><img src="../resources/img/yesanswer.png" width="250px"></div>';
+                        $('#answerResultDiv').html(resultStr);
+                     }
+                  
+                  $('.trigger').click(function() {
+                     $('.modal-wrapper').toggleClass('open');
+                    $('.page-wrapper').toggleClass('blur');
+                     return false;
+                  });
+                 /* var userAnswerFull = blankMap.wrongAnswer;
+                 alert("userAnswerFull : "+userAnswerFull); */
+                 userAnswerFull = blankMap.wrongAnswer;
+                 //alert("userAnswerFull : "+userAnswerFull);
+                 /* var errTxt = '';
+                 $.each(erTest , function( i, val ) {
+                    errTxt += '✔  '+ val + '<br>'; 
+                    alert("errTxt : " + errTxt);
+               	 }); */
+                 
+              	 $('.head1').html('입력한 답 : '+userAnswerFull);
+                 $('.head1').val('입력한 답 : '+userAnswerFull);
+                // alert("왜 안오니?");
+                 $('.content').html('✔  '+erTest);
+                 $('.content').val('✔  '+erTest);
+                  
+                      //if (result) {
+                      $('#checkBtnDiv').html("");
+                        var str = '<button class="next">next</button>';
+                       $('#nextBtnDiv').html(str);
+                       $('.next').on('click', goToNextSlide);
+               },
+               error : function(err) {
+                  console.log(err);
+                  alert("fail");
+               }
+               
+            });
+   			
+             $('.trigger').click(function() {
+                $('.page-wrapper').toggleClass('blur');
+              });
      }
      
      // 다음 슬라이드로 이동
@@ -340,7 +541,7 @@ ul {
        $('#answerResultDiv').html("");
         // 현재 슬라이드가 슬라이드 카운트 -1보다 작거나 같으면 Return  
       if(currentSlide >= slideCount - 1) {
-         location.href = "contentsHome";
+        location.href = "clearChapter?c_num=310";
          return
          }; 
       
@@ -423,67 +624,12 @@ ul {
 	<div class="viewport full-width-container">
 
 		<ul class="slide-container">
+
 			<li class="slide" data-tag="Step1">
-
-				<div class="question-container">
-					<div class="all">
-						<div class="container-button">
-							<div class="toggle-button-2">
-								<div class="cubeshape cube2">
-									<div class="first_cube2">
-										<img alt="if_quiz_21" src="../resources/img/plus.png"
-											style="width: 100px; height: 100px;">
-									</div>
-									<div class="second_cube2">
-										<h1 class="image_name" style="font-size: 80px;">+</h1>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="container-button">
-							<div class="toggle-button-2">
-								<div class="cubeshape cube2">
-									<div class="first_cube2">
-										<img alt="if_quiz_21" src="../resources/img/minus.png"
-											style="width: 100px; height: 100px;">
-									</div>
-									<div class="second_cube2">
-										<h1 class="image_name" style="font-size: 140px;">-</h1>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="container-button">
-							<div class="toggle-button-2">
-								<div class="cubeshape cube2">
-									<div class="first_cube2">
-										<img alt="if_quiz_21" src="../resources/img/multiply.png"
-											style="width: 100px; height: 100px;">
-									</div>
-									<div class="second_cube2">
-										<h1 class="image_name" style="font-size: 30px;">Java에서는<BR> *
-											로 사용합니다.</h1>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="container-button">
-							<div class="toggle-button-2">
-								<div class="cubeshape cube2">
-									<div class="first_cube2">
-										<img alt="if_quiz_21" src="../resources/img/division.png"
-											style="width: 100px; height: 100px;">
-
-									</div>
-									<div class="second_cube2">
-										<h1 class="image_name" style="font-size: 30px;">Java에서는<BR> /
-											로 사용합니다.</h1>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
+				<div class="sized-container">
+					<jsp:include page="contents311.jsp" flush="true" />
 				</div>
+
 			</li>
 
 
@@ -497,8 +643,18 @@ ul {
 
 				<div class="sized-container">
 					<h1>
-						<input type="text" class="answer1" id="answer11">
+						<input type="text" class="answer1" id="answer1">
 					</h1>
+					<div class="modal-wrapper">
+					  <div class="modal">
+					    <div class="head1" style="font-size: 40px">
+					    testMSG
+					      <!-- <a class="btn-close trigger" href="javascript:;"></a> -->
+					    </div>
+					    <div class="content" id="contentErrDiv" style="font-size: 40px;">
+					    </div>
+					  </div>
+					</div>
 				</div>
 			</li>
 
@@ -512,7 +668,7 @@ ul {
 
 				<div class="sized-container">
 					<h1>
-						<input type="text" class="answer2" id="answer21">
+						<input type="text" class="answer2" id="answer2">
 					</h1>
 				</div>
 			</li>
@@ -527,7 +683,7 @@ ul {
 
 				<div class="sized-container">
 					<h1>
-						<input type="text" class="answer3" id="answer31">
+						<input type="text" class="answer3" id="answer3">
 					</h1>
 				</div>
 			</li>
@@ -542,12 +698,12 @@ ul {
 
 				<div class="sized-container">
 					<h1>
-						<input type="text" class="answer4" id="answer41">
+						<input type="text" class="answer4" id="answer4">
 					</h1>
 				</div>
 			</li>
 
-		 	<li class="slide" data-tag="Step6">
+			<li class="slide" data-tag="Step6">
 
 				<div class="question-container">
 					<h1>빈칸에 알맞은 연산자를 입력해주세요.</h1>
@@ -557,42 +713,17 @@ ul {
 
 				<div class="sized-container">
 					<h1>
-						<input type="text" class="answer5" id="answer51">
+						<input type="text" class="answer5" id="answer5">
 					</h1>
 				</div>
 			</li>
 			<li class="slide" data-tag="Step7">
 				<div class="question-container">
-					<div class="all2">
-						<div class="container-button">
-							<div class="toggle-button-2">
-								<div class="cubeshape cube2">
-									<div class="first_cube2">
-										<img alt="if_quiz_21" src="../resources/img/equal.png"
-											style="width: 150px; height: 150px;">
-									</div>
-									<div class="second_cube2">
-										<h1 class="image_name" style="font-size: 30px;">A == B <br><br>A와 B는 같다</h1>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="container-button">
-							<div class="toggle-button-2">
-								<div class="cubeshape cube2">
-									<div class="first_cube2">
-										<img alt="if_quiz_21" src="../resources/img/not.png"
-											style="width: 150px; height: 150px
-											;">
-									</div>
-									<div class="second_cube2">
-										<h1 class="image_name" style="font-size: 30px;">A != B <br><br>A와 B는 같지않다</h1>
-									</div>
-								</div>
-							</div>
-						</div>
+					<div class="sized-container">
+						<jsp:include page="contents313.jsp" flush="true" />
+					</div>
+					</div>
 			</li>
-
 			<li class="slide" data-tag="Step8">
 
 				<div class="question-container">
@@ -603,13 +734,12 @@ ul {
 
 				<div class="sized-container">
 					<h1>
-						<input type="text" class="answer7" id="answer71">
+						<input type="text" class="answer7" id="answer7">
 					</h1>
 				</div>
 			</li>
-
+			
 			<li class="slide" data-tag="Step9">
-
 				<div class="question-container">
 					<h1>빈칸에 공통으로 들어갈 연산자를 입력해주세요.</h1>
 					<img alt="" src="../resources/img/31c7.png"
@@ -618,74 +748,18 @@ ul {
 
 				<div class="sized-container">
 					<h1>
-						<input type="text" class="answer8" id="answer81">
+						<input type="text" class="answer8" id="answer8">
 					</h1>
 				</div>
 			</li>
 			<li class="slide" data-tag="Step10">
-					<div class="question-container">
-					<div class="all">
-						<div class="container-button">
-							<div class="toggle-button-2">
-								<div class="cubeshape cube2">
-									<div class="first_cube2">
-										<img alt="if_quiz_21" src="../resources/img/left.png"
-											style="width: 100px; height: 100px;">
-									</div>
-									<div class="second_cube2">
-										<h1 class="image_name" style="font-size: 30px;">A > B<br>
-										A가 B보다 큽니다</h1>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="container-button">
-							<div class="toggle-button-2">
-								<div class="cubeshape cube2">
-									<div class="first_cube2">
-										<img alt="if_quiz_21" src="../resources/img/right.png"
-											style="width: 100px; height: 100px;">
-									</div>
-									<div class="second_cube2">
-										<h1 class="image_name" style="font-size: 30px;">A < B <br>
-										B가 A보다 큽니다</h1>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="container-button">
-							<div class="toggle-button-2">
-								<div class="cubeshape cube2">
-									<div class="first_cube2">
-										<img alt="if_quiz_21" src="../resources/img/var1.png"
-											style="width: 100px; height: 100px;">
-									</div>
-									<div class="second_cube2">
-											<h1 class="image_name" style="font-size: 30px;">A <= B<BR> 
-											A가 B보다 작거나 같으면 참,<br> 그렇지 않으면 거짓</h1>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="container-button">
-							<div class="toggle-button-2">
-								<div class="cubeshape cube2">
-									<div class="first_cube2">
-										<img alt="if_quiz_21" src="../resources/img/var2.png"
-											style="width: 100px; height: 100px;">
-
-									</div>
-									<div class="second_cube2">
-										<h1 class="image_name" style="font-size: 30px;">A >= B<BR> 
-											A가 B보다 크거나 같으면 참,<br>그렇지 않으면 거짓</h1>
-									</div>
-								</div>
-							</div>
-						</div>
+				<div class="question-container">
+					<div class="sized-container">
+						<jsp:include page="contents312.jsp" flush="true" />
 					</div>
-				</div>
+					</div>
 			</li>
-	<li class="slide" data-tag="Step11">
+			<li class="slide" data-tag="Step11">
 
 				<div class="question-container">
 					<h1>빈칸에 공통으로 들어갈 연산자를 입력해주세요.</h1>
@@ -695,7 +769,7 @@ ul {
 
 				<div class="sized-container">
 					<h1>
-						<input type="text" class="answer10" id="answer3110">
+						<input type="text" class="answer10" id="answer10">
 					</h1>
 				</div>
 			</li>
@@ -710,8 +784,17 @@ ul {
 
 				<div class="sized-container">
 					<h1>
-						<input type="text" class="answer11" id="answer3111">
+						<input type="text" class="answer11" id="answer11">
 					</h1>
+					<div class="modal-wrapper">
+					  <div class="modal">
+					    <div class="head1">
+					      <a class="btn-close trigger" href="javascript:;"></a>
+					    </div>
+					    <div class="content" id="contentsError">
+					    </div>
+					  </div>
+					</div>
 				</div>
 			</li>
 			<!--  </li>
@@ -729,8 +812,22 @@ ul {
 			<!--   <button class="check">check</button>  -->
 			<button class="previous">previous</button>
 			<div id="answerResultDiv"></div>
+			<div class="page-wrapper">
+  <!-- <a class="btn trigger" href="javascript:;">Error</a> -->
+</div>
+<!-- <div class="modal-wrapper">
+  <div class="modal">
+    <div class="head">
+      <a class="btn-close trigger" href="javascript:;"></a>
+    </div>
+    <div class="content" id="contentsError">
+    </div>
+  </div>
+</div> -->
 		</div>
+		
 	</div>
+	
 
 
 </body>

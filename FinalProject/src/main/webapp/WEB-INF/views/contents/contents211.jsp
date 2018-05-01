@@ -29,7 +29,7 @@
 
 			<div class="input-container">
 				<input value="string" class="radio-button" type="radio"
-					name="radioBtn" id="Easy" />
+					name="radioBtn" id="Easy"/>
 				<div class="radio-tile">
 					<div class="icon string-icon">
 						<img alt="" src="../resources/img/intstring.png" width="100px;"
@@ -40,7 +40,7 @@
 
 			<div class="input-container">
 				<input value="double" class="radio-button" type="radio"
-					name="radioBtn" id="0.5" />
+					name="radioBtn" id="0.5"/>
 				<div class="radio-tile">
 					<div class="icon double-icon">
 						<img alt="" src="../resources/img/intdouble.png" width="100px;"

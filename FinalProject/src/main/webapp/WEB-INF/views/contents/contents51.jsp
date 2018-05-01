@@ -1,331 +1,537 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<!DOCTYPE html>
 <html>
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<title>Contents51</title>
-	<script type="text/javascript">
-		
-	</script>
-	<style type="text/css">
-		*{
-  margin: 0; 
-  padding: 0;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>contents51</title>
+<link href="https://ss.googleapis.com/css?family=Jua" rel="stylesheet">
+
+<style type="text/css">
+@charset "UTF-8";
+
+*, html, body {
+	font-family: 'Jua', sans-serif;
+	margin: 0;
+	padding: 0;
 }
 
-h1{
-  font-size: 2.5rem;
-  font-family: 'Montserrat';
-  font-weight: normal;
-  color: #444;
-  text-align: center;
-  margin: 2rem 0;
+* {
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
 }
 
-.wrapper{
-  width: 90%;
-  margin: 0 auto;
-  max-width: 80rem;
-}
-
-.cols{
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-}
-
-.col{
-  width: calc(25% - 2rem);
-  margin: 1rem;
-  cursor: pointer;
-}
-
-.container{
-  -webkit-transform-style: preserve-3d;
-          transform-style: preserve-3d;
-	-webkit-perspective: 1000px;
-	        perspective: 1000px;
-}
-
-.front,
-.back{
-  background-size: cover;
-	background-position: center;
-	-webkit-transition: -webkit-transform .7s cubic-bezier(0.4, 0.2, 0.2, 1);
-	transition: -webkit-transform .7s cubic-bezier(0.4, 0.2, 0.2, 1);
-	-o-transition: transform .7s cubic-bezier(0.4, 0.2, 0.2, 1);
-	transition: transform .7s cubic-bezier(0.4, 0.2, 0.2, 1);
-	transition: transform .7s cubic-bezier(0.4, 0.2, 0.2, 1), -webkit-transform .7s cubic-bezier(0.4, 0.2, 0.2, 1);
-	-webkit-backface-visibility: hidden;
-	        backface-visibility: hidden;
+h1, h2 {
 	text-align: center;
-	min-height: 280px;
-	height: auto;
-	border-radius: 10px;
-	color: #fff;
-	font-size: 1.5rem;
 }
 
-.back{
-  background: #cedce7;
-  background: -webkit-linear-gradient(45deg,  #cedce7 0%,#596a72 100%);
-  background: -o-linear-gradient(45deg,  #cedce7 0%,#596a72 100%);
-  background: linear-gradient(45deg,  #cedce7 0%,#596a72 100%);
+h1 {
+	font-size: 25px;
+	font-family: 'Jua', sans-serif;
+	line-height: 30px;
+	font-weight: bold;
+	margin-top: 21px;
 }
 
-.front:after{
+h2 {
+	font-size: 18px;
+    font-family: 'Jua', sans-serif;
+    line-height: 88px;
+    margin-top: 17px;
+    margin-left: 314px;
+    width: 400px;
+}
+
+button {
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	border: 0;
+	padding: 14px 50px;
+	border-radius: 4px;
+	background-color: #37B595;
+	color: #FFFFFF;
+	text-transform: capitalize;
+	font-size: 18px;
+	line-height: 22px;
+	font-family: 'Jua', sans-serif;
+	outline: none;
+	cursor: pointer;
+	-webkit-transition: all 0.2s;
+	transition: all 0.2s;
+}
+
+button:hover {
+	background-color: #1A7F75;
+}
+
+button.previous {
+	background-color: #A2ACAF;
+}
+
+button.previous:hover {
+	background-color: #5A5F61;
+}
+
+.full-width-container {
+	width: 100%;
+	min-width: 320px;
+	margin-top: -15px;
+}
+
+.question-container {
+	max-width: 900px;
+	width: 100%;
+	margin: 0 auto;
+}
+
+.sized-container {
+	max-width: 900px;
+	width: 100%;
+	margin: 0 auto;
+}
+
+.slide-container {
+	margin: 0;
+	padding: 0 1em 0;
+	padding-left: 0px;
+	position: relative;
+	left: 0;
+	overflow: hidden;
+	width: 7840px;
+}
+
+.slide {
+	float: left;
+	list-style-type: none;
+	height: 470px;
+}
+
+.slide .sized-container {
+	padding-top: -8px;
+	padding-bottom: 20px;
+}
+
+.button-container {
+	border-top: 1px solid black;
+	overflow: hidden;
+	padding-top: 9px;
+}
+
+.button-container button {
+	float: right;
+	margin-left: 30px;
+}
+
+.pagination-container {
+	height: 18vh;
+}
+
+.pagination {
+	width: 100%;
+	height: 100%;
+	text-align: center;
+	padding: 0 25px;
+	padding-top: 60px;
+}
+
+.indicator {
+	width: 25px;
+	height: 25px;
+	border: 4px solid lightgray;
+	border-radius: 50%;
+	display: inline-block;
+	-webkit-transition: all 0.3s;
+	transition: all 0.3s;
+	position: relative;
+}
+
+.indicator .tag {
 	position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 1;
-    width: 100%;
-    height: 100%;
-    content: '';
-    display: block;
-    opacity: .6;
-    background-color: #000;
-    -webkit-backface-visibility: hidden;
-            backface-visibility: hidden;
-    border-radius: 10px;
-}
-.container:hover .front,
-.container:hover .back{
-    -webkit-transition: -webkit-transform .7s cubic-bezier(0.4, 0.2, 0.2, 1);
-    transition: -webkit-transform .7s cubic-bezier(0.4, 0.2, 0.2, 1);
-    -o-transition: transform .7s cubic-bezier(0.4, 0.2, 0.2, 1);
-    transition: transform .7s cubic-bezier(0.4, 0.2, 0.2, 1);
-    transition: transform .7s cubic-bezier(0.4, 0.2, 0.2, 1), -webkit-transform .7s cubic-bezier(0.4, 0.2, 0.2, 1);
+	top: -30px;
+	left: 50%;
+	-webkit-transform: translateX(-50%);
+	transform: translateX(-50%);
+	color: lightgray;
+	white-space: nowrap;
 }
 
-.back{
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
+.indicator.active, .indicator.complete {
+	border-color: #37B595;
 }
 
-.inner{
-    -webkit-transform: translateY(-50%) translateZ(60px) scale(0.94);
-            transform: translateY(-50%) translateZ(60px) scale(0.94);
-    top: 50%;
-    position: absolute;
-    left: 0;
-    width: 100%;
-    padding: 2rem;
-    -webkit-box-sizing: border-box;
-            box-sizing: border-box;
-    outline: 1px solid transparent;
-    -webkit-perspective: inherit;
-            perspective: inherit;
-    z-index: 2;
+.indicator.active .tag, .indicator.complete .tag {
+	color: #37B595;
 }
 
-.container .back{
-    -webkit-transform: rotateY(180deg);
-            transform: rotateY(180deg);
-    -webkit-transform-style: preserve-3d;
-            transform-style: preserve-3d;
+.indicator.complete:after {
+	content: "?";
+	position: absolute;
+	color: #37B595;
+	left: 4px;
+	top: 3px;
+	font-size: 14px;
+	font-family: 'Jua', sans-serif;
 }
 
-.container .front{
-    -webkit-transform: rotateY(0deg);
-            transform: rotateY(0deg);
-    -webkit-transform-style: preserve-3d;
-            transform-style: preserve-3d;
+.progress-bar-container {
+	width: 5%;
+	height: 4px;
+	display: inline-block;
+	background-color: lightgray;
+	position: relative;
+	top: -10px;
 }
 
-.container:hover .back{
-  -webkit-transform: rotateY(0deg);
-          transform: rotateY(0deg);
-  -webkit-transform-style: preserve-3d;
-          transform-style: preserve-3d;
+.progress-bar-container:last-of-type {
+	display: none;
 }
 
-.container:hover .front{
-  -webkit-transform: rotateY(-180deg);
-          transform: rotateY(-180deg);
-  -webkit-transform-style: preserve-3d;
-          transform-style: preserve-3d;
+.progress-bar-container .progress-bar {
+	width: 0;
+	height: 100%;
+	background-color: #37B595;
 }
 
-.front .inner p{
-  font-size: 2rem;
-  margin-bottom: 2rem;
-  position: relative;
+[class^="answer"] {
+	margin: 0;
+	padding: 0;
+	background-color: #f3fafd;
+	border: solid 2px #217093;
+	border-radius: 4px;
+	box-sizing: border-box;
+	width: 150px;
+	height: 50px;
+	text-align: center;
+	margin-top: -17px;
+	font-family: 'Jua', sans-serif;
+	font-size: 20pt;
+	color: #353538;
+	font-weight: 600;
+	font-style: inherit;
 }
 
-.front .inner p:after{
-  content: '';
-  width: 4rem;
-  height: 2px;
-  position: absolute;
-  background: #C6D4DF;
-  display: block;
-  left: 0;
-  right: 0;
-  margin: 0 auto;
-  bottom: -.75rem;
+ul {
+	list-style: none;
+	padding-left: 0px;
 }
 
-.front .inner span{
-  color: rgba(255,255,255,0.7);
-  font-family: 'Montserrat';
-  font-weight: 300;
+.resultMsg {
+	vertical-align: center;
 }
 
-@media screen and (max-width: 64rem){
-  .col{
-    width: calc(33.333333% - 2rem);
-  }
+.divfont {
+	margin-left: 30px;
+}
+.question_div1{
+	margin-left: 180px;
+    margin-top: 60px;
+	font-size:22px;
+    width: 600px;
+    height: 15px;
+    margin-right: -33px;
+}
+.question_div2{
+	margin-left: 510px;
+    margin-top: 60px;
+    width: 600px;
+    font-size:22px;
+    height: 10px;
+  
 }
 
-@media screen and (max-width: 48rem){
-  .col{
-    width: calc(50% - 2rem);
-  }
-}
+</style>
 
-@media screen and (max-width: 32rem){
-  .col{
-    width: 100%;
-    margin: 0 0 2rem 0;
-  }
-}
-	</style>
+
+<!-- JavaScript -->
+<script type="text/javascript"
+	src="<c:url value="/resources/js/jquery-3.2.1.js"></c:url>"></script>
+<script type="text/javascript">
+   
+   $(function() {
+     /* 변수 선언 */
+     // 현재 슬라이드 숫자
+      var currentSlide = 0;
+      
+      // 체크 버튼 생성
+      var checkStr = '<button class="check">CHECK</button>';
+      var str = '<button class="next">next</button>';
+      if (currentSlide == 0) {
+       $('#checkBtnDiv').html("");    
+       $('#nextBtnDiv').html(str);
+        $('.next').on('click', goToNextSlide);
+     }  else {
+         $('#checkBtnDiv').html(checkStr);
+         $('.check').on('click', goToCheck);
+     } 
+       // ul 태그
+      var $slideContainer = $('.slide-container'),
+       // li 태그
+       $slide = $('.slide'),
+       // 슬라이드 개수 = li 태그의 개수
+       slideCount = $slide.length,
+       // array
+       answerArr = [],
+       // 애니메이션 시간 = 0.3초
+       animationTime = 300;
+
+        // 슬라이드 크기(면적) Set
+      function setSlideDimensions () {
+        // 현재 윈도우 창의 가로 길이
+      var windowWidth = $(window).width();
+        // 슬라이드 컨테이너(ul)의 가로 길이를 (현재 윈도우 창 가로 길이 * 슬라이드의 개수)
+        $slideContainer.width(windowWidth * slideCount);
+          // 슬라이드(li)의 가로 길이는 윈도우창 가로 길이 
+        $slide.width(windowWidth);
+      }
+   
+     // 상단 페이징처리 Set
+      function generatePagination () {
+      // pagination 클래스의 태그를 가져옴
+        var $pagination = $('.pagination');
+        
+      for(var i = 0; i < slideCount; i ++){
+          var $indicator = $('<div>').addClass('indicator'),
+              $progressBarContainer = $('<div>').addClass('progress-bar-container'),
+              $progressBar = $('<div>').addClass('progress-bar'),
+              indicatorTagText = $slide.eq(i).attr('data-tag'),
+              $tag = $('<div>').addClass('tag').text(indicatorTagText);
+          $indicator.append($tag);
+          $progressBarContainer.append($progressBar);
+          $pagination.append($indicator).append($progressBarContainer);
+        }
+        $pagination.find('.indicator').eq(0).addClass('active');
+      }
+     
+     $('.check').on('click', goToCheck);
+    
+    // 정답 체크
+     function goToCheck() {
+       
+         var userAnswer = $('#answer' + currentSlide).val();
+         var cNum = currentSlide + 1;
+         
+             $.ajax({
+                url : "contents5",
+                type : "POST",
+                contentType : "application/json; charset=utf-8",
+                dataType : "json",
+                data : JSON.stringify ({
+                   cNum : cNum
+                   ,userAnswer : userAnswer
+                }),
+                success : function(blankMap) {
+                     //alert('success');
+                   var resultStr = '';
+                    
+                   if (blankMap.result == false) {
+                     resultStr = '<div class="resultMsg"><img src="../resources/img/noanswer.png" width="250px"><br>';
+                      //resultStr += '사용자가 입력한 답 : '+blankMap.wrongAnswer+'<br>'; 
+                     resultStr += '정답 : ' + blankMap.rightAnswer + '<br>';
+                     resultStr += '틀린 이유 : ' + blankMap.errorReason + '<br>';
+                     resultStr += '</div>';
+                     //resultStr += '<div class="resultMsg">정답입니다.</div>';
+                     /* alert("blankMap.rightAnswer : "+blankMap.rightAnswer);
+                     alert("blankMap.wrongAnswer : "+blankMap.wrongAnswer); */
+                     $('#answerResultDiv').html(resultStr);
+                    
+                   } else if (blankMap.result == true) {
+                      resultStr = '<div class="resultMsg"><img src="../resources/img/yesanswer.png" width="250px"></div>';
+                         $('#answerResultDiv').html(resultStr);
+                      }
+                       //if (result) {
+                       $('#checkBtnDiv').html("");
+                         var str = '<button class="next"> next </button>';
+                        $('#nextBtnDiv').html(str);
+                        $('.next').on('click', goToNextSlide);
+                },
+                error : function(err) {
+                   console.log(err);
+                   alert("fail");
+                }
+                
+             });
+            
+     }
+     
+     // 다음 슬라이드로 이동
+      function goToNextSlide () {
+       $('#answerResultDiv').html("");
+        // 현재 슬라이드가 슬라이드 카운트 -1보다 작거나 같으면 Return  
+      if(currentSlide >= slideCount - 1) {
+        location.href = "clearChapter?c_num=519";
+         return
+         }; 
+      
+      // 현재 윈도우 창의 가로 길이
+        var windowWidth = $(window).width();
+   
+      // 현재 슬라이드 숫자를 하나씩 증가시킴
+        currentSlide++;
+      //ul 태그에 효과를 준닷!
+        $slideContainer.animate({
+          // 왼쪽으로 (윈도우 창의 가로길이 * 현재 슬라이드)의 숫자만큼 이동시킴
+          left: -(windowWidth * currentSlide)
+        });
+      
+        setActiveIndicator();
+        $('.progress-bar').eq(currentSlide - 1).animate({
+          width: '100%'
+        }, animationTime);
+        
+        if (currentSlide == 0 || currentSlide == 1|| currentSlide == 2||currentSlide == 1||currentSlide == 3||currentSlide == 4||currentSlide == 5||currentSlide == 6) {
+           $('#checkBtnDiv').html("");    
+           $('#nextBtnDiv').html(str);
+            $('.next').on('click', goToNextSlide);
+      } else {
+           $('#checkBtnDiv').html(checkStr);
+           $('#nextBtnDiv').html("");
+           $('.check').on('click', goToCheck);
+      }
+      }
+     
+   
+      function goToPreviousSlide () {
+        if(currentSlide <= 0) return; 
+        var windowWidth = $(window).width();
+        currentSlide--;
+        $slideContainer.animate({
+          left: -(windowWidth * currentSlide)
+        }, animationTime);
+        setActiveIndicator();
+        $('.progress-bar').eq(currentSlide).animate({
+          width: '0%'
+        }, animationTime);
+      }
+   
+      function postitionSlides () {
+        var windowWidth = $(window).width();
+        setSlideDimensions();
+        $slideContainer.css({
+          left: -(windowWidth * currentSlide)
+        }, animationTime);
+      }
+   
+      function setActiveIndicator () {
+        var $indicator = $('.indicator');
+        $indicator.removeClass('active').removeClass('complete');
+        $indicator.eq(currentSlide).addClass('active');
+        for(var i = 0; i < currentSlide; i++){
+          $indicator.eq(i).addClass('complete');
+        }
+      }
+   
+      setSlideDimensions();
+      generatePagination();
+      $(window).resize(postitionSlides);
+      // $('.check').on('click', goToNextSlide);
+      $('.previous').on('click', goToPreviousSlide);
+   });
+   
+   
+   </script>
+
 </head>
-<body>
-	<div class="wrapper">
-  <div class="cols">
-			<div class="col" ontouchstart="this.classList.toggle('hover');">
-				<div class="container">
-					<div class="front" style="background-image: url(https://unsplash.it/500/500/)">
-						<div class="inner">
-							<p>1</p>
-              				<span>for</span>
-						</div>
-					</div>
-					<div class="back">
-						<div class="inner">
-						  <p>for문은 일정한 횟수만큼 반복할 때, 유용하게 사용된다.</p>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="col" ontouchstart="this.classList.toggle('hover');">
-				<div class="container">
-					<div class="front" style="background-image: url(https://unsplash.it/501/501/)">
-						<div class="inner">
-							<p>2</p>
-              				<span>for 문법</span>
-						</div>
-					</div>
-					<div class="back">
-						<div class="inner">
-							<p>for(int i = 0; i <= 10; i++){ }</p>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="col" ontouchstart="this.classList.toggle('hover');">
-				<div class="container">
-					<div class="front" style="background-image: url(https://unsplash.it/502/502/)">
-						<div class="inner">
-							<p>3</p>
-              				<span>break</span>
-						</div>
-					</div>
-					<div class="back">
-						<div class="inner">
-							<p>break는 ~~</p>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="col" ontouchstart="this.classList.toggle('hover');">
-				<div class="container">
-					<div class="front" style="background-image: url(https://unsplash.it/503/503/)">
-						<div class="inner">
-							<p>4</p>
-              				<span>continue</span>
-						</div>
-					</div>
-					<div class="back">
-						<div class="inner">
-							<p>continue는 ~~</p>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="col" ontouchstart="this.classList.toggle('hover');">
-				<div class="container">
-					<div class="front" style="background-image: url(https://unsplash.it/504/504/">
-						<div class="inner">
-							<p>5</p>
-              				<span>이중 for문</span>
-						</div>
-					</div>
-					<div class="back">
-						<div class="inner">
-							<p>이중 for문~~~~~~</p>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="col" ontouchstart="this.classList.toggle('hover');">
-				<div class="container">
-					<div class="front" style="background-image: url(https://unsplash.it/505/505/)">
-						<div class="inner">
-							<p>6</p>
-              				<span>while</span>
-						</div>
-					</div>
-					<div class="back">
-						<div class="inner">
-							<p>while~~</p>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="col" ontouchstart="this.classList.toggle('hover');">
-				<div class="container">
-					<div class="front" style="background-image: url(https://unsplash.it/506/506/)">
-						<div class="inner">
-							<p>7</p>
-              				<span>++</span>
-						</div>
-					</div>
-					<div class="back">
-						<div class="inner">
-							<p>++~~~</p>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="col" ontouchstart="this.classList.toggle('hover');">
-				<div class="container">
-					<div class="front" style="background-image: url(https://unsplash.it/507/507/)">
-						<div class="inner">
-							<p>8</p>
-              				<span>--</span>
-						</div>
-					</div>
-					<div class="back">
-						<div class="inner">
-							<p>--~~~</p>
-						</div>
-					</div>
-				</div>
-			</div>
+<body style="overflow-x: hidden">
+
+	<div class="pagination-container full-width-container">
+		<div class="sized-container">
+			<div class="pagination"></div>
 		</div>
- </div>
+	</div>
+	<div class="viewport full-width-container">
+
+		<ul class="slide-container">
+
+			<!-- T)연산자 튜토리얼 -->
+			<li class="slide" data-tag="Step1">
+				<div class="sized-container">
+					<jsp:include page="contents511.jsp" flush="true" />
+				</div>
+
+			</li>
+			<!-- T) 출력문튜토리얼 -->
+			<li class="slide" data-tag="Step2">
+				<div class="sized-container">
+					<jsp:include page="contents512.jsp" flush="true" />
+				</div>
+			</li>
+			<!-- T) for문튜토리얼 -->
+			<li class="slide" data-tag="Step3">
+				<div class="sized-container">
+					<jsp:include page="contents513.jsp" flush="true" />
+				</div>
+			</li>
+		<!--  for 문제  -->
+		<li class="slide" data-tag="Step4">
+	<h1> 1부터 10까지의 정수의 합을 출력하려고 합니다. <br>빈 칸에 알맞는 답을 입력해 주세요</h1>
+	<div class="sized-container">
+	  			 <div class="question_div1">
+              
+                 	int &emsp;sum &emsp;= &emsp;0;<br><br>
+                   for ( int &emsp;i&emsp;=  <input type="text" class="answer0" id="answer01" maxlength="2" style="width:40px "height="40px;">
+                   i &emsp; <= &emsp; 10; <input type="text" class="answer0" id="answer02" maxlength="2" style="width:40px "height="40px;">
+                    )<br>sum &emsp; += i &emsp;;
+                     <br>
+                      
+                       System.out.print("1부터 10까지 정수의 합은 :&emsp;" ,&emsp; sum);<br>
+                      <br>&emsp;}
+                    <br>}
+                 
+              </div>
+              </div>
+			</li> 	
+			<!-- T) 이중for문튜토리얼 -->
+			<li class="slide" data-tag="Step5">
+				<div class="sized-container">
+					<jsp:include page="contents514.jsp" flush="true" />
+				</div>
+			</li>
+			<!--  이중for 문제 -->
+			  <li class="slide" data-tag="Step6">
+
+				<h1> 중첩반복문 예제 들어가야함</h1>
+	  			 <div class="question_div1" style="border-color: aqua; border: 1px;">
+                
+                 
+               
+              </div>
+			</li>
+			<!-- T) while문튜토리얼 -->
+			<li class="slide" data-tag="Step7">
+				<div class="sized-container">
+					<jsp:include page="contents515.jsp" flush="true" />
+				</div>
+			</li>
+			  <li class="slide" data-tag="Step8">
+				<h1> 0 부터 4까지의 정수를 출력하세요 빈 칸에 알맞는 답을 입력해 주세요</h1>
+	  			 <div class="question_div2">
+               
+                 	int &emsp; = &emsp;0;<br><br>
+                    while ( i  <input type="text" class="answer0" id="answer05" maxlength="2" style="width:40px "height="40px;"> { 
+                       <br>&emsp; &emsp; &emsp;
+                       System.out.print("정수:&emsp;"&emsp;+ i&emsp;);
+                       <br>&emsp; &emsp; &emsp;
+                      	i++;<br>
+                        &emsp; &emsp; &emsp;}<br>
+                         &emsp;&emsp; }<br>
+                    }
+                
+              </div>
+			</li>
+		</ul>
+	</div>
+	<div class="full-width-container">
+		<div class="button-container sized-container">
+			<div id="checkBtnDiv"></div>
+			<div id="nextBtnDiv"></div>
+			<!--   <button class="check">check</button>  -->
+			<button class="previous">previous</button>
+			<div id="answerResultDiv"></div>
+		</div>
+	</div>
+
 
 </body>
 </html>

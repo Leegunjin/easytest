@@ -25,5 +25,8 @@
 			<attribute name="owner.project.facets" value="java"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/KimHansol/Desktop/activation.jar"/>
+	<classpathentry kind="lib" path="C:/Users/KimHansol/Desktop/additionnal.jar"/>
+	<classpathentry kind="lib" path="C:/Users/KimHansol/Desktop/mail.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
