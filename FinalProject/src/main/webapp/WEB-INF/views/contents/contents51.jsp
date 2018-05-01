@@ -15,7 +15,7 @@
    font-family: 'Jua', sans-serif;
    margin: 0;
    padding: 0;
-}
+} 
 
 * {
    -webkit-box-sizing: border-box;

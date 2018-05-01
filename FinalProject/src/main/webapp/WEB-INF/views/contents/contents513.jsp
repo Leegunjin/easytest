@@ -15,7 +15,7 @@
 body {
    perspective: 1000px;
 }
-
+ 
 .carda {
    width: 200px;
    height: 250px;

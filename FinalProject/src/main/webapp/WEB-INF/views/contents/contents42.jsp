@@ -20,7 +20,7 @@
 	-webkit-box-sizing: border-box;
 	box-sizing: border-box;
 }
-
+ 
 /* CHECK & NEXT Button */
 button {
 	-webkit-appearance: none;

@@ -14,7 +14,7 @@
 *, html, body {
 	font-family: 'Jua', sans-serif;
 }
-
+ 
 * {
 	-webkit-box-sizing: border-box;
 	box-sizing: border-box;

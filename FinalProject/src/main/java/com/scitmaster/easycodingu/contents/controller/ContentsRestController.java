@@ -725,7 +725,7 @@ public class ContentsRestController {
 	   }*/
     /*@RequestMapping(value = "contents5", method = RequestMethod.POST)
     public HashMap Contents31(String cNum, String userAnswer) {
-    
+     
        HashMap<String, Object> blankMap = new HashMap<>();
        boolean result = false;
        

@@ -20,7 +20,7 @@
 	-webkit-box-sizing: border-box;
 	box-sizing: border-box;
 }
-
+ 
 h1, h2, h4 {
 	text-align: center;
 	font-family: 'Jua', sans-serif;

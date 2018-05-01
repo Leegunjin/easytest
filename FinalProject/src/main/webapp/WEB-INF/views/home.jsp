@@ -52,7 +52,7 @@
 	    	  }
 	    	  location.href = "person/logout"; 
 
-	    	} 
+	    	}  
 	      function mypageUser() { location.href = "person/mypageUser"; } 
 	      function board() { location.href = "board/boardList"; } 
 	      function testPage() { location.href = "person/test67"; }
