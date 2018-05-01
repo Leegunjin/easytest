@@ -513,8 +513,8 @@ a {
 
 .BtnContainer1 { transform: translate(12%, 68%); }
 .BtnContainer2 { transform: translate(12%, 68%); }
-.BtnContainer3 { transform: translate(12%, 68%); }
-.BtnContainer4 { transform: translate(0%, 68%); }
+.BtnContainer3 { transform: translate(0%, 68%); }
+.BtnContainer4 { transform: translate(12%, 68%); }
 .BtnContainer5 { transform: translate(0%, 68%); } 
 .BtnContainer6 { transform: translate(0%, 68%); }
 .BtnContainer7 { transform: translate(0%, 68%); }

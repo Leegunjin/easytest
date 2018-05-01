@@ -5,6 +5,7 @@
 <html>
 <head>
 <script type="text/javascript" src="<c:url value="/resources/js/jquery-3.2.1.js"></c:url>"></script>
+<link href="https://fonts.googleapis.com/css?family=Jua" rel="stylesheet">
 <style type="text/css">
 
 /* 카드 */
@@ -439,9 +440,10 @@ ul {
   outline:none; */
 
 	width:100px;
-    background-color: #37B595;
-    border: thick;
-    color:white;
+    background-color: white;
+    border: solid;
+    border-color: #37B595;
+    color:#37B595;
     padding: 15px 0;
     text-align: center;
     text-decoration: none;
@@ -454,8 +456,8 @@ ul {
     border-radius: 1em;
 }
 .buttonDiv input:hover{
-  background:#fff;
-  color:#1AAB8A;
+  background:#37B595;;
+  color:white;
 }
 .buttonDiv input:before,.buttonDiv input:after{
   content:'';
@@ -497,17 +499,29 @@ ul {
 }
 
 #typeDetail{
-	width: 500px;
+	width: 700px;
 	height: 200px;
 	display: inline-block;
+	font-family: 'Jua', sans-serif;
+	font-size: 30px;
 }
 
+@-webkit-keyframes blinker {
+  from {opacity: 1.0;}
+  to {opacity: 0.5;}
+}
+.blink{
+	text-decoration: blink;
+	-webkit-animation-name: blinker;
+	-webkit-animation-duration: 0.6s;
+	-webkit-animation-iteration-count:infinite;
+	-webkit-animation-timing-function:ease-in-out;
+	-webkit-animation-direction: alternate;
+}
 
-
-
-
-
-
+*{
+	font-family: 'Jua', sans-serif;
+}
 
 
 </style>
@@ -517,8 +531,16 @@ ul {
 		var currentSlide = 0;
 		var testCount = 0;
 		
+		$('input[sort="true"]').sort(function(){
+			return Math.random()*10 > 5 ? 1 : -1;
+		}).each(function(){
+			$(this).appendTo( $(this).parent() );    
+		});
+		
+		$('.col').addClass('blink');
 		var count1 = 0;
 		$('.col').on('click',function(){
+			$(this).removeClass('blink');
 			var data_type = $(this).attr('data-type');
 			switch(data_type){
 				case 'int':
@@ -537,10 +559,12 @@ ul {
 			count1++;
 			if(count1 == 4){
 				$('#next').attr('disabled',false);
+				$('#next').addClass('blink');
 			}
 		});
 		
 		$('#next').attr('disabled', true);
+		$('#next').removeClass('blink');
 		$('#btnShowJava').hide();
 		$('.buttonDiv + div').hide();
 		
@@ -563,6 +587,7 @@ ul {
 	            $('#answerResultDiv').html(resultStr);
 				//자바로 보기 버튼 나타내기
 	            $('#btnShowJava').show();
+				$('#btnShowJava').addClass('blink');
 				//자바로 보기 누르면
 	            $('#btnShowJava').on('click',function(){
 	            	var testClass = '.divShowJava' + currentSlide;
@@ -570,6 +595,8 @@ ul {
 	            	var javacode = clickedAns + ' 변수이름 = ' + clickedVal + ';';
 	            	$(testClass).show();
 					$(testClass).html(javacode);
+					$(this).removeClass('blink');
+					$('#next').addClass('blink');
 					//$('.divShowJava0').show();
 					//$('.divShowJava0').html(javacode);
 	            });
@@ -625,6 +652,7 @@ ul {
 			}, animationTime);
 			$('#btnShowJava').hide();
 			$('#next').attr('disabled', true);
+			$('#next').removeClass('blink');
 		}
 		
 		
@@ -765,10 +793,10 @@ ul {
 							Q. 다음 중 int로 표현할 수 있는 것은?
 						</h2>
 						<div class="buttonDiv" answer="int">
-							<input type="button" value="10" answer="int">
-							<input type="button" value="0.1" answer="double">
-							<input type="button" value="true" answer="boolean">
-							<input type="button" value="&quot;hello&quot;" answer="String">
+							<input type="button" value="10" answer="int" sort="true">
+							<input type="button" value="0.1" answer="double" sort="true">
+							<input type="button" value="true" answer="boolean" sort="true">
+							<input type="button" value="&quot;hello&quot;" answer="String" sort="true">
 						</div>
 						<div class="divShowJava1"></div>
 					</div>
@@ -786,10 +814,10 @@ ul {
 							Q. 다음 중 double로 표현할 수 있는 것은?
 						</h2>
 						<div class="buttonDiv" answer="double">
-							<input type="button" value="10" answer="int">
-							<input type="button" value="0.1" answer="double">
-							<input type="button" value="true" answer="boolean">
-							<input type="button" value="&quot;hello&quot;" answer="String">
+							<input type="button" value="-5" answer="int" sort="true">
+							<input type="button" value="4.8" answer="double" sort="true">
+							<input type="button" value="true" answer="boolean" sort="true">
+							<input type="button" value="&quot;easy&quot;" answer="String" sort="true">
 						</div>
 						<div class="divShowJava2"></div>
 					</div>
@@ -807,10 +835,10 @@ ul {
 							Q. 다음 중 String으로 표현할 수 있는 것은?
 						</h2>
 						<div class="buttonDiv" answer="String">
-							<input type="button" value="10" answer="int">
-							<input type="button" value="0.1" answer="double">
-							<input type="button" value="true" answer="boolean">
-							<input type="button" value="&quot;hello&quot;" answer="String">
+							<input type="button" value="33" answer="int" sort="true">
+							<input type="button" value="-5.14" answer="double" sort="true">
+							<input type="button" value="false" answer="boolean" sort="true">
+							<input type="button" value="&quot;coding&quot;" answer="String" sort="true">
 						</div>
 						<div class="divShowJava3"></div>
 					</div>
@@ -828,10 +856,10 @@ ul {
 							Q. 다음 중 boolean로 표현할 수 있는 것은?
 						</h2>
 						<div class="buttonDiv" answer="boolean">
-							<input type="button" value="10" answer="int">
-							<input type="button" value="0.1" answer="double">
+							<input type="button" value="0" answer="int">
+							<input type="button" value="3.14" answer="double">
 							<input type="button" value="true" answer="boolean">
-							<input type="button" value="&quot;hello&quot;" answer="String">
+							<input type="button" value="&quot;bye&quot;" answer="String">
 						</div>
 						<div class="divShowJava4"></div>
 					</div>

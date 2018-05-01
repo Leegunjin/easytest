@@ -6,6 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
 <script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+<link href="https://fonts.googleapis.com/css?family=Jua" rel="stylesheet">
 
 <script type="text/javascript">
 
@@ -25,6 +26,7 @@ $(function() {
 	});
 	
 	$('#next').attr('disabled', false);
+	$('#next').addClass('blink');
 	$('#previous').hide();
 	$('#btnShowJava').hide();
 	$('.buttonDiv + div').hide();
@@ -41,6 +43,7 @@ $(function() {
 			//클릭한 답이 맞으면
 			//next버튼 눌리게 하고
 			$('#next').attr('disabled', false);
+			$('#next').addClass('blink');
 			//정답 이미지 넣고
 			resultStr = '<div class="resultMsg"><img src="../../resources/img/yesanswer.png" width="250px"> </div>';
 			//메세지 컨캣
@@ -101,6 +104,7 @@ $(function() {
 	var title5 = "String 자료형을 골라보세요"
 	$('#next').on('click',goToNextSlide);
 	function goToNextSlide() {
+		$('#next').removeClass('blink');
 		//alert(currentSlide);
 		switch(currentSlide){
 			case 0:
@@ -172,6 +176,7 @@ $(function() {
 			width : '0%'
 		}, animationTime);
 		$('#next').attr('disabled',false);
+		$('#next').addClass('blink');
 		/* $('#btnShowJava').show(); */
 		$('#answerResultDiv').empty();
 	}
@@ -198,10 +203,10 @@ $(function() {
 	$(window).resize(postitionSlides);
 	$('#previous').on('click', goToPreviousSlide);
 	
-	$('li[data-tag="int"] div[slide="2"]').on('click', contentsCheck);
-	$('li[data-tag="double"] div[slide="3"]').on('click', contentsCheck);
-	$('li[data-tag="boolean"] div[slide="4"]').on('click', contentsCheck);
-	$('li[data-tag="String"] div[slide="5"]').on('click', contentsCheck);
+	$('li[data-tag="Step2"] div[slide="2"]').on('click', contentsCheck);
+	$('li[data-tag="Step3"] div[slide="3"]').on('click', contentsCheck);
+	$('li[data-tag="Step4"] div[slide="4"]').on('click', contentsCheck);
+	$('li[data-tag="Step5"] div[slide="5"]').on('click', contentsCheck);
 	
 	var ansCount = 0;
 	function contentsCheck(){
@@ -214,16 +219,18 @@ $(function() {
 			if($(this).attr('slide')=="4"){
 				if(ansCount == 2){
 					$('#next').attr('disabled',false);
+					$('#next').addClass('blink');
 					ansCount = 0;
 				}
 			}else{
 				if(ansCount == 4){
 					$('#next').attr('disabled',false);
+					$('#next').addClass('blink');
 					ansCount = 0;
 				}	
 			}
 		}else{
-			resultStr = '<div class="resultMsg"><img src="../../resources/img/noanswer.png" width="200px"></div>';
+			resultStr = '<div class="resultMsg"><img src="../resources/img/noanswer.png" width="200px"></div>';
 			$('#answerResultDiv').html(resultStr);
 			$(this).addClass('wrongAns');
 			
@@ -687,6 +694,23 @@ ul {
 	border-radius: 10px;
 }
 
+@-webkit-keyframes blinker {
+  from {opacity: 1.0;}
+  to {opacity: 0.5;}
+}
+.blink{
+	text-decoration: blink;
+	-webkit-animation-name: blinker;
+	-webkit-animation-duration: 0.6s;
+	-webkit-animation-iteration-count:infinite;
+	-webkit-animation-timing-function:ease-in-out;
+	-webkit-animation-direction: alternate;
+}
+
+*{
+	font-family: 'Jua', sans-serif;
+}
+
 
 </style>
 <title>Insert title here</title>
@@ -904,7 +928,7 @@ ul {
 								</div>
 								<div class="back">
 									<div class="inner">
-										<p>String</p>
+										<p></p>
 									</div>
 								</div>
 							</div>
@@ -919,7 +943,7 @@ ul {
 								</div>
 								<div class="back">
 									<div class="inner">
-										<p>boolean</p>
+										<p></p>
 									</div>
 								</div>
 							</div>
@@ -934,13 +958,13 @@ ul {
 								</div>
 								<div class="back">
 									<div class="inner">
-										<p>String</p>
+										<p></p>
 									</div>
 								</div>
 							</div>
 						</div>
 						<div class="col" sort="true" ontouchstart="this.classList.toggle('hover');">
-							<div class="containerDrop" slide="2" answer="no">
+							<div class="container" slide="2" answer="no">
 								<div class="front" style="background-image: url(https://unsplash.it/508/508/)">
 									<div class="inner">
 										<p>"easy"</p>
@@ -949,7 +973,7 @@ ul {
 								</div>
 								<div class="back">
 									<div class="inner">
-										<p>String</p>
+										<p></p>
 									</div>
 								</div>
 							</div>
@@ -1068,7 +1092,7 @@ ul {
 							</div>
 						</div>
 						<div class="col" sort="true" ontouchstart="this.classList.toggle('hover');">
-							<div class="containerDrop" slide="3" answer="yes">
+							<div class="container" slide="3" answer="yes">
 								<div class="front" style="background-image: url(https://unsplash.it/508/508/)">
 									<div class="inner">
 										<p>4.27</p>
@@ -1196,7 +1220,7 @@ ul {
 							</div>
 						</div>
 						<div class="col" sort="true" ontouchstart="this.classList.toggle('hover');">
-							<div class="containerDrop" slide="4" answer="no">
+							<div class="container" slide="4" answer="no">
 								<div class="front" style="background-image: url(https://unsplash.it/508/508/)">
 									<div class="inner">
 										<p>"bye"</p>
@@ -1324,7 +1348,7 @@ ul {
 							</div>
 						</div>
 						<div class="col" sort="true" ontouchstart="this.classList.toggle('hover');">
-							<div class="containerDrop" slide="5" answer="no">
+							<div class="container" slide="5" answer="no">
 								<div class="front" style="background-image: url(https://unsplash.it/508/508/)">
 									<div class="inner">
 										<p>0</p>

@@ -7,6 +7,7 @@
 <title>Drag & Drop</title>
 <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
 <script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+<link href="https://fonts.googleapis.com/css?family=Jua" rel="stylesheet">
 <script>
 	$(function(){
 		$('#btnShowJava').hide();
@@ -24,21 +25,25 @@
 				//alert(dropcount);
 				if(count == dropcount){
 					//$('.divSubject').append(subName + " ");
-					$(this).append(dropItem);
+					dropItem.remove();
+					$(this).html(dropItem.text());
 					timeTable[count] = subName;
 					//alert(timeTable);
 					count++;
 					if(count == 4){
 						$('#btnShowJava').show();
+						$('#btnShowJava').addClass('blink');
 					}
 				}
 			}
 		});
 		
 		$('#btnShowJava').on('click',function(){
-			var strJava = '과목 시간표[ ] = {'+timeTable[0]+','+timeTable[1]+','+timeTable[2]+','+timeTable[3]+'}';
+			var strJava = '과목 시간표[ ] = {'+timeTable[0]+','+timeTable[1]+','+timeTable[2]+','+timeTable[3]+'};';
 			$('#divSubject').html(strJava);
+			$('#btnShowJava').removeClass('blink');
 			$('#next').attr('disabled', false);
+			$('#next').addClass('blink');
 		});
 		
 		$('#next').on('click',function(){
@@ -62,26 +67,34 @@
 		});
 		
 		$('.noAnswer').on('click',function(){
-			alert('noanswer');
+			resultStr = '<div class="resultMsg"><img src="../resources/img/noanswer.png" width="250px"> </div>';
+            $('#answerResultDiv').html(resultStr);
+            $('#next').attr('disabled', true);
+			$('#next').removeClass('blink');
 		});
 		
 		$('.yesAnswer').on('click',function(){
+			resultStr = '<div class="resultMsg"><img src="../resources/img/yesanswer.png" width="250px"> </div>';
+            $('#answerResultDiv').html(resultStr);
 			$('#next').attr('disabled', false);
+			$('#next').addClass('blink');
 		});
 		
 		$('#btnShowJava2').on('click',function(){
 			var showArray = '<div class="jb-table"> <div class="jb-table-row">	<div class="jb-table-cell"> <p></p> </div><div class="jb-table-cell"> <p>0 열</p></div> <div class="jb-table-cell"> <p>1 열</p> </div> <div class="jb-table-cell"> <p>2 열</p></div> <div class="jb-table-cell"> <p>3 열</p> </div></div> <div class="jb-table-row"><div class="jb-table-cell"> <p>0 행</p> </div> <div class="jb-table-cell">  <p>[0][0]</p> </div> <div class="jb-table-cell"> <p>[0][1]</p> </div> <div class="jb-table-cell"> <p>[0][2]</p> </div> <div class="jb-table-cell"> <p>[0][3]</p></div> </div>	<div class="jb-table-row"><div class="jb-table-cell"> <p>1 행</p>	 </div>	<div class="jb-table-cell">	<p>[1][0]</p></div><div class="jb-table-cell"><p>[1][1]</p></div><div class="jb-table-cell"><p>[1][2]</p></div><div class="jb-table-cell"><p>[1][3]</p></div></div><div class="jb-table-row"><div class="jb-table-cell"><p>2 행</p></div><div class="jb-table-cell"><p>[2][0]</p></div><div class="jb-table-cell"><p>[2][1]</p></div><div class="jb-table-cell"><p>[2][2]</p></div><div class="jb-table-cell"><p>[2][3]</p>		        </div>		      </div>		    </div>';
 			$('#example4').html(showArray);
 			$('#next').attr('disabled', false);
+			$('#next').addClass('blink');
 		})
 		
 		var clickCount = 0;
 		$('#inputTimeTable').on('click',function(){
 			//alert(clickCount);
-			var btnReverse3 = '<input type="button" value="{배열에 들어간 것들}">';
+			var btnReverse3 = '<input type="button" value="{배열에 들어간 것들};">';
 			if(clickCount == 0){
 				$('#btnReverse').append(btnReverse3);
 				$('#next').attr('disabled', false);
+				$('#next').addClass('blink');
 				cilckCount++;
 			}
 		});
@@ -131,6 +144,7 @@
 			}, animationTime);
 			$('#btnShowJava').hide();
 			$('#next').attr('disabled', true);
+			$('#next').removeClass('blink');
 		}
 		
 		function goToPreviousSlide() {
@@ -146,6 +160,7 @@
 				width : '0%'
 			}, animationTime);
 			$('#next').attr('disabled',false);
+			$('#next').addClass('blink');
 			$('#btnShowJava').show();
 		}
 
@@ -248,7 +263,7 @@
 		margin: 5px;
 	}
 	.ansDiv{
-		background-color: yellow;
+		/* background-color: yellow; */
 	}
 	
 	.home {
@@ -495,7 +510,7 @@ li div{
 }
 
 .concept{
-	background-color: yellow;
+	/* background-color: yellow; */
 }
 
 .example{
@@ -511,14 +526,15 @@ li div{
 }
 
 .divSubject{
-	background-color: yellow;
+	/* background-color: yellow; */
 	width: 600px;
 	height: 100px;
+	font-size: 30px;
 }
 
 .divTimetable{
 	margin-top: 20px;
-	background-color: yellow;
+	/* background-color: yellow; */
 	width: 600px;
 	height: 100px;
 }
@@ -526,43 +542,99 @@ li div{
 .btnSubject{
 	width:100px;
 	height:50px;
-    background-color: #f1f1f1;
-    border: 1px solid black;
+    background-color: rgba(0,0,0,0);
+    /* border: 1px solid black; */
     color:black;
     /* padding: 15px 0; */
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    font-size: 15px;
+    font-size: 30px;
     /* margin: 4px; */
     cursor: pointer;
 }
 
-.divTimetable div{
+.btnTable{
+	width:100px;
+    background-color: white;
+    border: solid;
+    border-color: #37B595;
+    color:#37B595;
+    padding: 15px 0;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 30px;
+    margin: 4px;
+    margin-top: 30px;
+    cursor: pointer;
+    transition:800ms ease all;
+    border-radius: 1em;
+}
+/* .divTimetable div{
 	width:100px;
     background-color: #f1f1f1;
     border: 1px solid black;
     border-color: black;
     color:black;
-    /* padding: 15px 0; */
     text-align: center;
     text-decoration: none;
     display: inline-block;
     font-size: 15px;
-    /* margin: 4px; */
     cursor: pointer;
 }
-
+ */
 #showInputTable{
 	width: 600px;
 	height: 70px;
-	background-color: lime;
+	font-size: 30px;
+	/* background-color: lime; */
 }
 
 #btnReverse{
 	width: 600px;
 	height: 70px;
-	background-color: orange;
+	font-size: 30px;
+	margin-top: 20px;
+	/* background-color: orange; */
+}
+
+#btnReverse1, #btnReverse2{
+	width:100px;
+    background-color: white;
+    border: solid;
+    border-color: #37B595;
+    color:#37B595;
+    padding: 15px 0;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 30px;
+    margin: 4px;
+    margin-top: 30px;
+    cursor: pointer;
+    transition:800ms ease all;
+    border-radius: 1em;
+}
+
+#example3 div{
+	font-size: 20px;
+	cursor: pointer;
+}
+
+#example3 div:HOVER{
+	width:400px;
+    background-color: white;
+    border: solid;
+    border-color: #37B595;
+    color:#37B595;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 20px;
+    cursor: pointer;
+    transition:800ms ease all;
+    border-radius: 1em;
 }
 
 .jb-table {
@@ -581,6 +653,27 @@ li div{
   vertical-align: middle;
 }
 
+.tableDiv{
+	padding-left: 130px;
+}
+
+@-webkit-keyframes blinker {
+  from {opacity: 1.0;}
+  to {opacity: 0.5;}
+}
+.blink{
+	text-decoration: blink;
+	-webkit-animation-name: blinker;
+	-webkit-animation-duration: 0.6s;
+	-webkit-animation-iteration-count:infinite;
+	-webkit-animation-timing-function:ease-in-out;
+	-webkit-animation-direction: alternate;
+}
+
+*{
+	font-family: 'Jua', sans-serif;
+}
+
 </style>
 </head>
 <body style="overflow-x: hidden">
@@ -592,7 +685,7 @@ li div{
 </div>
 <div class="viewport full-width-container" style="padding: 5px;">
 	<ul class="slide-container">
-		<li class="slide" data-tag="Warming up">
+		<li class="slide" data-tag="Step1">
 			<div class="sized-container" >
 				<div class="concept">
 					<h1>
@@ -615,7 +708,7 @@ li div{
 				</div>
 			</div>
 		</li>
-		<li class="slide" data-tag="Array">
+		<li class="slide" data-tag="Step2">
 			<div class="sized-container" >
 				<div class="concept" id="concept2">
 						
@@ -636,27 +729,27 @@ li div{
 				</div>
 			</div>
 		</li>
-		<li class="slide" data-tag="Array">
+		<li class="slide" data-tag="Step3">
 			<div class="sized-container" >
 				<div class="concept">
-					배열은 이처럼 같은 자료형을 여러 개 담을 수 있는 것입니다.
+					<h1>배열은 이처럼 같은 자료형을 여러 개 담을 수 있는 것입니다.</h1>
 				</div>
-				<div class="example">
+				<div class="example" id="example3">
 					<div>배열을 만드는 방법입니다.</div><br>
 					<div>자료형 배열이름 = {요소1, 요소2,..};</div><br>
-					<h2>Q. 숫자 3과 5를 담을 수 있는 배열 array를 잘 만든 것을 고르세요</h2>
+					<h1>Q. 숫자 3과 5를 담을 수 있는 배열 array를 잘 만든 것을 고르세요</h1>
 					<div class="noAnswer">String array[ ] = {3, 5};</div><br>
 					<div class="yesAnswer">int array[ ] = {3, 5};</div><br>
 					<div class="noAnswer">int array = {3, 5}</div>
 				</div>
 			</div>
 		</li>
-		<li class="slide" data-tag="Array">
+		<li class="slide" data-tag="Step4">
 			<div class="sized-container" >
 				<div class="concept">
-					월요일부터 수요일까지의 시간표를 살펴봅시다.
+					<h1>월요일부터 수요일까지의 시간표를 살펴봅시다.</h1>
 				</div>
-				<div class="example">
+				<div class="example tableDiv">
 					<div class="jb-table">
 				      <div class="jb-table-row">
 				      	<div class="jb-table-cell">
@@ -736,13 +829,13 @@ li div{
 				</div>
 			</div>
 		</li>
-		<li class="slide" data-tag="Array">
+		<li class="slide" data-tag="Step5">
 			<div class="sized-container" >
 				<div class="concept">
 					자바에서는 표를 다음과 같이 나타냅니다.<br>
 					이를 2차원 배열이라고 합니다.
 				</div>
-				<div class="example" id="example4">
+				<div class="example tableDiv" id="example4">
 					<div class="jb-table">
 				      <div class="jb-table-row">
 				      	<div class="jb-table-cell">

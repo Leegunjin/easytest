@@ -85,6 +85,10 @@ public class ContentsViewController {
 					bestLevel2 = 6;
 					break;
 					
+				case 71:
+					bestLevel2 = 6;
+					break;
+					
 				case 41:
 					bestLevel2 = 7;
 					break;
@@ -101,11 +105,19 @@ public class ContentsViewController {
 					bestLevel2 = 10;
 					break;
 					
+				case 72:
+					bestLevel2 = 10;
+					break;
+					
 				case 61:
 					bestLevel2 = 11;
 					break;
 					
 				case 62:
+					bestLevel2 = 12;
+					break;
+					
+				case 73:
 					bestLevel2 = 12;
 					break;
 				}

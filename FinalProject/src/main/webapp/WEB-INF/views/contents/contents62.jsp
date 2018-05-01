@@ -7,6 +7,7 @@
 <title>Drag & Drop</title>
 <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
 <script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+<link href="https://fonts.googleapis.com/css?family=Jua" rel="stylesheet">
 <script>
 	$(function(){
 		$('#btnShowJava').hide();
@@ -62,11 +63,17 @@
 		});
 		
 		$('.noAnswer').on('click',function(){
-			alert('noanswer');
+			resultStr = '<div class="resultMsg"><img src="../resources/img/noanswer.png" width="250px"> </div>';
+            $('#answerResultDiv').html(resultStr);
+            $('#next').attr('disabled', true);
+			$('#next').removeClass('blink');
 		});
 		
 		$('.yesAnswer').on('click',function(){
+			resultStr = '<div class="resultMsg"><img src="../resources/img/yesanswer.png" width="250px"> </div>';
+            $('#answerResultDiv').html(resultStr);
 			$('#next').attr('disabled', false);
+			$('#next').addClass('blink');
 		});
 		
 		$('#btnShowJava2').on('click',function(){
@@ -130,6 +137,7 @@
 			}, animationTime);
 			$('#btnShowJava').hide();
 			$('#next').attr('disabled', true);
+			$('#next').removeClass('blink');
 		}
 		
 		function goToPreviousSlide() {
@@ -145,6 +153,7 @@
 				width : '0%'
 			}, animationTime);
 			$('#next').attr('disabled',false);
+			$('#next').addClass('blink');
 			$('#btnShowJava').show();
 		}
 
@@ -247,7 +256,7 @@
 		margin: 5px;
 	}
 	.ansDiv{
-		background-color: yellow;
+		/* background-color: yellow; */
 	}
 	
 	.home {
@@ -494,7 +503,7 @@ li div{
 }
 
 .concept{
-	background-color: yellow;
+	/* background-color: yellow; */
 }
 
 .example{
@@ -510,14 +519,14 @@ li div{
 }
 
 .divSubject{
-	background-color: yellow;
+	/* background-color: yellow; */
 	width: 600px;
 	height: 100px;
 }
 
 .divTimetable{
 	margin-top: 20px;
-	background-color: yellow;
+	/* background-color: yellow; */
 	width: 600px;
 	height: 100px;
 }
@@ -555,13 +564,13 @@ li div{
 #showInputTable{
 	width: 600px;
 	height: 70px;
-	background-color: lime;
+	/* background-color: lime; */
 }
 
 #btnReverse{
 	width: 600px;
 	height: 70px;
-	background-color: orange;
+	/* background-color: orange; */
 }
 
 .jb-table {
@@ -580,6 +589,101 @@ li div{
   vertical-align: middle;
 }
 
+.tableDiv{
+	padding-left: 130px;
+}
+
+#inputDiv input{
+	font-size: 20px;
+	cursor: pointer;
+	background: white;
+	margin-top: 10px;
+	margin-bottom: 20px;
+	width: 100px;
+}
+
+#inputDiv input:HOVER{
+	width:100px;
+    background-color: white;
+    border: solid;
+    border-color: #37B595;
+    color:#37B595;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 20px;
+    cursor: pointer;
+    transition:800ms ease all;
+    border-radius: 1em;
+    margin-top: 10px;
+	margin-bottom: 20px;
+}
+
+#example1 input{
+	font-size: 20px;
+	cursor: pointer;
+	background: white;
+	margin-top: 10px;
+	margin-bottom: 20px;
+	width: 100px;
+}
+
+#example1 input:HOVER{
+	width:100px;
+    background-color: white;
+    border: solid;
+    border-color: #37B595;
+    color:#37B595;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 20px;
+    cursor: pointer;
+    transition:800ms ease all;
+    border-radius: 1em;
+    margin-top: 10px;
+	margin-bottom: 20px;
+}
+
+#example2 input{
+	font-size: 20px;
+	cursor: pointer;
+	background: white;
+	margin-top: 10px;
+	margin-bottom: 20px;
+}
+
+#example2 input:HOVER{
+	width:400px;
+    background-color: white;
+    border: solid;
+    border-color: #37B595;
+    color:#37B595;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 20px;
+    cursor: pointer;
+    transition:800ms ease all;
+    border-radius: 1em;
+}
+
+@-webkit-keyframes blinker {
+  from {opacity: 1.0;}
+  to {opacity: 0.5;}
+}
+.blink{
+	text-decoration: blink;
+	-webkit-animation-name: blinker;
+	-webkit-animation-duration: 0.6s;
+	-webkit-animation-iteration-count:infinite;
+	-webkit-animation-timing-function:ease-in-out;
+	-webkit-animation-direction: alternate;
+}
+
+*{
+	font-family: 'Jua', sans-serif;
+}
 </style>
 </head>
 <body style="overflow-x: hidden">
@@ -591,45 +695,45 @@ li div{
 </div>
 <div class="viewport full-width-container" style="padding: 5px;">
 	<ul class="slide-container">
-		<li class="slide" data-tag="Quiz">
+		<li class="slide" data-tag="Step1">
 			<div class="sized-container" >
 				<div class="concept">
 					<h1>
 						숫자 1,3,5,7,9 를 배열에 담고 싶습니다.
 					</h1>
 				</div>
-				<div class="example">
+				<div class="example" id="example1">
 					<h2>Q.어떤 자료형을 담는 배열인가요?</h2>
-					<input type="button" value="double">
-					<input type="button" value="String">
+					<input type="button" class="noAnswer" value="double">
+					<input type="button" class="noAnswer" value="String">
 					<input type="button" class="yesAnswer" value="int"><br>
 					<h2>Q.몇개를 담을 수 있는 배열인가요?</h2>
-					<input type="button" value="4개">
+					<input type="button" class="noAnswer" value="4개">
 					<input type="button" class="yesAnswer" value="5개">
 				</div>
 			</div>
 		</li>
-		<li class="slide" data-tag="Quiz">
+		<li class="slide" data-tag="Step2">
 			<div class="sized-container" >
 				<div class="concept">
 					<h1>
 						Q.다음 중 맞게 생성한 배열은 무엇인가요?
 					</h1>
 				</div>
-				<div class="example">
-					<input type="button" value="int 배열이름[ ] = {1,3,5,7,9}"><br>
-					<input type="button" value="double 배열이름[ ] = {1,3,5,7,9};"><br>
+				<div class="example" id="example2">
+					<input type="button" class="noAnswer" value="int 배열이름[ ] = {1,3,5,7,9}"><br>
+					<input type="button" class="noAnswer" value="double 배열이름[ ] = {1,3,5,7,9};"><br>
 					<input type="button" class="yesAnswer" value="int 배열이름[ ] = {1,3,5,7,9};"><br>
-					<input type="button" value="int 배열이름 = {1,3,5,7,9};">
+					<input type="button" class="noAnswer" value="int 배열이름 = {1,3,5,7,9};">
 				</div>
 			</div>
 		</li>
-		<li class="slide" data-tag="Array">
+		<li class="slide" data-tag="Step3">
 			<div class="sized-container" >
 				<div class="concept">
 					다음 시간표를 보고 답해주세요.
 				</div>
-				<div class="example">
+				<div class="example tableDiv">
 					<div class="jb-table">
 				      <div class="jb-table-row">
 				      	<div class="jb-table-cell">
@@ -701,7 +805,7 @@ li div{
 				      </div>
 				    </div>
 				</div>
-				<div>
+				<div id="inputDiv">
 					Q. 화요일의 4교시는 어떤 과목인가요?
 					<input type="button" class="noAnswer" value="수학">
 					<input type="button" class="yesAnswer" value="국어">
@@ -709,12 +813,12 @@ li div{
 				</div>
 			</div>
 		</li>
-		<li class="slide" data-tag="Array">
+		<li class="slide" data-tag="Step4">
 			<div class="sized-container" >
 				<div class="concept">
 					다음 시간표를 보고 답해주세요.
 				</div>
-				<div class="example">
+				<div class="example tableDiv">
 					<div class="jb-table">
 				      <div class="jb-table-row">
 				      	<div class="jb-table-cell">
@@ -786,7 +890,7 @@ li div{
 				      </div>
 				    </div>
 				</div>
-				<div>
+				<div id="inputDiv">
 					Q. 둘째 줄의 4번째 칸은 어떤 과목인가요?
 					<input type="button" class="yesAnswer" value="국어">
 					<input type="button" class="noAnswer" value="수학">
@@ -794,12 +898,12 @@ li div{
 				</div>
 			</div>
 		</li>
-		<li class="slide" data-tag="Array">
+		<li class="slide" data-tag="Step5">
 			<div class="sized-container" >
 				<div class="concept">
 					다음 시간표를 보고 답해주세요.
 				</div>
-				<div class="example">
+				<div class="example tableDiv">
 					<div class="jb-table">
 				      <div class="jb-table-row">
 				      	<div class="jb-table-cell">
@@ -871,8 +975,8 @@ li div{
 				      </div>
 				    </div>
 				</div>
-				<div>
-					Q. 이 배열의 [0][2]어떤 과목인가요?
+				<div id="inputDiv">
+					Q. 이 배열의 [0][2]는 어떤 과목인가요?
 					<input type="button" class="noAnswer" value="국사">
 					<input type="button" class="noAnswer" value="음악">
 					<input type="button" class="yesAnswer" value="사회">

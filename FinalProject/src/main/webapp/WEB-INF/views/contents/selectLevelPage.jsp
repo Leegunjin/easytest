@@ -30,7 +30,7 @@
 			}
 	        $('#st-control-'+${initPage}).attr('checked',true);
 	        
-			alert("어디까지 깼나"+${bestLevel});
+			//alert("어디까지 깼나"+${bestLevel});
 			$('.card').each(function(){
 				
 				//$(this).attr('disabled',true);
@@ -64,6 +64,27 @@
 				
 				if(thisLevel > ${bestLevel+1}){
 					$(this).css({ opacity: 0.5 });
+				}
+				
+				if(${bestLevel} >= 6 && ${bestLevel} <= 12){
+					$('#13').on('click',function(){
+						location.href = 'contents' + 13;
+					});
+					$('#13').css({ opacity: 1.0 });
+				}
+				
+				if(${bestLevel} >= 10 && ${bestLevel} <= 12 ){
+					$('#14').on('click',function(){
+						location.href = 'contents' + 14;
+					});
+					$('#14').css({ opacity: 1.0 });
+				}
+				
+				if(${bestLevel} == 12){
+					$('#15').on('click',function(){
+						location.href = 'contents' + 15;
+					});
+					$('#15').css({ opacity: 1.0 });
 				}
 					
 		     	//}
@@ -294,7 +315,7 @@
 						<section class="st-panel" id="st-panel-3">
 							<div class="st-deco" data-icon="&#xf0f4;"></div>
 							<h2> Chapter 3 </h2>
-							<p> 연산자 </p>
+							<p> 연산자, 트로피 퀴즈 1 </p>
 							
 							<div class="BtnContainer3">
 					
@@ -310,6 +331,12 @@
 						    		</div>
 						  		</div>
 						  		
+						  		<div class="wrapperTro1" aria-hidden="true">
+						    		<div class="card" id="13"> 
+						    			<i class="fal fa-arrow-right"></i> 
+						    		</div>
+						  		</div>
+						  		
 							</div> <!-- container 끝 -->
 							
 						</section>
@@ -317,7 +344,7 @@
 						<section class="st-panel st-color" id="st-panel-4" value="4">
 							<div class="st-deco" data-icon="&#xf06c;"></div>
 							<h2> Chapter 4 </h2>
-							<p> 조건문, 트로피 퀴즈 1 </p>
+							<p> 조건문 </p>
 							
 							<div class="BtnContainer4">
 					
@@ -333,11 +360,7 @@
 						    		</div>
 						  		</div>
 						  		
-						  		<div class="wrapperTro1" aria-hidden="true">
-						    		<div class="card" id="13"> 
-						    			<i class="fal fa-arrow-right"></i> 
-						    		</div>
-						  		</div>
+						  		
 						  		
 						  	</div> <!-- container 끝 -->
 						  		
