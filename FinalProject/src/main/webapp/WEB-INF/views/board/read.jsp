@@ -6,7 +6,7 @@
 <html>
 <head>
 	<script type="text/javascript" src="<c:url value="/resources/js/jquery-3.2.1.js"></c:url>"></script>
-	<script type="text/javascript">
+	<script type="text/javascript"> 
 		function delBoard(bnum) {
 			alert("bnum : "+bnum);
 			$.ajax({

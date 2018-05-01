@@ -81,7 +81,7 @@
 
                         $('#emailDiv2').html(str);
                         $("#randomNumCheckButton").on("click", function() {
-                        
+                         
                         var clickYear = new Date().getFullYear();
                         var clickMonth = new Date().getMonth() + 1;
                            if (clickMonth < 10) {

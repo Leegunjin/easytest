@@ -26,7 +26,7 @@
 			text-align: center;
 			width: 660px;
 			height: 30px;
-		}
+		} 
 	</style>
 	<script type="text/javascript">
 	$(function() {

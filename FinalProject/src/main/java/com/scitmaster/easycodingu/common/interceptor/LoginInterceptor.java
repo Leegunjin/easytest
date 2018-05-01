@@ -11,7 +11,7 @@ public class LoginInterceptor extends HandlerInterceptorAdapter{
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
 			throws Exception {
-		
+		 
 		HttpSession session = request.getSession();
 		String loginId = (String)session.getAttribute("loginId");
 		System.out.println("LoginInterceptor LoginId : " + loginId);

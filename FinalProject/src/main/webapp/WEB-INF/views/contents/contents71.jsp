@@ -18,7 +18,7 @@
    * {
    		font-family: 'Jua', sans-serif;
    }
-   
+    
 	h2{
 	  color: #393E46; 
 	  font-family: 'Jua', sans-serif;

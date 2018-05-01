@@ -29,7 +29,7 @@ import com.scitmaster.easycodingu.reply.vo.Reply;
 public class BoardRestController {
    
    @Autowired
-   BoardDAO dao;
+   BoardDAO dao; 
    
    private static final Logger logger = LoggerFactory.getLogger(BoardRestController.class);
    

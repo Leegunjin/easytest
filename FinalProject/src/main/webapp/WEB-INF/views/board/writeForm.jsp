@@ -77,7 +77,7 @@
 		}
 		.tdCenter{
 			text-align: center;
-		}
+		} 
 		#title{
 			width: 650px;
 		}

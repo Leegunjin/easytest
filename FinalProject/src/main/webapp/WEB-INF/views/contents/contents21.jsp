@@ -16,7 +16,7 @@
 	.javaCode {
 		margin-left: 170px;
 		margin-top: 10px;
-	}
+	} 
 	
 	.error {
 		margin-left: 20px;

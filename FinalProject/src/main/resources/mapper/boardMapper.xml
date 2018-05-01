@@ -8,7 +8,7 @@
 
 	<select id="getTotal" parameterType="hashmap" resultType="int">
 		SELECT
-			count(*)
+			count(*) 
 		FROM
 			board
 		<if test="searchText != null">	

@@ -287,7 +287,7 @@ ul {
             var userAnswer = $('#answer' + currentSlide + i).val();
             answerArr.push(userAnswer);
          }
-         
+          
          var cNum = currentSlide + 1;
          
              $.ajax({

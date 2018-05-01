@@ -30,7 +30,7 @@ import com.scitmaster.easycodingu.common.util.PageNavigator;
 public class BoardViewController {
 
    @Autowired
-   BoardDAO dao;
+   BoardDAO dao; 
    
    final String uploadPath = "/boardfile";	
 	
