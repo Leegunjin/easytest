@@ -19,6 +19,20 @@
 	   		   src="<c:url value="/resources/js/jquery-3.2.1.js"></c:url>"></script>
 	   
 	   <script type="text/javascript">
+	   function formCheck() {
+			var b_title = $('#b_title').val();
+			var b_contents = $('#b_contents').val();
+			if (b_title == "") {
+				/* swal("제목을 입력해 주세요."); */
+				swal("제목을 입력해 주세요.", "제목이 없으면 글이 등록되지 않습니다.");
+				return false;
+			}
+			if (b_contents == "") {
+				swal("내용을 입력해 주세요.", "내용이 없으면 글이 등록되지 않습니다.");
+				return false;
+			}
+			return true;
+		}
 	      $(window).on('scroll', function() {
 	         if($(window).scrollTop()) {
 	            $('nav').addClass('black');

@@ -67,12 +67,12 @@
                   
                      var trueemail=email.substring(1,email.length-1);
                      console.log(trueemail);
-                        Email.send("kkkhs9216@naver.com",                   //보내는 이메일 계정
+                        Email.send("kkkhs9216@naver.com",                 //보내는 이메일 계정
                                 trueemail,                                //받는 이메일 계정
-                                 "[Java Lingo]Password 찾기 Email 입니다. ",         //메일 제목
-                                 "인증 번호 : " + randomNum,                   //메일 내용
+                                 "[Java Lingo]Password 찾기 Email 입니다. ", //메일 제목
+                                 "인증 번호 : " + randomNum,                 //메일 내용
                                  "smtp.naver.com",                        //네이버smtp
-                                 "kkkhs9216@naver.com",                        //네이버 이메일 전체
+                                 "kkkhs9216@naver.com",                   //네이버 이메일 전체
                                  "scitlingo*");                           //네이버 계정 비밀번호   
                         alert("Email이 전송되었습니다. 인증번호를 입력해 주세요.");
                         

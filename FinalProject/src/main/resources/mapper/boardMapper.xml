@@ -52,6 +52,7 @@
 		,b_id
 		,b_title
 		,b_contents
+		,hashTag
 		,to_char(b_date, 'yyyy/MM/dd-hh24:mi:ss') b_date
 		,hits
 	FROM
@@ -105,6 +106,9 @@
 		,b_id = #{b_id}
 		,b_title = #{b_title}
 		,b_contents = #{b_contents}
+		<if test="hashTag != null">
+		,hashTag = #{hashTag}
+		</if>
 		<if test="originalFileName != null and savedFileName != null">
 		,originalFileName = #{originalFileName}
 		,savedFileName = #{savedFileName}

@@ -276,7 +276,8 @@ ul {
      
      // 정답 체크
      function goToCheck() {
-      // answer+각 슬라이드 숫자 로 지정된 클래스를 가져온다 
+    	alert("HEllo GO TO CHECK");
+    	 // answer+각 슬라이드 숫자 로 지정된 클래스를 가져온다 
          var $answerClass = $('.answer' + currentSlide);
          // $answerClass에 저장된 클래스 개수를 가져온다.
          var answerCount = $answerClass.length;
@@ -284,7 +285,7 @@ ul {
          for(var i = 0; i <= answerCount; i++) {
             // answer01, answer02
             var userAnswer = $('#answer' + currentSlide + i).val();
-            answerArr.push(answer);
+            answerArr.push(userAnswer);
          }
          
          var cNum = currentSlide + 1;
@@ -294,10 +295,10 @@ ul {
                 type : "POST",
                 contentType : "application/json; charset=utf-8",
                 dataType : "json",
-                data : JSON.stringify ({
-                   cNum : cNum
-                   ,userAnswer : userAnswer
-                }),
+                data : {
+                   cNum : cNum,
+                   userAnswer : userAnswer
+                },
                 success : function(blankMap) {
                      alert('success');
                      answerArr = [];

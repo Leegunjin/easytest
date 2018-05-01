@@ -230,8 +230,16 @@ public class ContentsViewController {
 		logger.info("QuizPage START");
 		logger.info("QuizPage ENE");
 		return "contents/contents32";
+	}
+	
+	@RequestMapping(value = "contents7", method = RequestMethod.GET)
+	public String contents41() {
+		logger.info("QuizPage START");
+		logger.info("QuizPage END");
+		return "contents/contents41";
 
 	}
+	
 	@RequestMapping(value = "contents14", method = RequestMethod.GET)
 	public String contents72() {
 		logger.info("QuizPage START");
@@ -248,6 +256,13 @@ public class ContentsViewController {
 
 		}
 	
+	@RequestMapping(value = "contents9", method = RequestMethod.GET)
+	public String contents51() {
+		logger.info("QuizPage START");
+		logger.info("QuizPage END");
+		return "contents/contents51";
+
+	}
 	@RequestMapping(value = "contents10", method = RequestMethod.GET)
 	public String contents52() {
 		logger.info("QuizPage START");

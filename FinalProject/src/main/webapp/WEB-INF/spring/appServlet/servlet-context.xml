@@ -3,6 +3,7 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns:beans="http://www.springframework.org/schema/beans"
 	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
 	xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
@@ -23,6 +24,39 @@
 	
 	<context:component-scan base-package="com.scitmaster.easycodingu" />
 	
-	
-	
+	<beans:bean id="loginInterceptor" class="com.scitmaster.easycodingu.common.interceptor.LoginInterceptor"></beans:bean>
+	<mvc:interceptors>
+		<mvc:interceptor>
+			<mvc:mapping path="/contents/contentsHome"/>
+			<mvc:mapping path="/contents/clearChapter"/>
+			<mvc:mapping path="/contents/contents1"/>
+			<mvc:mapping path="/contents/contents2"/>
+			<mvc:mapping path="/contents/contents3"/>
+			<mvc:mapping path="/contents/contents4"/>
+			<mvc:mapping path="/contents/contents5"/>
+			<mvc:mapping path="/contents/contents6"/>
+			<mvc:mapping path="/contents/contents7"/>
+			<mvc:mapping path="/contents/contents8"/>
+			<mvc:mapping path="/contents/contents9"/>
+			<mvc:mapping path="/contents/contents10"/>
+			<mvc:mapping path="/contents/contents11"/>
+			<mvc:mapping path="/contents/contents12"/>
+			<mvc:mapping path="/contents/contents13"/>
+			<mvc:mapping path="/contents/contents14"/>
+			<mvc:mapping path="/contents/contents15"/>
+			<mvc:mapping path="/board/boardList"/>	
+			<mvc:mapping path="/board/boardList2"/>	
+			<mvc:mapping path="/board/write"/>	
+			<mvc:mapping path="/board/writeForm"/>
+			<mvc:mapping path="/board/readContent"/>
+			<mvc:mapping path="/board/deleteBoard"/>
+			<mvc:mapping path="/board/updateForm"/>
+			<mvc:mapping path="/board/update"/>
+			<mvc:mapping path="/person/logout"/>
+			<mvc:mapping path="/person/logoutComplete"/>
+			<mvc:mapping path="/person/mypageUser"/>
+			<mvc:mapping path="/person/modify"/>
+			<beans:ref bean="loginInterceptor"/>	
+		</mvc:interceptor>
+	</mvc:interceptors>
 </beans:beans>

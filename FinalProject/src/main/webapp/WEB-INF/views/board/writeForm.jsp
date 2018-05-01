@@ -59,10 +59,10 @@
 			}
 			
 		});
-		function test(){
+		/* function test(){
 			var check = $('#hashTag').val();
 			alert(check);
-		}
+		} */
 	</script>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<title>WRITE FORM</title>

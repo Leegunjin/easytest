@@ -1,11 +1,31 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib uri = "http://java.sun.com/jsp/jstl/functions" prefix = "fn" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 	<script type="text/javascript" src="<c:url value="/resources/js/jquery-3.2.1.js"></c:url>"></script>
 	<script type="text/javascript">
+		function delBoard(bnum) {
+			alert("bnum : "+bnum);
+			$.ajax({
+				url : "delBoard",
+				type : "POST",
+				data : {
+					bnum : bnum
+				},
+				success : function(result) {
+					alert("success");
+					alert(result);
+				},
+				error : function(err) {
+					alert("error");
+					alert(err);
+				}
+			});
+		}
+	
 		$(function() {
 			init();
 			$('#replySaveButton').on('click', function() {
@@ -33,6 +53,8 @@
 			function init() {	
 				//alert("reply init() Start!");
 				var b_num = $('#b_num').val();
+				var loginId = $('#loginId').val();
+				var replyId = '';
 				//alert("b_num : " + b_num);
 				$.ajax({
 					url : "../reply/replyList",
@@ -40,39 +62,51 @@
 					data : {
 						b_num : b_num
 					},
-					dataType : "json",	
+					dataType : "json",
 					success : function(obj){
 						//alert("success obj : " + obj);
+						var replyNum = '';
 						var str = '';
 						str += '<table class="replyListTable">';
 						$.each(obj, function(index, item){
+							replyId = item.r_id;
+							replyNum = item.r_num;
 							str += '<tr>';
 							str += '<td>'+item.r_num+'</td>';
 							str += '<td>'+item.r_id+'</td>';
 							str += '<td>'+item.r_contents+'</td>';
 							str += '<td>'+item.r_date+'</td>';
-							str += '<td><input type="button" value="DELETE" class="btnDel" data-num="'+item.r_num+'" ></td>';
+							/* str += '<c:if test="${replyId eq loginId}">'; */
+							str += '<td><c:if test="${replyId==loginId}"><input type="button" value="DELETE" class="btnDel" data-num="'+item.r_num+'" ></c:if></td>';
+							/* str += '</c:if> '; */
 							str += '</tr>';
 						});
 						str += '</table>';
 						$('#listDiv').html(str);
 						
 						$('.btnDel').on('click', function() {
-							var r_num = $(this).attr('data-num');
-							$.ajax({
-								url : "../reply/replyDelete",
-								type : "POST",
-								data : {
-									r_num : r_num
-								},
-								success : function() {
-									alert("삭제 되었습니다.");
-									init();
-								},
-								error : function(err) {
-									console.log(err);
-								}
-							});
+							
+							alert("replyNum : "+replyNum);
+							alert("loginId : " + loginId);
+							alert("replyID : " + replyId);
+							if (replyId== loginId) {
+								alert("replyID == loginId");
+								var r_num = $(this).attr('data-num');
+								$.ajax({
+									url : "../reply/replyDelete",
+									type : "POST",
+									data : {
+										r_num : r_num
+									},
+									success : function() {
+										alert("삭제 되었습니다.");
+										init();
+									},
+									error : function(err) {
+										console.log(err);
+									}
+								});
+							}
 							
 						});
 					},
@@ -145,8 +179,13 @@
 	</style>
 </head>
 <body>
-	
+
+<%-- <c:if test="${result1.data eq result2.data}">
+
+</c:if> --%>
+	<input type="text">
 	<input type="hidden" id="b_num" name="b_num" value="${board.b_num}">
+	<input type="hidden" id="loginId" name="loginId" value="${sessionScope.loginId}">
 	<%-- ${board} --%>
 	<!-- 글 보기 -->
 	<table border="1" class="readTable">
@@ -176,14 +215,9 @@
 				HashTag
 			</th>
 			<td colspan="3">
-				<%-- <c:if test="${board.originalFileName != null }">
-					<a href="download?b_num=${board.b_num }">	${board.originalFileName }</a>
-					<img width="100px" src="download?b_num=${board.b_num }">
-				</c:if>
-				<c:if test="${board.originalFileName == null }">
-					등록된 파일 없음
-				</c:if> --%>
-				${board.hashTag}
+			   <c:forEach items="${hashtagArr}" var="test" begin="1" end="${fn:length(hashtagArr)}">
+			   		<a href="boardList?searchText=${test}&searchSelect=${searchSelectHashTag}">#${test}</a>
+			   </c:forEach>
 			</td>
 		</tr>
 		<tr>
@@ -191,6 +225,7 @@
 				<td class="tdMenu" colspan="4">
 					<a href="updateForm?b_num=${board.b_num}">RE WRITE</a>
 					<a href="deleteBoard?b_num=${board.b_num}">DELETE</a>
+					<a href="javascript:delBoard(${board.b_num })">DEL</a>
 					<!-- <input type="button" value="LIKE♡" id="likeIt"> -->
 				</td>
 			</c:if>

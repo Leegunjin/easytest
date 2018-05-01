@@ -37,7 +37,7 @@ public class BoardViewController {
    final int countPerPage = 10;
    final int pagePerGroup = 10;
    
-    private static final Logger logger = LoggerFactory.getLogger(BoardViewController.class);
+   private static final Logger logger = LoggerFactory.getLogger(BoardViewController.class);
    
     @RequestMapping(value="boardList", method=RequestMethod.GET)
 	public String boardList(Model model
@@ -47,6 +47,7 @@ public class BoardViewController {
 		logger.info("boardList START");
 		System.out.println("searchText : " + searchText);
 		System.out.println("searchSelect : " + searchSelect);
+		
 		HashMap<String, Object> searchMap = new HashMap<>();
 		searchMap.put("searchSelect", searchSelect);
 		searchMap.put("searchText", searchText);
@@ -55,16 +56,47 @@ public class BoardViewController {
 		System.out.println("total : " + total);
 		PageNavigator navi = new PageNavigator(countPerPage, pagePerGroup, page, total);
 		ArrayList<Board> list = null;
-		/*list = dao.selectBoardAll(searchMap, navi.getStartRecord(),navi.getCountPerPage());*/
 		list = dao.selectBoardAll(searchMap, navi.getStartRecord(), navi.getCountPerPage());
+		
+		/*String[] searchTextArr = null;
+		if (searchText != null) {
+			searchTextArr = searchText.split("#");
+			for (int i = 0; i < searchTextArr.length; i++) {
+				System.out.println("searchTextArr[i] : "+searchTextArr[i]);
+			}
+		}*/
+		
+		/*model.addAttribute("searchTextArr", searchTextArr);*/
 		model.addAttribute("list", list);
 		model.addAttribute("navi", navi);
 		model.addAttribute("searchText", searchText);	
 		model.addAttribute("searchSelect", searchSelect);
+		model.addAttribute("searchSelectHashTag", "hashTag");
 		System.out.println("list"+list);
 		logger.info("boardList END");
 		return "board/board";
 	}
+   
+   @RequestMapping(value="boardList2", method=RequestMethod.GET)
+   public String boardList2(Model model
+			,@RequestParam(value="searchText", defaultValue="")String searchText
+			,@RequestParam(value="searchSelect", defaultValue="hashTag") String searchSelect
+			,@RequestParam(value="page", defaultValue="1")int page){
+	   logger.info("boardList2 START");
+	   
+	   System.out.println("searchText : " + searchText);
+	   System.out.println("searchSelect : " + searchSelect);
+	   String[] searchTextArr = null;
+	   if (searchText != null) {
+		   searchTextArr = searchText.split("#");
+		   for (int i = 0; i < searchTextArr.length; i++) {
+				System.out.println("searchTextArr[i] : "+searchTextArr[i]);
+		   }
+	   }
+	   model.addAttribute("searchTextArr", searchTextArr);
+	   logger.info("boardList2 END");
+	   return "board/board";
+   }
    
    @RequestMapping(value="writeForm", method=RequestMethod.GET)
    public String writeForm(){
@@ -106,17 +138,31 @@ public class BoardViewController {
 		return "redirect:boardList";
 	}
    
-   @RequestMapping(value="readContent", method=RequestMethod.GET)
+    @RequestMapping(value="readContent", method=RequestMethod.GET)
 	public String readContent(int b_num, Model model){
 		logger.info("readContent START");
 			
 		Board board = dao.selectBoardOne(b_num);
 		model.addAttribute("board", board);
+		System.out.println("board.getHashTag() : "+board.getHashTag());
+		
+		if (board.getHashTag() != null) {
+			String[] hashtagArr = board.getHashTag().split("#");
+			/*System.out.println("hashtagArr : "+hashtagArr);*/
+			/*for (int i = 0; i < hashtagArr.length; i++) {
+				System.out.println("hashtagArr : "+hashtagArr[i]);
+			}*/
+			model.addAttribute("hashtagArr", hashtagArr);
+			
+		}
+		
+		model.addAttribute("searchSelectHashTag", "hashTag");
+		
 		logger.info("readContent END");
 		return "board/read";
 	}
    
-   @RequestMapping(value="deleteBoard", method=RequestMethod.GET)
+    @RequestMapping(value="deleteBoard", method=RequestMethod.GET)
 	public String deleteBoard(int b_num, HttpSession session){
 		logger.info("deleteBoard START");
 		
@@ -138,7 +184,7 @@ public class BoardViewController {
 		return "redirect:boardList";
 	}
    
-   @RequestMapping(value="updateForm", method=RequestMethod.GET)
+    @RequestMapping(value="updateForm", method=RequestMethod.GET)
 	public String updateForm(int b_num, Model model, HttpSession session){
 		logger.info("updateForm START");
 		String id = (String)session.getAttribute("loginId");

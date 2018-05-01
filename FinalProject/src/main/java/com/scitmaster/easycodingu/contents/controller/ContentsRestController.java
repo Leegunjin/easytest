@@ -50,6 +50,7 @@ public class ContentsRestController {
 	      System.out.println("슬라이드 번호 : "+slideNum);			//슬라이드 번호 확인
 	      
 	      HashMap<String, Object> resultMap = new HashMap<>();
+	      resultMap.put("userAnswerFull", userAnswer);
 	      
 	      if (slideNum == 715 || slideNum == 716 || slideNum == 717) {
 	    	  resultMap.put("result", true);
@@ -67,7 +68,6 @@ public class ContentsRestController {
 	      boolean result = true;								//HashMap에 담아갈 정답, 오답 여부
 	      ArrayList<String> errorReason = new ArrayList<>();	//에러 이유 알려주는 ArrayList	
 	      
-	      
 	      /* 배열에 넣은 정답을 ArrayList에 넣기 */
 	      for(int i = 0; i < answerArr.length; i++) {					//배열 길이만큼 돌면서 하나씩 꺼낸다. 
 	    	 System.out.println("answerArr["+i+"] : " + answerArr[i]); 	//꺼내는 것들을 확인
@@ -83,21 +83,11 @@ public class ContentsRestController {
 		    	  result = false;
 		    	  resultMap.put("result", result);
 				  //errorReason.add("세미콜론(;)이 없습니다.");
-		    	  errorReason.add(";이 없습니다.");
+		    	  errorReason.add(";(세미콜론)이 없습니다.");
 				  resultMap.put("errorReason", errorReason);
 				  return resultMap;
 			  }
 	      }
-	      /* equal 체크 */
-	      /*boolean checkEqual = userAnswer.contains("=");
-	      if (checkEqual == false) {
-	    	  result = false;
-	    	  resultMap.put("result", result);
-			  //errorReason.add("Equal(=)이 없습니다.");
-	    	  errorReason.add("문법에 맞지 않습니다. ");
-			  resultMap.put("errorReason", errorReason);
-			  return resultMap;
-		  }*/
 	      
 	      /* 공백으로 문자열 나누기 */
 	      String[] spaceStr = null;
@@ -108,37 +98,12 @@ public class ContentsRestController {
 		    	  System.out.println("spaceStr["+i+"] : "+spaceStr[i]);
 			  }
 	      }
-	      /*if ( !(2 <= arStr.length && arStr.length <= 5)) {
-	    	  result = false;
-			  resultMap.put("result", result);
-			  errorReason.add("형식에 맞게 입력해 주세요. ");
-			  resultMap.put("errorReason", errorReason);
-			  //resultMap.put("errorReason", "형식에 맞게 입력해 주세요.");
-			  return resultMap;
-		  }*/
-	      
-	      /* 입력받은 문장의 종류 판별하기 */
-	      String contentType = "";
-	      if (711 <= slideNum && slideNum <= 713 ) {
-		      String userAnswerTwo = userAnswer.substring(0,2).toLowerCase();
-		      System.out.println("userAnswerTwo : " + userAnswerTwo);
-		      Contents stringCheckContents = dao.selectContent(998);
-		      String stringCheck = stringCheckContents.getC_answer();
-		      String[] stringCheckArr = stringCheck.split("/");
-		      for (int i = 0; i < stringCheckArr.length; i++) {
-		    	  System.out.println("stringCheckArr[i] : "+stringCheckArr[i].substring(0, 2).toLowerCase());
-		    	  if (userAnswerTwo.equals(stringCheckArr[i].substring(0, 2).toLowerCase())) {
-		    		 contentType = stringCheckArr[i];
-		    		 System.out.println("contentType : " + contentType);
-				  }
-		      }
-	      }
 	      
 	      if (711 <= slideNum && slideNum <= 713 ) {
 	      
 	      String splitUA1int, splitUA2int, splitUA3int, splitUA4int, splitUA5int;
-	      switch (contentType) {
-				case "int":
+	      /*switch (contentType) {*/
+				/*case "int":*/
 					//int 타입 선언 생성 5개 블록
 					
 					
@@ -148,40 +113,40 @@ public class ContentsRestController {
 				    	result = false;
 				    	resultMap.put("result", result);
 						//errorReason.add("Equal(=)이 없습니다.");
-				    	errorReason.add("문법에 맞지 않습니다. =가 없습니다. ");
+				    	errorReason.add("문법에 맞지 않습니다. =(equal)이 없습니다. ");
 						resultMap.put("errorReason", errorReason);
 						return resultMap;
 					}
 					
 					//1. 자료형 자르기- int OR Integer
 					String testInt = userAnswer.substring(0,4);
-				    String testInteger = userAnswer.substring(0,8);
+				    /*String testInteger = userAnswer.substring(0,8);*/
 				    System.out.println("testInt : "+testInt);
-				    System.out.println("testInteger : "+testInteger);
+				    /*System.out.println("testInteger : "+testInteger);*/
 				    splitUA1int = "";
 				    if (testInt.toLowerCase().equals("int ")) {
 				    	System.out.println("int YES");
 				        splitUA1int = "int ";
-				    } else if (testInteger.toLowerCase().equals("integer ")) {
+				    }/* else if (testInteger.toLowerCase().equals("integer ")) {
 				        System.out.println("Integer YES");
 				        splitUA1int = "Integer ";
-					}
+					}*/
 				    System.out.println("splitUA1(자료형) : "+splitUA1int);
 				    
 				    //1-1. 자료형 에러 
-				    if (!(splitUA1int.toLowerCase().equals(testArr.get(0))) && !(spaceStr[0].toLowerCase().equals("integer"))) {
+				    if (!(testInt.toLowerCase().equals(testArr.get(0))) && !(spaceStr[0].toLowerCase().equals("integer"))) {
 				    	result = false;
 				    	errorReason.add("int형이 아닙니다.");
-					} else if (splitUA1int.toLowerCase().equals(testArr.get(0))) {
-						if (!(splitUA1int.substring(0, 1).equals("i")) && splitUA1int.substring(0, 1).equals("I")) {
+					} else if (testInt.toLowerCase().equals(testArr.get(0))) {
+						if (!(testInt.substring(0, 1).equals("i")) && testInt.substring(0, 1).equals("I")) {
 							result = false;
 				    		errorReason.add("int의 i는 소문자로 써야합니다. ");
 						}
-					    if (!(splitUA1int.substring(1, 2).equals("n")) && splitUA1int.substring(1, 2).equals("N")) {
+					    if (!(testInt.substring(1, 2).equals("n")) && testInt.substring(1, 2).equals("N")) {
 				    	    result = false;
 				    		errorReason.add("int의 n은 소문자로 써야합니다. ");
 						}
-					    if (!(splitUA1int.substring(2, 3).equals("t")) && splitUA1int.substring(2, 3).equals("T")) {
+					    if (!(testInt.substring(2, 3).equals("t")) && testInt.substring(2, 3).equals("T")) {
 				    		result = false;
 				    		errorReason.add("int의 t는 소문자로 써야합니다. ");
 						}
@@ -202,7 +167,7 @@ public class ContentsRestController {
 					}  
 				    
 				    //2. 변수명
-				    userAnswer = userAnswer.replaceFirst(splitUA1int, "");	    //userAnswer에서 splitUA1만큼 제거
+				    userAnswer = userAnswer.replaceFirst(testInt, "");	    //userAnswer에서 splitUA1만큼 제거
 				    userAnswer = userAnswer.trim();
 				    System.out.println("userAnswer :"+userAnswer);
 				    int equalIndexNum = userAnswer.indexOf("=");				//=의 index 꺼냄
@@ -330,126 +295,9 @@ public class ContentsRestController {
 				    resultMap.put("result", result);
 				    resultMap.put("userAnswer", userAnswer);
 				    resultMap.put("errorReason", errorReason);
-				    break;
+				    /*break;*/
 					    
-				/*case "String":
-					//String 선언 생성 문법 블록 5개
-					String splitUA1String, splitUA2String, splitUA3String, splitUA4String, splitUA5String;	
-					
-					//0. equal 체크
-					boolean equalCheckString = userAnswer.contains("=");
-				    if (equalCheckString == false) {
-				    	result = false;
-				    	resultMap.put("result", result);
-						//errorReason.add("Equal(=)이 없습니다.");
-				    	errorReason.add("String 선언, 생성 문법에 맞지 않습니다. 등호(=)가 없습니다. ");
-						resultMap.put("errorReason", errorReason);
-						return resultMap;
-					}
-				    
-				    //1. String 자료형 체크
-				    String StringCheck = userAnswer.substring(0,7);
-				    System.out.println("StringCheck : "+StringCheck);
-				    splitUA1String = "";
-				    if (StringCheck.toLowerCase().equals("string ")) {
-				    	System.out.println("String YES");
-				    	splitUA1String = StringCheck;
-				    }
-				    System.out.println("splitUA1String(자료형) : "+splitUA1String);
-				    
-				    //1-1. String 자료형 에러
-				    if (!(splitUA1String.toLowerCase().equals(testArr.get(0)))) {
-				    	result = false;
-				    	errorReason.add("String형이 아닙니다.");
-					} else if (splitUA1String.toLowerCase().equals("string ")) {
-						System.out.println("splitUA1String.substring(0, 1) : "+splitUA1String.substring(0, 1));
-						if (!(splitUA1String.substring(0, 1).equals("S")) && splitUA1String.substring(0, 1).equals("s")) {
-							System.out.println("String S 대문자 검사");
-							result = false;
-				    		errorReason.add("String의 S는 대문자로 써야합니다. ");
-						}
-						//String valueRegex = "^[0-9]+$";
-						Pattern valuePattern = Pattern.compile("^[0-9]+$");
-						Matcher valueMatch = valuePattern.matcher(splitUA4);
-						String tringCheck = splitUA1String.substring(1, 6);
-						Pattern tringCheckPattern = Pattern.compile("[a-z]");
-						Matcher tringCheckeMatch = tringCheckPattern.matcher(tringCheck);
-						if (tringCheckeMatch.find() == false) {
-							result = false;
-							errorReason.add("String에서 S를 제외한 나머지 문자는 소문자로 작성하여야 합니다. "); 
-						}
-					} 
-				    
-				    //2. 변수명
-				    userAnswer = userAnswer.replaceFirst(splitUA1String, "");	    //userAnswer에서 splitUA1만큼 제거
-				    userAnswer = userAnswer.trim();
-				    System.out.println("userAnswer :"+userAnswer);
-				    int equalIndexNumString = userAnswer.indexOf("=");				//=의 index 꺼냄
-				    splitUA2String = userAnswer.substring(0, equalIndexNumString);	//=까지 문자열 자름
-				    splitUA2String = splitUA2String.trim();
-				    String spaceRegexString = "\\s";
-				    Pattern spacepatternString = Pattern.compile(spaceRegexString);
-					Matcher spacematchString = spacepatternString.matcher(splitUA2String);	
-					if (spacematchString.find() == true) {
-					    result = false;
-					    errorReason.add("변수명에는 공백이 들어갈 수 없습니다. ");
-					}
-				    System.out.println("splitUA2String (변수명) :" + splitUA2String);	
-				    
-				    //2-1 변수명 체크
-				    if (splitUA2String.isEmpty()) {
-				    	  result = false;
-			    		  errorReason.add("변수명이 없습니다.");
-					} else if (!(splitUA2String.isEmpty())) {
-						Contents keywordContent = dao.selectContent(996);	
-						String keyWord = keywordContent.getC_answer();
-						String[] keywordarr = keyWord.split("/");
-						for (int i = 0; i < keywordarr.length; i++) {
-							//System.out.println("keywordarr[i] : "+keywordarr[i]);
-						    if (keywordarr[i].equals(splitUA2String.toLowerCase())) {
-						    	result = false;
-								errorReason.add("키워드는 변수명으로 사용할 수 없습니다. ");
-							}
-						}
-						String upperCaseRegex = "[A-Z]";
-						Pattern pattern = Pattern.compile(upperCaseRegex);
-						Matcher match = pattern.matcher(splitUA2String.substring(0, 1));
-						if (match.find() == true) {
-							result = false;
-				    		errorReason.add("변수명의 첫글자는 소문자로 써야 합니다.  ");
-						}
-						String numberRegex = "[0-9]";
-						Pattern pattern2 = Pattern.compile(numberRegex);
-						Matcher match2 = pattern2.matcher(splitUA2String.substring(0, 1));
-						if (match2.find() == true) {
-							result = false;
-							errorReason.add("변수명의 첫글자는 숫자가 올 수 없습니다. ");
-						}
-					}
-				    
-					break;*/
-				case "double":
-					
-					break;
-				case "boolean":
-					
-					break;
-				case "for":
-					
-					break;
-				case "if":
-					
-					break;
-				case "switch":
-					
-					break;
-				case "while":
-					
-					break;
-			
-				default:
-					break;
-		  }
+				
 	      }
 	      /* 화면에서 가져온 사용자 답을 처리 */
 	      if (slideNum == 711) {
@@ -810,6 +658,71 @@ public class ContentsRestController {
 		blankMap.put("result", result);
 		return blankMap;
 	}*/
+	
+	   /*@RequestMapping(value = "contents5", method = RequestMethod.POST)
+	   public HashMap Contents31(String cNum, String userAnswer) {
+	   
+	      HashMap<String, Object> blankMap = new HashMap<>();
+	      boolean result = false;
+	      
+	      // 컨텐츠넘버
+	      String c_num = "31" + cNum;
+	      logger.info(c_num);
+
+	      // 번호로 컨텐츠 가져오기
+	      Contents contents31 = dao.selectContent(Integer.parseInt(c_num));
+	      // 컨텐츠의 정답 불러오기
+	      String answer = contents31.getC_answer();
+
+	      // 잘못된 정답
+	      String wrongAnswer = "";
+	      // 맞은 정답
+	      String rightAnswer = "";
+	      // 에러 메세지
+	      String errorReason = "";
+
+	      if (answer.equals(userAnswer)) {
+	         result = true;
+	         blankMap.put("result", result);
+	      } else {
+	         result = false;
+	         wrongAnswer = userAnswer;
+	         rightAnswer = answer;
+
+	         switch (answer) {
+	            case "+":
+	               errorReason = "두 수를 더해야 하는 관계이므로  + 가 정답입니다.";
+	               break;
+	            case "-":
+	               errorReason = "두 수를 더해야 하는 관계이므로  - 가 정답입니다.";
+	               break;
+	            case "*":
+	               errorReason = "두 수를 곱해야 하는 관계이므로  * 가 정답입니다. ";
+	               break;
+	            case "/":
+	               errorReason = "두 수를 나누어야 하는 관계이므로  / 가 정답입니다. ";
+	               break;
+	            case "%":
+	               errorReason = "퍼센트 관계 이므로  % 를 써야합니다. ";
+	               break;
+	            case "==":
+	               errorReason = "두개가 같으므로  == 가 정답입니다. ";
+	               break;
+	            case "!=":
+	               errorReason = "두개가 다르므로  != 가 정답입니다. ";
+	               break;
+	            default:
+	               break;
+	         }
+	      }
+
+	      System.out.println("errorReason : " + errorReason);
+	      blankMap.put("wrongAnswer", wrongAnswer);
+	      blankMap.put("rightAnswer", rightAnswer);
+	      blankMap.put("errorReason", errorReason);
+	      blankMap.put("result", result);
+	      return blankMap;
+	   }*/
 
 	 
 		@RequestMapping(value = "contents6", method = RequestMethod.POST)
