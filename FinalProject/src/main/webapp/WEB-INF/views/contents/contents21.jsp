@@ -8,9 +8,6 @@
 	rel="stylesheet">
 <link rel="stylesheet" type="text/css"
 	href="../resources/css/styleContents21.css?ver=1">
-<script type="text/javascript"
-	src="<c:url value="/resources/js/jquery-3.2.1.js"></c:url>"></script>
-
 <style type="text/css">
 .home {
 	margin-bottom: 10px;
@@ -54,13 +51,14 @@
 
 *, html, body {
 	font-family: 'Jua', sans-serif;
+	margin: 0;
+	padding: 0;
 }
 
 * {
 	-webkit-box-sizing: border-box;
 	box-sizing: border-box;
-	text-align: center;
-	margin-left: -10px;
+}
 
 h1, h2 {
 	text-align: center;
@@ -71,14 +69,15 @@ h1 {
 	font-family: 'Jua', sans-serif;
 	line-height: 30px;
 	font-weight: bold;
+	margin-top: 59px;
 }
 
 h2 {
-	font-size: 18px;
+	font-size: 20px;
 	font-family: 'Jua', sans-serif;
-	line-height: 25px;
-	margin-left: -3px;
-	margin-top: 26px;
+	line-height: 88px;
+	margin-top: 14px;
+	background-color: #37B595;
 }
 
 button {
@@ -92,8 +91,8 @@ button {
 	color: #FFFFFF;
 	text-transform: capitalize;
 	font-size: 18px;
-	font-family: 'Jua', sans-serif;
 	line-height: 22px;
+	font-family: 'Jua', sans-serif;
 	outline: none;
 	cursor: pointer;
 	-webkit-transition: all 0.2s;
@@ -115,52 +114,63 @@ button.previous:hover {
 .full-width-container {
 	width: 100%;
 	min-width: 320px;
-	max-height: 506px;
+	margin-top: -15px;
+}
+
+.question-container {
+	max-width: 900px;
+	width: 100%;
+	margin: 0 auto;
 }
 
 .sized-container {
-	max-width: 933px;
+	max-width: 900px;
 	width: 100%;
 	margin: 0 auto;
 }
 
 .slide-container {
+	margin: 0;
+	padding: 0 1em 0;
+	padding-left: 0px;
 	position: relative;
 	left: 0;
 	overflow: hidden;
-	height: 500px;
-	width: 7900px;
+	width: 7840px;
 }
 
 .slide {
 	float: left;
+	list-style-type: none;
+	height: 485px;
 }
 
 .slide .sized-container {
-	padding: 7px 72px;
+	padding-top: -8px;
+	padding-bottom: 20px;
 }
 
 .button-container {
 	border-top: 1px solid black;
 	overflow: hidden;
-	margin-left: 260px;
+	padding-top: 9px;
 }
 
 .button-container button {
 	float: right;
-	margin-top: 20px;
 	margin-left: 30px;
 }
 
 .pagination-container {
-	margin-top: 120px;
+	height: 18vh;
 }
 
 .pagination {
 	width: 100%;
+	height: 100%;
 	text-align: center;
-	margin-left: 37px;
-	padding: 0 0px;
+	padding: 0 25px;
+	padding-top: 60px;
 }
 
 .indicator {
@@ -193,7 +203,7 @@ button.previous:hover {
 }
 
 .indicator.complete:after {
-	content: "✓";
+	content: "?";
 	position: absolute;
 	color: #37B595;
 	left: 4px;
@@ -203,7 +213,7 @@ button.previous:hover {
 }
 
 .progress-bar-container {
-	width: 10%;
+	width: 5%;
 	height: 4px;
 	display: inline-block;
 	background-color: lightgray;
@@ -236,13 +246,14 @@ div.resultMsg>img {
 	font-weight: bolder;
 	width: 140px;
 	margin-left: 269px;
-	margin-top: -59px;
+	margin-top: -26px;
 	height: 80px;
 }
 
 
 </style>
-
+<script type="text/javascript"
+	src="<c:url value="/resources/js/jquery-3.2.1.js"></c:url>"></script>
 <script type="text/javascript">
 	$(function() {
 		var currentSlide = 0;

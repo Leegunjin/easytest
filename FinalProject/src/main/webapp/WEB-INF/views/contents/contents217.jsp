@@ -29,8 +29,8 @@ function btnClick3(){
 		<div class="radio-tile-group">
 			<h2 style="height: 20px;">자료형 String란 ?</h2>
 			<div class="imgdiv">
-				<img alt="" src="../resources/img/stringbox.png" width="200px;"
-					height="200px;" id="stringimg"  onclick="btnClick3()" style="cursor: pointer;">
+				<img alt="" src="../resources/img/stringbox.png" width="180px;"
+					height="180px;" id="stringimg"  onclick="btnClick3()" style="cursor: pointer;">
 			</div>
 			<div class="resulta" id="resulta"></div>
 		</div>

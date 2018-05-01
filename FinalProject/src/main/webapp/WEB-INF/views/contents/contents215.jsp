@@ -8,7 +8,7 @@
 
 .result>p{
  margin-left: 33px;
-margin-top: 100px;
+margin-top: 120px;
 font-size: 30px;
 font-family: 'Jua', sans-serif;
 }
@@ -28,8 +28,8 @@ function btnClick1(){
 		<div class="radio-tile-group">
 			<h2 style="height: 20px;">자료형 INT란 ?</h2>
 			<div class="imgdiv">
-				<img alt="" src="../resources/img/intbox.png" width="200px;"
-					height="200px;" id="intimg"  onclick="btnClick1()" style="cursor: pointer;">
+				<img alt="" src="../resources/img/intbox.png" width="180px;"
+					height="180px;" id="intimg"  onclick="btnClick1()" style="cursor: pointer;">
 			</div>
 			<div class="result" id="result"></div>
 		</div>

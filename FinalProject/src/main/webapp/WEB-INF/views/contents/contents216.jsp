@@ -26,8 +26,8 @@ function btnClick2(){
 		<div class="radio-tile-group">
 			<h2 style="height: 20px;">자료형 Double란 ?</h2>
 			<div class="imgdiv">
-				<img alt="" src="../resources/img/doublebox.png" width="200px;"
-					height="200px;" id="doubleimg"  onclick="btnClick2()" style="cursor: pointer;">
+				<img alt="" src="../resources/img/doublebox.png" width="180px;"
+					height="180px;" id="doubleimg"  onclick="btnClick2()" style="cursor: pointer;">
 			</div>
 			<div class="results" id="results"></div>
 		</div>

@@ -18,17 +18,17 @@ body {
 
 .radio-tile-group {
 	width: 1000px;
-	height: 500px;
-	overflow: hidden;
-	text-align: center;
-	display: inline-block;
-	  margin-top: -27px;
-	  margin-left: -7px;
+    height: 500px;
+    overflow: hidden;
+    text-align: center;
+    display: inline-block;
+    margin-top: -44px;
+    margin-left: -74px;
 	 
 }
 
 .radio-tile-group .imgdiv {
-	
+	margin-top: 47px;
 }
 
 .radio-tile-group .input-container {

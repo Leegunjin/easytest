@@ -29,8 +29,8 @@ function btnClick4(){
 		<div class="radio-tile-group">
 			<h2 style="height: 20px;">자료형 Boolean란 ?</h2>
 			<div class="imgdiv">
-				<img alt="" src="../resources/img/booleanbox.png" width="200px;"
-					height="200px;" id="booleanimg"  onclick="btnClick4()" style="cursor: pointer;">
+				<img alt="" src="../resources/img/booleanbox.png" width="180px;"
+					height="180px;" id="booleanimg"  onclick="btnClick4()" style="cursor: pointer;">
 			</div>
 			<div class="resultb" id="resultb"></div>
 		</div>

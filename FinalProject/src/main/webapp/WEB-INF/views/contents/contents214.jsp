@@ -14,8 +14,8 @@
 		<div class="radio-tile-group">
 			<h2 style="height: 20px;">자료형에 알맞는 변수를 선택하세요</h2>
 			<div class="imgdiv">
-				<img alt="" src="../resources/img/booleanbox.png" width="200px;"
-					height="200px;" id="booleanimg">
+				<img alt="" src="../resources/img/booleanbox.png" width="180px;"
+					height="180px;" id="booleanimg">
 			</div>
 			<div class="input-container">
 				<input value="double" class="radio-button" type="radio"

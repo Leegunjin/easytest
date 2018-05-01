@@ -13,8 +13,8 @@
 		<div class="radio-tile-group">
 			<h2 style="height: 20px;">자료형에 알맞는 변수를 선택하세요</h2>
 			<div class="imgdiv">
-				<img alt="" src="../resources/img/stringbox.png" width="200px;"
-					height="200px;" id="stringimg">
+				<img alt="" src="../resources/img/stringbox.png" width="180px;"
+					height="180px;" id="stringimg">
 			</div>
 
 			<div class="input-container">
