@@ -45,7 +45,14 @@
 	      function selectLevelPage() { location.href = "contents/contentsHome"; }
 	      function joinForm() { location.href = "person/joinForm"; }  
 	      function loginForm() { location.href = "person/loginForm"; }  
-	      function logout() { location.href = "person/logout"; } 
+	      unction logout(loginId) { 
+	    	  var result = loginId.includes('@gmail.com');
+	    	  if(result) {
+	    		  window.open('https://accounts.google.com/logout', 'popup', 'z-lock=yes, width=600, height=400');
+	    	  }
+	    	  location.href = "person/logout"; 
+
+	    	} 
 	      function mypageUser() { location.href = "person/mypageUser"; } 
 	      function board() { location.href = "board/boardList"; } 
 	      function testPage() { location.href = "person/test67"; }
@@ -261,7 +268,7 @@
 			  		<div class="container">
 						
 						<div class="wrapper5">
-				    		<div class="card" onclick="logout();"> 
+				    		<div class="card" onclick="logout('${sessionScope.loginId}');"> 
 				    			<i class="fal fa-arrow-right"></i> 
 				    		</div>
 				  		</div>

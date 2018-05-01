@@ -38,4 +38,25 @@
 			ref="sqlSessionFactory" />
 	</bean>
 	
+	<!-- 메일 보내기 -->
+	<bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+		<property name="host" value="smtp.gmail.com"/>
+		<!-- 465번 포트(SSL 사용) 587번 포트(TLS 사용) 25번 포트(SSL 사용) -->
+		<property name="port" value="587"/>
+		<property name="username" value="remela11hee@gmail.com"/>
+		<property name="password" value="gmlehd11"/>
+		
+		<property name="javaMailProperties">
+			<props>
+				<prop key="mail.transport.protocol">smtp</prop>
+				<prop key="mail.smtp.auth">true</prop>
+				<prop key="mail.smtp.starttls.enable">true</prop>
+				<prop key="mail.debug">true</prop>			
+			</props>
+		</property>
+	</bean>	
+	
+	<!-- <bean id="loginInterceptor" class="com.scitmaster.easycodingu.common.interceptor.LoginInterceptor"/> -->
+	
+	
 </beans>

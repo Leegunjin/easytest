@@ -24,7 +24,9 @@
 	
 	<context:component-scan base-package="com.scitmaster.easycodingu" />
 	
-	<beans:bean id="loginInterceptor" class="com.scitmaster.easycodingu.common.interceptor.LoginInterceptor"></beans:bean>
+
+	
+<!-- 	<beans:bean id="loginInterceptor" class="com.scitmaster.easycodingu.common.interceptor.LoginInterceptor"></beans:bean>
 	<mvc:interceptors>
 		<mvc:interceptor>
 			<mvc:mapping path="/contents/contentsHome"/>
@@ -58,5 +60,6 @@
 			<mvc:mapping path="/person/modify"/>
 			<beans:ref bean="loginInterceptor"/>	
 		</mvc:interceptor>
-	</mvc:interceptors>
+	</mvc:interceptors> --> 
+	
 </beans:beans>

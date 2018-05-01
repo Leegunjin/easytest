@@ -6,19 +6,22 @@
 <head>
    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
    <title>[ contents42.jsp ]</title>
+   
+    <link href="https://fonts.googleapis.com/css?family=Jua" rel="stylesheet">
 
 <!-- CSS -->
 <style type="text/css">
 @charset "UTF-8";
+/* HTML, BODY 전체 */
 *, html, body {
-	font-family: "TrebuchetMS", trebuchet, sans-serif;
+	font-family: 'Jua', sans-serif;
 }
 * {
 	-webkit-box-sizing: border-box;
 	box-sizing: border-box;
 }
 
-/*  CHECK & NEXT Button */
+/* CHECK & NEXT Button */
 button {
 	-webkit-appearance: none;
 	-moz-appearance: none;
@@ -39,6 +42,8 @@ button {
 button:hover {
 	background-color: #1A7F75;
 }
+
+/* PREVIOUS Button */
 button.previous {
 	background-color: #A2ACAF;
 }
@@ -54,18 +59,18 @@ button.previous:hover {
 }
 /* 각 슬라이드 컨텐츠 컨테이너 */
 .sized-container {
-	max-width: 900px;
+	max-width: 800px;
 	width: 100%;
 	margin: 0 auto;
 }
-/* 전체 슬라이드의 컨테이너 */
+/* 전체 슬라이드의 내용부분 컨테이너 */
 .slide-container {
 	margin: 0; 
-	padding: 0 1em 0;
+	padding: 0px;
 	left: 0;
 	position: relative;
 	overflow: hidden;
-	width: 10780px;
+	width: 13720px;
 }
 
 /* li tag - 각 컨텐츠*/
@@ -74,6 +79,7 @@ button.previous:hover {
 	list-style-type: none;
 }
 
+/* 각 컨텐츠 및 */
 .slide .sized-container {
 	padding: 25px 0px;
 }
@@ -129,7 +135,7 @@ button.previous:hover {
 	color: #37B595;
 }
 .indicator.complete:after {
-	content: "✓";
+	content: "?";
 	position: absolute;
 	color: #37B595;
 	left: 4px;
@@ -138,7 +144,7 @@ button.previous:hover {
 }
 
 .progress-bar-container {
-	width: 6.5%;
+	width: 4%;
 	height: 4px;
 	display: inline-block;
 	background-color: lightgray;
@@ -192,12 +198,14 @@ td{
 
 /*예제 답 선택 Button*/
 .button-one {
-	padding:20px 60px;
-	outline: none;
+	width : 180px;
+	padding:20px;
+	outline0: none;
 	background-color: #8BBCFF;
 	border: none;
 	border-radius:5px;
 	box-shadow: 0 9px #95a5a6;
+	font-size: 25px;
 }
 
 .button-one:hover{
@@ -217,7 +225,7 @@ td{
 	margin: 0 auto;
 	height: 130px;
 	text-transform: uppercase;
-	font-family: sans-serif;
+	font-family: 'Jua', sans-serif;
 }
 
 .image_name {
@@ -279,6 +287,115 @@ td{
 	-webkit-perspective: 600px; 
 }
 
+/* Error Button */
+a.btn{
+     width:150px;
+     height:50px;
+     display:block;
+     margin: 24px 5px 0 -75px;
+     position:absolute;
+     top:86.5%; left:42%;
+     font:'Jua', sans-serif;
+     font-weight:700;
+     text-align:center;
+     text-decoration:none;
+     color:#fff;
+     border-radius:5px;
+     background:rgba(217,67,86,1);
+     font-size: 20px;
+     padding-top: 10px;
+   }
+   
+.modal-wrapper{
+     width:100%;
+     height:100%;
+     position:fixed;
+     top:0; left:0;
+     /* background:rgba(255,257,153,0.75); */
+     visibility:hidden;
+     opacity:0;
+     -webkit-transition: all 0.25s ease-in-out;
+     -moz-transition: all 0.25s ease-in-out;
+     -o-transition: all 0.25s ease-in-out;
+     transition: all 0.25s ease-in-out;
+   }
+
+.modal-wrapper.open{
+     opacity:1;
+     visibility:visible;
+   }
+   
+.modal{
+     width:600px;
+     height:400px;
+     display:block;
+     margin:50% 0 0 -300px;
+     position:relative;
+     top:50%; left:50%;
+     background:#f4f5f7;
+     opacity:0;
+     -webkit-transition: all 0.5s ease-in-out;
+     -moz-transition: all 0.5s ease-in-out;
+     -o-transition: all 0.5s ease-in-out;
+     transition: all 0.5s ease-in-out;
+   }
+   
+.modal-wrapper.open .modal{
+     margin-top:-200px;
+     opacity:1;
+   }
+   
+.head1{
+     width:100%;
+     height:40px;
+     padding:1.5em 5%;
+     overflow:hidden;
+     /* background:#01bce5; */
+     background-color: rgba(217,67,86,1);
+     font-size: 40px;
+     font-family:  'Jua', sans-serif;
+     color: white;
+   }
+   
+.btn-close{
+     width:32px;
+     height:32px;
+     display:block;
+     float:right;
+   }
+   
+.btn-close::before, .btn-close::after{
+     content:'';
+     width:32px;
+     height:6px;
+     display:block;
+     background:#fff;
+   }
+   
+.btn-close::before{
+     margin-top:12px;
+     -webkit-transform:rotate(45deg);
+     -moz-transform:rotate(45deg);
+     -o-transform:rotate(45deg);
+     transform:rotate(45deg);
+   }
+
+.btn-close::after{
+     margin-top:-6px;
+     -webkit-transform:rotate(-45deg);
+     -moz-transform:rotate(-45deg);
+     -o-transform:rotate(-45deg);
+     transform:rotate(-45deg);
+   }
+   
+#contentErrDiv{
+      font-family: 'Jua', sans-serif;
+      font-size: 20px;
+      color: #393E46;
+      padding-left: 5%;
+      padding-top: 5%;
+}
+
 </style>
 
 <!-- JavaScript -->
@@ -332,9 +449,7 @@ td{
      // 정답 체크
      function goToCheck() {
 		
-		alert(currentSlide);
-         var answer = $(this).val();
-         alert(answer);
+         var userAnswer = $(this).val();
          var cNum = currentSlide + 1;
          
           $.ajax({
@@ -344,33 +459,47 @@ td{
                 dataType : "json",
                 data : JSON.stringify ({
                    cNum : cNum
-                   , answer : answer
+                   , userAnswer : userAnswer
                 }),
-                async: false,
-                success : function(result) {
-                     alert('success');
-                     alert(result);
+                success : function(blankMap) {
                      $('.answer' + currentSlide).attr('disabled', 'disabled');
                      var resultStr = '';
                     
-                   if (result == false) {
-                     resultStr = '<div class="resultMsg"><img src="../resources/img/noanswer.png" width="250px"></div>';
-                     //resultStr += '<div class="resultMsg">정답입니다.</div>';
+                   if (blankMap.result == false) {
+                	   resultStr = '<div class="resultMsg"><img src="../resources/img/noanswer.png" width="250px"></div><br>';
+                	   resultStr += '<div class="page-wrapper"><a class="btn trigger" href="javascript:;">Error</a></div>';
+                	   
+                	   var wrongAnswer = blankMap.wrongAnswer;
+                	   var rightAnswer = blankMap.rightAnswer;
+                	   var errorReason = blankMap.errorReason;
+                     
                      $('#answerResultDiv').html(resultStr);
                     
-                   } else if (result == true) {
+                   } else if (blankMap.result == true) {
                        resultStr = '<div class="resultMsg"><img src="../resources/img/yesanswer.png" width="250px"></div>';
-                       //resultStr += '<div class="resultMsg">오답입니다.</div>';
                          $('#answerResultDiv').html(resultStr);
-                      }
-
+                   }
+                   
+					$('.trigger').click(function() {
+           	     		$('.modal-wrapper').toggleClass('open');
+           	    		$('.page-wrapper').toggleClass('blur');
+           	     	return false;
+           	  		});
+            	/*   	var userAnswerFull = resultMap.userAnswerFull;*/
+               		var errTxt = '?  '+ errorReason + '<br>'; 
+               
+            /*    $('.head1').html('입력한 답 : '+userAnswerFull);
+               		$('.head1').val('입력한 답 : '+userAnswerFull); */
+               		$('.content').html(errTxt);
+               		$('.content').val(errTxt);
+               		
 					$('.next').removeAttr('disabled');
                     $('.next').off().on('click', goToNextSlide);
                 },
                 error : function(err) {
                    console.log(err);
-                   alert("fail");
                 }
+                
                 
              });
          
@@ -383,7 +512,7 @@ td{
 
         // 현재 슬라이드가 슬라이드 카운트 -1보다 작거나 같으면 Return
       if(currentSlide >= slideCount - 1) {
-         location.href = "contentsHome";
+         location.href = "clearChapter?c_num=4214";
          return
          }; 
          
@@ -483,6 +612,17 @@ td{
 						<td style="text-align: center"><button class="button-one answer0" style="height: 180px;" value="기다립니다.">기다립니다.</button> </td>
 					</tr>	
 				</table>
+				<!-- Error Message -->
+        			<div class="modal-wrapper">
+        				<div class="modal">
+          					<div class="head1" style="font-size: 40px">
+            					Error Check
+            					<a class="btn-close trigger" href="javascript:;"></a>
+          					</div>
+          					<div class="content" id="contentErrDiv">
+          					</div>
+        				</div>
+      				</div>
 			</div>
     	</li>
     	<li class="slide" data-tag="Step2">
@@ -510,6 +650,17 @@ td{
 						<td style="text-align: center"><button class="button-one answer1" style="height: 180px;" value="기다립니다.">기다립니다.</button> </td>
 					</tr>	
 				</table>
+				<!-- Error Message -->
+        			<div class="modal-wrapper">
+        				<div class="modal">
+          					<div class="head1" style="font-size: 40px">
+            					Error Check
+            					<a class="btn-close trigger" href="javascript:;"></a>
+          					</div>
+          					<div class="content" id="contentErrDiv">
+          					</div>
+        				</div>
+      				</div>
       		</div>
     	</li>
     	<li class="slide" data-tag="Step3">
@@ -537,6 +688,17 @@ td{
 						<td style="text-align: center"><button class="button-one answer2" style="height: 180px;" value="멈춰 섭니다.">멈춰 섭니다.</button> </td>
 					</tr>	
 				</table>
+				<!-- Error Message -->
+        			<div class="modal-wrapper">
+        				<div class="modal">
+          					<div class="head1" style="font-size: 40px">
+            					Error Check
+            					<a class="btn-close trigger" href="javascript:;"></a>
+          					</div>
+          					<div class="content" id="contentErrDiv">
+          					</div>
+        				</div>
+      				</div>
       		</div>
     	</li>
     	<li class="slide" data-tag="Step4">
@@ -564,6 +726,17 @@ td{
 						<td style="text-align: center"><button class="button-one answer3" style="height: 160px;" value="2000">2000</button> </td>
 					</tr>	
 				</table>
+				<!-- Error Message -->
+        			<div class="modal-wrapper">
+        				<div class="modal">
+          					<div class="head1" style="font-size: 40px">
+            					Error Check
+            					<a class="btn-close trigger" href="javascript:;"></a>
+          					</div>
+          					<div class="content" id="contentErrDiv">
+          					</div>
+        				</div>
+      				</div>
       		</div>
     	</li>
     	 	<li class="slide" data-tag="Step5">
@@ -591,6 +764,17 @@ td{
 						<td style="text-align: center"><button class="button-one answer4" style="height: 160px;" value="800">800</button> </td>
 					</tr>	
 				</table>
+				<!-- Error Message -->
+        			<div class="modal-wrapper">
+        				<div class="modal">
+          					<div class="head1" style="font-size: 40px">
+            					Error Check
+            					<a class="btn-close trigger" href="javascript:;"></a>
+          					</div>
+          					<div class="content" id="contentErrDiv">
+          					</div>
+        				</div>
+      				</div>
       		</div>
     	</li>
     	    	</li>
@@ -619,6 +803,17 @@ td{
 						<td style="text-align: center"><button class="button-one answer5" style="height: 160px;" value="2000">2000</button> </td>
 					</tr>	
 				</table>
+				<!-- Error Message -->
+        			<div class="modal-wrapper">
+        				<div class="modal">
+          					<div class="head1" style="font-size: 40px">
+            					Error Check
+            					<a class="btn-close trigger" href="javascript:;"></a>
+          					</div>
+          					<div class="content" id="contentErrDiv">
+          					</div>
+        				</div>
+      				</div>
       		</div>
     	</li>
     	<li class="slide" data-tag="Step7">
@@ -646,6 +841,17 @@ td{
 						<td style="text-align: center"><button class="button-one answer6" style="height: 160px;" value="2000">2000</button> </td>
 					</tr>	
 				</table>
+				<!-- Error Message -->
+        			<div class="modal-wrapper">
+        				<div class="modal">
+          					<div class="head1" style="font-size: 40px">
+            					Error Check
+            					<a class="btn-close trigger" href="javascript:;"></a>
+          					</div>
+          					<div class="content" id="contentErrDiv">
+          					</div>
+        				</div>
+      				</div>
       		</div>
     	</li>
     	<li class="slide" data-tag="Step8">
@@ -673,6 +879,17 @@ td{
 						<td style="text-align: center"><button class="button-one answer7" style="height: 160px;" value="건넙니다.">건넙니다.</button> </td>
 					</tr>	
 				</table>
+				<!-- Error Message -->
+        			<div class="modal-wrapper">
+        				<div class="modal">
+          					<div class="head1" style="font-size: 40px">
+            					Error Check
+            					<a class="btn-close trigger" href="javascript:;"></a>
+          					</div>
+          					<div class="content" id="contentErrDiv">
+          					</div>
+        				</div>
+      				</div>
       		</div>
     	</li>
     	<li class="slide" data-tag="Step9">
@@ -700,9 +917,59 @@ td{
 						<td style="text-align: center"><button class="button-one answer8" style="height: 160px;" value="건넙니다.">건넙니다.</button> </td>
 					</tr>	
 				</table>
+				<!-- Error Message -->
+        			<div class="modal-wrapper">
+        				<div class="modal">
+          					<div class="head1" style="font-size: 40px">
+            					Error Check
+            					<a class="btn-close trigger" href="javascript:;"></a>
+          					</div>
+          					<div class="content" id="contentErrDiv">
+          					</div>
+        				</div>
+      				</div>
       		</div>
     	</li>
-    	<li class="slide" data-tag="Step10">
+    	    	<li class="slide" data-tag="Step10">
+      		<div class="sized-container">
+				<table>
+					<tr>
+						<td rowspan="2"><img alt="if_quiz_3" src="../resources/img/if_quiz_30.png" style="max-height: 60%; width: auto;"></td>
+						<td colspan="2" style="height: 120px; text-align: center">
+							<div class="container-button">
+								<div class="toggle-button-2">
+      								<div class="cubeshape cube2">
+        								<div class="first_cube2">
+          									<img alt="if_quiz_32" src="../resources/img/if_quiz_12.PNG" style="width: 225px; height: auto;">
+        								</div>
+        								<div class="second_cube2">
+          									<h2 class="image_name" style="color: #41AF39">신호등="초록";</h2>
+        								</div>
+      								</div>
+    							</div>
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td style="text-align: center"><button class="button-one answer9" style="height: 160px;" value="기다립니다.">기다립니다.</button> </td>
+						<td style="text-align: center"><button class="button-one answer9" style="height: 160px;" value="건넙니다.">건넙니다.</button> </td>
+					</tr>	
+				</table>
+				<!-- Error Message -->
+        			<div class="modal-wrapper">
+        				<div class="modal">
+          					<div class="head1" style="font-size: 40px">
+            					Error Check
+            					<a class="btn-close trigger" href="javascript:;"></a>
+          					</div>
+          					<div class="content" id="contentErrDiv">
+          					</div>
+        				</div>
+      				</div>
+      		</div>
+    	</li>
+    	
+    	<li class="slide" data-tag="Step11">
       		<div class="sized-container">
 				<table>
 					<tr>
@@ -723,13 +990,24 @@ td{
 						</td>
 					</tr>
 					<tr>
-						<td style="text-align: center"><button class="button-one answer9" style="height: 160px;" value="800">800</button> </td>
-						<td style="text-align: center"><button class="button-one answer9" style="height: 160px;" value="2000">2000</button> </td>
+						<td style="text-align: center"><button class="button-one answer10" style="height: 160px;" value="800">800</button> </td>
+						<td style="text-align: center"><button class="button-one answer10" style="height: 160px;" value="2000">2000</button> </td>
 					</tr>	
 				</table>
+				<!-- Error Message -->
+        			<div class="modal-wrapper">
+        				<div class="modal">
+          					<div class="head1" style="font-size: 40px">
+            					Error Check
+            					<a class="btn-close trigger" href="javascript:;"></a>
+          					</div>
+          					<div class="content" id="contentErrDiv">
+          					</div>
+        				</div>
+      				</div>
       		</div>
     	</li>
-    	<li class="slide" data-tag="Step11">
+    	   <li class="slide" data-tag="Step12">
       		<div class="sized-container">
 				<table>
 					<tr>
@@ -739,21 +1017,108 @@ td{
 								<div class="toggle-button-2">
       								<div class="cubeshape cube2">
         								<div class="first_cube2">
-          									<img alt="if_quiz_21" src="../resources/img/apple_128.png">
+          									<img alt="if_quiz_21" src="../resources/img/banana_128.png" style="height: 128px;">
+        								</div>
+        								<div class="second_cube2">
+          									<h2 class="image_name" style="color: #41AF39">과일="바나나";</h2>
+        								</div>
+      								</div>
+    							</div>
+							</div>						
+						</td>
+					</tr>
+					<tr>
+						<td style="text-align: center"><button class="button-one answer11" style="height: 160px;" value="800">800</button> </td>
+						<td style="text-align: center"><button class="button-one answer11" style="height: 160px;" value="1500">1500</button> </td>
+					</tr>	
+				</table>
+				<!-- Error Message -->
+        			<div class="modal-wrapper">
+        				<div class="modal">
+          					<div class="head1" style="font-size: 40px">
+            					Error Check
+            					<a class="btn-close trigger" href="javascript:;"></a>
+          					</div>
+          					<div class="content" id="contentErrDiv">
+          					</div>
+        				</div>
+      				</div>
+      		</div>
+    	</li>
+    	<li class="slide" data-tag="Step13">
+      		<div class="sized-container">
+				<table>
+					<tr>
+						<td rowspan="2"><img alt="if_quiz_3" src="../resources/img/if_quiz_40.png" style="max-height: 50%; width: auto;"></td>
+						<td colspan="2" style="height: 120px; text-align: center">
+							<div class="container-button">
+								<div class="toggle-button-2">
+      								<div class="cubeshape cube2">
+        								<div class="first_cube2">
+          									<img alt="if_quiz_21" src="../resources/img/pear_128.png" style="height: 128px;">
+        								</div>
+        								<div class="second_cube2">
+          									<h2 class="image_name" style="color: #41AF39">과일="배";</h2>
+        								</div>
+      								</div>
+    							</div>
+							</div>						
+						</td>
+					</tr>
+					<tr>
+						<td style="text-align: center"><button class="button-one answer12" style="height: 160px;" value="1500">1500</button> </td>
+						<td style="text-align: center"><button class="button-one answer12" style="height: 160px;" value="2000">2000</button> </td>
+					</tr>	
+				</table>
+				<!-- Error Message -->
+        			<div class="modal-wrapper">
+        				<div class="modal">
+          					<div class="head1" style="font-size: 40px">
+            					Error Check
+            					<a class="btn-close trigger" href="javascript:;"></a>
+          					</div>
+          					<div class="content" id="contentErrDiv">
+          					</div>
+        				</div>
+      				</div>
+      		</div>
+    	</li>
+    	<li class="slide" data-tag="Step14">
+      		<div class="sized-container">
+				<table>
+					<tr>
+						<td rowspan="2"><img alt="if_quiz_3" src="../resources/img/if_quiz_40.png" style="max-height: 50%; width: auto;"></td>
+						<td colspan="2" style="height: 120px; text-align: center">
+							<div class="container-button">
+								<div class="toggle-button-2">
+      								<div class="cubeshape cube2">
+        								<div class="first_cube2">
+          									<img alt="if_quiz_21" src="../resources/img/apple_128.png" style="height: 128px;">
         								</div>
         								<div class="second_cube2">
           									<h2 class="image_name" style="color: #41AF39">과일="사과";</h2>
         								</div>
       								</div>
     							</div>
-							</div>
+							</div>						
 						</td>
 					</tr>
 					<tr>
-						<td style="text-align: center"><button class="button-one answer10" style="height: 160px;" value="1000">1000</button> </td>
-						<td style="text-align: center"><button class="button-one answer10" style="height: 160px;" value="1500">1500</button> </td>
+						<td style="text-align: center"><button class="button-one answer13" style="height: 160px;" value="1000">1000</button> </td>
+						<td style="text-align: center"><button class="button-one answer13" style="height: 160px;" value="800">800</button> </td>
 					</tr>	
 				</table>
+				<!-- Error Message -->
+        			<div class="modal-wrapper">
+        				<div class="modal">
+          					<div class="head1" style="font-size: 40px">
+            					Error Check
+            					<a class="btn-close trigger" href="javascript:;"></a>
+          					</div>
+          					<div class="content" id="contentErrDiv">
+          					</div>
+        				</div>
+      				</div>
       		</div>
     	</li>
   </ul>

@@ -12,19 +12,20 @@
    <!-- for Google Login -->
    <script src="https://apis.google.com/js/platform.js" async defer></script>
    <meta name="google-signin-client_id" content="433159939394-gr0e19pif57u5474g78obq8lseijnfc7.apps.googleusercontent.com">
+   
    <!-- for Google Login -->
    <script type="text/javascript">
    
-   function onSignIn(googleUser) {
-      var profile = googleUser.getBasicProfile();
-      var name=profile.getName();
-      var email=profile.getEmail();
-      var id = profile.getId();
-      location.href = 'googleUser?email=' + email + '&name=' + name + '&id=' + id;
-     }
+/*    $('.g-signin2').on('click',  */function onSignIn(googleUser) {
+      	var profile = googleUser.getBasicProfile();
+      	var name=profile.getName();
+      	var email=profile.getEmail();
+      	var id = profile.getId();
+      	location.href = 'googleUser?email=' + email + '&name=' + name + '&id=' + id;
+     }/* ); */
 
    
-   <c:if test="${errorMsg != null }">alert('${errorMsg }');</c:if>
+   //<c:if test="${errorMsg != null }">alert('${errorMsg }');</c:if>
   
    </script>
    

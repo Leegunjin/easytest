@@ -1,5 +1,18 @@
 package com.scitmaster.easycodingu.person.controller;
 
+import java.io.File;
+import java.io.UnsupportedEncodingException;
+import java.util.Date;
+
+import javax.activation.DataHandler;
+import javax.activation.DataSource;
+import javax.activation.FileDataSource;
+import javax.inject.Inject;
+import javax.mail.BodyPart;
+import javax.mail.MessagingException;
+import javax.mail.internet.MimeBodyPart;
+import javax.mail.internet.MimeMessage;
+import javax.mail.internet.MimeMultipart;
 import javax.servlet.ServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -7,6 +20,9 @@ import javax.servlet.http.HttpSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.MailSender;
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -30,6 +46,9 @@ public class PersonViewController {
 	@Autowired
 	PersonDAO dao;
 
+	@Inject		
+	private JavaMailSender mailSender;
+	
 	private static final Logger logger = LoggerFactory.getLogger(PersonViewController.class);
 
 	// 180328 로그인 폼에서 회원가입 폼으로 이동 (주 지호)
@@ -251,6 +270,46 @@ public class PersonViewController {
 		return "person/test67";
 	}
 	
+	
+	
+	@RequestMapping(value = "/mail_send", method=RequestMethod.GET)
+	public void MailSend() throws MessagingException, UnsupportedEncodingException {
+		String admin = "remela11hee@gmail.com";				
+		// 메일을 보낼 관리자 계정.
+		try{
+			MimeMessage message = mailSender.createMimeMessage();
+			MimeMessageHelper messageHelper = new MimeMessageHelper(message, true, "UTF-8");
+			messageHelper.setFrom(admin);  		
+			// 보내는사람 (생략 시 정상작동을 안함)
+			messageHelper.setTo("khjmela@naver.com");     	// 받는사람 이메일
+			messageHelper.setSubject("[수료증 송부]"); 		// 메일제목(생략 가능)
+			messageHelper.setText(	// 메일 내용
+					new StringBuffer().append("수료증 송부 \n").append("메일 보냈다아~~ 꺄아~~. \n").toString());
+						//	http://localhost:8888/www/users/verify?userid="+ joinUser.getUserid()).append("\n이메일 인증 확인").toString());	
+			MimeMultipart multipart = new MimeMultipart("related");
+			// html
+			BodyPart messageBodyPart = new MimeBodyPart();
+			String htmlText = "<img src=\"cid:image\">";
+			messageBodyPart.setContent(htmlText, "text/html");
+			multipart.addBodyPart(messageBodyPart);
+			//image
+			messageBodyPart = new MimeBodyPart();
+			File file = new File("C:\\certificate.jpg");
+			DataSource fds = new FileDataSource(file);
+			messageBodyPart.setDataHandler(new DataHandler(fds));
+			messageBodyPart.setHeader("Content-ID", "<image>");
+			messageBodyPart.setHeader("Content-Type", "image/jpg");
+			multipart.addBodyPart(messageBodyPart);
+			message.setContent(multipart);
+
+			//msg.setContent(text, "text/html");
+			message.setSentDate(new Date());
+			
+			mailSender.send(message);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 
 	
 }

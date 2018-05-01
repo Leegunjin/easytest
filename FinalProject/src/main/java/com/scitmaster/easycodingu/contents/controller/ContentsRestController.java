@@ -723,189 +723,354 @@ public class ContentsRestController {
 	      blankMap.put("result", result);
 	      return blankMap;
 	   }*/
-	@RequestMapping(value = "contents5", method = RequestMethod.POST)
-	   public HashMap Contents31(@RequestBody HashMap<String, Object> userAnswerMap) {
-	      
-	      // 컨텐츠넘버
-	      String c_num = "31" + (Integer) userAnswerMap.get("cNum");
-	      // 번호로 컨텐츠 가져오기
-	       Contents contents31 = dao.selectContent(Integer.parseInt(c_num));
-	       // 컨텐츠의 정답 불러오기
-	       String answer = contents31.getC_answer();
-	       String userAnswer = (String) userAnswerMap.get("userAnswer");
-	      
-	      HashMap<String, Object> blankMap = new HashMap<>();
-	      boolean result = false;
-	      
-	      // 잘못된 정답
-	      String wrongAnswer = "";
-	      // 맞은 정답
-	      String rightAnswer = "";
-	      // 에러 메세지
-	      String errorReason = "";
+    /*@RequestMapping(value = "contents5", method = RequestMethod.POST)
+    public HashMap Contents31(String cNum, String userAnswer) {
+    
+       HashMap<String, Object> blankMap = new HashMap<>();
+       boolean result = false;
+       
+       // 컨텐츠넘버
+       String c_num = "31" + cNum;
+       logger.info(c_num);
 
-	      if (answer.equals(userAnswer)) {
-	         result = true;
-	         blankMap.put("result", result);
-	      } else {
-	         result = false;
-	         wrongAnswer = userAnswer;
-	         rightAnswer = answer;
+       // 번호로 컨텐츠 가져오기
+       Contents contents31 = dao.selectContent(Integer.parseInt(c_num));
+       // 컨텐츠의 정답 불러오기
+       String answer = contents31.getC_answer();
 
-	         switch (answer) {
-	            case "+":
-	               errorReason = "두 수를 더해야 하는 관계이므로  + 가 정답입니다.";
-	               break;
-	            case "-":
-	               errorReason = "두 수를 더해야 하는 관계이므로  - 가 정답입니다.";
-	               break;
-	            case "*":
-	               errorReason = "두 수를 곱해야 하는 관계이므로  * 가 정답입니다. ";
-	               break;
-	            case "/":
-	               errorReason = "두 수를 나누어야 하는 관계이므로  / 가 정답입니다. ";
-	               break;
-	            case "%":
-	               errorReason = "퍼센트 관계 이므로  % 를 써야합니다. ";
-	               break;
-	            case "==":
-	               errorReason = "두개가 같으므로  == 가 정답입니다. ";
-	               break;
-	            case "!=":
-	               errorReason = "두개가 다르므로  != 가 정답입니다. ";
-	               break;
-	            default:
-	               break;
-	         }
-	      }
+       // 잘못된 정답
+       String wrongAnswer = "";
+       // 맞은 정답
+       String rightAnswer = "";
+       // 에러 메세지
+       String errorReason = "";
 
-	      System.out.println("errorReason : " + errorReason);
-	      blankMap.put("wrongAnswer", wrongAnswer);
-	      blankMap.put("rightAnswer", rightAnswer);
-	      blankMap.put("errorReason", errorReason);
-	      blankMap.put("result", result);
-	      return blankMap;
-	   }
+       if (answer.equals(userAnswer)) {
+          result = true;
+          blankMap.put("result", result);
+       } else {
+          result = false;
+          wrongAnswer = userAnswer;
+          rightAnswer = answer;
 
-	 
-		@RequestMapping(value = "contents6", method = RequestMethod.POST)
-		public HashMap Contents320(@RequestBody HashMap<String, Object> userAnswer) {
-		      
-			  HashMap<String, Object> blankMap = new HashMap<>();
-		      boolean result = false;
-		      
-		      String c_num = "32" + (Integer) userAnswer.get("cNum");
-		      logger.info(c_num);
-		   
-		      Contents contents32 = dao.selectContent(Integer.parseInt(c_num));
-		      String answer = contents32.getC_answer();
-		      String[] answerArr = answer.split("&");
-		      
-		      ArrayList<String> userAnswerArr = (ArrayList) userAnswer.get("answerArr");
-		      ArrayList<String> wrongAnswerArr = new ArrayList<>();
-		      ArrayList<String> rightAnswerArr = new ArrayList<>();
-		      ArrayList<String> errorReasonArr = new ArrayList<>();
-		      boolean semiCheckStr = true;
-		      for(int i = 0; i < answerArr.length; i++) {
-		         logger.info("answerArr["+i+"]"+answerArr[i]);
-		         logger.info(userAnswerArr.get(i));
-		         
-		         if(answerArr[i].equals(userAnswerArr.get(i))) {
-		            result = true;
-		            blankMap.put("result", result);
-		         } else {
-		            result = false;
-		            wrongAnswerArr.add(userAnswerArr.get(i));
-		            rightAnswerArr.add(answerArr[i]);
-		            semiCheckStr = userAnswerArr.get(1).equals(";"); 
-		            //return blankMap;
-		            System.out.println("semiCheckStr : "+semiCheckStr);
-		            
-		         }
-		      }
-		      if (semiCheckStr == false) {
-		    	  result = false;
-		    	  errorReasonArr.add("문장의 마지막에 세미콜론을 쓰지 않았습니다. ");
-			  } 
-		      if (!(answerArr[0].equals(userAnswerArr.get(0)))) {
-		    	  result = false;
-		          switch (answerArr[0]) {
-			    		case "+":
-			    			errorReasonArr.add("두 문장을 더해야 하는 관계이므로 +가 정답입니다. ");
-			    			break;
-						case "-":
-							errorReasonArr.add("두 문장을 빼야 하는 관계이므로 -가 정답입니다. ");    			
-							break;
-						case "*":
-							errorReasonArr.add("두 문장을 곱해야 하는 관계이므로 *가 정답입니다. ");
-							break;
-						case "/":
-							errorReasonArr.add("두 문장을 나누어야 하는 관계이므로 /가 정답입니다. ");
-							break;
-			    		default:
-			    			break;
-		  	    }
-		      }
-		      System.out.println("errorReasonArr : "+errorReasonArr);
-		      blankMap.put("wrongAnswerArr", wrongAnswerArr);
-		      blankMap.put("rightAnswerArr", rightAnswerArr);
-		      blankMap.put("errorReasonArr", errorReasonArr);
-		      blankMap.put("result", result);
-		      return blankMap;
-	   }
-	   
-	   @RequestMapping(value = "contents8", method = RequestMethod.POST)
-	   public boolean Contents42(@RequestBody HashMap<String, Object> userAnswerMap) {
-	      
-	      boolean result = false;
-	      
-	      String c_num = "42" + (Integer) userAnswerMap.get("cNum");
-	      logger.info(c_num);
-	   
-	      Contents contents42 = dao.selectContent(Integer.parseInt(c_num));
-	      String answer = contents42.getC_answer();
-	      
-	      String userAnswer = (String) userAnswerMap.get("answer");
-	      
-	         logger.info(userAnswer);
-	         
-	         if(answer.equals(userAnswer)) {
-	            result = true;
-	         } else {
-	            result = false;
-	            return result;
-	         }
+          switch (answer) {
+             case "+":
+                errorReason = "두 수를 더해야 하는 관계이므로  + 가 정답입니다.";
+                break;
+             case "-":
+                errorReason = "두 수를 더해야 하는 관계이므로  - 가 정답입니다.";
+                break;
+             case "*":
+                errorReason = "두 수를 곱해야 하는 관계이므로  * 가 정답입니다. ";
+                break;
+             case "/":
+                errorReason = "두 수를 나누어야 하는 관계이므로  / 가 정답입니다. ";
+                break;
+             case "%":
+                errorReason = "퍼센트 관계 이므로  % 를 써야합니다. ";
+                break;
+             case "==":
+                errorReason = "두개가 같으므로  == 가 정답입니다. ";
+                break;
+             case "!=":
+                errorReason = "두개가 다르므로  != 가 정답입니다. ";
+                break;
+             default:
+                break;
+          }
+       }
 
-	         return result;
-	   }
-	      
-	   @RequestMapping(value = "contents10", method = RequestMethod.POST)
-	   public boolean Contents52(@RequestBody HashMap<String, Object> userAnswer) {
-	         
-		   boolean result = false;
-	         
-	         String c_num = "52" + (Integer) userAnswer.get("cNum");
-	         logger.info(c_num);
-	      
-	         Contents contents52 = dao.selectContent(Integer.parseInt(c_num));
-	         String answer = contents52.getC_answer();
-	         String[] answerArr = answer.split("#3355#");
-	         
-	         ArrayList<String> userAnswerArr = (ArrayList) userAnswer.get("answerArr");
-	         
-	        for(int i = 0; i < answerArr.length; i++) {
-	            logger.info(answerArr[i]);
-	            logger.info(userAnswerArr.get(i));
-	            
-	            if(answerArr[i].equals(userAnswerArr.get(i))) {
-	               result = true;
-	            } else {
-	               result = false;
-	               return result;
-	            }
-	         }
+       System.out.println("errorReason : " + errorReason);
+       blankMap.put("wrongAnswer", wrongAnswer);
+       blankMap.put("rightAnswer", rightAnswer);
+       blankMap.put("errorReason", errorReason);
+       blankMap.put("result", result);
+       return blankMap;
+    }*/
 
-	         return result;
-	      }
+  
+    @RequestMapping(value = "contents6", method = RequestMethod.POST)
+    public HashMap contents32(@RequestBody HashMap<String, Object> userAnswer) {
+          
+         HashMap<String, Object> blankMap = new HashMap<>();
+          boolean result = false;
+          
+          String c_num = "32" + (Integer) userAnswer.get("cNum");
+          logger.info(c_num);
+       
+          Contents contents32 = dao.selectContent(Integer.parseInt(c_num));
+          String answer = contents32.getC_answer();
+          String[] answerArr = answer.split("#3355#");
+          
+          ArrayList<String> userAnswerArr = (ArrayList) userAnswer.get("answerArr");
+          ArrayList<String> wrongAnswerArr = new ArrayList<>();
+          ArrayList<String> rightAnswerArr = new ArrayList<>();
+          ArrayList<String> errorReasonArr = new ArrayList<>();
+          
+          for(int i = 0; i < answerArr.length; i++) {
 
+             if(answerArr[i].equals(userAnswerArr.get(i))) {
+                result = true;
+                
+             } else {
+          	   wrongAnswerArr.add(userAnswerArr.get(i));
+          	   rightAnswerArr.add(answerArr[i]);
+          	   result = false;
+          	   switch (answerArr[i]) {
+              		case ";":
+              			errorReasonArr.add("문장의 마지막에 '세미콜론(;)'을 쓰지 않았습니다. ");
+              			break;
+              		case "+":
+              			errorReasonArr.add("두 변수를 더해야 하는 관계이므로 '+'가 정답입니다. ");
+              			break;
+              		case "-":
+              			errorReasonArr.add("두 변수를 빼야 하는 관계이므로 '-'가 정답입니다. ");             
+              			break;
+              		case "*":
+              			errorReasonArr.add("두 변수를 곱해야 하는 관계이므로 '*'가 정답입니다. ");
+              			break;
+              		case "/":
+              			errorReasonArr.add("두 변수를 나누어야 하는 관계이므로 '/'가 정답입니다. ");
+              			break;
+              		case "%":
+              			errorReasonArr.add("두 변수를 나눠 나머지를 구할 때는  '%'를 써야합니다. ");
+              			break;
+              		case "==":
+              			errorReasonArr.add("양 쪽의 값이 같으므로  '=='가 정답입니다. ");
+              			break;
+              		case "!=":
+              			errorReasonArr.add("양 쪽의 값이 다르므로  '!='가 정답입니다. ");
+              			break;
+              		case "<":
+              			errorReasonArr.add("왼쪽보다 오른쪽 값이 크므로 '<'가 정답입니다. ");
+              			break;
+              		case ">":
+              			errorReasonArr.add("왼쪽보다 오른쪽 값이 작으므로 '>'가 정답입니다. ");
+              			break;
+              		case "<=":
+              			errorReasonArr.add("왼쪽보다 오른쪽 값이 크거나 같으므로 '<='가 정답입니다. ");
+              			break;
+              		case ">=":
+              			errorReasonArr.add("왼쪽보다 오른쪽 값이 작거나 같으므로 '>='가 정답입니다. ");
+              			break;
+              		default:
+              			break;
+          	   }
+             }
+          }
+          System.out.println("errorReasonArr : "+errorReasonArr);
+          blankMap.put("wrongAnswerArr", wrongAnswerArr);
+          blankMap.put("rightAnswerArr", rightAnswerArr);
+          blankMap.put("errorReasonArr", errorReasonArr);
+          blankMap.put("result", result);
+          
+          return blankMap;
+    }
+    
+    @RequestMapping(value = "contents8", method = RequestMethod.POST)
+    public HashMap contents42(@RequestBody HashMap<String, Object> userAnswerMap) {
+       
+  	  HashMap<String, Object> blankMap = new HashMap<>();
+        boolean result = false;
+       
+       String c_num = "42" + (Integer) userAnswerMap.get("cNum");
+       logger.info(c_num);
+    
+       Contents contents42 = dao.selectContent(Integer.parseInt(c_num));
+       String answer = contents42.getC_answer();
+       
+       String userAnswer = (String) userAnswerMap.get("userAnswer");
+       String wrongAnswer = "";
+       String rightAnswer = "";
+       String errorReason = "";
+       	
+       	logger.info(answer);
+          logger.info(userAnswer); 
+          
+          if(answer.equals(userAnswer)) {
+             result = true;
+          } else {
+          	wrongAnswer = userAnswer;
+          	rightAnswer = answer;
+          	result = false;
+             switch (c_num) {
+             case "421": case "429":
+          	   errorReason = "조건문에 따라 신호등이 '빨강이면 '기다립니다.'를 의미합니다.";
+          	   break;
+             case "422": case "4210":
+          	   errorReason = "조건문에 따라 신호등이 '초록'이면 '건넙니다.'를 의미합니다.";
+          	   break;
+             case "423": case "428":
+          	   errorReason = "조건문에 따라 신호등이 '노랑'이면 '멈춰 섭니다.'를 의미합니다.";
+          	   break;
+             case "424": case "4213":
+          	   errorReason = "조건문에 따라 과일이 '배'면 가격은 '1500'입니다.";
+          	   break;
+             case "425": case "4214":
+          	   errorReason = "조건문에 따라 과일이 '사과'면 가격은 '1000'입니다.";
+          	   break;
+             case "426": case "4211":
+          	   errorReason = "조건문에 따라 과일이 '오렌지'면 가격은 '2000'입니다.";
+          	   break;
+             case "427": case "4212":
+          	   errorReason = "조건문에 따라 과일이 '오렌지'면 가격은 '800'입니다.";
+          	   break;
+             default:
+          	   break;  
+             }
+          }
+
+          System.out.println("errorReason : "+errorReason);
+          blankMap.put("wrongAnswer", wrongAnswer);
+          blankMap.put("rightAnswer", rightAnswer);
+          blankMap.put("errorReason", errorReason);
+          blankMap.put("result", result);
+          
+          return blankMap;
+    }
+    
+    @RequestMapping(value = "contents9", method = RequestMethod.POST)
+    public HashMap contents51(@RequestBody HashMap<String, Object> userAnswer) {
+          
+  	  HashMap<String, Object> blankMap = new HashMap<>();
+        boolean result = false;
+          
+          String c_num = "51" + (Integer) userAnswer.get("cNum");
+          logger.info(c_num);
+       
+          Contents contents51 = dao.selectContent(Integer.parseInt(c_num));
+          String answer = contents51.getC_answer();
+          String[] answerArr = answer.split("#3355#");
+          
+          ArrayList<String> userAnswerArr = (ArrayList) userAnswer.get("answerArr");
+          ArrayList<String> wrongAnswerArr = new ArrayList<>();
+          ArrayList<String> rightAnswerArr = new ArrayList<>();
+          ArrayList<String> errorReasonArr = new ArrayList<>();
+          
+         for(int i = 0; i < answerArr.length; i++) {
+             logger.info(answerArr[i]);
+             logger.info(userAnswerArr.get(i));
+             
+             if(answerArr[i].equals(userAnswerArr.get(i))) {
+                result = true;
+             } else {
+                result = false;
+                wrongAnswerArr.add(userAnswerArr.get(i));
+                rightAnswerArr.add(answerArr[i]);
+                
+                switch (answerArr[i]) {
+                	case "1":
+                		errorReasonArr.add("1~10까지 정수 합을 구하기 위해서는 '1'부터 반복을 시작해야 합니다.");
+                		break;
+                	case "i++":
+                		errorReasonArr.add("10까지 숫자를 증가시켜 연산해야 하므로 'i++' 전위증감자를 사용합니다.");   
+                		break;
+                	case "++":
+                		errorReasonArr.add("first를 숫자 5까지 증가시켜야 하므로 '++'를 입력합니다.");
+                		break;
+                	case "--":
+                		errorReasonArr.add("second를 숫자 1까지 감소시켜야 하므로 '--'를 입력합니다.");
+                		break;
+                	case "5":
+                		errorReasonArr.add("i를 '5'를 입력하여 5보다 작은 4까지 증가시켜야 합니다.");
+                		break;
+                	default:
+                		break;
+                }
+             }
+          }
+
+         System.out.println("errorReasonArr : "+errorReasonArr);
+         blankMap.put("wrongAnswerArr", wrongAnswerArr);
+         blankMap.put("rightAnswerArr", rightAnswerArr);
+         blankMap.put("errorReasonArr", errorReasonArr);
+         blankMap.put("result", result);
+         return blankMap;
+       }
+    
+    @RequestMapping(value = "contents10", method = RequestMethod.POST)
+    public HashMap contents52(@RequestBody HashMap<String, Object> userAnswer) {
+          
+  	  HashMap<String, Object> blankMap = new HashMap<>();
+        boolean result = false;
+          
+          String c_num = "52" + (Integer) userAnswer.get("cNum");
+          logger.info(c_num);
+       
+          Contents contents52 = dao.selectContent(Integer.parseInt(c_num));
+          String answer = contents52.getC_answer();
+          String[] answerArr = answer.split("#3355#");
+          
+          ArrayList<String> userAnswerArr = (ArrayList) userAnswer.get("answerArr");
+          ArrayList<String> wrongAnswerArr = new ArrayList<>();
+          ArrayList<String> rightAnswerArr = new ArrayList<>();
+          ArrayList<String> errorReasonArr = new ArrayList<>();
+          
+         for(int i = 0; i < answerArr.length; i++) {
+             logger.info(answerArr[i]);
+             logger.info(userAnswerArr.get(i));
+             
+             if(answerArr[i].equals(userAnswerArr.get(i))) {
+                result = true;
+             } else {
+                result = false;
+                wrongAnswerArr.add(userAnswerArr.get(i));
+                rightAnswerArr.add(answerArr[i]);
+                
+                switch (answerArr[i]) {
+                	case "1":
+                		if(c_num.equals("525") && i == 0) {
+                			errorReasonArr.add("곱한 값을 저장할 변수는 반드시 1로 초기화해주어야 합니다! 0에는 값을 곱할 수 없어요.");
+                		} else {
+                			errorReasonArr.add("1부터 조건문에 제시된 숫자까지 증가시켜야 하므로 1로 초기화합니다.");
+                		}
+                		break;
+                	case "9":
+                		errorReasonArr.add("'9'를 입력하여 1을 9와 같은 숫자가 나올 때까지 증가시켜야 합니다.");   
+                		break;
+                	case "5":
+                		if(c_num.equals("524")) {
+                			errorReasonArr.add("num를 숫자 5까지 증가시켜야 하므로 '5'를 입력해야 합니다.");
+                		} else if (c_num.equals("525")) {
+                			errorReasonArr.add("5부터 1까지의 숫자를 곱해야 하므로 '5'를 입력해 1까지 감소시키면서 값을 구해야 합니다.");
+                		}
+                		break;                  	
+                	case "<=":
+                		errorReasonArr.add("반복될 변수를 오른쪽 숫자만큼 증가시켜야 하므로 조건식에 '<='연산자를 입력합니다.");             
+                		break;
+                	case "++":
+                		errorReasonArr.add("반복될 변수를 증가시켜야 하므로 '++'연산자를 입력합니다.");             
+                		break;
+                	case "--":
+                		errorReasonArr.add("반복될 변수를 감소시켜야 하므로 '--'연산자를 입력합니다.");             
+                		break;
+                	case "left":
+                		errorReasonArr.add("구구단은 단수와 1~9까지 숫자를 곱해야 하므로 단 수에 해당하는 'left'를 입력해줍니다. ");
+                		break;
+                	case "result":
+                		errorReasonArr.add("결과값을 저장할 변수명을 입력해야 하므로 'result'를 입력해줍니다. ");
+                		break;
+                	case "num":
+                		if(i == 1) {
+                			errorReasonArr.add("반복문 안에서 값이 변경될 변수명을 입력합니다. 이 문장에서는 'num'을 입력합니다.");
+                		} else if(i == 3) {
+                			errorReasonArr.add("숫자 합을 저장하는 변수에 1~5까지 변화되는 숫자 값을 더해주기 위해서는 'num'을 입력합니다.");
+                		}
+                		break;
+                	case "multiply":
+                		errorReasonArr.add("곱한 값을 저장할 변수명을 입력해야 하므로 'multiply'를 입력해줍니다. ");
+                		break;
+                	default:
+                		break;
+                }
+             }
+          }
+
+         System.out.println("errorReasonArr : "+errorReasonArr);
+         blankMap.put("wrongAnswerArr", wrongAnswerArr);
+         blankMap.put("rightAnswerArr", rightAnswerArr);
+         blankMap.put("errorReasonArr", errorReasonArr);
+         blankMap.put("result", result);
+         return blankMap;
+       }
 }

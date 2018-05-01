@@ -7,11 +7,12 @@
    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
    <title>[ contents32.jsp ]</title>
 
+ <link href="https://fonts.googleapis.com/css?family=Jua" rel="stylesheet">
 <!-- CSS -->
 <style type="text/css">
       @charset "UTF-8";
 *, html, body {
-	font-family: "TrebuchetMS", trebuchet, sans-serif;
+	font-family: 'Jua', sans-serif;
 }
 
 * {
@@ -21,13 +22,12 @@
 
 h1, h2 {
 	text-align: center;
-	font-family: NanumSquareRound Extrabold;
+	font-family: 'Jua', sans-serif;
 }
 
 h1 {
 	font-size: 29px;
 	line-height: 30px;
-	font-weight: bolder;
 	margin-top: 40px;
 	margin-bottom: 20px;
 }
@@ -83,7 +83,7 @@ button.previous:hover {
 	position: relative;
 	left: 0;
 	overflow: hidden;
-	width: 6860px;
+	width: 11760px;
 	height: 200px;
 }
 
@@ -150,7 +150,7 @@ button.previous:hover {
 }
 
 .progress-bar-container {
-	width: 8%;
+	width: 5%;
 	height: 4px;
 	display: inline-block;
 	background-color: lightgray;
@@ -170,7 +170,7 @@ button.previous:hover {
 	margin: 0; 
 	padding: 0;
 	background-color: #f3fafd; 
-	border: solid 2px #00a8f3; 
+	border: solid 2px #4ECCA3; 
 	border-radius: 4px; 
 	box-sizing: border-box;
 	width: 50px; 
@@ -188,9 +188,9 @@ ul{
 }
 
 #question_box {
-	font-family: NanumSquareRound Extrabold;
+	font-family: 'Jua', sans-serif;
 	font-size: 30pt;
-	border: solid 4px #00a8f3;
+	border: solid 4px #4ECCA3;
 	border-radius: 5px;
 	width: 400px;
 	height: auto;
@@ -202,7 +202,7 @@ ul{
 }
 
 [id^="question_p"] {
-	font-family: NanumSquareRound Extrabold;
+	font-family: 'Jua', sans-serif;
 	font-size: 30pt;
 	margin: 20px;
 }
@@ -214,6 +214,118 @@ ul{
 #question_p2 {
 	color: #3f48cc;
 }
+
+
+/* Error Button */
+a.btn{
+     width:150px;
+     height:50px;
+     display:block;
+     margin:-5px 0 0 -75px;
+     position:absolute;
+     top:86.5%; left:42%;
+     font:'Jua', sans-serif;
+     font-weight:700;
+     text-align:center;
+     text-decoration:none;
+     color:#fff;
+     border-radius:5px;
+     background:rgba(217,67,86,1);
+     font-size: 20px;
+     padding-top: 10px;
+   }
+   
+.modal-wrapper{
+     width:100%;
+     height:100%;
+     position:fixed;
+     top:0; left:0;
+     /* background:rgba(255,257,153,0.75); */
+     visibility:hidden;
+     opacity:0;
+     -webkit-transition: all 0.25s ease-in-out;
+     -moz-transition: all 0.25s ease-in-out;
+     -o-transition: all 0.25s ease-in-out;
+     transition: all 0.25s ease-in-out;
+   }
+
+.modal-wrapper.open{
+     opacity:1;
+     visibility:visible;
+   }
+   
+.modal{
+     width:600px;
+     height:400px;
+     display:block;
+     margin:50% 0 0 -300px;
+     position:relative;
+     top:50%; left:50%;
+     background:#f4f5f7;
+     opacity:0;
+     -webkit-transition: all 0.5s ease-in-out;
+     -moz-transition: all 0.5s ease-in-out;
+     -o-transition: all 0.5s ease-in-out;
+     transition: all 0.5s ease-in-out;
+   }
+   
+.modal-wrapper.open .modal{
+     margin-top:-200px;
+     opacity:1;
+   }
+   
+.head1{
+     width:100%;
+     height:40px;
+     padding:1.5em 5%;
+     overflow:hidden;
+     /* background:#01bce5; */
+     background-color: rgba(217,67,86,1);
+     font-size: 40px;
+     font-family:  'Jua', sans-serif;
+     color: white;
+   }
+   
+.btn-close{
+     width:32px;
+     height:32px;
+     display:block;
+     float:right;
+   }
+   
+.btn-close::before, .btn-close::after{
+     content:'';
+     width:32px;
+     height:6px;
+     display:block;
+     background:#fff;
+   }
+   
+.btn-close::before{
+     margin-top:12px;
+     -webkit-transform:rotate(45deg);
+     -moz-transform:rotate(45deg);
+     -o-transform:rotate(45deg);
+     transform:rotate(45deg);
+   }
+   
+.btn-close::after{
+     margin-top:-6px;
+     -webkit-transform:rotate(-45deg);
+     -moz-transform:rotate(-45deg);
+     -o-transform:rotate(-45deg);
+     transform:rotate(-45deg);
+   }
+   
+#contentErrDiv{
+      font-family: 'Jua', sans-serif;
+      font-size: 20px;
+      color: #393E46;
+      padding-left: 5%;
+      padding-top: 5%;
+      }
+
+
       
 </style>
 
@@ -262,9 +374,9 @@ ul{
               $progressBar = $('<div>').addClass('progress-bar'),
               indicatorTagText = $slide.eq(i).attr('data-tag'),
               $tag = $('<div>').addClass('tag').text(indicatorTagText);
-          $indicator.append($tag);
-          $progressBarContainer.append($progressBar);
-          $pagination.append($indicator).append($progressBarContainer);
+			$indicator.append($tag);
+          	$progressBarContainer.append($progressBar);
+          	$pagination.append($indicator).append($progressBarContainer);
         }
         $pagination.find('.indicator').eq(0).addClass('active');
       }
@@ -296,16 +408,21 @@ ul{
                 ,answerArr : answerArr
              }),
              success : function(blankMap) {
-                  alert('success');
                   answerArr = [];
                 var resultStr = '';
                  
                 if (blankMap.result == false) {
-                  resultStr = '<div class="resultMsg"><img src="../resources/img/noanswer.png" width="250px"><br>';
-                  resultStr += '사용자가 입력한 답 : '+blankMap.wrongAnswerArr+'<br>'; 
-                  resultStr += '정답 : '+blankMap.rightAnswerArr+'<br>';
+                  resultStr = '<div class="resultMsg"><img src="../resources/img/noanswer.png" width="250px"></div><br>';
+                  resultStr += '<div class="page-wrapper"><a class="btn trigger" href="javascript:;">Error</a></div>';
+                  
+               	var wrongAnswer = blankMap.wrongAnswerArr;
+           	   	var rightAnswer = blankMap.rightAnswerArr;
+				var errorReason = blankMap.errorReasonArr;
+                  
+                  /* resultStr += '사용자가 입력한 답 : ' + blankMap.wrongAnswerArr+'<br>'; 
+                  resultStr += '정답 : ' + blankMap.rightAnswerArr+'<br>';
                   resultStr += '틀린 이유 : ' + blankMap.errorReasonArr+'<br>';
-                  resultStr += '</div>';
+					*/
                   //resultStr += '<div class="resultMsg">정답입니다.</div>';
                   /* alert("blankMap.rightAnswer : "+blankMap.rightAnswer);
                   alert("blankMap.wrongAnswer : "+blankMap.wrongAnswer); */
@@ -315,6 +432,23 @@ ul{
              	   resultStr = '<div class="resultMsg"><img src="../resources/img/yesanswer.png" width="250px"></div>';
                       $('#answerResultDiv').html(resultStr);
                    }
+                
+             	$('.trigger').click(function() {
+           	     $('.modal-wrapper').toggleClass('open');
+           	    $('.page-wrapper').toggleClass('blur');
+           	     return false;
+           	  });
+            /*   	var userAnswerFull = resultMap.userAnswerFull;*/
+               var errTxt = '';
+               $.each(errorReason , function( i, val ) {
+               	errTxt += '?  '+ val + '<br>'; 
+       	   });
+               
+            /*    $('.head1').html('입력한 답 : '+userAnswerFull);
+               $('.head1').val('입력한 답 : '+userAnswerFull); */
+               $('.content').html(errTxt);
+               $('.content').val(errTxt);
+                
                     //if (result) {
                     $('#checkBtnDiv').html("");
                       var str = '<button class="next">next</button>';
@@ -324,7 +458,6 @@ ul{
              error : function(err) {
                 console.log(err);
                 answerArr = [];
-                alert("fail");
              }
              
           });
@@ -336,10 +469,16 @@ ul{
        $('#answerResultDiv').html("");
         // 현재 슬라이드가 슬라이드 카운트 -1보다 작거나 같으면 Return  
       if(currentSlide >= slideCount - 1) {
-         location.href = "contentsHome";
+         location.href = "clearChapter?c_num=3212";
          return
          }; 
       
+      if(currentSlide == 8) {
+        var pStr = '<p id="question_p3">int c = 7;</p>'; 
+        	$('#question_box').append(pStr); 
+        	$('[id^="question_p"]').attr('style', 'margin-top : 10px; margin-bottom : 10px;');       
+         }
+        	 
       // 현재 윈도우 창의 가로 길이
         var windowWidth = $(window).width();
    
@@ -419,53 +558,230 @@ ul{
   <ul class="slide-container">
     <li class="slide" data-tag="Step1">
       <div class="sized-container">
+      <h2 style="font-size: 20pt; padding-top:15px; margin: 0px; color: #393E46"> &lt; 보기 &gt; + , - , * , / , % , ; </h2>
         <h1>a &nbsp; <input type="text" class="answer0" id="answer01" maxlength="1"> &nbsp; b &nbsp; = &nbsp; 7 &nbsp; <input type="text" class="answer0" id="answer02" maxlength="1"> &nbsp; </h1>
+		<!-- Error Message -->
+		<div class="modal-wrapper">
+      		<div class="modal">
+				<div class="head1" style="font-size: 40px">
+					Error Check
+					<a class="btn-close trigger" href="javascript:;"></a>
+          		</div>
+          		<div class="content" id="contentErrDiv">
+          		</div>
+			</div>
+		</div>
       </div>
     </li>
     <li class="slide" data-tag="Step2">
       <div class="sized-container">
-      <h1>a &nbsp; <input type="text" class="answer1" id="answer11" maxlength="1"> &nbsp; b &nbsp; = &nbsp; 3 &nbsp; <input type="text" class="answer1" id="answer12" maxlength="1"> &nbsp; </h1>
+      <h2 style="font-size: 20pt; padding-top:15px; margin: 0px; color: #393E46"> &lt; 보기 &gt; + , - , * , / , % , ; </h2>
+		<h1>a &nbsp; <input type="text" class="answer1" id="answer11" maxlength="1"> &nbsp; b &nbsp; = &nbsp; 3 &nbsp; <input type="text" class="answer1" id="answer12" maxlength="1"> &nbsp; </h1>
+      	<!-- Error Message -->
+		<div class="modal-wrapper">
+      		<div class="modal">
+				<div class="head1" style="font-size: 40px">
+					Error Check
+					<a class="btn-close trigger" href="javascript:;"></a>
+          		</div>
+          		<div class="content" id="contentErrDiv">
+          	</div>
+		</div>
+		</div>
       </div>
     </li>
     <li class="slide" data-tag="Step3">
       <div class="sized-container">
+      <h2 style="font-size: 20pt; padding-top:15px; margin: 0px; color: #393E46"> &lt; 보기 &gt; + , - , * , / , % , ; </h2>
         <h1>a &nbsp; <input type="text" class="answer2" id="answer21" maxlength="1"> &nbsp; b &nbsp; = &nbsp; 10 &nbsp; <input type="text" class="answer2" id="answer22" maxlength="1"> &nbsp; </h1>
+      	<!-- Error Message -->
+		<div class="modal-wrapper">
+      		<div class="modal">
+				<div class="head1" style="font-size: 40px">
+					Error Check
+					<a class="btn-close trigger" href="javascript:;"></a>
+          		</div>
+          			<div class="content" id="contentErrDiv">
+          		</div>
+			</div>
+		</div>
       </div>
     </li>
     <li class="slide" data-tag="Step4">
       <div class="sized-container">
+      <h2 style="font-size: 20pt; padding-top:15px; margin: 0px; color: #393E46"> &lt; 보기 &gt; + , - , * , / , % , ; </h2>
         <h1>a &nbsp; <input type="text" class="answer3" id="answer31" maxlength="1"> &nbsp; b &nbsp; = &nbsp; 2 &nbsp; <input type="text" class="answer3" id="answer32" maxlength="1"> &nbsp; </h1>
+      	<!-- Error Message -->
+      	<div class="modal-wrapper">
+      		<div class="modal">
+				<div class="head1" style="font-size: 40px">
+					Error Check
+					<a class="btn-close trigger" href="javascript:;"></a>
+          		</div>
+          			<div class="content" id="contentErrDiv">
+          		</div>
+			</div>
+		</div>
       </div>
     </li>
     <li class="slide" data-tag="Step5">
       <div class="sized-container">
+      <h2 style="font-size: 20pt; padding-top:15px; margin: 0px; color: #393E46"> &lt; 보기 &gt; + , - , * , / , % , ; </h2>
         <h1>a &nbsp; <input type="text" class="answer4" id="answer41" maxlength="1"> &nbsp; b &nbsp; = &nbsp; 1 &nbsp; <input type="text" class="answer4" id="answer42" maxlength="1"> &nbsp; </h1>
+      	<!-- Error Message -->
+      	<div class="modal-wrapper">
+      		<div class="modal">
+				<div class="head1" style="font-size: 40px">
+					Error Check
+					<a class="btn-close trigger" href="javascript:;"></a>
+          		</div>
+          			<div class="content" id="contentErrDiv">
+          		</div>
+			</div>
+		</div>
       </div>
     </li>
     <li class="slide" data-tag="Step6">
       <div class="sized-container">
+        <h2 style="font-size: 20pt; padding-top:15px; margin: 0px; color: #393E46"> &lt; 보기 &gt; == , != , &lt; , &gt; , ; </h2>
+      
         <h1>a &nbsp; + &nbsp; b &nbsp; <input type="text" class="answer5" id="answer51" maxlength="2" style="width: 75px"> &nbsp; 7 &nbsp; <input type="text" class="answer5" id="answer52" maxlength="2"> &nbsp; </h1>
+      	<!-- Error Message -->
+      	<div class="modal-wrapper">
+      		<div class="modal">
+				<div class="head1" style="font-size: 40px">
+					Error Check
+					<a class="btn-close trigger" href="javascript:;"></a>
+          		</div>
+          			<div class="content" id="contentErrDiv">
+          		</div>
+			</div>
+		</div>
       </div>
     </li>
     <li class="slide" data-tag="Step7">
       <div class="sized-container">
+      <h2 style="font-size: 20pt; padding-top:15px; margin: 0px; color: #393E46"> &lt; 보기 &gt; == , != , &lt; , &gt; , ; </h2>
         <h1>a &nbsp; * &nbsp; b &nbsp; <input type="text" class="answer6" id="answer61" maxlength="2" style="width: 75px"> &nbsp; 20 &nbsp; <input type="text" class="answer6" id="answer62" maxlength="2"> &nbsp; </h1>
       </div>
+      <!-- Error Message -->
+      	<div class="modal-wrapper">
+      		<div class="modal">
+				<div class="head1" style="font-size: 40px">
+					Error Check
+					<a class="btn-close trigger" href="javascript:;"></a>
+          		</div>
+          			<div class="content" id="contentErrDiv">
+          		</div>
+			</div>
+		</div>
    </li>
      <li class="slide" data-tag="Step8">
       <div class="sized-container">
-	 	<h1 style="padding:20px; margin: 0px;">a &nbsp; <input type="text" class="answer7" id="answer72" maxlength="2" style="width: 75px"> &nbsp; 3 ; &nbsp; </h1>
+		<h2 style="font-size: 20pt; padding-top:15px; margin: 0px; color: #393E46"> &lt; 보기 &gt; == , != , &lt; , &gt; , ; </h2>
+	 	<h1 style="padding:10px; margin: 0px;">a &nbsp; <input type="text" class="answer7" id="answer72" maxlength="2" style="width: 75px"> &nbsp; 3 ; &nbsp; </h1>
 	 	<h1 style="padding:10px; margin: 0px;">b &nbsp; <input type="text" class="answer7" id="answer72" maxlength="2" style="width: 75px"> &nbsp; 3 ; &nbsp; </h1>
+      	<!-- Error Message -->
+      	<div class="modal-wrapper">
+      		<div class="modal">
+				<div class="head1" style="font-size: 40px">
+					Error Check
+					<a class="btn-close trigger" href="javascript:;"></a>
+          		</div>
+          			<div class="content" id="contentErrDiv">
+          		</div>
+			</div>
+		</div>
       </div>
    </li>
    </li>
      <li class="slide" data-tag="Step9">
       <div class="sized-container">
         <h1 style="font-size: 16pt; padding:5px; margin: 0px;"> 각각 공통으로 들어갈 연산자를 입력해주세요. </h1>
-        <h1 style="padding:10px; margin: 0px;">① &nbsp; a &nbsp; <input type="text" class="answer8" id="answer81" maxlength="2" style="width: 75px"> &nbsp; 2 ; &nbsp;
-        	또는 &nbsp; a &nbsp; <input type="text" class="answer8" id="answer82" maxlength="2" style="width: 75px"> &nbsp;5 ; </h1>
-	 	<h1 style="padding:10px; margin: 0px;">② &nbsp; b &nbsp; <input type="text" class="answer8" id="answer83" maxlength="2" style="width: 75px"> &nbsp; 2 ; &nbsp;
-	 		또는 &nbsp; b &nbsp; <input type="text" class="answer8" id="answer84" maxlength="2" style="width: 75px"> &nbsp;5 ; </h1>
+        <h1 style="padding:10px; margin: 0px;">
+        	① &nbsp; a &nbsp; <input type="text" class="answer8" id="answer81" maxlength="2" style="width: 75px"> &nbsp; 2 ; &nbsp;
+        	또는 &nbsp; a &nbsp; <input type="text" class="answer8" id="answer82" maxlength="2" style="width: 75px"> &nbsp;5 ; 
+        </h1>
+	 	<h1 style="padding:10px; margin: 0px;">
+	 		② &nbsp; b &nbsp; <input type="text" class="answer8" id="answer83" maxlength="2" style="width: 75px"> &nbsp; 2 ; &nbsp;
+	 		또는 &nbsp; b &nbsp; <input type="text" class="answer8" id="answer84" maxlength="2" style="width: 75px"> &nbsp;5 ; 
+	 	</h1>
+      	<!-- Error Message -->
+      	<div class="modal-wrapper">
+      		<div class="modal">
+				<div class="head1" style="font-size: 40px">
+					Error Check
+					<a class="btn-close trigger" href="javascript:;"></a>
+          		</div>
+          			<div class="content" id="contentErrDiv">
+          		</div>
+			</div>
+		</div>
+      </div>
+   </li>
+    <li class="slide" data-tag="Step10">
+      <div class="sized-container">
+        <h1 style="padding:10px; margin: 0px;">
+        	a &nbsp; <input type="text" class="answer9" id="answer91" maxlength="1"> &nbsp; b &nbsp; == &nbsp; c &nbsp; ;  
+        </h1>
+	 	<h1 style="padding:10px; margin: 0px;">
+	 		 b &nbsp; - &nbsp; a &nbsp; <input type="text" class="answer9" id="answer92" maxlength="1"> &nbsp; c &nbsp; ; 
+	 	</h1>
+      	<!-- Error Message -->
+      	<div class="modal-wrapper">
+      		<div class="modal">
+				<div class="head1" style="font-size: 40px">
+					Error Check
+					<a class="btn-close trigger" href="javascript:;"></a>
+          		</div>
+          			<div class="content" id="contentErrDiv">
+          		</div>
+			</div>
+		</div>
+      </div>
+   </li>
+   <li class="slide" data-tag="Step11">
+      <div class="sized-container">
+        <h1 style="padding:10px; margin: 0px;">
+        	a &nbsp; <input type="text" class="answer10" id="answer101" maxlength="1"> &nbsp; b &nbsp; > &nbsp; c &nbsp; ;  
+        </h1>
+	 	<h1 style="padding:10px; margin: 0px;">
+	 		 b &nbsp; % &nbsp; a &nbsp; <input type="text" class="answer10" id="answer102" maxlength="1"> &nbsp; c &nbsp; ; 
+	 	</h1>
+      	<!-- Error Message -->
+      	<div class="modal-wrapper">
+      		<div class="modal">
+				<div class="head1" style="font-size: 40px">
+					Error Check
+					<a class="btn-close trigger" href="javascript:;"></a>
+          		</div>
+          			<div class="content" id="contentErrDiv">
+          		</div>
+			</div>
+		</div>
+      </div>
+   </li>
+   <li class="slide" data-tag="Step12">
+      <div class="sized-container">
+        <h1 style="padding:10px; margin: 0px;">
+        	( &nbsp; a &nbsp; * &nbsp; b &nbsp; ) &nbsp; + &nbsp; c &nbsp;
+        		<input type="text" class="answer11" id="answer111" maxlength="1"> &nbsp; 15 &nbsp; ;  
+        </h1>
+	 	<h1 style="padding:10px; margin: 0px;">
+	 		 ( &nbsp; a &nbsp; * &nbsp; b &nbsp; ) &nbsp; *  &nbsp; c &nbsp;
+	 		 	<input type="text" class="answer11" id="answer112" maxlength="2" style="width: 75px"> &nbsp; 70 &nbsp; ;  
+	 	</h1>
+      	<!-- Error Message -->
+      	<div class="modal-wrapper">
+      		<div class="modal">
+				<div class="head1" style="font-size: 40px">
+					Error Check
+					<a class="btn-close trigger" href="javascript:;"></a>
+          		</div>
+          			<div class="content" id="contentErrDiv">
+          		</div>
+			</div>
+		</div>
       </div>
    </li>
   </ul>
