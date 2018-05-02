@@ -45,7 +45,7 @@
 	      function selectLevelPage() { location.href = "contents/contentsHome"; }
 	      function joinForm() { location.href = "person/joinForm"; }  
 	      function loginForm() { location.href = "person/loginForm"; }  
-	      unction logout(loginId) { 
+	      function logout(loginId) { 
 	    	  var result = loginId.includes('@gmail.com');
 	    	  if(result) {
 	    		  window.open('https://accounts.google.com/logout', 'popup', 'z-lock=yes, width=600, height=400');
@@ -200,11 +200,11 @@
 			    		</div>
 			  		</div>
 			  	
-			  		<div class="wrapper1">
-			    		<div class="card"> 
-			    			<i class="fal fa-arrow-right"></i> 
-			    		</div>
-			  		</div>
+			  		<div class="wrapperVoid">
+				    		<div class="card"> 
+				    			<i class="fal fa-arrow-right"></i> 
+				    		</div>
+				  		</div>
 			  		
 				</div> <!-- container 끝 -->
 		  	
@@ -221,12 +221,12 @@
 			    		</div>
 			  		</div>
 			  	
-			  		<div class="wrapper3">
-			    		<div class="card"> 
-			    			<i class="fal fa-arrow-right"></i> 
-			    		</div>
-			  		</div>
-				
+			  		<div class="wrapperVoid">
+				    		<div class="card"> 
+				    			<i class="fal fa-arrow-right"></i> 
+				    		</div>
+				  		</div>
+			  		
 				</div> <!-- container 끝 -->
 		  	
 		  	</div> <!-- box3 끝 -->
@@ -253,11 +253,12 @@
 				    		</div>
 				  		</div>
 				  		
-				  		<div class="wrapper7">
-				    		<div class="card" onclick="selectLevelPage();"> 
+				  		<div class="wrapperVoid">
+				    		<div class="card"> 
 				    			<i class="fal fa-arrow-right"></i> 
 				    		</div>
 				  		</div>
+				  		
 					
 					</div> <!-- container 끝 -->
 					
@@ -273,8 +274,8 @@
 				    		</div>
 				  		</div>
 				  	
-				  		<div class="wrapper3">
-				    		<div class="card"> 
+				  		<div class="wrapper7">
+				    		<div class="card" onclick="selectLevelPage();"> 
 				    			<i class="fal fa-arrow-right"></i> 
 				    		</div>
 				  		</div>

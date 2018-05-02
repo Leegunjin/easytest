@@ -103,6 +103,8 @@ button.previous:hover {
 	border-top: 1px solid black;
 	overflow: hidden;
 	padding-top: 30px;
+	transform: translate(0%, -20%);
+	/* 수정 */
 }
 .button-container button {
 	float: right;
@@ -1064,7 +1066,7 @@ section {
 </script>
 </head>
 
-<body style="overflow-x:hidden">
+<body style="overflow-x:hidden; overflow-y:hidden">
    
 <div class="pagination-container full-width-container">
 	<div class="sized-container">

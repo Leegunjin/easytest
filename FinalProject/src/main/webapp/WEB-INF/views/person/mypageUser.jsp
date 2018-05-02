@@ -319,6 +319,27 @@
                   OS.hideTaskbar();
             });
       
+            (function() {
+            	var num = ${person.grade};
+           	  
+           	  alert("그레이드의 값을 받고 싶다" + num);
+           	  
+           	  /* for(var i=1; i <= num; i++){
+           		  //alert('.badge_'+i);
+           		  $("'.badge_'+i").on('click',function(){
+           			 alert("gg"); 
+           		  });
+           	  } */
+            	
+           	  $(".badge_1").click(function(){
+           		 alert("gg"); 
+           		$(".badge_1").animate({left:"100%"});
+           	  });
+            });
+
+
+            
+            
          });
          
          </script>
@@ -534,6 +555,11 @@
       
       </script>
    
+   	  <script type="text/javascript">
+   	  
+   	  
+   	  
+   	  </script>
    
    </head>  
     
@@ -680,15 +706,15 @@
          </div> <!-- btmOpenDiv_Modify 끝 -->
          
          
-         <div class="btmOpenDiv_Mail">
+         <!-- <div class="btmOpenDiv_Mail">
          
             <div class="mail">   
-            한솔씨 수료증 보내는 페이지 만들어 놨스빈다.
+            	한솔씨 수료증 보내는 페이지 만들어 놨스빈다.
 
                <button class="mailClose"> Close </button>
 
-             </div> <!-- mail 끝 -->
-         </div> <!-- btmOpenDiv_Mail 끝 -->
+             </div> mail 끝
+         </div> btmOpenDiv_Mail 끝  -->
          
          
          
@@ -994,12 +1020,12 @@
                      </div>
                   </li>
                   
-                  <li onmouseover="anim('sendmail')" id="liClick_Mail">
+                  <!-- <li onmouseover="anim('sendmail')" id="liClick_Mail">
                      <div id="sendmail" class="menu"> 
                      SENDMAI 
                      <div class="rotate">L</div>
                      </div>
-                  </li>
+                  </li> -->
                   
                   <li onmouseover="anim('backMain')" onclick="goHome()">
                      <div id="backMain" class="menu"> 

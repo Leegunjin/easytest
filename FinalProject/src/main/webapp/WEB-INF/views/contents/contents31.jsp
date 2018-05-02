@@ -117,6 +117,8 @@ button.previous:hover {
 	border-top: 1px solid black;
 	overflow: hidden;
 	padding-top: 9px;
+	transform: translate(0%, 100%);
+	/* 수정 */
 }
 
 .button-container button {
@@ -134,6 +136,7 @@ button.previous:hover {
 	text-align: center;
 	padding: 0 25px;
 	padding-top: 60px;
+	
 }
 
 .indicator {
@@ -614,7 +617,7 @@ a.btn{
    </script>
 
 </head>
-<body style="overflow-x: hidden">
+<body style="overflow-x:hidden; overflow-y:hidden">
 
 	<div class="pagination-container full-width-container">
 		<div class="sized-container">

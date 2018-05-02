@@ -43,7 +43,7 @@
 				$('#addTagDiv').html('');
 				
 				$('#check').on('click', function() {
-					alert("check click success");
+					//alert("check click success");
 					var hashTagValue = "#"+$('#hashTagValue').val();
 					getText += hashTagValue;
 					//hashtagArr.push(hashTag);
@@ -53,7 +53,7 @@
 					$('#hashtagDiv').html(getText);
 					$('#addTag').off().on('click',addTag);
 					/* heyji */
-					alert(getText);
+					//alert(getText);
 					$('#hashTag').val(getText);
 				});
 			}

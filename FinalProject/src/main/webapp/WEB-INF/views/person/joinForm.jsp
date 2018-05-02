@@ -111,7 +111,7 @@
          
          <div class="inputBoxHalf">
             User Category
-            <input type="radio" name="radio" value="admin">admin   
+           <!--  <input type="radio" name="radio" value="admin">admin  -->  
             <input type="radio" name="radio" value="user" checked="checked">user
             
          </div>

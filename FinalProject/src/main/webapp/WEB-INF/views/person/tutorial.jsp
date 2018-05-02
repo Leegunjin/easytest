@@ -240,7 +240,7 @@
 					        <div class="bg-part"></div>
 					        <div class="bg-part"></div>
 					        <div class="bg-part"></div>
-					        <h2 class="section-heading"> Login #1</h2>
+					        <h2 class="section-heading"> #1 Login Page </h2>
 					        <p class="additional-text"> If Contents Use, Login.</p>
 		      			</div>
 		    	</div> <!-- section-1 끝 -->
@@ -260,8 +260,8 @@
 					        <div class="bg-part"></div>
 					        <div class="bg-part"></div>
 					        <div class="bg-part"></div>
-					        <h2 class="section-heading"> After Login #2</h2>
-					        <p class="additional-text"> My Page, Study Open.</p>
+					        <h2 class="section-heading"> #2 Main Page </h2>
+					        <p class="additional-text"> My Page, Study, Board Open.</p>
 		      			</div>
 		    	</div> <!-- section-2 끝 -->
 		    	
@@ -280,8 +280,8 @@
 					        <div class="bg-part"></div>
 					        <div class="bg-part"></div>
 					        <div class="bg-part"></div>
-					        <h2 class="section-heading"> My Page #3</h2>
-					        <p class="additional-text"> Your Infomation. #3</p>
+					        <h2 class="section-heading"> #3 My Page </h2>
+					        <p class="additional-text"> Your Infomation. </p>
 			      		</div>
 		    	</div> <!-- section-3 끝 -->
 		    	
@@ -300,8 +300,8 @@
 					        <div class="bg-part"></div>
 					        <div class="bg-part"></div>
 					        <div class="bg-part"></div>
-					        <h2 class="section-heading"> Study #4</h2>
-					        <p class="additional-text"> Challenge Quest. </p>
+					        <h2 class="section-heading"> #4 Study Quiz </h2>
+					        <p class="additional-text"> Level 1~12. </p>
 		      			</div>
 		    	</div> <!-- section-4 끝 -->
 		    	
@@ -320,8 +320,8 @@
 					        <div class="bg-part"></div>
 					        <div class="bg-part"></div>
 					        <div class="bg-part"></div>
-					        <h2 class="section-heading"> Chapter #5</h2>
-					        <p class="additional-text"> One Chapter Two Quest.</p>
+					        <h2 class="section-heading"> #5 Hidden </h2>
+					        <p class="additional-text"> Trophy Quiz </p>
 		      			</div>
 		    	</div> <!-- section-5 끝 -->
 		    	
@@ -340,8 +340,8 @@
 					        <div class="bg-part"></div>
 					        <div class="bg-part"></div>
 					        <div class="bg-part"></div>
-					        <h2 class="section-heading"> Prophiy Quest #6</h2>
-					        <p class="additional-text">Chapter 3,5,6 Atfer Open. </p>
+					        <h2 class="section-heading"> #6 Board </h2>
+					        <p class="additional-text"> Q & A User to User. </p>
 		      			</div>
 		    	</div> <!-- section-6 끝 -->
 		    	
@@ -360,8 +360,8 @@
 					        <div class="bg-part"></div>
 					        <div class="bg-part"></div>
 					        <div class="bg-part"></div>
-					        <h2 class="section-heading">It's Hard #7</h2>
-					        <p class="additional-text"> God Bless You. </p>
+					        <h2 class="section-heading"> #7 Hash Tag </h2>
+					        <p class="additional-text"> Just Easy Search. </p>
 		      			</div>
 		    	</div> <!-- section-7 끝 -->
 		    
@@ -381,7 +381,7 @@
 					        <div class="bg-part"></div>
 					        <div class="bg-part"></div>
 					        <h2 class="section-heading">
-					        	<a class="codepen-link" >Complete #8 </a>
+					        	<a class="codepen-link" > #8 Tutorial Complete! </a>
 					        </h2>
 					        <p class="check-out additional-text">Thank You.
 					        	<a onclick="goHome();" style="cursor: pointer;">Go Main</a>

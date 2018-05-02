@@ -294,8 +294,8 @@ a.btn{
      display:block;
      margin: 24px 5px 0 -75px;
      position:absolute;
-     top:86.5%; left:42%;
-     font:'Jua', sans-serif;
+     top:89.2%; left:47%; 
+     font:'Jua', sans-serif; 
      font-weight:700;
      text-align:center;
      text-decoration:none;
@@ -578,7 +578,7 @@ a.btn{
    
    </script>
 </head>
-<body style="overflow-x:hidden">
+<body style="overflow-x:hidden; overflow-y:hidden">
    
 <div class="pagination-container full-width-container">
   <div class="sized-container">

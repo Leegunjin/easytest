@@ -530,6 +530,9 @@ button.previous:hover {
 .full-width-container {
 	width: 100%;
 	min-width: 320px;
+	transform: translate(0%, -20%);
+	/* 수정 */
+
 }
 
 .sized-container {
@@ -537,6 +540,8 @@ button.previous:hover {
 	height:80px;
 	width: 100%;
 	margin: 0 auto;
+		transform: translate(0%, -20%);
+	/* 수정 */
 }
 
 .slide-container {
@@ -558,6 +563,8 @@ button.previous:hover {
 	border-top: 1px solid black;
 	overflow: hidden;
 	padding-top: 30px;
+	transform: translate(0%, -70%);
+	/* 수정 */
 }
 
 .button-container button {
@@ -715,7 +722,7 @@ ul {
 </style>
 <title>Insert title here</title>
 </head>
-<body style="overflow-x: hidden">
+<body style="overflow-x:hidden; overflow-y:hidden">
 
 <div class="pagination-container full-width-container">
 		<div class="sized-container">

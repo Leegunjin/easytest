@@ -20,7 +20,8 @@
 	    <script type="text/javascript">
 	    
 		$(function(){
-			//alert(${initPage});
+			//alert(${initPage}); 
+			/* 
 			if(${initPage} == 1){
 				var offset = $('#st-panel-'+${initPage}).offset();
 		        $('html, body').animate({scrollTop : offset.top}, 400);
@@ -29,7 +30,7 @@
 		        $('html, body').animate({scrollTop : offset.top}, 400);
 			}
 	        $('#st-control-'+${initPage}).attr('checked',true);
-	        
+	         */
 			//alert("어디까지 깼나"+${bestLevel});
 			$('.card').each(function(){
 				

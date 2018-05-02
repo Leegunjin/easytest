@@ -135,8 +135,9 @@
 			<artifactId>spring-context-support</artifactId>
 			<version>${org.springframework-version}</version>
 		</dependency>
+		
 		<!-- E-mail Verify -->
-		<dependency>
+		<!-- <dependency>
 			<groupId>javax.mail</groupId>
 			<artifactId>mail</artifactId>
 			<version>1.4.7</version>
@@ -146,7 +147,7 @@
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-context-support</artifactId>
 			<version>${org.springframework-version}</version>
-		</dependency>
+		</dependency> -->
 		
 		<!-- spring-jdbc 추가 -->
 		<dependency>

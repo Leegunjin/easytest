@@ -221,28 +221,28 @@ html, body {
   background: transparent;
 }
 .nav-elem.nav-1 {
-  background-image: url("../../resources/img/tutorial/Tutorial1.png");
+  background-image: url("../../resources/img/tutorial/tuto1.png");
 }
 .nav-elem.nav-2 {
-  background-image: url("../../resources/img/tutorial/Tutorial2.png");
+  background-image: url("../../resources/img/tutorial/tuto2.png");
 }
 .nav-elem.nav-3 {
-  background-image: url("../../resources/img/tutorial/Tutorial3.png");
+  background-image: url("../../resources/img/tutorial/tuto3.png");
 }
 .nav-elem.nav-4 {
-  background-image: url("../../resources/img/tutorial/Tutorial4.png");
+  background-image: url("../../resources/img/tutorial/tuto4.png");
 }
 .nav-elem.nav-5 {
-  background-image: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/142996/captainamerica.jpg");
+  background-image: url("../../resources/img/tutorial/tuto5.png");
 }
 .nav-elem.nav-6 {
-  background-image: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/142996/blackwidow.jpg");
+  background-image: url("../../resources/img/tutorial/tuto6.png");
 }
 .nav-elem.nav-7 {
-  background-image: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/142996/sections-4.jpg");
+  background-image: url("../../resources/img/tutorial/tuto7.png");
 }
 .nav-elem.nav-8 {
-  background-image: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/142996/thor.jpg");
+  background-image: url("../../resources/img/tutorial/tuto8.png");
 }
 
 /* REAL SIDEBAR STYLES END */
@@ -258,52 +258,52 @@ html, body {
   height: 100%;
 }
 .section.section-1 .left-part {
-  background-image: url("../../resources/img/tutorial/Tutorial1.png");
+  background-image: url("../../resources/img/tutorial/tuto1.png");
 }
 .section.section-1 .bg-part {
-  background-image: url("../../resources/img/tutorial/Tutorial1.png");
+  background-image: url("../../resources/img/tutorial/tuto1.png");
 }
 .section.section-2 .left-part {
-  background-image: url("../../resources/img/tutorial/Tutorial2.png");
+  background-image: url("../../resources/img/tutorial/tuto2.png");
 }
 .section.section-2 .bg-part {
-  background-image: url("../../resources/img/tutorial/Tutorial2.png");
+  background-image: url("../../resources/img/tutorial/tuto2.png");
 }
 .section.section-3 .left-part {
-  background-image: url("../../resources/img/tutorial/Tutorial3.png");
+  background-image: url("../../resources/img/tutorial/tuto3.png");
 }
 .section.section-3 .bg-part {
-  background-image: url("../../resources/img/tutorial/Tutorial3.png");
+  background-image: url("../../resources/img/tutorial/tuto3.png");
 }
 .section.section-4 .left-part {
-  background-image: url("../../resources/img/tutorial/Tutorial4.png");
+  background-image: url("../../resources/img/tutorial/tuto4.png");
 }
 .section.section-4 .bg-part {
-  background-image: url("../../resources/img/tutorial/Tutorial4.png");
+  background-image: url("../../resources/img/tutorial/tuto4.png");
 }
 .section.section-5 .left-part {
-  background-image: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/142996/captainamerica.jpg");
+  background-image: url("../../resources/img/tutorial/tuto5.png");
 }
 .section.section-5 .bg-part {
-  background-image: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/142996/captainamerica.jpg");
+  background-image: url("../../resources/img/tutorial/tuto5.png");
 }
 .section.section-6 .left-part {
-  background-image: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/142996/blackwidow.jpg");
+  background-image: url("../../resources/img/tutorial/tuto6.png");
 }
 .section.section-6 .bg-part {
-  background-image: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/142996/blackwidow.jpg");
+  background-image: url("../../resources/img/tutorial/tuto6.png");
 }
 .section.section-7 .left-part {
-  background-image: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/142996/sections-4.jpg");
+  background-image: url("../../resources/img/tutorial/tuto7.png");
 }
 .section.section-7 .bg-part {
-  background-image: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/142996/sections-4.jpg");
+  background-image: url("../../resources/img/tutorial/tuto7.png");
 }
 .section.section-8 .left-part {
-  background-image: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/142996/thor.jpg");
+  background-image: url("../../resources/img/tutorial/tuto8.png");
 }
 .section.section-8 .bg-part {
-  background-image: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/142996/thor.jpg");
+  background-image: url("../../resources/img/tutorial/tuto8.png");
 }
 
 .left-part,

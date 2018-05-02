@@ -63,14 +63,13 @@
 		function messageSendFormOpen(id) {
 			
 		var id = document.getElementById('id');
-		alert(id);
+		/* alert(id); */
 		window.open("../message/messageSendForm","newWindow","top=100,left=800,width=500,height=500");
 		} 
 		
 		
 		function pagingFormSubmit(currentPage) {
 			
-		alert("pagingFormSubmit");
 		var form = document.getElementById("pagingForm");
 		var page = document.getElementById("page");
 		page.value = currentPage;
@@ -100,7 +99,7 @@
 				
 			$('#check').on('click', function() {
 					
-				alert("check click success");
+				//alert("check click success");
 				
 				var hashTagValue = "#"+$('#hashTagValue').val();
 				getText += hashTagValue;
@@ -113,7 +112,7 @@
 				$('#addTag').off().on('click',addTag);
 					
 				/* heyji */
-				alert(getText);
+				//alert(getText);
 				$('#hashTag').val(getText);
 			});
 		}
@@ -225,9 +224,9 @@
    	     var bnum = '';
 		 var test = '';
    		 function numberCheck(num) {
-   			 alert("numberCheck Click");
+   			 //alert("numberCheck Click");
    			 bnum = num;
-   			 alert(bnum);
+   			 //alert(bnum);
    			 /* init(); */
    			 $.ajax({
    	            
@@ -252,14 +251,14 @@
    				 },
    	            
    				 error : function(err) {
-   	               alert("error");
-   	               alert(err);
+   	               //alert("error");
+   	               //alert(err);
    				 }
    			 });
    			
    			 $('#boardDeleteBtn').on('click', function() {
-				alert("boardDeleteBtn click");
-				alert("삭제버튼 Bnum : "+ bnum);
+				/* alert("boardDeleteBtn click"); */
+				/* alert("삭제버튼 Bnum : "+ bnum); */
 				$.ajax({
 		            url : "dBoard",
 		            type : "GET",
@@ -267,12 +266,12 @@
 		            	bnum : bnum
 		            },
 		            success : function(result) {
-		               alert("success");
-		               alert(result);
+		              // alert("success");
+		               //alert(result);
 		            },
 		            error : function(err) {
-		               alert("error");
-		               alert(err);
+		               //alert("error");
+		               //alert(err);
 		            }
 		         });
 			});
@@ -304,7 +303,7 @@
 				$('#replySaveButton').on('click', function() {
 					var b_num = bnum;
 					var r_contents = $('#r_contents').val();
-					alert("replyBtnClick Success");
+					//alert("replyBtnClick Success");
 					$.ajax({
 						url : "../reply/writeReply",
 						type : "POST",
@@ -314,22 +313,22 @@
 							r_contents : r_contents
 						}),
 						success : function() {
-							alert("reply Write Success");
+							//alert("reply Write Success");
 							$('#r_contents').val('');
 							init();
 						},
 						error : function(err) {
-							alert("reply Write Error");
+							//alert("reply Write Error");
 							console.log(err);
 						}
 					});
 				});
 			});
 			function init() {	
-				alert("reply init() Start!");
+				//alert("reply init() Start!");
 				/* var b_num = $('#b_num').val(); */
 				var b_num = bnum;
-				alert("b_num : " + b_num);
+				//alert("b_num : " + b_num);
 				$.ajax({
 					url : "../reply/replyList",
 					type : "GET",
@@ -353,7 +352,7 @@
 						$('#listDiv').html(str);
 						
 						$('.btnDel').on('click', function() {
-							alert("btnDELETE PLEASE~!~!~!");
+							//alert("btnDELETE PLEASE~!~!~!");
 							var r_num = $(this).attr('data-num');
 							$.ajax({
 								url : "../reply/replyDelete",
@@ -362,12 +361,12 @@
 									r_num : r_num
 								},
 								success : function(result) {
-									alert("result : "+result);
+									//alert("result : "+result);
 									if (result == true) {
-										alert("삭제 되었습니다.");
+										//alert("삭제 되었습니다.");
 										init();
 									} else if (result == false) {
-										alert("삭제 실패하였습니다.");
+										//alert("삭제 실패하였습니다.");
 										init();
 									}
 									

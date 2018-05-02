@@ -237,7 +237,7 @@ ul {
 }
 
 div.resultMsg>img {
-	margin-left: -280px;
+	margin-top: -9px;
 }
 
 #javaCodeDiv {
@@ -245,8 +245,8 @@ div.resultMsg>img {
 	font-family: 'Jua', sans-serif;
 	font-weight: bolder;
 	width: 140px;
-	margin-left: 269px;
-	margin-top: -26px;
+	margin-left: 300px;
+    margin-top: -63px;
 	height: 80px;
 }
 
@@ -450,7 +450,6 @@ function() {
 
 			<div id="nextBtnDiv"></div>
 			<button class="next">next</button>
-			<button class="previous">previous</button>
 			<div id="answerResultDiv"></div>
 			<div id="javaCodeDiv"></div>
 		</div>
