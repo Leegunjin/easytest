@@ -723,70 +723,71 @@ public class ContentsRestController {
 	      blankMap.put("result", result);
 	      return blankMap;
 	   }*/
-    /*@RequestMapping(value = "contents5", method = RequestMethod.POST)
-    public HashMap Contents31(String cNum, String userAnswer) {
-     
-       HashMap<String, Object> blankMap = new HashMap<>();
-       boolean result = false;
-       
-       // 컨텐츠넘버
-       String c_num = "31" + cNum;
-       logger.info(c_num);
+	  @RequestMapping(value = "contents5", method = RequestMethod.POST)
+	    public HashMap Contents31(@RequestBody HashMap<String, Object> userAnswer) {
+	     
+	       HashMap<String, Object> blankMap = new HashMap<>();
+	       boolean result = false;
+	       
+	       // 컨텐츠넘버
+	       String c_num = "31" + (Integer) userAnswer.get("cNum");
+	       logger.info(c_num);
 
-       // 번호로 컨텐츠 가져오기
-       Contents contents31 = dao.selectContent(Integer.parseInt(c_num));
-       // 컨텐츠의 정답 불러오기
-       String answer = contents31.getC_answer();
+	       // 번호로 컨텐츠 가져오기
+	       Contents contents31 = dao.selectContent(Integer.parseInt(c_num));
+	       // 컨텐츠의 정답 불러오기
+	       String answer = contents31.getC_answer();
 
-       // 잘못된 정답
-       String wrongAnswer = "";
-       // 맞은 정답
-       String rightAnswer = "";
-       // 에러 메세지
-       String errorReason = "";
+	       // 잘못된 정답
+	       String wrongAnswer = "";
+	       // 맞은 정답
+	       String rightAnswer = "";
+	       // 에러 메세지
+	       String errorReason = "";
 
-       if (answer.equals(userAnswer)) {
-          result = true;
-          blankMap.put("result", result);
-       } else {
-          result = false;
-          wrongAnswer = userAnswer;
-          rightAnswer = answer;
+	       if (answer.equals(userAnswer.get("userAnswer"))) {
+	          result = true;
+	          blankMap.put("result", result);
+	       } else {
+	          result = false;
+	          wrongAnswer = (String) userAnswer.get("userAnswer");
+	          logger.info("wrongAnswer : {}", wrongAnswer);
+	          rightAnswer = answer;
 
-          switch (answer) {
-             case "+":
-                errorReason = "두 수를 더해야 하는 관계이므로  + 가 정답입니다.";
-                break;
-             case "-":
-                errorReason = "두 수를 더해야 하는 관계이므로  - 가 정답입니다.";
-                break;
-             case "*":
-                errorReason = "두 수를 곱해야 하는 관계이므로  * 가 정답입니다. ";
-                break;
-             case "/":
-                errorReason = "두 수를 나누어야 하는 관계이므로  / 가 정답입니다. ";
-                break;
-             case "%":
-                errorReason = "퍼센트 관계 이므로  % 를 써야합니다. ";
-                break;
-             case "==":
-                errorReason = "두개가 같으므로  == 가 정답입니다. ";
-                break;
-             case "!=":
-                errorReason = "두개가 다르므로  != 가 정답입니다. ";
-                break;
-             default:
-                break;
-          }
-       }
+	          switch (answer) {
+	             case "+":
+	                errorReason = "두 수를 더해야 하는 관계이므로  + 가 정답입니다.";
+	                break;
+	             case "-":
+	                errorReason = "두 수를 더해야 하는 관계이므로  - 가 정답입니다.";
+	                break;
+	             case "*":
+	                errorReason = "두 수를 곱해야 하는 관계이므로  * 가 정답입니다. ";
+	                break;
+	             case "/":
+	                errorReason = "두 수를 나누어야 하는 관계이므로  / 가 정답입니다. ";
+	                break;
+	             case "%":
+	                errorReason = "퍼센트 관계 이므로  % 를 써야합니다. ";
+	                break;
+	             case "==":
+	                errorReason = "두개가 같으므로  == 가 정답입니다. ";
+	                break;
+	             case "!=":
+	                errorReason = "두개가 다르므로  != 가 정답입니다. ";
+	                break;
+	             default:
+	                break;
+	          }
+	       }
 
-       System.out.println("errorReason : " + errorReason);
-       blankMap.put("wrongAnswer", wrongAnswer);
-       blankMap.put("rightAnswer", rightAnswer);
-       blankMap.put("errorReason", errorReason);
-       blankMap.put("result", result);
-       return blankMap;
-    }*/
+	       System.out.println("errorReason : " + errorReason);
+	       blankMap.put("wrongAnswer", wrongAnswer);
+	       blankMap.put("rightAnswer", rightAnswer);
+	       blankMap.put("errorReason", errorReason);
+	       blankMap.put("result", result);
+	       return blankMap;
+	    }
 
   
     @RequestMapping(value = "contents6", method = RequestMethod.POST)

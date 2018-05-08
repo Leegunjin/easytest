@@ -259,57 +259,65 @@ public class PersonViewController {
 	 */
 	@RequestMapping(value = "test67", method = RequestMethod.GET)
 	public String test67(HttpSession session , Model model) {
-		logger.info("forgot START");
+		logger.info("test67 START");
 		
 		String loginId = (String)session.getAttribute("loginId");
 		
 		Person person = dao.selectPerson(loginId);
 		model.addAttribute("person", person);
 		
-		logger.info("forgot END");
+		logger.info("test67 END");
 		return "person/test67";
 	}
 	
 	
 	
-	@RequestMapping(value = "/mail_send", method=RequestMethod.GET)
-	public void MailSend() throws MessagingException, UnsupportedEncodingException {
-		String admin = "remela11hee@gmail.com";				
-		// 메일을 보낼 관리자 계정.
-		try{
-			MimeMessage message = mailSender.createMimeMessage();
-			MimeMessageHelper messageHelper = new MimeMessageHelper(message, true, "UTF-8");
-			messageHelper.setFrom(admin);  		
-			// 보내는사람 (생략 시 정상작동을 안함)
-			messageHelper.setTo("khjmela@naver.com");     	// 받는사람 이메일
-			messageHelper.setSubject("[수료증 송부]"); 		// 메일제목(생략 가능)
-			messageHelper.setText(	// 메일 내용
-					new StringBuffer().append("수료증 송부 \n").append("메일 보냈다아~~ 꺄아~~. \n").toString());
-						//	http://localhost:8888/www/users/verify?userid="+ joinUser.getUserid()).append("\n이메일 인증 확인").toString());	
-			MimeMultipart multipart = new MimeMultipart("related");
-			// html
-			BodyPart messageBodyPart = new MimeBodyPart();
-			String htmlText = "<img src=\"cid:image\">";
-			messageBodyPart.setContent(htmlText, "text/html");
-			multipart.addBodyPart(messageBodyPart);
-			//image
-			messageBodyPart = new MimeBodyPart();
-			File file = new File("C:\\certificate.jpg");
-			DataSource fds = new FileDataSource(file);
-			messageBodyPart.setDataHandler(new DataHandler(fds));
-			messageBodyPart.setHeader("Content-ID", "<image>");
-			messageBodyPart.setHeader("Content-Type", "image/jpg");
-			multipart.addBodyPart(messageBodyPart);
-			message.setContent(multipart);
+	   @RequestMapping(value = "mail_send", method=RequestMethod.GET)
+	   public String MailSend(HttpSession session) throws MessagingException, UnsupportedEncodingException {
+	      logger.info("mail_send personView 오리지널! 시작!");
+	      /*String loginId = (String) session.getAttribute("loginId");
+	      logger.info("loginId : {}", loginId);
+	      Person login_user = dao.selectPerson(loginId);
+	      */
+	      String admin = "easycondingu@gmail.com";            
+	      // 메일을 보낼 관리자 계정.
+	      try{
+	         MimeMessage message = mailSender.createMimeMessage();
+	         MimeMessageHelper messageHelper = new MimeMessageHelper(message, true, "UTF-8");
+	         messageHelper.setFrom(admin);        
+	         // 보내는사람 (생략 시 정상작동을 안함)
+	         messageHelper.setTo("khjmela@naver.com");        // 받는사람 이메일
+	         //messageHelper.setTo(login_user.getEmail());
+	         messageHelper.setSubject("[수료증 송부]");       // 메일제목(생략 가능)
+	         messageHelper.setText(   // 메일 내용
+	               new StringBuffer().append("수료증 송부 \n").append("메일 보냈다아~~ 꺄아~~. \n").toString());
+	                  //   http://localhost:8888/www/users/verify?userid="+ joinUser.getUserid()).append("\n이메일 인증 확인").toString());   
+	         MimeMultipart multipart = new MimeMultipart("related");
+	         // html
+	         BodyPart messageBodyPart = new MimeBodyPart();
+	         String htmlText = "<img src=\"cid:image\">";
+	         messageBodyPart.setContent(htmlText, "text/html");
+	         multipart.addBodyPart(messageBodyPart);
+	         
+	         //image
+	         messageBodyPart = new MimeBodyPart();
+	         File file = new File("C:\\Users\\Administrator\\Pictures\\Certificate_From_EasyCodingU.jpg");
+	         DataSource fds = new FileDataSource(file);
+	         messageBodyPart.setDataHandler(new DataHandler(fds));
+	         messageBodyPart.setHeader("Content-ID", "<image>");
+	         messageBodyPart.setHeader("Content-Type", "image/jpg");
+	         multipart.addBodyPart(messageBodyPart);
+	         message.setContent(multipart);
 
-			//msg.setContent(text, "text/html");
-			message.setSentDate(new Date());
-			
-			mailSender.send(message);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
-
+	         //msg.setContent(text, "text/html");
+	         message.setSentDate(new Date());
+	         
+	         mailSender.send(message);
+	      } catch (Exception e) {
+	         e.printStackTrace();
+	      }
+	      logger.info("mail_send personView 오리지널! 끝!");
+	      return "person/publishComplete";
+	   }
 	
 }

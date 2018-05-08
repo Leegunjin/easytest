@@ -414,11 +414,13 @@
           
          /* 정보수정 글자를 클릭하면 */
           $("#liClick_Mail").click(function() {
-               
-             /* 왼쪽에서 div가 튀어나옴 */
+        	  alert("mail 클릭됨");
+            /*    
+             	 왼쪽에서 div가 튀어나옴 
              $(".btmMain").fadeIn(400);
              $(".btmOpenDiv_Mail").animate({left:"-30.5%"});
-               
+                */
+                location.href="mail_send";
           });
             
             
@@ -706,15 +708,14 @@
          </div> <!-- btmOpenDiv_Modify 끝 -->
          
          
-         <!-- <div class="btmOpenDiv_Mail">
+         <div class="btmOpenDiv_Mail">
          
             <div class="mail">   
-            	한솔씨 수료증 보내는 페이지 만들어 놨스빈다.
-
+            	
                <button class="mailClose"> Close </button>
 
-             </div> mail 끝
-         </div> btmOpenDiv_Mail 끝  -->
+             </div> <!-- mail 끝 -->
+         </div> <!-- btmOpenDiv_Mail 끝 -->
          
          
          
@@ -1020,12 +1021,12 @@
                      </div>
                   </li>
                   
-                  <!-- <li onmouseover="anim('sendmail')" id="liClick_Mail">
+                  <li onmouseover="anim('sendmail')" id="liClick_Mail">
                      <div id="sendmail" class="menu"> 
                      SENDMAI 
                      <div class="rotate">L</div>
                      </div>
-                  </li> -->
+                  </li>
                   
                   <li onmouseover="anim('backMain')" onclick="goHome()">
                      <div id="backMain" class="menu"> 

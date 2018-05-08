@@ -233,7 +233,7 @@ ul {
    font-size: 40px;
    font-weight: bolder;
    font-family: 'Jua', sans-serif;
-   width: 300px;
+   width: 360px;
    margin-left: 290px;
    margin-top: -62px;
    height: 80px;
@@ -319,7 +319,7 @@ input {
          }, animationTime);
          $('#nextBtnDiv').html("");
          $('#javaCodeDiv').html("");
-
+      
       }
       function goToPreviousSlide() {
          if (currentSlide <= 0)
@@ -391,12 +391,14 @@ input {
                   {
                      drop : function(event, ui) {
                         var droptitle = ui.draggable.attr("title");
+                        
                         var dragid = $(this).attr("id");
                         //alert(droptitle); - 스티커
                         //alert(dropid);- 박스
                         //console.log(ui.draggable);
 
                         var dropid = ui.draggable.attr("id");
+                        
                         var resultStr = '';
                         // div에 값 출력하기
                         //alert(dragid+names+"="+dropid);
@@ -416,8 +418,8 @@ input {
                            $('.next').off().on('click', goToNextSlide);
                            $('#javaCodeDiv').html("");
                            //alert(dropid); 
-
-                           
+                          
+                           if(names != null){
                            if (droptitle == "boolean") {
                               /*document.getElementById('names').innerHTML = "boolean"
                                     + " "
@@ -426,9 +428,10 @@ input {
                                     + " = "
                                     + ui.draggable.attr("value");*/
                               //$('#javaCodeDiv').html(names+name+"="+value);
+                              console.log(ui);
                               $('#javaCodeDiv').html("boolean"+ " "+ document.getElementById('name4').value
-                                 + " = "+ ui.draggable.attr("value"));
-                           }
+                                 + " = "+ ui.draggable.attr("id"));
+                           }else
                               if (droptitle == "string") {
                                  /*   document.getElementById('names').innerHTML = "string"
                                           + " "
@@ -438,8 +441,8 @@ input {
                                           + ui.draggable.attr("value");*/
                               
                               $('#javaCodeDiv').html("string"+ " "+ document.getElementById('name3').value
-                                    + " = "+ ui.draggable.attr("value"));
-                              }
+                                    + " = "+ "\""+ui.draggable.attr("id")+"\"");
+                              }else
                               if (droptitle == "double") {
                                  /*document.getElementById('names').innerHTML = "double"
                                        + " "
@@ -447,11 +450,10 @@ input {
                                              .getElementById('name2').value
                                        + " = "
                                        + ui.draggable.attr("value");*/
-                                       
                                  $('#javaCodeDiv').html("double"+ " "+ document.getElementById('name2').value
-                                       + " = "+ ui.draggable.attr("value"));
+                                       + " = "+ ui.draggable.attr("id"));
                                  
-                              }
+                              }else
                               if (droptitle == "int") {
                                  /*document.getElementById('names').innerHTML = "int"
                                        + " "
@@ -460,10 +462,11 @@ input {
                                        + " = "
                                        + ui.draggable.attr("value");*/
                                  $('#javaCodeDiv').html("int"+ " "+ document.getElementById('name1').value
-                                       + " = "+ ui.draggable.attr("value"));
+                                       + " = "+ ui.draggable.attr("id"));
                                        
                               }else{
                                  $('#javaCodeDiv').html(dragid+"="+dropid);
+                                    
                               }
 
                               ui.draggable.draggable("option",
@@ -475,7 +478,7 @@ input {
                                  top : y,
                                  left : x
                               });
-                           
+                           }
                         }
                      }
 

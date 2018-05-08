@@ -122,6 +122,12 @@ header {
    font-weight: bold;
    font-family: 'Jua', sans-serif;
 }
+.img2{
+    width: 182px;
+    margin-top: -50px;
+    margin-left: -12px;
+    height: 225px;
+}
 </style>
 
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -163,7 +169,7 @@ header {
       </div>
       <div class="back">
          <ul>
-         <img alt="" src="../resources/img/for1.png">
+         <img alt="" src="../resources/img/for1.png" class="img2">
          </ul>
       </div>
    </div>

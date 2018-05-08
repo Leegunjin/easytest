@@ -122,6 +122,12 @@ header {
    font-weight: bold;
    font-family: 'Jua', sans-serif;
 }
+.img1{
+  width: 182px;
+    margin-top: -50px;
+    margin-left: -12px;
+    height: 225px;
+}
 </style>
 
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -168,7 +174,7 @@ header {
       <div class="back">
          <ul>
             <li>
-               <img alt="" src="../resources/img/while.png" width="70px;" height="50px;">
+               <img alt="" src="../resources/img/while.png" width="200px;" height="200px;" class="img1">
             </li>
          </ul>
       </div>

@@ -578,7 +578,7 @@ a.btn{
      width:150px;
      height:50px;
      display:block;
-     margin: 30px  0 0 -75px;
+	 margin: -63px  0 0 -75px;
      position:absolute;
      top:86.5%; left:42%;
      font:'Jua', sans-serif;

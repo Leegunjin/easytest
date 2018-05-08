@@ -21,18 +21,21 @@
    <div class="welcome-section content-hidden">
       <div class="content-wrap">
          <ul class="fly-in-text">
-            <li>S</li>
-            <li>e</li>
-            <li>e</li>
+            <li>E</li>
+            <li>a</li>
+            <li>s</li>
             <li>y</li>
+            <li>C</li>
             <li>o</li>
-            <li>u</li>
-            <li>~</li>
-            <li>!</li>
+            <li>d</li>
+            <li>i</li>
+            <li>n</li>
+            <li>g</li>
+            <li>U</li>
          </ul>
-         <a class="enter-button" style="color: white;"> Bye ${sessionScope.loginName } </a>
-         <a href="/easycodingu/home" class="enter-button"> 메인 페이지로 이동</a>
-         
+         <a class="enter-button" style="color: white;"> Made By C-Class #3 </a>
+         <a href="/easycodingu/home" class="enter-button"> ${sessionScope.loginName }  </a>
+       
       
       </div>
    </div>

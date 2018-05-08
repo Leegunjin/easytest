@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+   pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
@@ -8,220 +8,217 @@
 <title>contents31</title>
 <link href="https://ss.googleapis.com/css?family=Jua" rel="stylesheet">
 <!--  <link rel="stylesheet" type="text/css"
-	href="../resources/css/styleContents31.css?ver=1"> -->
+   href="../resources/css/styleContents31.css?ver=1"> -->
 <style type="text/css">
 @charset "UTF-8";
 
 *, html, body {
-	font-family: 'Jua', sans-serif;
-	margin: 0;
-	padding: 0;
+   font-family: 'Jua', sans-serif;
+   margin: 0;
+   padding: 0;
 }
 
 * {
-	-webkit-box-sizing: border-box;
-	box-sizing: border-box;
+   -webkit-box-sizing: border-box;
+   box-sizing: border-box;
 }
 
 h1, h2 {
-	text-align: center;
+   text-align: center;
 }
 
 h1 {
-	font-size: 24px;
-	font-family: 'Jua', sans-serif;
-	line-height: 30px;
-	font-weight: bold;
-	margin-top: 59px;
+   font-size: 24px;
+   font-family: 'Jua', sans-serif;
+   line-height: 30px;
+   font-weight: bold;
+   margin-top: 59px;
 }
 
 h2 {
-	font-size: 18px;
-	font-family: 'Jua', sans-serif;
-	line-height: 88px;
-	margin-top: 0px;
-	background-color: #37B595;
+   font-size: 18px;
+   font-family: 'Jua', sans-serif;
+   line-height: 88px;
+   margin-top: 0px;
+   background-color: #37B595;
 }
 
 button {
-	-webkit-appearance: none;
-	-moz-appearance: none;
-	appearance: none;
-	border: 0;
-	padding: 14px 50px;
-	border-radius: 4px;
-	background-color: #37B595;
-	color: #FFFFFF;
-	text-transform: capitalize;
-	font-size: 18px;
-	line-height: 22px;
-	font-family: 'Jua', sans-serif;
-	outline: none;
-	cursor: pointer;
-	-webkit-transition: all 0.2s;
-	transition: all 0.2s;
+   -webkit-appearance: none;
+   -moz-appearance: none;
+   appearance: none;
+   border: 0;
+   padding: 14px 50px;
+   border-radius: 4px;
+   background-color: #37B595;
+   color: #FFFFFF;
+   text-transform: capitalize;
+   font-size: 18px;
+   line-height: 22px;
+   font-family: 'Jua', sans-serif;
+   outline: none;
+   cursor: pointer;
+   -webkit-transition: all 0.2s;
+   transition: all 0.2s;
 }
 
 button:hover {
-	background-color: #1A7F75;
+   background-color: #1A7F75;
 }
 
 button.previous {
-	background-color: #A2ACAF;
+   background-color: #A2ACAF;
 }
 
 button.previous:hover {
-	background-color: #5A5F61;
+   background-color: #5A5F61;
 }
 
 .full-width-container {
-	width: 100%;
-	min-width: 320px;
-	margin-top: -15px;
+   width: 100%;
+   min-width: 320px;
+   margin-top: -15px;
 }
 
 .question-container {
-	max-width: 900px;
-	width: 100%;
-	margin: 0 auto;
+   max-width: 900px;
+   width: 100%;
+   margin: 0 auto;
 }
 
 .sized-container {
-	max-width: 900px;
-	width: 100%;
-	margin: 0 auto;
+   max-width: 900px;
+   width: 100%;
+   margin: 0 auto;
 }
 
 .slide-container {
-	margin: 0;
-	padding: 0 1em 0;
-	padding-left: 0px;
-	position: relative;
-	left: 0;
-	overflow: hidden;
-	width: 10800px;
+   margin: 0;
+   padding: 0 1em 0;
+   padding-left: 0px;
+   position: relative;
+   left: 0;
+   overflow: hidden;
+   width: 10800px;
 }
 
 .slide {
-	float: left;
-	list-style-type: none;
-	height: 470px;
+   float: left;
+   list-style-type: none;
+   height: 470px;
 }
 
 .slide .sized-container {
-	padding-top: -8px;
-	padding-bottom: 20px;
+   padding-top: -8px;
+   padding-bottom: 20px;
 }
 
 .button-container {
-	border-top: 1px solid black;
-	overflow: hidden;
-	padding-top: 9px;
-	transform: translate(0%, 100%);
-	/* 수정 */
+   border-top: 1px solid black;
+   overflow: hidden;
+   padding-top: 9px;
 }
 
 .button-container button {
-	float: right;
-	margin-left: 30px;
+   float: right;
+   margin-left: 30px;
 }
 
 .pagination-container {
-	height: 18vh;
+   height: 18vh;
 }
 
 .pagination {
-	width: 100%;
-	height: 100%;
-	text-align: center;
-	padding: 0 25px;
-	padding-top: 60px;
-	
+   width: 100%;
+   height: 100%;
+   text-align: center;
+   padding: 0 25px;
+   padding-top: 60px;
 }
 
 .indicator {
-	width: 25px;
-	height: 25px;
-	border: 4px solid lightgray;
-	border-radius: 50%;
-	display: inline-block;
-	-webkit-transition: all 0.3s;
-	transition: all 0.3s;
-	position: relative;
+   width: 25px;
+   height: 25px;
+   border: 4px solid lightgray;
+   border-radius: 50%;
+   display: inline-block;
+   -webkit-transition: all 0.3s;
+   transition: all 0.3s;
+   position: relative;
 }
 
 .indicator .tag {
-	position: absolute;
-	top: -30px;
-	left: 50%;
-	-webkit-transform: translateX(-50%);
-	transform: translateX(-50%);
-	color: lightgray;
-	white-space: nowrap;
+   position: absolute;
+   top: -30px;
+   left: 50%;
+   -webkit-transform: translateX(-50%);
+   transform: translateX(-50%);
+   color: lightgray;
+   white-space: nowrap;
 }
 
 .indicator.active, .indicator.complete {
-	border-color: #37B595;
+   border-color: #37B595;
 }
 
 .indicator.active .tag, .indicator.complete .tag {
-	color: #37B595;
+   color: #37B595;
 }
 
 .indicator.complete:after {
-	content: "?";
-	position: absolute;
-	color: #37B595;
-	left: 4px;
-	top: 3px;
-	font-size: 14px;
-	font-family: 'Jua', sans-serif;
+   content: "?";
+   position: absolute;
+   color: #37B595;
+   left: 4px;
+   top: 3px;
+   font-size: 14px;
+   font-family: 'Jua', sans-serif;
 }
 
 .progress-bar-container {
-	width: 5%;
-	height: 4px;
-	display: inline-block;
-	background-color: lightgray;
-	position: relative;
-	top: -10px;
+   width: 5%;
+   height: 4px;
+   display: inline-block;
+   background-color: lightgray;
+   position: relative;
+   top: -10px;
 }
 
 .progress-bar-container:last-of-type {
-	display: none;
+   display: none;
 }
 
 .progress-bar-container .progress-bar {
-	width: 0;
-	height: 100%;
-	background-color: #37B595;
+   width: 0;
+   height: 100%;
+   background-color: #37B595;
 }
 
 [class^="answer"] {
-	margin: 0;
-	padding: 0;
-	background-color: #f3fafd;
-	border: solid 2px #217093;
-	border-radius: 4px;
-	box-sizing: border-box;
-	width: 50px;
-	height: 50px;
-	text-align: center;
-	margin-top: -17px;
-	font-family: 'Jua', sans-serif;
-	font-size: 20pt;
-	color: #353538;
-	font-weight: 600;
-	font-style: inherit;
+   margin: 0;
+   padding: 0;
+   background-color: #f3fafd;
+   border: solid 2px #217093;
+   border-radius: 4px;
+   box-sizing: border-box;
+   width: 50px;
+   height: 50px;
+   text-align: center;
+   margin-top: -17px;
+   font-family: 'Jua', sans-serif;
+   font-size: 20pt;
+   color: #353538;
+   font-weight: 600;
+   font-style: inherit;
 }
 
 ul {
-	list-style: none;
-	padding-left: 0px;
+   list-style: none;
+   padding-left: 0px;
 }
 
 .resultMsg {
-	vertical-align: center;
+   vertical-align: center;
 }
 .divfont{
 margin-left: 30px;
@@ -251,7 +248,7 @@ a.btn{
      width:150px;
      height:50px;
      display:block;
-     margin:7px 0 0 -75px;
+	 margin:12px 0 0 -75px;
      position:absolute;
      top:86.5%; left:42%;
      font:1.125em 'Arial', sans-serif;
@@ -358,7 +355,7 @@ a.btn{
 
 <!-- JavaScript -->
 <script type="text/javascript"
-	src="<c:url value="/resources/js/jquery-3.2.1.js"></c:url>"></script>
+   src="<c:url value="/resources/js/jquery-3.2.1.js"></c:url>"></script>
 <script type="text/javascript">
    
    $(function() {
@@ -444,12 +441,12 @@ a.btn{
                      resultStr += '틀린 이유 : ' + blankMap.errorReason + '<br>';
                      resultStr += '</div>';
                      $( document ).ready(function() {
-                    	  $('.trigger').click(function() {
-                    	     $('.modal-wrapper').toggleClass('open');
-                    	    $('.page-wrapper').toggleClass('blur');
-                    	     return false;
-                    	  });
-                    	});
+                         $('.trigger').click(function() {
+                            $('.modal-wrapper').toggleClass('open');
+                           $('.page-wrapper').toggleClass('blur');
+                            return false;
+                         });
+                       });
                      //resultStr += '<div class="resultMsg">정답입니다.</div>';
                      /* alert("blankMap.rightAnswer : "+blankMap.rightAnswer);
                      alert("blankMap.wrongAnswer : "+blankMap.wrongAnswer); 
@@ -483,7 +480,7 @@ a.btn{
                     
                     /* var wrongAnswer = blankMap.wrongAnswer;
                     var rightAnswer = blankMap.rightAnswer; */
-              		erTest = blankMap.errorReason;
+                    erTest = blankMap.errorReason;
                     //alert("errorReason : "+erTest);
                     
                     /* resultStr += '사용자가 입력한 답 : ' + blankMap.wrongAnswerArr+'<br>'; 
@@ -513,9 +510,9 @@ a.btn{
                  $.each(erTest , function( i, val ) {
                     errTxt += '✔  '+ val + '<br>'; 
                     alert("errTxt : " + errTxt);
-               	 }); */
+                   }); */
                  
-              	 $('.head1').html('입력한 답 : '+userAnswerFull);
+                  $('.head1').html('입력한 답 : '+userAnswerFull);
                  $('.head1').val('입력한 답 : '+userAnswerFull);
                 // alert("왜 안오니?");
                  $('.content').html('✔  '+erTest);
@@ -533,7 +530,7 @@ a.btn{
                }
                
             });
-   			
+            
              $('.trigger').click(function() {
                 $('.page-wrapper').toggleClass('blur');
               });
@@ -617,205 +614,205 @@ a.btn{
    </script>
 
 </head>
-<body style="overflow-x:hidden; overflow-y:hidden">
+<body style="overflow-x: hidden">
 
-	<div class="pagination-container full-width-container">
-		<div class="sized-container">
-			<div class="pagination"></div>
-		</div>
-	</div>
-	<div class="viewport full-width-container">
+   <div class="pagination-container full-width-container">
+      <div class="sized-container">
+         <div class="pagination"></div>
+      </div>
+   </div>
+   <div class="viewport full-width-container">
 
-		<ul class="slide-container">
+      <ul class="slide-container">
 
-			<li class="slide" data-tag="Step1">
-				<div class="sized-container">
-					<jsp:include page="contents311.jsp" flush="true" />
-				</div>
+         <li class="slide" data-tag="Step1">
+            <div class="sized-container">
+               <jsp:include page="contents311.jsp" flush="true" />
+            </div>
 
-			</li>
+         </li>
 
 
-			<li class="slide" data-tag="Step2">
+         <li class="slide" data-tag="Step2">
 
-				<div class="question-container">
-					<h1>빈칸에 알맞은 연산자를 입력해주세요.</h1>
-					<img alt="" src="../resources/img/31c1.png"
-						style="width: 600px; height: 250px; transform: translate(26%, 0%);">
-				</div>
+            <div class="question-container">
+               <h1>빈칸에 알맞은 연산자를 입력해주세요.</h1>
+               <img alt="" src="../resources/img/31c1.png"
+                  style="width: 600px; height: 250px; transform: translate(26%, 0%);">
+            </div>
 
-				<div class="sized-container">
-					<h1>
-						<input type="text" class="answer1" id="answer1">
-					</h1>
-					<div class="modal-wrapper">
-					  <div class="modal">
-					    <div class="head1" style="font-size: 40px">
-					    testMSG
-					      <!-- <a class="btn-close trigger" href="javascript:;"></a> -->
-					    </div>
-					    <div class="content" id="contentErrDiv" style="font-size: 40px;">
-					    </div>
-					  </div>
-					</div>
-				</div>
-			</li>
+            <div class="sized-container">
+               <h1>
+                  <input type="text" class="answer1" id="answer1">
+               </h1>
+               <div class="modal-wrapper">
+                 <div class="modal">
+                   <div class="head1" style="font-size: 40px">
+                   testMSG
+                     <!-- <a class="btn-close trigger" href="javascript:;"></a> -->
+                   </div>
+                   <div class="content" id="contentErrDiv" style="font-size: 40px;">
+                   </div>
+                 </div>
+               </div>
+            </div>
+         </li>
 
-			<li class="slide" data-tag="Step3">
+         <li class="slide" data-tag="Step3">
 
-				<div class="question-container">
-					<h1>빈칸에 알맞은 연산자를 입력해주세요.</h1>
-					<img alt="" src="../resources/img/31c2.png"
-						style="width: 600px; height: 250px; transform: translate(26%, 0%);">
-				</div>
+            <div class="question-container">
+               <h1>빈칸에 알맞은 연산자를 입력해주세요.</h1>
+               <img alt="" src="../resources/img/31c2.png"
+                  style="width: 600px; height: 250px; transform: translate(26%, 0%);">
+            </div>
 
-				<div class="sized-container">
-					<h1>
-						<input type="text" class="answer2" id="answer2">
-					</h1>
-				</div>
-			</li>
+            <div class="sized-container">
+               <h1>
+                  <input type="text" class="answer2" id="answer2">
+               </h1>
+            </div>
+         </li>
 
-			<li class="slide" data-tag="Step4">
+         <li class="slide" data-tag="Step4">
 
-				<div class="question-container">
-					<h1>빈칸에 알맞은 연산자를 입력해주세요.</h1>
-					<img alt="" src="../resources/img/31c3.png"
-						style="width: 600px; height: 250px; transform: translate(26%, 0%);">
-				</div>
+            <div class="question-container">
+               <h1>빈칸에 알맞은 연산자를 입력해주세요.</h1>
+               <img alt="" src="../resources/img/31c3.png"
+                  style="width: 600px; height: 250px; transform: translate(26%, 0%);">
+            </div>
 
-				<div class="sized-container">
-					<h1>
-						<input type="text" class="answer3" id="answer3">
-					</h1>
-				</div>
-			</li>
+            <div class="sized-container">
+               <h1>
+                  <input type="text" class="answer3" id="answer3">
+               </h1>
+            </div>
+         </li>
 
-			<li class="slide" data-tag="Step5">
+         <li class="slide" data-tag="Step5">
 
-				<div class="question-container">
-					<h1>빈칸에 알맞은 연산자를 입력해주세요.</h1>
-					<img alt="" src="../resources/img/31c4.png"
-						style="width: 600px; height: 250px; transform: translate(26%, 0%);">
-				</div>
+            <div class="question-container">
+               <h1>빈칸에 알맞은 연산자를 입력해주세요.</h1>
+               <img alt="" src="../resources/img/31c4.png"
+                  style="width: 600px; height: 250px; transform: translate(26%, 0%);">
+            </div>
 
-				<div class="sized-container">
-					<h1>
-						<input type="text" class="answer4" id="answer4">
-					</h1>
-				</div>
-			</li>
+            <div class="sized-container">
+               <h1>
+                  <input type="text" class="answer4" id="answer4">
+               </h1>
+            </div>
+         </li>
 
-			<li class="slide" data-tag="Step6">
+         <li class="slide" data-tag="Step6">
 
-				<div class="question-container">
-					<h1>빈칸에 알맞은 연산자를 입력해주세요.</h1>
-					<img alt="" src="../resources/img/31c5.png"
-						style="width: 600px; height: 250px; transform: translate(26%, 0%);">
-				</div>
+            <div class="question-container">
+               <h1>빈칸에 알맞은 연산자를 입력해주세요.</h1>
+               <img alt="" src="../resources/img/31c5.png"
+                  style="width: 600px; height: 250px; transform: translate(26%, 0%);">
+            </div>
 
-				<div class="sized-container">
-					<h1>
-						<input type="text" class="answer5" id="answer5">
-					</h1>
-				</div>
-			</li>
-			<li class="slide" data-tag="Step7">
-				<div class="question-container">
-					<div class="sized-container">
-						<jsp:include page="contents313.jsp" flush="true" />
-					</div>
-					</div>
-			</li>
-			<li class="slide" data-tag="Step8">
+            <div class="sized-container">
+               <h1>
+                  <input type="text" class="answer5" id="answer5">
+               </h1>
+            </div>
+         </li>
+         <li class="slide" data-tag="Step7">
+            <div class="question-container">
+               <div class="sized-container">
+                  <jsp:include page="contents313.jsp" flush="true" />
+               </div>
+               </div>
+         </li>
+         <li class="slide" data-tag="Step8">
 
-				<div class="question-container">
-					<h1>빈칸에 공통으로 들어갈 연산자를 입력해주세요.</h1>
-					<img alt="" src="../resources/img/31c6.png"
-						style="width: 600px; height: 250px; transform: translate(26%, 0%);">
-				</div>
+            <div class="question-container">
+               <h1>빈칸에 공통으로 들어갈 연산자를 입력해주세요.</h1>
+               <img alt="" src="../resources/img/31c6.png"
+                  style="width: 600px; height: 250px; transform: translate(26%, 0%);">
+            </div>
 
-				<div class="sized-container">
-					<h1>
-						<input type="text" class="answer7" id="answer7">
-					</h1>
-				</div>
-			</li>
-			
-			<li class="slide" data-tag="Step9">
-				<div class="question-container">
-					<h1>빈칸에 공통으로 들어갈 연산자를 입력해주세요.</h1>
-					<img alt="" src="../resources/img/31c7.png"
-						style="width: 600px; height: 250px; transform: translate(26%, 0%);">
-				</div>
+            <div class="sized-container">
+               <h1>
+                  <input type="text" class="answer7" id="answer7">
+               </h1>
+            </div>
+         </li>
+         
+         <li class="slide" data-tag="Step9">
+            <div class="question-container">
+               <h1>빈칸에 공통으로 들어갈 연산자를 입력해주세요.</h1>
+               <img alt="" src="../resources/img/31c7.png"
+                  style="width: 600px; height: 250px; transform: translate(26%, 0%);">
+            </div>
 
-				<div class="sized-container">
-					<h1>
-						<input type="text" class="answer8" id="answer8">
-					</h1>
-				</div>
-			</li>
-			<li class="slide" data-tag="Step10">
-				<div class="question-container">
-					<div class="sized-container">
-						<jsp:include page="contents312.jsp" flush="true" />
-					</div>
-					</div>
-			</li>
-			<li class="slide" data-tag="Step11">
+            <div class="sized-container">
+               <h1>
+                  <input type="text" class="answer8" id="answer8">
+               </h1>
+            </div>
+         </li>
+         <li class="slide" data-tag="Step10">
+            <div class="question-container">
+               <div class="sized-container">
+                  <jsp:include page="contents312.jsp" flush="true" />
+               </div>
+               </div>
+         </li>
+         <li class="slide" data-tag="Step11">
 
-				<div class="question-container">
-					<h1>빈칸에 공통으로 들어갈 연산자를 입력해주세요.</h1>
-					<img alt="" src="../resources/img/sic.png"
-						style="width: 600px; height: 250px; transform: translate(26%, 0%);">
-				</div>
+            <div class="question-container">
+               <h1>빈칸에 공통으로 들어갈 연산자를 입력해주세요.</h1>
+               <img alt="" src="../resources/img/sic.png"
+                  style="width: 600px; height: 250px; transform: translate(26%, 0%);">
+            </div>
 
-				<div class="sized-container">
-					<h1>
-						<input type="text" class="answer10" id="answer10">
-					</h1>
-				</div>
-			</li>
+            <div class="sized-container">
+               <h1>
+                  <input type="text" class="answer10" id="answer10">
+               </h1>
+            </div>
+         </li>
 
-			<li class="slide" data-tag="Step12">
+         <li class="slide" data-tag="Step12">
 
-				<div class="question-container">
-					<h1>빈칸에 공통으로 들어갈 연산자를 입력해주세요.</h1>
-					<img alt="" src="../resources/img/duk.png"
-						style="width: 600px; height: 250px; transform: translate(26%, 0%);">
-				</div>
+            <div class="question-container">
+               <h1>빈칸에 공통으로 들어갈 연산자를 입력해주세요.</h1>
+               <img alt="" src="../resources/img/duk.png"
+                  style="width: 600px; height: 250px; transform: translate(26%, 0%);">
+            </div>
 
-				<div class="sized-container">
-					<h1>
-						<input type="text" class="answer11" id="answer11">
-					</h1>
-					<div class="modal-wrapper">
-					  <div class="modal">
-					    <div class="head1">
-					      <a class="btn-close trigger" href="javascript:;"></a>
-					    </div>
-					    <div class="content" id="contentsError">
-					    </div>
-					  </div>
-					</div>
-				</div>
-			</li>
-			<!--  </li>
+            <div class="sized-container">
+               <h1>
+                  <input type="text" class="answer11" id="answer11">
+               </h1>
+               <div class="modal-wrapper">
+                 <div class="modal">
+                   <div class="head1">
+                     <a class="btn-close trigger" href="javascript:;"></a>
+                   </div>
+                   <div class="content" id="contentsError">
+                   </div>
+                 </div>
+               </div>
+            </div>
+         </li>
+         <!--  </li>
         <li class="slide" data-tag="Step9">
       <div class="sized-container">
         <h1>x &nbsp; <input type="text" class="answer8" id="answer81"> &nbsp; y &nbsp; = &nbsp; 1 &nbsp; <input type="text" class="answer8" id="answer82"> </h1>
       </div> 
     </li> -->
-		</ul>
-	</div>
-	<div class="full-width-container">
-		<div class="button-container sized-container">
-			<div id="checkBtnDiv"></div>
-			<div id="nextBtnDiv"></div>
-			<!--   <button class="check">check</button>  -->
-			<button class="previous">previous</button>
-			<div id="answerResultDiv"></div>
-			<div class="page-wrapper">
+      </ul>
+   </div>
+   <div class="full-width-container">
+      <div class="button-container sized-container">
+         <div id="checkBtnDiv"></div>
+         <div id="nextBtnDiv"></div>
+         <!--   <button class="check">check</button>  -->
+         <button class="previous">previous</button>
+         <div id="answerResultDiv"></div>
+         <div class="page-wrapper">
   <!-- <a class="btn trigger" href="javascript:;">Error</a> -->
 </div>
 <!-- <div class="modal-wrapper">
@@ -827,10 +824,10 @@ a.btn{
     </div>
   </div>
 </div> -->
-		</div>
-		
-	</div>
-	
+      </div>
+      
+   </div>
+   
 
 
 </body>
